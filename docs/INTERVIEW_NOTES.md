@@ -43,7 +43,7 @@ Confidence key: **Clear** = said plainly and consistently. **Check** = transcrip
 
 ## Open items to confirm with the founder
 
-1. Exact titles, years and wording for the pro career, and permission to name Barry Hearn and Barry Hearn's stable.
+1. Exact titles, years and wording for the pro career, and permission to name Barry Hearn (promoter) in public copy.
 2. Subscription prices and what "unlimited" means.
 3. What the Proposition artist check will be.
 4. Whether the club name is "Bethnal Green Boxing Club" (said in the recording, on the ring canvas) or "Bethnal Green Boxing Gym" (current site).
