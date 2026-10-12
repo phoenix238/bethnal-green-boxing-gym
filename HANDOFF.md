@@ -25,7 +25,7 @@ The owner shared Proposition Studios' artist studios page for context: https://w
 
 ## Current implementation
 
-React + Vite front-end in `src/main.jsx` and `src/style.css`. It has a responsive landing page, the initial two-session timetable, a demo booking dialog, and an owner demo panel with class management, demo members/attendance, and a simple manual monthly cashbook. The demo persists in browser `localStorage` only.
+React + Vite front-end. `src/main.jsx` holds the app state and the guarded `localStorage` helpers; page sections, the booking dialog and the owner panel are in `src/components/`; styles are in `src/style.css`; all public copy comes from `src/content.js`. Fonts (Anton and Archivo) load from Google Fonts in `index.html`. It has a responsive single-page site (hero, approach, fight-bill timetable, story, photo collage of the space, community aims, kit teaser, find us), the initial two-session timetable, a demo booking dialog, and an owner demo panel with class management, demo members/attendance, and a simple manual monthly cashbook. The demo persists in browser `localStorage` only.
 
 **Important:** this is not a live booking or management system. The booking form does not reserve a real place or charge a card. There is no user login, shared database, payment provider, bank connection, or real accounting integration. Never enter real member, customer, or financial data in the demo. The site should not be marketed as accepting live bookings or payments until those systems are implemented and tested.
 

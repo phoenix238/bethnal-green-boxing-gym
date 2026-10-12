@@ -11,11 +11,11 @@ export const site = {
 };
 
 export const photos = {
-  ring: { src: '/photos/ring.jpg', alt: 'The gym ring with white ropes and a Bethnal Green Boxing Club canvas, fight posters on the walls behind' },
-  lounge: { src: '/photos/lounge-posters.jpg', alt: 'Seating area with a sofa, a table of boxing magazines and a wall of fight posters' },
-  floor: { src: '/photos/training-floor.jpg', alt: 'Training floor with rubber matting, benches, dumbbells and weight plates' },
-  magazinesClose: { src: '/photos/magazines-close.jpg', alt: 'Stacks of old Boxing News and The Ring magazines on a table' },
-  magazinesTable: { src: '/photos/magazines-table.jpg', alt: 'A white table piled with vintage boxing magazines next to a sofa' },
+  ring: { src: '/photos/ring.jpg', alt: 'The gym ring with white ropes and a Bethnal Green Boxing Club canvas, fight posters on the walls behind', caption: 'The ring' },
+  lounge: { src: '/photos/lounge-posters.jpg', alt: 'Seating area with a sofa, a table of boxing magazines and a wall of fight posters', caption: 'The poster wall' },
+  floor: { src: '/photos/training-floor.jpg', alt: 'Training floor with rubber matting, benches, dumbbells and weight plates', caption: 'The training floor' },
+  magazinesClose: { src: '/photos/magazines-close.jpg', alt: 'Stacks of old Boxing News and The Ring magazines on a table', caption: 'Old Boxing News and The Ring' },
+  magazinesTable: { src: '/photos/magazines-table.jpg', alt: 'A white table piled with vintage boxing magazines next to a sofa', caption: 'The magazine table' },
 };
 
 export const hero = {
@@ -102,6 +102,12 @@ export const visit = {
     { label: 'When', value: 'Tuesday and Thursday, 7pm' },
     { label: 'Price', value: '£10 per class · £5 Proposition Studios artists' },
   ],
+};
+
+export const cta = {
+  heading: ['Come as you are.', 'Leave a bit stronger.'],
+  text: 'Tuesday and Thursday, 7pm. No experience needed.',
+  button: 'See the timetable',
 };
 
 export const footer = {
