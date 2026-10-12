@@ -29,6 +29,12 @@ React + Vite front-end in `src/main.jsx` and `src/style.css`. It has a responsiv
 
 **Important:** this is not a live booking or management system. The booking form does not reserve a real place or charge a card. There is no user login, shared database, payment provider, bank connection, or real accounting integration. Never enter real member, customer, or financial data in the demo. The site should not be marketed as accepting live bookings or payments until those systems are implemented and tested.
 
+## Change log
+
+- Story copy now restates only the owner-supplied background (Finchley Boxing Club, Tottenham New Enterprise Boxing Club, brothers Steve and John, competitive boxing, underestimated then later won amateur bouts). The earlier draft used "his brothers" and "brotherhood", which were not in the source; the founder's pronouns are unconfirmed, so copy avoids them. Still needs checking against the recordings.
+- Timetable badge reads "BOOKING NOT YET OPEN" and the dialog is labelled "Booking preview" so the public page does not imply live booking.
+- Local storage reads/writes are now guarded, so corrupt or blocked storage no longer blanks the page.
+
 ## Run and verify
 
 From the repository directory:

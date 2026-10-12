@@ -8,27 +8,29 @@ const initialClasses = [
   { id: 'tuesday-open', title: 'Open level boxing', level: 'All levels', coach: 'Gym coach', day: 'Tuesday', time: '7:00 PM', duration: null, price: 10, communityPrice: 5, capacity: null, attendees: [] },
   { id: 'thursday-open', title: 'Open level boxing', level: 'All levels', coach: 'Gym coach', day: 'Thursday', time: '7:00 PM', duration: null, price: 10, communityPrice: 5, capacity: null, attendees: [] },
 ];
-const savedClasses = () => {
-  try { const saved = localStorage.getItem(STORAGE); return saved === null ? initialClasses : JSON.parse(saved); } catch { return initialClasses; }
+const load = (key, fallback) => {
+  try { const saved = localStorage.getItem(key); const value = saved === null ? fallback : JSON.parse(saved); return Array.isArray(value) ? value : fallback; } catch { return fallback; }
 };
+const save = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* storage unavailable: demo data just won't persist */ } };
+const savedClasses = () => load(STORAGE, initialClasses);
 function App() {
   const [classes, setClasses] = useState(savedClasses);
   const [filter, setFilter] = useState('All sessions');
   const [dialog, setDialog] = useState(null);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [admin, setAdmin] = useState(false);
-  const [bookings, setBookings] = useState(() => JSON.parse(localStorage.getItem('bgbg-bookings-v1') || '[]'));
-  const [members, setMembers] = useState(() => JSON.parse(localStorage.getItem('bgbg-members-v1') || '[]'));
-  const [ledger, setLedger] = useState(() => JSON.parse(localStorage.getItem('bgbg-ledger-v1') || '[]'));
+  const [bookings, setBookings] = useState(() => load('bgbg-bookings-v1', []));
+  const [members, setMembers] = useState(() => load('bgbg-members-v1', []));
+  const [ledger, setLedger] = useState(() => load('bgbg-ledger-v1', []));
   const [accountPeriod] = useState(new Date().toISOString().slice(0, 7));
   const monthEntries = ledger.filter(entry => entry.date.startsWith(accountPeriod));
   const monthIncome = monthEntries.filter(entry => entry.type === 'income').reduce((total, entry) => total + entry.amount, 0);
   const monthExpenses = monthEntries.filter(entry => entry.type === 'expense').reduce((total, entry) => total + entry.amount, 0);
   const [flash, setFlash] = useState('');
-  useEffect(() => localStorage.setItem(STORAGE, JSON.stringify(classes)), [classes]);
-  useEffect(() => localStorage.setItem('bgbg-bookings-v1', JSON.stringify(bookings)), [bookings]);
-  useEffect(() => localStorage.setItem('bgbg-members-v1', JSON.stringify(members)), [members]);
-  useEffect(() => localStorage.setItem('bgbg-ledger-v1', JSON.stringify(ledger)), [ledger]);
+  useEffect(() => save(STORAGE, classes), [classes]);
+  useEffect(() => save('bgbg-bookings-v1', bookings), [bookings]);
+  useEffect(() => save('bgbg-members-v1', members), [members]);
+  useEffect(() => save('bgbg-ledger-v1', ledger), [ledger]);
   const filtered = useMemo(() => filter === 'All sessions' ? classes : filter === 'First time' ? classes.filter(c => c.level === 'First time' || c.level === 'All levels') : classes.filter(c => c.level === 'All levels'), [classes, filter]);
   const notify = message => { setFlash(message); window.setTimeout(() => setFlash(''), 3200); };
   const addLedgerEntry = event => {
