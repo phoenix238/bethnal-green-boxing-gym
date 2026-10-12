@@ -39,6 +39,13 @@ React + Vite front-end in `src/main.jsx` and `src/style.css`. It has a responsiv
 - Timetable badge reads "BOOKING NOT YET OPEN" and the dialog is labelled "Booking preview" so the public page does not imply live booking.
 - Local storage reads/writes are now guarded, so corrupt or blocked storage no longer blanks the page.
 
+## Open questions for the owner (demo draft)
+
+- Official name: "Bethnal Green Boxing Club" (ring canvas, interview) or "Bethnal Green Boxing Gym"?
+- How the founder wants to be named and referred to on the site. Copy currently says "our founder" throughout. In the recording he introduces himself as "Mr. Paul", so "he" and a name would read more naturally once he approves.
+- Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
+- Whether the professional titles can be stated, and in what exact words.
+
 ## Run and verify
 
 From the repository directory:
