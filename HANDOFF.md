@@ -19,7 +19,7 @@ Build a welcoming, affordable website for a new community boxing gym in Bethnal 
 
 ## Founder story and copy guardrails
 
-The interview recordings named `Jb website 1.m4a` and `Jb website 2.m4a` were not present in the working environment. The owner-provided background says the founder started boxing at about 15 at Finchley Boxing Club, trained there for around three years, then moved with brothers Steve and John to Tottenham New Enterprise Boxing Club. All three boxed competitively and travelled from Highgate to Tottenham. The founder recalls being underestimated by a trainer, persevering, and later winning amateur bouts. Do not add titles, dates, quotes, or embellishments. Check all founder-story copy against the full recordings when they become available.
+The recordings have since been supplied and machine-transcribed; see [docs/INTERVIEW_NOTES.md](docs/INTERVIEW_NOTES.md) for what they say and what still needs confirming (it includes a professional career with titles, which must be confirmed with the founder before going on the site). The original note below was written before the recordings were available. The owner-provided background says the founder started boxing at about 15 at Finchley Boxing Club, trained there for around three years, then moved with brothers Steve and John to Tottenham New Enterprise Boxing Club. All three boxed competitively and travelled from Highgate to Tottenham. The founder recalls being underestimated by a trainer, persevering, and later winning amateur bouts. Do not add titles, dates, quotes, or embellishments. Check all founder-story copy against the full recordings when they become available.
 
 The owner shared Proposition Studios' artist studios page for context: https://www.propositionstudios.com/artiststudios . It was not accessible for research from the build environment, so do not claim any further details about the building based on it.
 
@@ -30,6 +30,8 @@ React + Vite front-end in `src/main.jsx` and `src/style.css`. It has a responsiv
 **Important:** this is not a live booking or management system. The booking form does not reserve a real place or charge a card. There is no user login, shared database, payment provider, bank connection, or real accounting integration. Never enter real member, customer, or financial data in the demo. The site should not be marketed as accepting live bookings or payments until those systems are implemented and tested.
 
 ## Change log
+
+- Added `docs/INTERVIEW_NOTES.md` summarising both recordings. It records new facts (a £25/£40 monthly subscription idea, rustic old-school design wish, community page, minibus fundraising goal, club name question) as unconfirmed.
 
 - Story copy now restates only the owner-supplied background (Finchley Boxing Club, Tottenham New Enterprise Boxing Club, brothers Steve and John, competitive boxing, underestimated then later won amateur bouts). The earlier draft used "his brothers" and "brotherhood", which were not in the source; the founder's pronouns are unconfirmed, so copy avoids them. Still needs checking against the recordings.
 - Timetable badge reads "BOOKING NOT YET OPEN" and the dialog is labelled "Booking preview" so the public page does not imply live booking.
