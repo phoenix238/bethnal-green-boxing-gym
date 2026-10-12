@@ -31,6 +31,8 @@ React + Vite front-end in `src/main.jsx` and `src/style.css`. It has a responsiv
 
 ## Change log
 
+- First demo draft (team pass): five real gym photos added in `public/photos` (location metadata stripped). Public copy moved to `src/content.js` so it can be fact-checked in one place. Visual direction follows the founder's wish for a rustic, old-school look based on the gym's own fight posters. The site now shows the name **Bethnal Green Boxing Club**, as printed on the ring canvas and said in the interview; the repository is still called "boxing-gym". Owner to confirm the official name. The founder's professional titles are deliberately left off until he confirms the wording. Any interview quote on the site is marked as draft wording.
+
 - Added `docs/INTERVIEW_NOTES.md` summarising both recordings. It records new facts (a £25/£40 monthly subscription idea, rustic old-school design wish, community page, minibus fundraising goal, club name question) as unconfirmed.
 
 - Story copy now restates only the owner-supplied background (Finchley Boxing Club, Tottenham New Enterprise Boxing Club, brothers Steve and John, competitive boxing, underestimated then later won amateur bouts). The earlier draft used "his brothers" and "brotherhood", which were not in the source; the founder's pronouns are unconfirmed, so copy avoids them. Still needs checking against the recordings.
