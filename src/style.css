@@ -41,6 +41,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
 .floor :focus-visible, .footer :focus-visible, .halftone-red :focus-visible, .nav-open :focus-visible { outline-color: var(--yellow); }
+.floor .bill :focus-visible { outline-color: var(--red); }
 
 .sr-only {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;

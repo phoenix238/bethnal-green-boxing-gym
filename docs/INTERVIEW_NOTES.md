@@ -9,6 +9,7 @@ Confidence key: **Clear** = said plainly and consistently. **Check** = transcrip
 - Started boxing at about 15, one junior fight, then joined Finchley Boxing Club for the best part of three years. **Clear**
 - Finchley had internal disagreements; he and his brothers moved to Tottenham New Enterprise Boxing Club (long trip from Highgate). Described Tottenham as a hard, serious gym, "like going to the Bronx". **Clear**
 - Family name is Paul. Older brother Steve (middleweight, very talented, less disciplined), younger brother John (very fast hands). The founder says both were better boxers than him as amateurs and that his own strength was power punching. **Clear**
+- Quote used on the demo site, recording 1: "it breaks you down to build you up" (full line: "things that make you the person you are, because it breaks you down to build you up"). **Clear** in the audio; founder to approve before launch.
 - A Finchley trainer told the brothers they would be fighters and told the founder to go and stick to the heavy bag. It made him hungrier; he later knocked opponents out early in amateur fights. **Clear** (trainer's name omitted on purpose)
 - After about six fights he was entered in the ABAs (national amateur championships), age 16. How that first ABA bout ended was cut off in recording 1. Recording 2 says he reached ABA semi-finals/finals and won some titles. **Check**
 - Shoulder dislocations at about 17; operation at 17 to 18; out of boxing from 18 to 24 but kept training. **Check** (ages)

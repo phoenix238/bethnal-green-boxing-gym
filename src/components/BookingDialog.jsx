@@ -21,7 +21,7 @@ export default function BookingDialog({ session, onClose, onSubmit }) {
         {session.price == null ? <p>The gym is confirming class prices and places.</p> : null}
       </div>
       <form onSubmit={event => onSubmit(event, session)}>
-        <label>Rate<select name="rate" data-autofocus><option value="public">Public · £{Number(session.price ?? 10).toFixed(2)}</option><option value="community">Proposition Studios member · £{Number(session.communityPrice ?? 5).toFixed(2)}</option></select></label>
+        <label>Rate<select name="rate" data-autofocus><option value="public">Public · £{Number(session.price ?? 10).toFixed(2)}</option><option value="community">Proposition Studios artist · £{Number(session.communityPrice ?? 5).toFixed(2)}</option></select></label>
         <label>Your name<input name="name" autoComplete="name" required/></label>
         <label>Email address<input name="email" type="email" autoComplete="email" required/></label>
         <p className="modal-small">Demo only: details are saved in this browser, not sent to the gym.</p>

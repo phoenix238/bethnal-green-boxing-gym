@@ -104,7 +104,7 @@ export function Timetable({ classes, onBook }) {
                 </div>
               </div>
               <div className="bout-stub">
-                <p className="bout-price">{c.price == null ? 'Price to be confirmed' : <>{money(c.price)} <small>/ {money(c.communityPrice ?? 5)} Proposition Studios</small></>}</p>
+                <p className="bout-price">{c.price == null ? 'Price to be confirmed' : <>{money(c.price)} <small>/ {money(c.communityPrice ?? 5)} Proposition Studios artists</small></>}</p>
                 <button type="button" className="btn btn-yellow btn-small" onClick={() => onBook(c)} aria-label={`Booking preview for ${c.title}, ${c.day} ${c.time}`}>Booking preview</button>
               </div>
             </li>)}

@@ -39,7 +39,7 @@ const PHOTO_LABELS = {
   ring: 'The ring',
   lounge: 'The poster wall',
   floor: 'The training floor',
-  magazinesClose: 'The magazine table',
+  magazinesClose: 'Old boxing magazines',
   magazinesTable: 'The magazine table',
 };
 
@@ -50,7 +50,8 @@ export function Photo({ name, className = '', eager = false, caption = true, siz
   const label = caption ? (photo.caption ?? PHOTO_LABELS[name] ?? null) : null;
   return <figure className={`pin ${className}`.trim()}>
     <div className="pin-frame">
-      <img src={photo.src} alt={photo.alt ?? ''} width={width} height={height} sizes={sizes}
+      <img src={photo.src} srcSet={`${photo.src.replace(/\.jpg$/, '-600.jpg')} 600w, ${photo.src} ${width}w`} sizes={sizes ?? '(max-width: 700px) 90vw, 600px'}
+        alt={photo.alt ?? ''} width={width} height={height}
         loading={eager ? 'eager' : 'lazy'} decoding={eager ? 'sync' : 'async'} fetchPriority={eager ? 'high' : undefined}/>
     </div>
     {label ? <figcaption>{label}</figcaption> : null}

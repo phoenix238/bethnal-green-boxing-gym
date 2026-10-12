@@ -52,9 +52,9 @@ export const story = {
   paragraphs: [
     'Our founder started boxing at about 15, at Finchley Boxing Club, along with brothers Steve and John. That was home for the best part of three years.',
     'One of the trainers there had already made his mind up. Steve and John, he said, were going to be fighters. Our founder was told to go and stick to the heavy bag.',
-    'It could have been the end of it. Instead it made our founder hungrier. Steve and John were the more gifted boxers, but our founder had the power, and stayed on that bag.',
-    'After disagreements at Finchley, the brothers moved to Tottenham New Enterprise Boxing Club. It was a long trek from Highgate, and a hard, serious gym when you got there. Nobody messed about.',
-    'The work paid off. The amateur wins came, and in time our founder went on to box professionally.',
+    'Instead of putting our founder off, it made our founder hungrier. Steve and John were the more gifted boxers, but our founder had the power.',
+    'After disagreements at Finchley, the brothers moved to Tottenham New Enterprise Boxing Club. It was a long trek from Highgate, and a hard, serious gym when you got there.',
+    'The work paid off, and the amateur wins came.',
     'Now the club has a home in Bethnal Green, opposite York Hall. The idea is simple: an honest boxing gym, open to anyone, that gives something back.',
   ],
   // Quotes come from a machine transcript: needsSignOff stays true until the founder approves the wording.
@@ -82,7 +82,6 @@ export const community = {
     'Find local funders and supporters to back the club\'s community work',
     'Raise money for a minibus, so the club can run day trips for young people and adults who need a break',
     'Work with the council to support young people in Bethnal Green',
-    'Build a community page about Bethnal Green, its history, York Hall and local landmarks',
   ],
   note: 'These are goals the club is working towards, not services running today.',
 };

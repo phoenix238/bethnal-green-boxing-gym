@@ -35,16 +35,20 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 
 - Added `docs/INTERVIEW_NOTES.md` summarising both recordings. It records new facts (a £25/£40 monthly subscription idea, rustic old-school design wish, community page, minibus fundraising goal, club name question) as unconfirmed.
 
-- Story copy now restates only the owner-supplied background (Finchley Boxing Club, Tottenham New Enterprise Boxing Club, brothers Steve and John, competitive boxing, underestimated then later won amateur bouts). The earlier draft used "his brothers" and "brotherhood", which were not in the source; the founder's pronouns are unconfirmed, so copy avoids them. Still needs checking against the recordings.
+- Story copy now restates only the owner-supplied background (Finchley Boxing Club, Tottenham New Enterprise Boxing Club, brothers Steve and John, competitive boxing, underestimated then later won amateur bouts). The earlier draft used "his brothers" and "brotherhood", which were not in the source; the founder's pronouns are unconfirmed, so copy avoids them. Checked against the machine transcript of the recordings.
 - Timetable badge reads "BOOKING NOT YET OPEN" and the dialog is labelled "Booking preview" so the public page does not imply live booking.
 - Local storage reads/writes are now guarded, so corrupt or blocked storage no longer blanks the page.
+
+- QA pass on the demo draft: fixed malformed-storage crashes, focus-ring contrast on the timetable, consistent "Proposition Studios artist" wording, time format for owner-added sessions, smaller 600px photo versions via `srcset`, favicon, pinned dependency versions; removed the unconfirmed "boxed professionally" line and an embellishment or two from the story.
+- **Before sharing a public link:** hide the booking preview button and owner demo entry points (for example behind `?demo=1`), so real visitors are not invited to type their details into a form that goes nowhere. They are visible now because this is a demo for the owner.
 
 ## Open questions for the owner (demo draft)
 
 - Official name: "Bethnal Green Boxing Club" (ring canvas, interview) or "Bethnal Green Boxing Gym"?
 - How the founder wants to be named and referred to on the site. Copy currently says "our founder" throughout. In the recording he introduces himself as "Mr. Paul", so "he" and a name would read more naturally once he approves.
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
-- Whether the professional titles can be stated, and in what exact words.
+- Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
+- What "Proposition Studios artist" means for the £5 rate and how it is checked.
 
 ## Run and verify
 
@@ -63,13 +67,13 @@ npm run build
 
 ## Suggested next work
 
-1. Get the interview files and verify the story and voice; replace any unsupported copy.
+1. Done: recordings transcribed and summarised in `docs/INTERVIEW_NOTES.md`. Get founder sign-off on the items marked Check and on the quote.
 2. Confirm the gym address, class duration/capacity, cancellation/refund rules, and how Proposition Studios membership eligibility will be checked.
 3. Choose and implement a small production stack. Supabase (authentication and database) and Stripe Checkout were discussed as options, not selected or configured. Do not ask the owner to paste credentials into chat or commit them.
 4. Protect the owner dashboard with authentication and authorization; store bookings, classes, attendance, and members centrally with backups and privacy-conscious retention.
 5. For payments, use hosted checkout and verify payment status server-side with signed webhooks before confirming a place. Handle capacity races, refunds, cancellations, and failed payments.
 6. Decide whether the cashbook is sufficient or whether the owner needs accounting software/export. Do not present a manual demo ledger as accounting advice or tax records.
-7. Add the provided logo, merchandise artwork, and real gym photos once supplied. Merchandise checkout remains a future foundation, not an implemented shop.
+7. Real gym photos are in. Add the provided logo and merchandise artwork once supplied. Merchandise checkout remains a future foundation, not an implemented shop.
 8. Before launch, test booking/payment flows, dashboard permissions, accessibility, mobile layout, backups, and recovery.
 
 ## Handover between Codex and Claude

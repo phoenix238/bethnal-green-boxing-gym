@@ -34,7 +34,7 @@ export default function Header() {
   }, [open]);
   const close = () => setOpen(false);
   return <>
-    <div className="topline"><span>{content.site?.area}</span><span className="topline-star" aria-hidden="true">★</span><span className="topline-tag">{content.site?.tagline}</span></div>
+    <div className="topline" aria-hidden="true"><span>{content.site?.area}</span><span className="topline-star" aria-hidden="true">★</span><span className="topline-tag">{content.site?.tagline}</span></div>
     <header className="header">
       <a className="header-home" href="#top" aria-label={`${content.site?.name ?? 'Home'}, back to top`}><Wordmark/></a>
       <nav className={open ? 'nav nav-open' : 'nav'} id="site-nav" aria-label="Main">

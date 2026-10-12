@@ -14,9 +14,19 @@ const initialClasses = [
   { id: 'tuesday-open', title: 'Open level boxing', level: 'All levels', coach: null, day: 'Tuesday', time: '7:00 PM', duration: null, price: 10, communityPrice: 5, capacity: null, attendees: [] },
   { id: 'thursday-open', title: 'Open level boxing', level: 'All levels', coach: null, day: 'Thursday', time: '7:00 PM', duration: null, price: 10, communityPrice: 5, capacity: null, attendees: [] },
 ];
-const load = (key, fallback) => {
-  try { const saved = localStorage.getItem(key); const value = saved === null ? fallback : JSON.parse(saved); return Array.isArray(value) ? value : fallback; } catch { return fallback; }
+// Drops anything that isn't a well-formed item, so old or hand-edited demo data can't blank the page.
+const isObj = x => x !== null && typeof x === 'object';
+const validators = {
+  [STORAGE]: x => isObj(x) && typeof x.id === 'string' && typeof x.day === 'string' && typeof x.title === 'string',
+  'bgbg-bookings-v1': x => isObj(x) && typeof x.id === 'string' && typeof x.name === 'string',
+  'bgbg-members-v1': x => isObj(x) && typeof x.name === 'string' && typeof x.email === 'string',
+  'bgbg-ledger-v1': x => isObj(x) && typeof x.date === 'string' && Number.isFinite(x.amount),
 };
+const load = (key, fallback) => {
+  try { const saved = localStorage.getItem(key); const value = saved === null ? fallback : JSON.parse(saved); return Array.isArray(value) ? value.filter(validators[key] ?? isObj) : fallback; } catch { return fallback; }
+};
+// "19:30" -> "7:30 PM", matching the seeded sessions.
+const formatTime = value => { const [h, m] = String(value).split(':').map(Number); return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`; };
 const save = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* storage unavailable: demo data just won't persist */ } };
 const savedClasses = () => load(STORAGE, initialClasses);
 function App() {
@@ -49,7 +59,7 @@ function App() {
   const saveClass = event => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const item = { id: crypto.randomUUID(), title: data.get('title'), level: data.get('level'), coach: data.get('coach') || null, day: data.get('day'), time: new Date(`2000-01-01T${data.get('time')}`).toLocaleTimeString('en-GB', { hour: 'numeric', minute: '2-digit', hour12: true }), duration: Number(data.get('duration')), price: Number(data.get('price')), communityPrice: Number(data.get('communityPrice')), capacity: Number(data.get('capacity')), attendees: [] };
+    const item = { id: crypto.randomUUID(), title: data.get('title'), level: data.get('level'), coach: data.get('coach') || null, day: data.get('day'), time: formatTime(data.get('time')), duration: Number(data.get('duration')), price: Number(data.get('price')), communityPrice: Number(data.get('communityPrice')), capacity: Number(data.get('capacity')), attendees: [] };
     setClasses(prev => [...prev, item]); event.currentTarget.reset(); notify('Session added to the timetable.');
   };
   const book = (event, session) => {

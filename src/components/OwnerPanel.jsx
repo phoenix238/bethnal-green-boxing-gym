@@ -66,7 +66,7 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
       <div className="admin-list">
         <h3>Upcoming sessions</h3>
         {classes.length ? classes.map(c => <div className="admin-row" key={c.id}>
-          <div><b>{c.title}</b><span>{c.day} · {c.time} · public £{Number(c.price ?? 10).toFixed(2)} / Proposition Studios member £{Number(c.communityPrice ?? 5).toFixed(2)}</span></div>
+          <div><b>{c.title}</b><span>{c.day} · {c.time} · public £{Number(c.price ?? 10).toFixed(2)} / Proposition Studios artist £{Number(c.communityPrice ?? 5).toFixed(2)}</span></div>
           <button type="button" className="row-btn" aria-label={`Remove ${c.title} on ${c.day}`} onClick={() => setClasses(prev => prev.filter(x => x.id !== c.id))}><Minus size={16} aria-hidden="true"/></button>
         </div>) : <p className="admin-empty">Add the first real class and its schedule.</p>}
       </div>
