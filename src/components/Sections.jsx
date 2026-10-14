@@ -5,6 +5,7 @@ import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
 import { Logo } from './Header.jsx';
 import { BookButton, nextSessions } from './Classes.jsx';
 import { formatSlot } from '../calclasses.js';
+import { SketchBoxer } from './SketchBoxer.jsx';
 
 // The hero's ticket shows the next few class dates straight from Cal.com, so it never goes out of date.
 export function Hero({ cal }) {
@@ -34,7 +35,7 @@ export function Hero({ cal }) {
         </div> : null}
       </div>
       <div className="hero-photo">
-        <Photo name="ring" eager className="pin-tilt-right" sizes="(min-width: 900px) 40vw, 92vw"/>
+        <div className="hero-sketch pin-tilt-right"><SketchBoxer/></div>
         {content.media?.logo?.src ? <div className="hero-badge"><Logo eager/></div> : null}
       </div>
     </div>
@@ -104,13 +105,15 @@ export function Story({ first = false }) {
       {prints.length ? <div className="scrapbook" role="group" aria-label="Scrapbook: the founder's boxing years">
         {prints.map(item => <Photo key={item.name} name={item.name} className={`scrap ${item.tilt}`} sizes="(min-width: 960px) 24vw, 46vw"/>)}
       </div> : null}
-      {pro?.heading || pro?.paragraphs ? <div className="story-chapter">
-        <div>
-          <p className="chapter-mark" aria-hidden="true">Round two</p>
-          {pro.heading ? <h3 className="h3"><Title parts={pro.heading}/></h3> : null}
-        </div>
-        <div className="chapter-copy"><Paragraphs items={pro.paragraphs}/></div>
+      {pro?.heading || pro?.paragraphs ? <div className="bill-poster">
+        <p className="chapter-mark" aria-hidden="true">Round two</p>
+        {pro.heading ? <h2 className="bill-poster-title"><Title parts={pro.heading}/></h2> : null}
+        <p className="bill-poster-meta" aria-hidden="true">York Hall <span>★</span> 29 Nov 1995 <span>★</span> Southern Area</p>
+        <div className="bill-poster-copy"><Paragraphs items={pro.paragraphs}/></div>
       </div> : null}
+      <div className="story-close">
+        <a className="btn btn-yellow" href="#/classes">Train with Bernie <ArrowRight size={18} aria-hidden="true"/></a>
+      </div>
     </div>
   </section>;
 }
@@ -199,14 +202,15 @@ export function Join() {
   </section>;
 }
 
-export function Space() {
+export function Space({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { gym } = content;
   return <section className="section space plaster-dark" id="space" aria-labelledby="space-title">
     <div className="wrap">
       <div className="split">
         <div>
           <Eyebrow>{gym?.eyebrow}</Eyebrow>
-          <h2 id="space-title" className="h2"><Title parts={gym?.heading}/></h2>
+          <H id="space-title" className="h2"><Title parts={gym?.heading}/></H>
         </div>
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
       </div>
@@ -300,7 +304,7 @@ export function CtaBand() {
 export function Meet() {
   const { meet } = content;
   if (!meet) return null;
-  return <section className="section meet plaster-dark" aria-labelledby="meet-title">
+  return <section className="section section-tight meet floor" aria-labelledby="meet-title">
     <div className="wrap meet-grid">
       <div className="meet-photo">
         <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>

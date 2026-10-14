@@ -115,9 +115,9 @@ function App() {
     <main id="main" tabIndex={-1}>
       {route === 'home' ? <><Hero cal={cal}/><Meet/><FirstClass/><ClassesPreview cal={cal}/></> : null}
       {route === 'classes' ? <ClassesPage cal={cal}/> : null}
-      {route === 'story' ? <><Story first/><CtaBand/></> : null}
-      {route === 'gym' ? <><Approach first/><Club/><Space/><CtaBand/></> : null}
-      {route === 'community' ? <><Community first/><Kit/><CtaBand/></> : null}
+      {route === 'story' ? <Story first/> : null}
+      {route === 'gym' ? <><Space first/><Club/><Approach/><CtaBand/></> : null}
+      {route === 'community' ? <><Community first/><Kit/><Join/></> : null}
       {route === 'visit' ? <><Visit first/><Join/><CtaBand/></> : null}
     </main>
     <Footer onOwnerDemo={() => setAdmin(true)} route={route}/>

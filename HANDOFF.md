@@ -56,6 +56,8 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Hero "Next up" line now shows the next three class dates from Cal.com, so it changes when the classes change. It shows whatever availability Cal.com has: at the time of writing the "mixed levels" event type still uses Cal.com's default hourly weekday availability and Cal Video as its location, so the owner must set the real class times and the gym as the location in Cal.com.
 - Copy changes from the owner: "Come as you are. Leave a bit stronger." follows "You come down, you work, you sweat." in the hero; "donated bags and gloves" became "kit donated by the community"; the "From a grubby basement to a proper gym" section is now "Built by the community. For the community." (owner's choice: the section is not about artists or Proposition Studios). The owner benched an "about four small gyms at Proposition Studios" line as too complicated to explain for now. The chairman's brief and "grubby" wording were removed.
 
+- **Rebalance pass (October 2026, owner request, branch `claude/epic-tesla-55oofm`, not on `main` until the owner approves).** Copy rewritten so the site balances Bernie, a small personal gym, and a good place to learn. Home is now: hero ("Learn to box with Bernie." with a hand-drawn boxer that draws itself), "You'll be trained by Bernie" (new `meet` copy), "What to expect" first-class steps (new `firstClass` copy, generic advice only), then the classes. This goes past the earlier "two sections at most" home-page rule on purpose, because the owner said the balance was off; owner to confirm. Story page ends on a fight-bill poster for round two and a "Train with Bernie" button instead of the generic band. Gym page order: the space, the people, how we train. Community page ends with the WhatsApp join block. The sketch boxer (`src/components/SketchBoxer.jsx`, inline SVG + CSS, no library) is a generic boxer, not a likeness of Bernie; it is drawn finished with reduced motion. Footer and WhatsApp copy now point to the Cal.com booking calendar.
+
 ## Open questions for the owner (demo draft)
 
 - Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?
@@ -67,7 +69,9 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
-- Footer and WhatsApp copy still say online booking is not open, while Book buttons now open Cal.com. Fine while the site is unshared; update before it goes public.
+- Does Bernie take every class himself? Home copy says "he takes the classes himself".
+- Did 29 November 1995 win the Southern Area title or defend it? Home copy says he "won a Southern Area title fight", based on the photo caption.
+- First-class practicalities for "What to expect": class length, arrive early?, are gloves and wraps provided? Full address.
 
 ## Run and verify
 
