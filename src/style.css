@@ -524,3 +524,123 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .btn:hover, .btn:active { transform: none; }
 }
+
+/* ==========================================================================
+   Logo, club, join, scrapbook (second pass)
+   The logo JPEG has a solid black background, so it only sits on black.
+   --green comes from the logo: 6.8:1 on black, so use it on dark grounds only.
+   ========================================================================== */
+:root { --green: #2fa84f; --black: #000; }
+
+/* Header becomes a black bar so the logo sits on its own background */
+.header { background: var(--black); color: var(--on-dark); border-bottom: 4px solid var(--yellow); }
+.header :focus-visible { outline-color: var(--yellow); }
+.logo { display: block; overflow: hidden; background: var(--black); }
+.logo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 47%; }
+/* Crop the artwork's black margin: the lettering fills a ~2:1 band in the middle */
+.logo-header { height: calc(var(--header-h) - 10px); aspect-ratio: 2 / 1; }
+.logo-footer { width: min(300px, 100%); aspect-ratio: 2 / 1; }
+.menu-toggle { border-color: var(--yellow); box-shadow: 3px 3px 0 var(--red); }
+.nav.nav-open { border-top: 1px solid rgba(243, 238, 226, .15); }
+
+.hero-photo { position: relative; }
+.hero-badge {
+  position: absolute; left: -6px; bottom: -22px; z-index: 3; width: min(220px, 52%); padding: 4px;
+  background: var(--black); border: 3px solid var(--black); outline: 2px solid var(--yellow); outline-offset: -8px;
+  box-shadow: 6px 6px 0 var(--red); transform: rotate(-3deg);
+}
+.hero-badge .logo { aspect-ratio: 2 / 1; }
+
+/* Timetable extras */
+.bout-notes { margin: 8px 0 0; font-size: 15px; font-weight: 600; color: var(--ink-2); max-width: 60ch; }
+
+/* Story: postbox print + scrapbook of taped prints */
+.story-grid { align-items: start; }
+.story-grid-single { grid-template-columns: 1fr !important; }
+.story-photo { max-width: 560px; }
+.scrapbook {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 18px; align-items: start;
+  margin-top: clamp(48px, 7vw, 88px); padding: clamp(28px, 4vw, 44px) clamp(12px, 3vw, 36px);
+  background: var(--ink-2); border: 3px solid var(--ink);
+  background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, .03) 0 2px, transparent 2px 7px);
+}
+.scrap .pin-frame { padding: 6px 6px 7px; }
+.scrap .pin-frame img { aspect-ratio: 4 / 3; object-fit: cover; }
+.scrap::before { width: 70px; margin-left: -35px; height: 22px; }
+.scrap figcaption { background: var(--yellow); color: var(--ink); }
+.tilt-a { transform: rotate(-2.4deg); }
+.tilt-a .pin-frame img { aspect-ratio: 635 / 615; object-position: 50% 20%; }
+.tilt-b { transform: rotate(1.8deg) translateY(10px); }
+.tilt-c { transform: rotate(-1.2deg); }
+.tilt-c::before { left: 18%; transform: rotate(-12deg); }
+.tilt-d { transform: rotate(2.6deg) translateY(6px); }
+.tilt-d::before { left: auto; right: 6%; transform: rotate(9deg); }
+.story-chapter { display: grid; gap: 8px 64px; margin-top: clamp(48px, 7vw, 88px); padding-top: 28px; border-top: 4px double var(--ink); }
+.chapter-mark { display: inline-block; margin: 0 0 6px; padding: 4px 10px; background: var(--red); color: #fff; font-family: var(--display); letter-spacing: .08em; text-transform: uppercase; font-size: 15px; }
+.h3 { font-family: var(--display); text-transform: uppercase; line-height: .95; font-size: clamp(36px, 5.4vw, 72px); margin-bottom: 18px; overflow-wrap: break-word; }
+.chapter-copy p { max-width: 62ch; }
+.chapter-copy p:last-child { margin-bottom: 0; }
+
+/* The club: people, video, photos on the rubber floor */
+.club .eyebrow-no { background: var(--green); color: var(--black); }
+.club .t-em { color: var(--green); }
+.club-grid { display: grid; gap: 34px 22px; margin-top: clamp(40px, 6vw, 72px); align-items: start; }
+.club-video { margin: 0; }
+.club-video-frame { position: relative; background: var(--black); border: 3px solid var(--paper); box-shadow: 8px 8px 0 var(--green); }
+.club-video video { display: block; width: 100%; height: auto; aspect-ratio: 848 / 478; object-fit: cover; background: var(--black); }
+.club-video figcaption { margin-top: 12px; font-size: 14px; font-weight: 700; color: var(--on-dark-muted); letter-spacing: .06em; }
+.video-toggle {
+  position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px;
+  border: 3px solid var(--black); background: var(--yellow); color: var(--ink); box-shadow: 3px 3px 0 var(--black);
+  font-weight: 800; font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+}
+.video-toggle:hover { background: var(--paper); }
+.club .pin figcaption { background: var(--green); color: var(--black); }
+.club-photo-tall { max-width: 420px; width: 100%; justify-self: center; }
+
+/* Join: WhatsApp call to action */
+.join { background: var(--black); color: var(--on-dark); border-block: 4px solid var(--green); }
+.join .eyebrow-no { background: var(--green); color: var(--black); }
+.join .t-em { color: var(--green); }
+.join :focus-visible { outline-color: var(--yellow); }
+.join-inner { display: grid; gap: 32px; align-items: end; }
+.join .lede { max-width: 44ch; }
+.join-note { margin: 0; color: var(--on-dark-muted); font-size: 16px; max-width: 52ch; }
+.btn-whatsapp { background: var(--green); color: var(--black); border-color: var(--black); box-shadow: 5px 5px 0 var(--yellow); justify-self: start; max-width: 100%; }
+.btn-whatsapp:hover { box-shadow: 7px 7px 0 var(--yellow); }
+
+/* Footer extras */
+.footer-social-list { display: grid; gap: 14px; align-content: start; }
+.footer-whatsapp svg { color: var(--green); }
+
+/* Booking dialog & owner panel extras */
+.inline-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--ink); text-underline-offset: 3px; }
+.price-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding: 10px 14px; border: 2px solid var(--ink); background: #fff; }
+.price-line span:first-child { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.price-line b { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1; }
+.price-tag { padding: 2px 8px; background: #1d6b33; color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.label-optional { font-weight: 600; color: var(--muted); letter-spacing: 0; text-transform: none; }
+.form-error { margin: 0; padding: 8px 12px; border-left: 6px solid var(--red); background: #fde8e6; color: var(--red-dark); font-weight: 700; font-size: 15px; }
+.source-status { display: inline-block; margin: 8px 0 4px; padding: 4px 10px; background: var(--ink); color: var(--on-dark); font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.local-only { margin: 10px 0 0; padding: 10px 12px; background: #fff8cc; border-left: 6px solid var(--red); font-size: 14px; }
+.code-row { display: grid; gap: 12px; align-items: end; }
+
+@media (min-width: 640px) {
+  .code-row { grid-template-columns: 1fr auto; }
+  .club-grid { grid-template-columns: 1.3fr 1fr; }
+  .club-video { grid-column: 1 / -1; }
+}
+@media (min-width: 960px) {
+  .hero-badge { left: -28px; bottom: -26px; width: 240px; }
+  .scrapbook { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+  .story-chapter { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: start; }
+  .story-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; }
+  .club-grid { grid-template-columns: 1.6fr 1fr .8fr; align-items: center; }
+  .club-video { grid-column: auto; }
+  .join-inner { grid-template-columns: 1fr auto; }
+  .nav a:not(.btn):hover { color: var(--yellow); border-bottom-color: var(--yellow); }
+  .header-cta { display: none; }
+}
+@media (min-width: 1280px) {
+  .header-cta { display: inline-flex; }
+}

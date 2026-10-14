@@ -1,7 +1,8 @@
-import React from 'react';
-import { ArrowDown, ArrowRight, Clock3, Users } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowDown, ArrowRight, ArrowUpRight, Clock3, MessageCircle, Pause, Play, Users } from 'lucide-react';
 import * as content from '../content.js';
 import { Eyebrow, Paragraphs, Photo, Title, billTime } from './ui.jsx';
+import { Logo } from './Header.jsx';
 
 const money = value => `£${Number(value).toFixed(2).replace(/\.00$/, '')}`;
 
@@ -37,6 +38,7 @@ export function Hero({ classes }) {
       </div>
       <div className="hero-photo">
         <Photo name="ring" eager className="pin-tilt-right" sizes="(min-width: 900px) 40vw, 92vw"/>
+        {content.media?.logo?.src ? <div className="hero-badge"><Logo eager/></div> : null}
       </div>
     </div>
   </section>;
@@ -101,10 +103,11 @@ export function Timetable({ classes, onBook }) {
                     <span><Users size={15} aria-hidden="true"/>{c.capacity ? `${c.capacity} places` : 'Places to be confirmed'}</span>
                     {c.coach && c.coach !== 'Gym coach' ? <span>With {c.coach}</span> : null}
                   </p>
+                  {c.notes ? <p className="bout-notes">{c.notes}</p> : null}
                 </div>
               </div>
               <div className="bout-stub">
-                <p className="bout-price">{c.price == null ? 'Price to be confirmed' : <>{money(c.price)} <small>/ {money(c.communityPrice ?? 5)} Proposition Studios artists</small></>}</p>
+                <p className="bout-price">{c.price == null ? 'Price to be confirmed' : <>{money(c.price)}{c.communityPrice != null ? <small> / {money(c.communityPrice)} with a studio-holder code</small> : null}</>}</p>
                 <button type="button" className="btn btn-yellow btn-small" onClick={() => onBook(c)} aria-label={`Booking preview for ${c.title}, ${c.day} ${c.time}`}>Booking preview</button>
               </div>
             </li>)}
@@ -116,26 +119,132 @@ export function Timetable({ classes, onBook }) {
   </section>;
 }
 
+const SCRAPBOOK = [
+  { name: 'founderMagazine', tilt: 'tilt-a' },
+  { name: 'founderYorkHall', tilt: 'tilt-b' },
+  { name: 'founderCelebrates', tilt: 'tilt-c' },
+  { name: 'founderSparring', tilt: 'tilt-d' },
+];
+
 export function Story() {
   const { story } = content;
   const quote = story?.quote ?? null;
+  const pro = story?.pro ?? null;
+  const prints = SCRAPBOOK.filter(item => content.photos?.[item.name]?.src);
+  const hasHero = Boolean(content.photos?.founderPostbox?.src);
   return <section className="section story plaster" id="story" aria-labelledby="story-title">
-    <div className="wrap story-grid">
-      <div className="story-photo">
-        <Photo name="magazinesClose" className="pin-tilt-left" sizes="(min-width: 900px) 34vw, 80vw"/>
+    <div className="wrap">
+      <div className={hasHero ? 'story-grid' : 'story-grid story-grid-single'}>
+        {hasHero ? <div className="story-photo">
+          <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+        </div> : null}
+        <div className="story-copy">
+          <Eyebrow no="03">{story?.eyebrow}</Eyebrow>
+          <h2 id="story-title" className="h2"><Title parts={story?.heading}/></h2>
+          <Paragraphs items={story?.paragraphs}/>
+          {quote?.text ? <figure className="quote">
+            <blockquote><p>{quote.text}</p></blockquote>
+            {quote.attribution || quote.needsSignOff ? <figcaption>
+              {quote.attribution ? <span className="quote-by">{quote.attribution}</span> : null}
+              {quote.needsSignOff ? <span className="draft-mark" title="This wording is waiting for the founder's approval">Draft wording</span> : null}
+            </figcaption> : null}
+          </figure> : null}
+        </div>
       </div>
-      <div className="story-copy">
-        <Eyebrow no="03">{story?.eyebrow}</Eyebrow>
-        <h2 id="story-title" className="h2"><Title parts={story?.heading}/></h2>
-        <Paragraphs items={story?.paragraphs}/>
-        {quote?.text ? <figure className="quote">
-          <blockquote><p>{quote.text}</p></blockquote>
-          {quote.attribution || quote.needsSignOff ? <figcaption>
-            {quote.attribution ? <span className="quote-by">{quote.attribution}</span> : null}
-            {quote.needsSignOff ? <span className="draft-mark" title="This wording is waiting for the founder's approval">Draft wording</span> : null}
-          </figcaption> : null}
-        </figure> : null}
+      {prints.length ? <div className="scrapbook" role="group" aria-label="Scrapbook: the founder's boxing years">
+        {prints.map(item => <Photo key={item.name} name={item.name} className={`scrap ${item.tilt}`} sizes="(min-width: 960px) 24vw, 46vw"/>)}
+      </div> : null}
+      {pro?.heading || pro?.paragraphs ? <div className="story-chapter">
+        <div>
+          <p className="chapter-mark" aria-hidden="true">Round two</p>
+          {pro.heading ? <h3 className="h3"><Title parts={pro.heading}/></h3> : null}
+        </div>
+        <div className="chapter-copy"><Paragraphs items={pro.paragraphs}/></div>
+      </div> : null}
+    </div>
+  </section>;
+}
+
+// Muted looping class video. Loads only when scrolled into view, never autoplays with reduced motion,
+// and always has a visible play/pause button.
+function ClubVideo({ video }) {
+  const ref = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const userPaused = useRef(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (reduce?.matches) userPaused.current = true;
+    const onReduce = event => { if (event.matches) { userPaused.current = true; node.pause(); } };
+    reduce?.addEventListener?.('change', onReduce);
+    let observer = null;
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !userPaused.current) node.play().catch(() => {});
+        else if (!entry.isIntersecting) node.pause();
+      }, { threshold: 0.25 });
+      observer.observe(node);
+    }
+    return () => { observer?.disconnect(); reduce?.removeEventListener?.('change', onReduce); };
+  }, []);
+  const toggle = () => {
+    const node = ref.current;
+    if (!node) return;
+    if (node.paused) { userPaused.current = false; node.play().catch(() => {}); }
+    else { userPaused.current = true; node.pause(); }
+  };
+  return <figure className="club-video">
+    <div className="club-video-frame">
+      <video ref={ref} src={video.src} poster={video.poster} muted loop playsInline preload="none" aria-label={video.alt ?? 'Class video'}
+        onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>
+      <button type="button" className="video-toggle" onClick={toggle} aria-label={playing ? 'Pause video' : 'Play video'}>
+        {playing ? <Pause size={18} aria-hidden="true"/> : <Play size={18} aria-hidden="true"/>}<span aria-hidden="true">{playing ? 'Pause' : 'Play'}</span>
+      </button>
+    </div>
+    {video.alt ? <figcaption>{video.alt}</figcaption> : null}
+  </figure>;
+}
+
+export function Club() {
+  const club = content.club ?? null;
+  const video = content.media?.video?.src ? content.media.video : null;
+  const hasPhotos = content.photos?.clubGroup?.src || content.photos?.clubGroup2?.src;
+  if (!club && !video && !hasPhotos) return null;
+  return <section className="section club floor" id="club" aria-labelledby="club-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow no="04">{club?.eyebrow ?? 'The club'}</Eyebrow>
+          <h2 id="club-title" className="h2"><Title parts={club?.heading ?? 'The club'}/></h2>
+        </div>
+        <div className="split-copy"><Paragraphs items={club?.text} className="lede"/></div>
       </div>
+      <div className="club-grid">
+        {video ? <ClubVideo video={video}/> : null}
+        <Photo name="clubGroup" className="club-photo-wide pin-tilt-right" sizes="(min-width: 960px) 34vw, 92vw"/>
+        <Photo name="clubGroup2" className="club-photo-tall pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
+      </div>
+    </div>
+  </section>;
+}
+
+export function Join() {
+  const join = content.join ?? null;
+  const whatsapp = content.media?.whatsapp ?? null;
+  if (!whatsapp) return null;
+  return <section className="section join" id="join" aria-labelledby="join-title">
+    <div className="wrap join-inner">
+      <div>
+        <Eyebrow no="07">{join?.eyebrow ?? 'Join us'}</Eyebrow>
+        <h2 id="join-title" className="h2"><Title parts={join?.heading ?? ['Join the', 'WhatsApp group.']}/></h2>
+        <Paragraphs items={join?.text} className="lede"/>
+        {join?.note ? <p className="join-note">{join.note}</p> : null}
+      </div>
+      <a className="btn btn-whatsapp" href={whatsapp} target="_blank" rel="noopener noreferrer">
+        <MessageCircle size={20} aria-hidden="true"/> {join?.button ?? 'Join the WhatsApp group'} <ArrowUpRight size={16} aria-hidden="true"/>
+        <span className="sr-only"> (opens WhatsApp in a new tab)</span>
+      </a>
     </div>
   </section>;
 }
@@ -146,7 +255,7 @@ export function Space() {
     <div className="wrap">
       <div className="split">
         <div>
-          <Eyebrow no="04">{gym?.eyebrow}</Eyebrow>
+          <Eyebrow no="05">{gym?.eyebrow}</Eyebrow>
           <h2 id="space-title" className="h2"><Title parts={gym?.heading}/></h2>
         </div>
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
@@ -166,7 +275,7 @@ export function Community() {
   return <section className="section community halftone" id="community" aria-labelledby="community-title">
     <div className="wrap split split-community">
       <div>
-        <Eyebrow no="05">{community?.eyebrow}</Eyebrow>
+        <Eyebrow no="06">{community?.eyebrow}</Eyebrow>
         <h2 id="community-title" className="h2"><Title parts={community?.heading}/></h2>
         <Paragraphs items={community?.paragraphs}/>
       </div>
@@ -188,7 +297,7 @@ export function Kit() {
   return <section className="section kit floor" id="kit" aria-labelledby="kit-title">
     <div className="wrap split split-kit">
       <div>
-        <Eyebrow no="06">{shop?.eyebrow}</Eyebrow>
+        <Eyebrow no="08">{shop?.eyebrow}</Eyebrow>
         <h2 id="kit-title" className="h2"><Title parts={shop?.heading}/></h2>
         <Paragraphs items={shop?.text} className="lede"/>
       </div>
@@ -210,7 +319,7 @@ export function Visit() {
   const items = Array.isArray(visit?.items) ? visit.items : [];
   return <section className="section visit plaster" id="visit" aria-labelledby="visit-title">
     <div className="wrap">
-      <Eyebrow no="07">{visit?.eyebrow}</Eyebrow>
+      <Eyebrow no="09">{visit?.eyebrow}</Eyebrow>
       <h2 id="visit-title" className="h2"><Title parts={visit?.heading}/></h2>
       {items.length ? <dl className="tickets">
         {items.map((item, index) => <div className="ticket" key={index}>

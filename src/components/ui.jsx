@@ -47,10 +47,12 @@ export function Photo({ name, className = '', eager = false, caption = true, siz
   const photo = content.photos?.[name];
   if (!photo?.src) return null;
   const [width, height] = [photo.width ?? PHOTO_SIZES[name]?.[0] ?? 1200, photo.height ?? PHOTO_SIZES[name]?.[1] ?? 1600];
+  // Only offer the -600 version when the original is actually bigger (some founder prints are smaller than 600px).
+  const srcSet = width > 600 && /\.jpg$/.test(photo.src) ? `${photo.src.replace(/\.jpg$/, '-600.jpg')} 600w, ${photo.src} ${width}w` : undefined;
   const label = caption ? (photo.caption ?? PHOTO_LABELS[name] ?? null) : null;
   return <figure className={`pin ${className}`.trim()}>
     <div className="pin-frame">
-      <img src={photo.src} srcSet={`${photo.src.replace(/\.jpg$/, '-600.jpg')} 600w, ${photo.src} ${width}w`} sizes={sizes ?? '(max-width: 700px) 90vw, 600px'}
+      <img src={photo.src} srcSet={srcSet} sizes={srcSet ? sizes ?? '(max-width: 700px) 90vw, 600px' : undefined}
         alt={photo.alt ?? ''} width={width} height={height}
         loading={eager ? 'eager' : 'lazy'} decoding={eager ? 'sync' : 'async'} fetchPriority={eager ? 'high' : undefined}/>
     </div>

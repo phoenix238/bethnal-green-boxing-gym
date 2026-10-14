@@ -15,7 +15,7 @@ Build a welcoming, affordable website for a new community boxing gym in Bethnal 
 - The reduced price is £5 for people who belong to Proposition Studios, the building where the gym is based. The exact eligibility check still needs agreement.
 - The owner wants instant reservation with online payment eventually, and a manager view to add/remove classes and handle attendance and members.
 - Class capacity, duration, exact location/address, refund/cancellation rules, and actual payment/accounting workflow have not been confirmed.
-- Merchandise artwork and the existing logo are expected from the owner. Do not create a replacement logo; current artwork is a temporary typographic treatment.
+- The owner supplied the club logo (`public/logo.jpg`, black background, so it is only placed on black). Merchandise artwork is still expected. Do not create a replacement logo.
 
 ## Founder story and copy guardrails
 
@@ -42,7 +42,15 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - QA pass on the demo draft: fixed malformed-storage crashes, focus-ring contrast on the timetable, consistent "Proposition Studios artist" wording, time format for owner-added sessions, smaller 600px photo versions via `srcset`, favicon, pinned dependency versions; removed the unconfirmed "boxed professionally" line and an embellishment or two from the story.
 - **Before sharing a public link:** hide the booking preview button and owner demo entry points (for example behind `?demo=1`), so real visitors are not invited to type their details into a form that goes nowhere. They are visible now because this is a demo for the owner.
 
+- Second pass: real logo in the header (now a black bar), a hero badge and the footer; logo green (#2fa84f, 6.8:1 on black) used as an accent on dark sections only. Story uses the founder photos (postbox print plus a taped scrapbook) and the `story.pro` chapter; quote block hidden while `story.quote` is null; the magazines close-up photo is no longer used. New "The club" section (group photos plus a muted looping video that loads when scrolled into view, does not autoplay with reduced motion, and has a play/pause button) and a WhatsApp "Join" section; WhatsApp links also in the footer and booking dialog.
+- Timetable can now come from a Google Sheet published as CSV (`src/timetable.js`, owner guide `docs/TIMETABLE.md`, `.env.example`). Set `VITE_TIMETABLE_CSV_URL` in the hosting provider to switch it on. If the sheet fails (5s timeout, error or no valid rows), the site falls back to the last good copy cached in that browser, then the built-in two classes. Without the setting, the owner panel's add/remove form is a local preview only. `npm test` runs the parser tests.
+- Booking preview: the rate dropdown is replaced by a discount-code field. The owner sets the code in the owner panel (`bgbg-discount-v1`, this browser only). **Demo only**: anyone can read client-side code, so a real code must be checked on the server once online payment exists.
+
 ## Open questions for the owner (demo draft)
+
+- Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?
+- How studio holders receive the discount code, and how often it changes.
+- Permission for the press photos and magazine cover, and consent from identifiable members (a parent's for anyone under 18) in the club photos and video, before launch.
 
 - Official name: "Bethnal Green Boxing Club" (ring canvas, interview) or "Bethnal Green Boxing Gym"?
 - How the founder wants to be named and referred to on the site. Copy currently says "our founder" throughout. In the recording he introduces himself as "Mr. Paul", so "he" and a name would read more naturally once he approves.

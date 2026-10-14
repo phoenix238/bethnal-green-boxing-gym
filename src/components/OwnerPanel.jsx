@@ -1,10 +1,22 @@
-import React, { useRef } from 'react';
-import { Minus, Plus, ShieldCheck, X } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ArrowUpRight, Minus, Plus, ShieldCheck, Tag, X } from 'lucide-react';
 import { useDialog } from './ui.jsx';
 
+const clock = iso => { const d = iso ? new Date(iso) : null; return d && !Number.isNaN(d.getTime()) ? d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : null; };
+const sourceLabel = status => {
+  const at = clock(status?.updatedAt);
+  if (status?.source === 'sheet') return `Timetable source: Google Sheet, updated ${at ?? 'just now'}`;
+  if (status?.source === 'cache') return `Timetable source: saved copy of the Google Sheet${at ? ` from ${at}` : ''} (the sheet could not be reached just now)`;
+  if (status?.source === 'local') return 'Timetable source: local preview (no Google Sheet set up)';
+  return 'Timetable source: Built-in default';
+};
+
 // Owner demo: everything here is stored in this browser's localStorage only. No sign-in, no shared database, no real accounts.
-export default function OwnerPanel({ onClose, classes, setClasses, bookings, setBookings, members, setMembers, ledger, setLedger, accountPeriod, monthEntries, monthIncome, monthExpenses, addLedgerEntry, addMember, saveClass }) {
+export default function OwnerPanel({ onClose, classes, setClasses, bookings, setBookings, members, setMembers, ledger, setLedger, accountPeriod, monthEntries, monthIncome, monthExpenses, addLedgerEntry, addMember, saveClass, timetableStatus, sheetConfigured, sheetEditUrl, discountCode, setDiscountCode }) {
   const ref = useRef(null);
+  const [codeDraft, setCodeDraft] = useState(discountCode ?? '');
+  const [codeSaved, setCodeSaved] = useState(false);
+  const saveCode = event => { event.preventDefault(); setDiscountCode(codeDraft.trim()); setCodeSaved(true); };
   useDialog(ref, onClose);
   return <div className="admin-backdrop" role="presentation" onClick={event => event.target === event.currentTarget && onClose()}>
     <section ref={ref} className="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-title" tabIndex={-1}>
@@ -45,10 +57,31 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
         </div>
       </div>
 
+      <form className="admin-card" onSubmit={saveCode}>
+        <h3><Tag size={17} aria-hidden="true"/> Studio-holder discount code</h3>
+        <p className="admin-note">Give this code to people who qualify for the reduced price. Leave it empty to switch the discount off. It is never shown to visitors.</p>
+        <div className="code-row">
+          <label>Discount code<input name="discountCode" value={codeDraft} autoComplete="off" spellCheck="false" onChange={event => { setCodeDraft(event.target.value); setCodeSaved(false); }} placeholder="Empty = no discount"/></label>
+          <button className="btn btn-ink btn-small" type="submit">Save code</button>
+        </div>
+        <p className="admin-note" role="status">{codeSaved ? (codeDraft.trim() ? 'Code saved in this browser.' : 'Discount switched off.') : discountCode ? 'A code is set.' : 'No code set: nobody can get the reduced price.'}</p>
+        <p className="local-only"><strong>Demo only:</strong> a real discount code must be checked on the server when online payment is added.</p>
+      </form>
+
       <div className="admin-divider"><span>Classes &amp; attendance</span><span>Local demo data</span></div>
 
-      <form className="admin-card class-form" onSubmit={saveClass}>
-        <h3><Plus size={17} aria-hidden="true"/> Add a session</h3>
+      <div className="admin-card">
+        <h3>Timetable</h3>
+        <p className="source-status" data-testid="timetable-source">{sourceLabel(timetableStatus)}</p>
+        {sheetConfigured ? <>
+          <p className="admin-note">The public timetable comes from the gym's Google Sheet. To add, change or hide a class, edit the sheet. Changes appear on the site within a few minutes (Google can take about five minutes to publish them).</p>
+          {sheetEditUrl ? <a className="btn btn-ink btn-small" href={sheetEditUrl} target="_blank" rel="noopener noreferrer">Open the timetable sheet <ArrowUpRight size={15} aria-hidden="true"/></a> : <p className="admin-note">Ask whoever set up the site for the sheet link, or open it from your Google Drive.</p>}
+        </> : <p className="local-only"><strong>Local preview only</strong> — set up the Google Sheet to change the real timetable (see docs/TIMETABLE.md). Sessions added here only appear in this browser.</p>}
+      </div>
+
+      {!sheetConfigured ? <>
+      <form className="admin-card class-form" onSubmit={saveClass} aria-label="Add a session (local preview only)">
+        <h3><Plus size={17} aria-hidden="true"/> Add a session <span className="label-optional">· local preview</span></h3>
         <div className="form-grid">
           <label>Session name<input name="title" placeholder="e.g. Boxing fundamentals" required/></label>
           <label>Level<select name="level"><option>First time</option><option>All levels</option></select></label>
@@ -62,12 +95,13 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
         </div>
         <button className="btn btn-ink btn-small" type="submit">Add to timetable <Plus size={15} aria-hidden="true"/></button>
       </form>
+      </> : null}
 
       <div className="admin-list">
         <h3>Upcoming sessions</h3>
         {classes.length ? classes.map(c => <div className="admin-row" key={c.id}>
-          <div><b>{c.title}</b><span>{c.day} · {c.time} · public £{Number(c.price ?? 10).toFixed(2)} / Proposition Studios artist £{Number(c.communityPrice ?? 5).toFixed(2)}</span></div>
-          <button type="button" className="row-btn" aria-label={`Remove ${c.title} on ${c.day}`} onClick={() => setClasses(prev => prev.filter(x => x.id !== c.id))}><Minus size={16} aria-hidden="true"/></button>
+          <div><b>{c.title}</b><span>{c.day} · {c.time} · {c.price == null ? 'price to be confirmed' : `public £${Number(c.price).toFixed(2)}`}{c.communityPrice != null ? ` / reduced £${Number(c.communityPrice).toFixed(2)}` : ''}</span></div>
+          {!sheetConfigured ? <button type="button" className="row-btn" aria-label={`Remove ${c.title} on ${c.day}`} onClick={() => setClasses(prev => prev.filter(x => x.id !== c.id))}><Minus size={16} aria-hidden="true"/></button> : null}
         </div>) : <p className="admin-empty">Add the first real class and its schedule.</p>}
       </div>
 
@@ -89,7 +123,7 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
       <div className="admin-list">
         <h3>Booking list</h3>
         {bookings.length ? bookings.map(b => <div className="admin-row" key={b.id}>
-          <div><b>{b.name}</b><span>{b.className} · {b.day} {b.time} · £{Number(b.price || 0).toFixed(2)} · {b.email}</span><small>{b.status}</small></div>
+          <div><b>{b.name}</b><span>{b.className} · {b.day} {b.time} · {b.price == null ? 'price TBC' : `£${Number(b.price).toFixed(2)}`}{b.rate === 'community' ? ' (discount code)' : ''} · {b.email}</span><small>{b.status}</small></div>
           <label className="attendance"><input type="checkbox" onChange={e => setBookings(prev => prev.map(x => x.id === b.id ? { ...x, attended: e.target.checked } : x))} checked={!!b.attended}/> Attended</label>
         </div>) : <p className="admin-empty">No bookings yet.</p>}
       </div>
