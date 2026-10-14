@@ -54,7 +54,7 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - **Site split into pages (October 2026, owner request).** Hash routes: Home `#/` (hero + classes teaser only, owner asked for two sections at most), `#/classes`, `#/story`, `#/gym` (approach, club photos/video, the space), `#/community` (aims + kit), `#/visit` (find us + WhatsApp). The "Come as you are. Leave a bit stronger." band closes the inner pages.
 - **Booking pop-up.** Every yellow Book / Book a class button opens the Cal.com calendar in a pop-up on the site (`src/calembed.js`, Cal.com's official embed script from app.cal.com). If that script can't load, the button opens Cal.com in a new tab. Bookings and payments are handled by Cal.com, not this site.
 - Hero "Next up" line now shows the next three class dates from Cal.com, so it changes when the classes change. It shows whatever availability Cal.com has: at the time of writing the "mixed levels" event type still uses Cal.com's default hourly weekday availability and Cal Video as its location, so the owner must set the real class times and the gym as the location in Cal.com.
-- Copy changes from the owner: "Come as you are. Leave a bit stronger." follows "You come down, you work, you sweat." in the hero; "donated bags and gloves" became "kit donated by the community"; the "From a grubby basement to a proper gym" section was rewritten around Proposition Studios (finds unused spaces and turns them into artist studios; about four small, very different gyms there). The chairman's brief and "grubby" wording were removed.
+- Copy changes from the owner: "Come as you are. Leave a bit stronger." follows "You come down, you work, you sweat." in the hero; "donated bags and gloves" became "kit donated by the community"; the "From a grubby basement to a proper gym" section was rewritten around Proposition Studios (finds unused spaces and turns them into artist studios). The owner benched the "about four small gyms" line: too complicated to explain for now. The chairman's brief and "grubby" wording were removed.
 
 ## Open questions for the owner (demo draft)
 
@@ -67,8 +67,8 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
-- Confirm the new Space wording: "one of about four small gyms at Proposition Studios, and no two of them are alike" (from the owner's message; exact count and whether they are all in the same building).
-- Footer and WhatsApp copy still say online booking is not open, while Book buttons now open Cal.com. Decide when to change that wording (after real class times, location, price and payments are set in Cal.com).
+- The Space section heading ("A boxing gym among the artists") is the wrong direction per the owner: the gym is not about artists. Owner to pick a replacement.
+- Footer and WhatsApp copy still say online booking is not open, while Book buttons now open Cal.com. Fine while the site is unshared; update before it goes public.
 
 ## Run and verify
 
