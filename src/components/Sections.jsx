@@ -70,31 +70,8 @@ export function Approach() {
   </section>;
 }
 
-// When the owner sets VITE_CAL_LINK (their Cal.com username or a full cal.com URL), Cal.com becomes the live timetable and booking system.
-// The Cal.com profile page lists every event type (classes, private sessions). Not a secret, so it lives in the code and works on any host.
-const CAL_LINK = (import.meta.env.VITE_CAL_LINK ?? '').trim() || 'jb-jb-2ejhn3';
-const CAL_URL = CAL_LINK ? (CAL_LINK.startsWith('http') ? CAL_LINK : `https://cal.com/${CAL_LINK.replace(/^\/+/, '')}`) : null;
-
 export function Timetable({ classes, onBook }) {
   const { sessions } = content;
-  if (CAL_URL) return <section className="section timetable floor" id="timetable" aria-labelledby="timetable-title">
-    <div className="wrap">
-      <div className="split">
-        <div>
-          <Eyebrow no="02">{sessions?.eyebrow}</Eyebrow>
-          <h2 id="timetable-title" className="h2"><Title parts={sessions?.heading}/></h2>
-        </div>
-        <div className="split-copy">
-          <Paragraphs items={sessions?.intro} className="lede"/>
-          <a className="btn btn-yellow" href={CAL_URL} target="_blank" rel="noopener">Book a class <ArrowRight size={18} aria-hidden="true"/></a>
-        </div>
-      </div>
-      <div className="bill cal-embed">
-        <iframe title="Book a class with Bethnal Green Boxing Club (Cal.com)" src={`${CAL_URL}${CAL_URL.includes('?') ? '&' : '?'}embed=true&theme=light`} loading="lazy"/>
-        {sessions?.priceNote ? <p className="bill-foot">{sessions.priceNote}</p> : null}
-      </div>
-    </div>
-  </section>;
   return <section className="section timetable floor" id="timetable" aria-labelledby="timetable-title">
     <div className="wrap">
       <div className="split">

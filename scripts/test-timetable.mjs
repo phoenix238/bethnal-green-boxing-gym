@@ -1,5 +1,6 @@
 // Unit tests for the Google Sheet timetable parser. Run with: npm test
 import assert from 'node:assert/strict';
+import { normaliseEventTypes, normaliseSlots, formatPrice } from '../src/calclasses.js';
 import { parseCSV, csvToClasses, normaliseTime, normaliseDay, fetchTimetable, loadTimetable, DEFAULT_CLASSES, CACHE_KEY } from '../src/timetable.js';
 
 let passed = 0;
@@ -99,8 +100,36 @@ test('loadTimetable: sheet, then cache on failure, then defaults', async () => {
   assert.equal(corrupt.source, 'default');
 });
 
+test('cal: drops starter, hidden and junk events, keeps description, price and places', () => {
+  const raw = [
+    { id: 1, title: '15 min meeting', slug: '15min', lengthInMinutes: 15, hidden: false },
+    { id: 2, title: 'Open level boxing', slug: 'open', lengthInMinutes: 60, description: ' Come as you are. ', price: 1000, currency: 'gbp', seats: { seatsPerTimeSlot: 12 }, bookingUrl: 'https://cal.com/u/open' },
+    { id: 3, title: '1-to-1 with Bernie', slug: 'bernie', lengthInMinutes: 30, price: 0 },
+    { id: 4, title: 'Hidden thing', slug: 'h', hidden: true },
+    null, { title: 5 },
+  ];
+  const out = normaliseEventTypes(raw, 'u');
+  assert.equal(out.length, 2);
+  assert.equal(out[0].description, 'Come as you are.');
+  assert.equal(out[0].price, '£10');
+  assert.equal(out[0].places, 12);
+  assert.equal(out[0].kind, 'group');
+  assert.equal(out[1].kind, 'private');
+  assert.equal(out[1].url, 'https://cal.com/u/bernie');
+  assert.equal(out[1].price, null);
+});
+
+test('cal: slots are sorted and limited, garbage is safe', () => {
+  const slots = normaliseSlots({ b: [{ start: '2026-10-22T19:00:00+01:00' }], a: [{ start: '2026-10-20T19:00:00+01:00' }, { start: '2026-10-21T19:00:00+01:00' }, { start: '2026-10-23T19:00:00+01:00' }] });
+  assert.deepEqual(slots, ['2026-10-20T19:00:00+01:00', '2026-10-21T19:00:00+01:00', '2026-10-22T19:00:00+01:00']);
+  assert.equal(formatPrice(0, 'gbp'), null);
+  assert.deepEqual(normaliseEventTypes(undefined, 'u'), []);
+  assert.deepEqual(normaliseSlots(null), []);
+});
+
 for (const [name, fn] of tests) {
   try { await fn(); passed += 1; console.log(`ok  ${name}`); }
   catch (error) { console.error(`FAIL ${name}\n  ${error.message}`); process.exitCode = 1; }
 }
 console.log(`\n${passed}/${tests.length} timetable tests passed`);
+
