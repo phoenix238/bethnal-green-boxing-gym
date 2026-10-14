@@ -36,7 +36,7 @@ export const media = {
 export const hero = {
   eyebrow: 'Bethnal Green · Opposite York Hall',
   title: ['Old-school boxing,', 'down in the basement.'],
-  lede: 'Tuesday and Thursday nights at 7pm. Open level, and beginners are welcome. This isn\'t a gym for looking in the mirror. You come down, you work, you sweat.',
+  lede: 'Classes for every level, and beginners are always welcome. This isn\'t a gym for looking in the mirror. You come down, you work, you sweat.',
   primaryCta: 'See the timetable',
   secondaryCta: 'Our story',
 };
@@ -135,7 +135,7 @@ export const visit = {
   heading: ['Come down', 'and train.'],
   items: [
     { label: 'Where', value: 'Basement of the Proposition Studios building, Bethnal Green, opposite York Hall. Full address to be confirmed.' },
-    { label: 'When', value: 'See the timetable. Currently Tuesday and Thursday evenings.' },
+    { label: 'When', value: 'See the classes page for what\'s on and when.' },
     { label: 'Price', value: '£10 a class · £5 if you rent a studio in the Proposition Studios building (ask for the code)' },
   ],
 };
