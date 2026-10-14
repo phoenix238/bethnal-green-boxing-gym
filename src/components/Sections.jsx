@@ -295,3 +295,47 @@ export function CtaBand() {
     </div>
   </section>;
 }
+
+// Home: a short, personal hello from the coach, linking on to the full story.
+export function Meet() {
+  const { meet } = content;
+  if (!meet) return null;
+  return <section className="section meet plaster-dark" aria-labelledby="meet-title">
+    <div className="wrap meet-grid">
+      <div className="meet-photo">
+        <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+      </div>
+      <div className="meet-copy">
+        <Eyebrow>{meet.eyebrow}</Eyebrow>
+        <h2 id="meet-title" className="h2"><Title parts={meet.heading}/></h2>
+        <Paragraphs items={meet.paragraphs}/>
+        {meet.link ? <a className="btn btn-paper" href={meet.link.href}>{meet.link.label} <ArrowRight size={18} aria-hidden="true"/></a> : null}
+      </div>
+    </div>
+  </section>;
+}
+
+// Home: what a first class looks like, as numbered fight-bill cards.
+export function FirstClass() {
+  const { firstClass } = content;
+  const steps = Array.isArray(firstClass?.steps) ? firstClass.steps : [];
+  if (!steps.length) return null;
+  return <section className="section first-class plaster" aria-labelledby="first-class-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow>{firstClass.eyebrow}</Eyebrow>
+          <h2 id="first-class-title" className="h2"><Title parts={firstClass.heading}/></h2>
+        </div>
+        {firstClass.intro ? <div className="split-copy"><p className="lede">{firstClass.intro}</p></div> : null}
+      </div>
+      <ol className="posters posters-4">
+        {steps.map((step, index) => <li className={`poster poster-${(index % 3) + 1}`} key={index}>
+          <span className="poster-no" aria-hidden="true">Step {String(index + 1).padStart(2, '0')}</span>
+          <h3 className="poster-title">{step.title}</h3>
+          <p>{step.text}</p>
+        </li>)}
+      </ol>
+    </div>
+  </section>;
+}
