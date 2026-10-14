@@ -11,25 +11,25 @@ export const site = {
 };
 
 export const photos = {
-  ring: { src: '/photos/ring.jpg', alt: 'The gym ring with white ropes and a Bethnal Green Boxing Club canvas, fight posters on the walls behind', caption: 'The ring' },
-  lounge: { src: '/photos/lounge-posters.jpg', alt: 'Seating area with a sofa, a table of boxing magazines and a wall of fight posters', caption: 'The poster wall' },
-  floor: { src: '/photos/training-floor.jpg', alt: 'Training floor with rubber matting, benches, dumbbells and weight plates', caption: 'The training floor' },
-  magazinesClose: { src: '/photos/magazines-close.jpg', alt: 'Stacks of old Boxing News and The Ring magazines on a table', caption: 'Old Boxing News and The Ring' },
-  magazinesTable: { src: '/photos/magazines-table.jpg', alt: 'A white table piled with vintage boxing magazines next to a sofa', caption: 'The magazine table' },
+  ring: { src: 'photos/ring.jpg', alt: 'The gym ring with white ropes and a Bethnal Green Boxing Club canvas, fight posters on the walls behind', caption: 'The ring' },
+  lounge: { src: 'photos/lounge-posters.jpg', alt: 'Seating area with a sofa, a table of boxing magazines and a wall of fight posters', caption: 'The poster wall' },
+  floor: { src: 'photos/training-floor.jpg', alt: 'Training floor with rubber matting, benches, dumbbells and weight plates', caption: 'The training floor' },
+  magazinesClose: { src: 'photos/magazines-close.jpg', alt: 'Stacks of old Boxing News and The Ring magazines on a table', caption: 'Old Boxing News and The Ring' },
+  magazinesTable: { src: 'photos/magazines-table.jpg', alt: 'A white table piled with vintage boxing magazines next to a sofa', caption: 'The magazine table' },
   // Founder photos supplied by the owner. Press pictures (Action Images) and the magazine cover belong to their publishers: get permission before launch.
-  founderPostbox: { src: '/photos/founder-postbox.jpg', width: 1093, height: 728, alt: 'Black and white photo of a young Bernie Paul in boxing gloves next to an old Post Office pillar box', caption: 'The Punching Postman' },
-  founderMagazine: { src: '/photos/founder-magazine.jpg', width: 635, height: 615, alt: 'Royal Mail’s London Magazine cover with Bernie Paul in red gloves, headline Punching Postman', caption: 'Royal Mail’s London Magazine' },
-  founderYorkHall: { src: '/photos/founder-york-hall.jpg', width: 600, height: 435, alt: 'Black and white fight photo of Bernie Paul landing a right hand', caption: 'York Hall, 29 November 1995' },
-  founderCelebrates: { src: '/photos/founder-celebrates.jpg', width: 672, height: 502, alt: 'Bernie Paul celebrating with arms raised as the referee steps in, opponent on the canvas', caption: 'Southern Area title win' },
-  founderSparring: { src: '/photos/founder-sparring.jpg', width: 482, height: 357, alt: 'Black and white photo of Bernie Paul in an exchange at close range', caption: 'Bernie Paul in action' },
+  founderPostbox: { src: 'photos/founder-postbox.jpg', width: 1093, height: 728, alt: 'Black and white photo of a young Bernie Paul in boxing gloves next to an old Post Office pillar box', caption: 'The Punching Postman' },
+  founderMagazine: { src: 'photos/founder-magazine.jpg', width: 635, height: 615, alt: 'Royal Mail’s London Magazine cover with Bernie Paul in red gloves, headline Punching Postman', caption: 'Royal Mail’s London Magazine' },
+  founderYorkHall: { src: 'photos/founder-york-hall.jpg', width: 600, height: 435, alt: 'Black and white fight photo of Bernie Paul landing a right hand', caption: 'York Hall, 29 November 1995' },
+  founderCelebrates: { src: 'photos/founder-celebrates.jpg', width: 672, height: 502, alt: 'Bernie Paul celebrating with arms raised as the referee steps in, opponent on the canvas', caption: 'Southern Area title win' },
+  founderSparring: { src: 'photos/founder-sparring.jpg', width: 482, height: 357, alt: 'Black and white photo of Bernie Paul in an exchange at close range', caption: 'Bernie Paul in action' },
   // Members are identifiable: get everyone's consent (a parent's for anyone under 18) before these go on a public site.
-  clubGroup: { src: '/photos/club-group.jpg', width: 1200, height: 900, alt: 'A class group in the ring with guards up, fight posters behind', caption: 'Guards up' },
-  clubGroup2: { src: '/photos/club-group-2.jpg', width: 1200, height: 1600, alt: 'Another class group posing in the ring with guards up', caption: 'In the ring after class' },
+  clubGroup: { src: 'photos/club-group.jpg', width: 1200, height: 900, alt: 'A class group in the ring with guards up, fight posters behind', caption: 'Guards up' },
+  clubGroup2: { src: 'photos/club-group-2.jpg', width: 1200, height: 1600, alt: 'Another class group posing in the ring with guards up', caption: 'In the ring after class' },
 };
 
 export const media = {
-  logo: { src: '/logo.jpg', width: 1063, height: 848, alt: 'Bethnal Green Boxing Club logo' },
-  video: { src: '/video/pads.mp4', poster: '/video/pads-poster.jpg', alt: 'Pad work in the ring during a class' },
+  logo: { src: 'logo.jpg', width: 1063, height: 848, alt: 'Bethnal Green Boxing Club logo' },
+  video: { src: 'video/pads.mp4', poster: 'video/pads-poster.jpg', alt: 'Pad work in the ring during a class' },
   whatsapp: 'https://chat.whatsapp.com/G5KmaFQfJpKEKg2zpGwjtI',
 };
 

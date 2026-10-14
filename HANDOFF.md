@@ -46,6 +46,8 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Timetable can now come from a Google Sheet published as CSV (`src/timetable.js`, owner guide `docs/TIMETABLE.md`, `.env.example`). Set `VITE_TIMETABLE_CSV_URL` in the hosting provider to switch it on. If the sheet fails (5s timeout, error or no valid rows), the site falls back to the last good copy cached in that browser, then the built-in two classes. Without the setting, the owner panel's add/remove form is a local preview only. `npm test` runs the parser tests.
 - Booking preview: the rate dropdown is replaced by a discount-code field. The owner sets the code in the owner panel (`bgbg-discount-v1`, this browser only). **Demo only**: anyone can read client-side code, so a real code must be checked on the server once online payment exists.
 
+- Owner says consent is given for the class photos and video (record who gave it and when, outside GitHub). Owner chose to make the repository public and use free GitHub Pages for previews (`.github/workflows/pages.yml`, deploys on push to `main`). Cal.com is the chosen booking/timetable system (`docs/CALCOM.md`); the site embeds it when `VITE_CAL_LINK` is set.
+
 ## Open questions for the owner (demo draft)
 
 - Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?
