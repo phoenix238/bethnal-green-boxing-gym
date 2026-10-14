@@ -644,3 +644,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1280px) {
   .header-cta { display: inline-flex; }
 }
+
+/* Cal.com embed: the live timetable and booking once VITE_CAL_LINK is set */
+.cal-embed iframe { display: block; width: 100%; min-height: 720px; border: 0; background: #fff; }
