@@ -49,3 +49,14 @@ Confidence key: **Clear** = said plainly and consistently. **Check** = transcrip
 3. What the Proposition artist check will be.
 4. Whether the club name is "Bethnal Green Boxing Club" (said in the recording, on the ring canvas) or "Bethnal Green Boxing Gym" (current site).
 5. Gym address, class length, capacity, cancellation rules.
+
+## Pending pro-career details from the owner (do not publish yet)
+
+Confirmed for the site (owner, 2026-10-14): name Bernie Paul, "he"; Punching Postman (Royal Mail London Magazine cover); Southern Area light-welterweight title fight, first-round KO of Jason Rowland, York Hall, 29/11/95 (Action Images caption); turned pro in his mid-twenties after years out with a shoulder injury. Quote "it breaks you down to build you up" removed at the owner's request.
+
+Still waiting on the owner before any of these go on the site:
+1. Commonwealth title (which, when).
+2. Barry Hearn as promoter, and the ring arrangement.
+3. Pro record (wins/losses/draws) and number of knockouts.
+4. How long the Southern Area title was held, and whether 29/11/95 was a win of the title or a defence.
+5. Amateur ABA results.
