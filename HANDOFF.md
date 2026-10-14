@@ -15,19 +15,50 @@ Build a welcoming, affordable website for a new community boxing gym in Bethnal 
 - The reduced price is £5 for people who belong to Proposition Studios, the building where the gym is based. The exact eligibility check still needs agreement.
 - The owner wants instant reservation with online payment eventually, and a manager view to add/remove classes and handle attendance and members.
 - Class capacity, duration, exact location/address, refund/cancellation rules, and actual payment/accounting workflow have not been confirmed.
-- Merchandise artwork and the existing logo are expected from the owner. Do not create a replacement logo; current artwork is a temporary typographic treatment.
+- The owner supplied the club logo (`public/logo.jpg`, black background, so it is only placed on black). Merchandise artwork is still expected. Do not create a replacement logo.
 
 ## Founder story and copy guardrails
 
-The interview recordings named `Jb website 1.m4a` and `Jb website 2.m4a` were not present in the working environment. The owner-provided background says the founder started boxing at about 15 at Finchley Boxing Club, trained there for around three years, then moved with brothers Steve and John to Tottenham New Enterprise Boxing Club. All three boxed competitively and travelled from Highgate to Tottenham. The founder recalls being underestimated by a trainer, persevering, and later winning amateur bouts. Do not add titles, dates, quotes, or embellishments. Check all founder-story copy against the full recordings when they become available.
+The recordings have since been supplied and machine-transcribed; see [docs/INTERVIEW_NOTES.md](docs/INTERVIEW_NOTES.md) for what they say and what still needs confirming (it includes a professional career with titles, which must be confirmed with the founder before going on the site). The original note below was written before the recordings were available. The owner-provided background says the founder started boxing at about 15 at Finchley Boxing Club, trained there for around three years, then moved with brothers Steve and John to Tottenham New Enterprise Boxing Club. All three boxed competitively and travelled from Highgate to Tottenham. The founder recalls being underestimated by a trainer, persevering, and later winning amateur bouts. Do not add titles, dates, quotes, or embellishments. Check all founder-story copy against the full recordings when they become available.
 
 The owner shared Proposition Studios' artist studios page for context: https://www.propositionstudios.com/artiststudios . It was not accessible for research from the build environment, so do not claim any further details about the building based on it.
 
 ## Current implementation
 
-React + Vite front-end in `src/main.jsx` and `src/style.css`. It has a responsive landing page, the initial two-session timetable, a demo booking dialog, and an owner demo panel with class management, demo members/attendance, and a simple manual monthly cashbook. The demo persists in browser `localStorage` only.
+React + Vite front-end. `src/main.jsx` holds the app state and the guarded `localStorage` helpers; page sections, the booking dialog and the owner panel are in `src/components/`; styles are in `src/style.css`; all public copy comes from `src/content.js`. Fonts (Anton and Archivo) load from Google Fonts in `index.html`. It has a responsive single-page site (hero, approach, fight-bill timetable, story, photo collage of the space, community aims, kit teaser, find us), the initial two-session timetable, a demo booking dialog, and an owner demo panel with class management, demo members/attendance, and a simple manual monthly cashbook. The demo persists in browser `localStorage` only.
 
 **Important:** this is not a live booking or management system. The booking form does not reserve a real place or charge a card. There is no user login, shared database, payment provider, bank connection, or real accounting integration. Never enter real member, customer, or financial data in the demo. The site should not be marketed as accepting live bookings or payments until those systems are implemented and tested.
+
+## Change log
+
+- First demo draft (team pass): five real gym photos added in `public/photos` (location metadata stripped). Public copy moved to `src/content.js` so it can be fact-checked in one place. Visual direction follows the founder's wish for a rustic, old-school look based on the gym's own fight posters. The site now shows the name **Bethnal Green Boxing Club**, as printed on the ring canvas and said in the interview; the repository is still called "boxing-gym". Owner to confirm the official name. The founder's professional titles are deliberately left off until he confirms the wording. Any interview quote on the site is marked as draft wording.
+
+- Added `docs/INTERVIEW_NOTES.md` summarising both recordings. It records new facts (a £25/£40 monthly subscription idea, rustic old-school design wish, community page, minibus fundraising goal, club name question) as unconfirmed.
+
+- Story copy now restates only the owner-supplied background (Finchley Boxing Club, Tottenham New Enterprise Boxing Club, brothers Steve and John, competitive boxing, underestimated then later won amateur bouts). The earlier draft used "his brothers" and "brotherhood", which were not in the source; the founder's pronouns are unconfirmed, so copy avoids them. Checked against the machine transcript of the recordings.
+- Timetable badge reads "BOOKING NOT YET OPEN" and the dialog is labelled "Booking preview" so the public page does not imply live booking.
+- Local storage reads/writes are now guarded, so corrupt or blocked storage no longer blanks the page.
+
+- QA pass on the demo draft: fixed malformed-storage crashes, focus-ring contrast on the timetable, consistent "Proposition Studios artist" wording, time format for owner-added sessions, smaller 600px photo versions via `srcset`, favicon, pinned dependency versions; removed the unconfirmed "boxed professionally" line and an embellishment or two from the story.
+- **Before sharing a public link:** hide the booking preview button and owner demo entry points (for example behind `?demo=1`), so real visitors are not invited to type their details into a form that goes nowhere. They are visible now because this is a demo for the owner.
+
+- Second pass: real logo in the header (now a black bar), a hero badge and the footer; logo green (#2fa84f, 6.8:1 on black) used as an accent on dark sections only. Story uses the founder photos (postbox print plus a taped scrapbook) and the `story.pro` chapter; quote block hidden while `story.quote` is null; the magazines close-up photo is no longer used. New "The club" section (group photos plus a muted looping video that loads when scrolled into view, does not autoplay with reduced motion, and has a play/pause button) and a WhatsApp "Join" section; WhatsApp links also in the footer and booking dialog.
+- Timetable can now come from a Google Sheet published as CSV (`src/timetable.js`, owner guide `docs/TIMETABLE.md`, `.env.example`). Set `VITE_TIMETABLE_CSV_URL` in the hosting provider to switch it on. If the sheet fails (5s timeout, error or no valid rows), the site falls back to the last good copy cached in that browser, then the built-in two classes. Without the setting, the owner panel's add/remove form is a local preview only. `npm test` runs the parser tests.
+- Booking preview: the rate dropdown is replaced by a discount-code field. The owner sets the code in the owner panel (`bgbg-discount-v1`, this browser only). **Demo only**: anyone can read client-side code, so a real code must be checked on the server once online payment exists.
+
+- Owner says consent is given for the class photos and video (record who gave it and when, outside GitHub). Owner chose to make the repository public and use free GitHub Pages for previews (`.github/workflows/pages.yml`, deploys on push to `main`). Cal.com is the chosen booking/timetable system (`docs/CALCOM.md`); the site embeds it when `VITE_CAL_LINK` is set.
+
+## Open questions for the owner (demo draft)
+
+- Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?
+- How studio holders receive the discount code, and how often it changes.
+- Permission for the press photos and magazine cover, and consent from identifiable members (a parent's for anyone under 18) in the club photos and video, before launch.
+
+- Official name: "Bethnal Green Boxing Club" (ring canvas, interview) or "Bethnal Green Boxing Gym"?
+- How the founder wants to be named and referred to on the site. Copy currently says "our founder" throughout. In the recording he introduces himself as "Mr. Paul", so "he" and a name would read more naturally once he approves.
+- Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
+- Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
+- What "Proposition Studios artist" means for the £5 rate and how it is checked.
 
 ## Run and verify
 
@@ -46,13 +77,13 @@ npm run build
 
 ## Suggested next work
 
-1. Get the interview files and verify the story and voice; replace any unsupported copy.
+1. Done: recordings transcribed and summarised in `docs/INTERVIEW_NOTES.md`. Get founder sign-off on the items marked Check and on the quote.
 2. Confirm the gym address, class duration/capacity, cancellation/refund rules, and how Proposition Studios membership eligibility will be checked.
 3. Choose and implement a small production stack. Supabase (authentication and database) and Stripe Checkout were discussed as options, not selected or configured. Do not ask the owner to paste credentials into chat or commit them.
 4. Protect the owner dashboard with authentication and authorization; store bookings, classes, attendance, and members centrally with backups and privacy-conscious retention.
 5. For payments, use hosted checkout and verify payment status server-side with signed webhooks before confirming a place. Handle capacity races, refunds, cancellations, and failed payments.
 6. Decide whether the cashbook is sufficient or whether the owner needs accounting software/export. Do not present a manual demo ledger as accounting advice or tax records.
-7. Add the provided logo, merchandise artwork, and real gym photos once supplied. Merchandise checkout remains a future foundation, not an implemented shop.
+7. Real gym photos are in. Add the provided logo and merchandise artwork once supplied. Merchandise checkout remains a future foundation, not an implemented shop.
 8. Before launch, test booking/payment flows, dashboard permissions, accessibility, mobile layout, backups, and recovery.
 
 ## Handover between Codex and Claude
