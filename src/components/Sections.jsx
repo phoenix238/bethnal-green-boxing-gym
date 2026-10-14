@@ -71,7 +71,8 @@ export function Approach() {
 }
 
 // When the owner sets VITE_CAL_LINK (their Cal.com username or a full cal.com URL), Cal.com becomes the live timetable and booking system.
-const CAL_LINK = (import.meta.env.VITE_CAL_LINK ?? '').trim();
+// The Cal.com profile page lists every event type (classes, private sessions). Not a secret, so it lives in the code and works on any host.
+const CAL_LINK = (import.meta.env.VITE_CAL_LINK ?? '').trim() || 'jb-jb-2ejhn3';
 const CAL_URL = CAL_LINK ? (CAL_LINK.startsWith('http') ? CAL_LINK : `https://cal.com/${CAL_LINK.replace(/^\/+/, '')}`) : null;
 
 export function Timetable({ classes, onBook }) {
