@@ -5,7 +5,7 @@ import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
 import { Logo } from './Header.jsx';
 import { BookButton, nextSessions } from './Classes.jsx';
 import { formatSlot } from '../calclasses.js';
-import { SketchBoxer } from './SketchBoxer.jsx';
+import { ImpactPanel } from './ImpactPanel.jsx';
 
 // The hero's ticket shows the next few class dates straight from Cal.com, so it never goes out of date.
 export function Hero({ cal }) {
@@ -35,7 +35,7 @@ export function Hero({ cal }) {
         </div> : null}
       </div>
       <div className="hero-photo">
-        <div className="hero-sketch pin-tilt-right"><SketchBoxer/></div>
+        <ImpactPanel/>
         {content.media?.logo?.src ? <div className="hero-badge"><Logo eager/></div> : null}
       </div>
     </div>
