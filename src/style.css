@@ -639,10 +639,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .club-video { grid-column: auto; }
   .join-inner { grid-template-columns: 1fr auto; }
   .nav a:not(.btn):hover { color: var(--yellow); border-bottom-color: var(--yellow); }
-  .header-cta { display: none; }
-}
-@media (min-width: 1280px) {
-  .header-cta { display: inline-flex; }
 }
 
 /* Cal.com embed: the live timetable and booking once VITE_CAL_LINK is set */
@@ -666,3 +662,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .btn-ghost-light { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border: 2px solid currentColor; color: inherit; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; text-decoration: none; }
 .classes-page { min-height: 70vh; }
 @media (max-width: 560px) { .class-card { flex-direction: column; } .class-card .btn { align-self: stretch; justify-content: center; } }
+
+/* Pages: the current page in the menu */
+.nav a[aria-current="page"]:not(.btn) { color: var(--red); }
+.nav.nav-open a[aria-current="page"]:not(.btn) { color: var(--yellow); }
+@media (min-width: 960px) { .nav a[aria-current="page"]:not(.btn) { color: inherit; border-bottom-color: var(--red); } }
+.footer-nav a[aria-current="page"] { color: var(--yellow); }
+.text-link { font-weight: 700; text-decoration: underline; color: inherit; }
+.hero-ticket-label { margin: 0 0 2px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: 13px; color: var(--muted); }
+main:focus { outline: none; }

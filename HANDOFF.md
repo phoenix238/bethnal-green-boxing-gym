@@ -49,7 +49,12 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Owner says consent is given for the class photos and video (record who gave it and when, outside GitHub). Owner chose to make the repository public and use free GitHub Pages for previews (`.github/workflows/pages.yml`, deploys on push to `main`). Cal.com is the chosen booking/timetable system (`docs/CALCOM.md`); the site embeds it when `VITE_CAL_LINK` is set.
 
 - **Classes now come live from Cal.com.** `src/calclasses.js` reads the club's public Cal.com profile (no key needed): each visible event type becomes a class with its title, description, length, price, places and next three dates. The home page shows a short "range of classes" teaser and `#/classes` is a full classes page with descriptions. Owner workflow: add or edit an event type in Cal.com (write a good description, set GBP price, seats, availability) and the website follows. Hidden event types and Cal.com's starter "15/30 min meeting" never show. Titles containing "private", "1-to-1" or "PT" are grouped under Private sessions. The old Google Sheet timetable code and the demo booking dialog are no longer used on the public page.
-- Still hard-coded on the home page and needing a human edit if the classes change: the hero line "Tuesday and Thursday nights at 7pm" and the Visit section's "When" row.
+- Still hard-coded on the home page and needing a human edit if the classes change: the hero line "Tuesday and Thursday nights at 7pm" and the Visit section's "When" row. (Fixed below: the hero now reads live from Cal.com.)
+
+- **Site split into pages (October 2026, owner request).** Hash routes: Home `#/` (hero + classes teaser only, owner asked for two sections at most), `#/classes`, `#/story`, `#/gym` (approach, club photos/video, the space), `#/community` (aims + kit), `#/visit` (find us + WhatsApp). The "Come as you are. Leave a bit stronger." band closes the inner pages.
+- **Booking pop-up.** Every yellow Book / Book a class button opens the Cal.com calendar in a pop-up on the site (`src/calembed.js`, Cal.com's official embed script from app.cal.com). If that script can't load, the button opens Cal.com in a new tab. Bookings and payments are handled by Cal.com, not this site.
+- Hero "Next up" line now shows the next three class dates from Cal.com, so it changes when the classes change. It shows whatever availability Cal.com has: at the time of writing the "mixed levels" event type still uses Cal.com's default hourly weekday availability and Cal Video as its location, so the owner must set the real class times and the gym as the location in Cal.com.
+- Copy changes from the owner: "Come as you are. Leave a bit stronger." follows "You come down, you work, you sweat." in the hero; "donated bags and gloves" became "kit donated by the community"; the "From a grubby basement to a proper gym" section is now "Built by the community. For the community." (owner's choice: the section is not about artists or Proposition Studios). The owner benched an "about four small gyms at Proposition Studios" line as too complicated to explain for now. The chairman's brief and "grubby" wording were removed.
 
 ## Open questions for the owner (demo draft)
 
@@ -62,6 +67,7 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
+- Footer and WhatsApp copy still say online booking is not open, while Book buttons now open Cal.com. Fine while the site is unshared; update before it goes public.
 
 ## Run and verify
 

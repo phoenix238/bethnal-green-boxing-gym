@@ -1,17 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import * as content from '../content.js';
+import { BookButton } from './Classes.jsx';
 
-// Navigation labels are interface text; section copy itself lives in content.js.
+// The site's pages (hash routes, so it works on any static host). Labels are interface text; copy lives in content.js.
 export const NAV_LINKS = [
-  { href: '#approach', label: 'Approach' },
-  { href: '#/classes', label: 'Classes' },
-  { href: '#story', label: 'Story' },
-  { href: '#club', label: 'The club' },
-  { href: '#space', label: 'The space' },
-  { href: '#community', label: 'Community' },
-  { href: '#kit', label: 'Kit' },
-  { href: '#visit', label: 'Visit' },
+  { route: 'classes', href: '#/classes', label: 'Classes' },
+  { route: 'story', href: '#/story', label: 'Our story' },
+  { route: 'gym', href: '#/gym', label: 'The gym' },
+  { route: 'community', href: '#/community', label: 'Community' },
+  { route: 'visit', href: '#/visit', label: 'Visit' },
 ];
 
 // The club's own logo artwork (white, green and gold on solid black), so it only ever sits on black.
@@ -35,7 +33,7 @@ export function Wordmark({ className = '' }) {
   </span>;
 }
 
-export default function Header() {
+export default function Header({ route }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef(null);
   useEffect(() => {
@@ -48,14 +46,14 @@ export default function Header() {
   return <>
     <div className="topline" aria-hidden="true"><span>{content.site?.area}</span><span className="topline-star" aria-hidden="true">★</span><span className="topline-tag">{content.site?.tagline}</span></div>
     <header className="header">
-      <a className="header-home" href="#top" aria-label={`${content.site?.name ?? 'Home'}, back to top`}><Logo className="logo-header" eager/></a>
+      <a className="header-home" href="#/" aria-label={`${content.site?.name ?? 'Home'}, home page`}><Logo className="logo-header" eager/></a>
       <nav className={open ? 'nav nav-open' : 'nav'} id="site-nav" aria-label="Main">
         <ul>
-          {NAV_LINKS.map(link => <li key={link.href}><a href={link.href} onClick={close}>{link.label}</a></li>)}
+          {NAV_LINKS.map(link => <li key={link.href}><a href={link.href} onClick={close} aria-current={route === link.route ? 'page' : undefined}>{link.label}</a></li>)}
         </ul>
-        <a className="btn btn-yellow nav-mobile-cta" href="#timetable" onClick={close}>{content.hero?.primaryCta ?? 'Timetable'} <ArrowRight size={18} aria-hidden="true"/></a>
+        <BookButton label="Book a class" className="btn btn-yellow nav-mobile-cta" onOpen={close}/>
       </nav>
-      <a className="btn btn-yellow btn-small header-cta" href="#timetable">{content.hero?.primaryCta ?? 'Timetable'}</a>
+      <BookButton label="Book a class" className="btn btn-yellow btn-small header-cta"/>
       <button ref={toggleRef} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen(value => !value)}>
         {open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}<span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
       </button>

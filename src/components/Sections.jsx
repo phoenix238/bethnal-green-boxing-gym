@@ -1,24 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, ArrowRight, ArrowUpRight, Clock3, MessageCircle, Pause, Play, Users } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MessageCircle, Pause, Play } from 'lucide-react';
 import * as content from '../content.js';
-import { Eyebrow, Paragraphs, Photo, Title, billTime } from './ui.jsx';
+import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
 import { Logo } from './Header.jsx';
+import { BookButton, nextSessions } from './Classes.jsx';
+import { formatSlot } from '../calclasses.js';
 
-const money = value => `£${Number(value).toFixed(2).replace(/\.00$/, '')}`;
-
-// "TUESDAY 7PM ★ THURSDAY 7PM", built from the live timetable state rather than typed copy.
-function BillLine({ classes, className = '' }) {
-  if (!classes.length) return null;
-  return <p className={`bill-line ${className}`.trim()}>
-    {classes.map((session, index) => <React.Fragment key={session.id}>
-      {index > 0 ? <span className="bill-star" aria-hidden="true">★</span> : null}
-      <span className="bill-slot">{session.day} {billTime(session.time)}</span>
-    </React.Fragment>)}
-  </p>;
-}
-
-export function Hero({ classes }) {
+// The hero's ticket shows the next few class dates straight from Cal.com, so it never goes out of date.
+export function Hero({ cal }) {
   const { hero, sessions } = content;
+  const next = nextSessions(cal?.classes ?? []);
   return <section className="hero plaster" aria-labelledby="hero-title">
     <div className="hero-inner">
       <div className="hero-copy">
@@ -26,13 +17,19 @@ export function Hero({ classes }) {
           {hero?.eyebrow ? <span className="tag tag-red">{hero.eyebrow}</span> : null}
         </div>
         <h1 id="hero-title" className="hero-title"><Title parts={hero?.title}/></h1>
-        {hero?.lede ? <p className="hero-lede">{hero.lede}</p> : null}
+        <Paragraphs items={hero?.lede} className="hero-lede"/>
         <div className="hero-actions">
-          <a className="btn btn-yellow" href="#timetable">{hero?.primaryCta} <ArrowRight size={18} aria-hidden="true"/></a>
-          {hero?.secondaryCta ? <a className="btn btn-paper" href="#story">{hero.secondaryCta} <ArrowDown size={18} aria-hidden="true"/></a> : null}
+          <BookButton label={<>{hero?.primaryCta ?? 'Book a class'} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/>
+          {hero?.secondaryCta ? <a className="btn btn-paper" href="#/classes">{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></a> : null}
         </div>
-        {classes.length ? <div className="hero-ticket">
-          <BillLine classes={classes}/>
+        {next.length ? <div className="hero-ticket">
+          <p className="hero-ticket-label">Next up</p>
+          <p className="bill-line">
+            {next.map((slot, index) => <React.Fragment key={slot.iso + slot.slug}>
+              {index > 0 ? <span className="bill-star" aria-hidden="true">★</span> : null}
+              <span className="bill-slot">{formatSlot(slot.iso)}</span>
+            </React.Fragment>)}
+          </p>
           {sessions?.priceNote ? <p className="hero-ticket-note">{sessions.priceNote}</p> : null}
         </div> : null}
       </div>
@@ -44,15 +41,16 @@ export function Hero({ classes }) {
   </section>;
 }
 
-export function Approach() {
+export function Approach({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { approach } = content;
   const values = Array.isArray(approach?.values) ? approach.values : [];
   return <section className="section approach plaster" id="approach" aria-labelledby="approach-title">
     <div className="wrap">
       <div className="split">
         <div>
-          <Eyebrow no="01">{approach?.eyebrow}</Eyebrow>
-          <h2 id="approach-title" className="h2"><Title parts={approach?.heading}/></h2>
+          <Eyebrow>{approach?.eyebrow}</Eyebrow>
+          <H id="approach-title" className="h2"><Title parts={approach?.heading}/></H>
         </div>
         <div className="split-copy">
           {approach?.lede ? <p className="lede">{approach.lede}</p> : null}
@@ -70,55 +68,6 @@ export function Approach() {
   </section>;
 }
 
-export function Timetable({ classes, onBook }) {
-  const { sessions } = content;
-  return <section className="section timetable floor" id="timetable" aria-labelledby="timetable-title">
-    <div className="wrap">
-      <div className="split">
-        <div>
-          <Eyebrow no="02">{sessions?.eyebrow}</Eyebrow>
-          <h2 id="timetable-title" className="h2"><Title parts={sessions?.heading}/></h2>
-        </div>
-        <div className="split-copy">
-          <Paragraphs items={sessions?.intro} className="lede"/>
-        </div>
-      </div>
-
-      <div className="bill">
-        <div className="bill-head">
-          <span className="bill-count">{classes.length ? `${classes.length} ${classes.length === 1 ? 'session' : 'sessions'} a week` : 'Timetable in the making'}</span>
-          <span className="stamp">Booking not yet open</span>
-        </div>
-        {classes.length ? <>
-          <BillLine classes={classes} className="bill-line-big"/>
-          <ul className="bouts">
-            {classes.map(c => <li className="bout" key={c.id}>
-              <div className="bout-main">
-                <p className="bout-day">{c.day}</p>
-                <div className="bout-info">
-                  <h3 className="bout-title">{c.title}</h3>
-                  <p className="bout-meta">
-                    {c.level ? <span className="pill">{c.level}</span> : null}
-                    <span><Clock3 size={15} aria-hidden="true"/>{c.time}{c.duration ? ` · ${c.duration} min` : ''}</span>
-                    <span><Users size={15} aria-hidden="true"/>{c.capacity ? `${c.capacity} places` : 'Places to be confirmed'}</span>
-                    {c.coach && c.coach !== 'Gym coach' ? <span>With {c.coach}</span> : null}
-                  </p>
-                  {c.notes ? <p className="bout-notes">{c.notes}</p> : null}
-                </div>
-              </div>
-              <div className="bout-stub">
-                <p className="bout-price">{c.price == null ? 'Price to be confirmed' : <>{money(c.price)}{c.communityPrice != null ? <small> / {money(c.communityPrice)} with a studio-holder code</small> : null}</>}</p>
-                <button type="button" className="btn btn-yellow btn-small" onClick={() => onBook(c)} aria-label={`Booking preview for ${c.title}, ${c.day} ${c.time}`}>Booking preview</button>
-              </div>
-            </li>)}
-          </ul>
-        </> : <p className="bill-empty">No sessions are on the timetable right now. Check back soon.</p>}
-        {sessions?.priceNote ? <p className="bill-foot">{sessions.priceNote}</p> : null}
-      </div>
-    </div>
-  </section>;
-}
-
 const SCRAPBOOK = [
   { name: 'founderMagazine', tilt: 'tilt-a' },
   { name: 'founderYorkHall', tilt: 'tilt-b' },
@@ -126,7 +75,8 @@ const SCRAPBOOK = [
   { name: 'founderSparring', tilt: 'tilt-d' },
 ];
 
-export function Story() {
+export function Story({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { story } = content;
   const quote = story?.quote ?? null;
   const pro = story?.pro ?? null;
@@ -139,8 +89,8 @@ export function Story() {
           <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
         </div> : null}
         <div className="story-copy">
-          <Eyebrow no="03">{story?.eyebrow}</Eyebrow>
-          <h2 id="story-title" className="h2"><Title parts={story?.heading}/></h2>
+          <Eyebrow>{story?.eyebrow}</Eyebrow>
+          <H id="story-title" className="h2"><Title parts={story?.heading}/></H>
           <Paragraphs items={story?.paragraphs}/>
           {quote?.text ? <figure className="quote">
             <blockquote><p>{quote.text}</p></blockquote>
@@ -215,7 +165,7 @@ export function Club() {
     <div className="wrap">
       <div className="split">
         <div>
-          <Eyebrow no="04">{club?.eyebrow ?? 'The club'}</Eyebrow>
+          <Eyebrow>{club?.eyebrow ?? 'The club'}</Eyebrow>
           <h2 id="club-title" className="h2"><Title parts={club?.heading ?? 'The club'}/></h2>
         </div>
         <div className="split-copy"><Paragraphs items={club?.text} className="lede"/></div>
@@ -236,7 +186,7 @@ export function Join() {
   return <section className="section join" id="join" aria-labelledby="join-title">
     <div className="wrap join-inner">
       <div>
-        <Eyebrow no="07">{join?.eyebrow ?? 'Join us'}</Eyebrow>
+        <Eyebrow>{join?.eyebrow ?? 'Join us'}</Eyebrow>
         <h2 id="join-title" className="h2"><Title parts={join?.heading ?? ['Join the', 'WhatsApp group.']}/></h2>
         <Paragraphs items={join?.text} className="lede"/>
         {join?.note ? <p className="join-note">{join.note}</p> : null}
@@ -255,7 +205,7 @@ export function Space() {
     <div className="wrap">
       <div className="split">
         <div>
-          <Eyebrow no="05">{gym?.eyebrow}</Eyebrow>
+          <Eyebrow>{gym?.eyebrow}</Eyebrow>
           <h2 id="space-title" className="h2"><Title parts={gym?.heading}/></h2>
         </div>
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
@@ -269,14 +219,15 @@ export function Space() {
   </section>;
 }
 
-export function Community() {
+export function Community({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { community } = content;
   const goals = Array.isArray(community?.goals) ? community.goals : [];
   return <section className="section community halftone" id="community" aria-labelledby="community-title">
     <div className="wrap split split-community">
       <div>
-        <Eyebrow no="06">{community?.eyebrow}</Eyebrow>
-        <h2 id="community-title" className="h2"><Title parts={community?.heading}/></h2>
+        <Eyebrow>{community?.eyebrow}</Eyebrow>
+        <H id="community-title" className="h2"><Title parts={community?.heading}/></H>
         <Paragraphs items={community?.paragraphs}/>
       </div>
       {goals.length ? <div className="aims" role="group" aria-labelledby="aims-title">
@@ -297,7 +248,7 @@ export function Kit() {
   return <section className="section kit floor" id="kit" aria-labelledby="kit-title">
     <div className="wrap split split-kit">
       <div>
-        <Eyebrow no="08">{shop?.eyebrow}</Eyebrow>
+        <Eyebrow>{shop?.eyebrow}</Eyebrow>
         <h2 id="kit-title" className="h2"><Title parts={shop?.heading}/></h2>
         <Paragraphs items={shop?.text} className="lede"/>
       </div>
@@ -314,13 +265,14 @@ export function Kit() {
   </section>;
 }
 
-export function Visit() {
+export function Visit({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { visit } = content;
   const items = Array.isArray(visit?.items) ? visit.items : [];
   return <section className="section visit plaster" id="visit" aria-labelledby="visit-title">
     <div className="wrap">
-      <Eyebrow no="09">{visit?.eyebrow}</Eyebrow>
-      <h2 id="visit-title" className="h2"><Title parts={visit?.heading}/></h2>
+      <Eyebrow>{visit?.eyebrow}</Eyebrow>
+      <H id="visit-title" className="h2"><Title parts={visit?.heading}/></H>
       {items.length ? <dl className="tickets">
         {items.map((item, index) => <div className="ticket" key={index}>
           <dt>{item.label}</dt>
@@ -332,14 +284,14 @@ export function Visit() {
 }
 
 export function CtaBand() {
-  const { site, hero } = content;
+  const { site } = content;
   const cta = content.cta ?? null; // optional export; falls back to the tagline and hero button text
   const heading = cta?.heading ?? site?.tagline;
   return <section className="cta halftone-red" aria-labelledby="cta-title">
     <div className="wrap cta-inner">
       <h2 id="cta-title" className="cta-title"><Title parts={heading}/></h2>
       {cta?.text ? <p className="cta-text">{cta.text}</p> : null}
-      <a className="btn btn-yellow" href="#timetable">{cta?.button ?? hero?.primaryCta} <ArrowRight size={18} aria-hidden="true"/></a>
+      <a className="btn btn-yellow" href="#/classes">{cta?.button ?? 'See the classes'} <ArrowRight size={18} aria-hidden="true"/></a>
     </div>
   </section>;
 }
