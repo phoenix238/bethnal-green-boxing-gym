@@ -647,3 +647,22 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Cal.com embed: the live timetable and booking once VITE_CAL_LINK is set */
 .cal-embed iframe { display: block; width: 100%; min-height: 720px; border: 0; background: #fff; }
+
+/* Live class list (from Cal.com) */
+.class-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.class-card { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; padding: 18px; background: #f3eee2; color: #141312; border: 2px solid #141312; }
+.class-card-title { margin: 0 0 6px; font-family: var(--display); text-transform: uppercase; font-size: 1.9rem; line-height: 1; font-weight: 400; }
+.class-card-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0 0 8px; font-size: .9rem; }
+.class-card-meta span { display: inline-flex; align-items: center; gap: 5px; }
+.class-card-price { font-weight: 800; }
+.class-card-desc { margin: 0 0 8px; white-space: pre-line; }
+.class-card-desc-short { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.class-card-next { margin: 0; font-size: .9rem; }
+.class-status { margin: 0; padding: 18px; }
+.class-group-title { margin: 36px 0 14px; }
+.class-foot { margin: 20px 0 0; }
+.back-link { font-weight: 700; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.btn-ghost-light { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border: 2px solid currentColor; color: inherit; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; text-decoration: none; }
+.classes-page { min-height: 70vh; }
+@media (max-width: 560px) { .class-card { flex-direction: column; } .class-card .btn { align-self: stretch; justify-content: center; } }

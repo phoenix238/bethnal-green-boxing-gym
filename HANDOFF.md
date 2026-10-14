@@ -48,6 +48,9 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 
 - Owner says consent is given for the class photos and video (record who gave it and when, outside GitHub). Owner chose to make the repository public and use free GitHub Pages for previews (`.github/workflows/pages.yml`, deploys on push to `main`). Cal.com is the chosen booking/timetable system (`docs/CALCOM.md`); the site embeds it when `VITE_CAL_LINK` is set.
 
+- **Classes now come live from Cal.com.** `src/calclasses.js` reads the club's public Cal.com profile (no key needed): each visible event type becomes a class with its title, description, length, price, places and next three dates. The home page shows a short "range of classes" teaser and `#/classes` is a full classes page with descriptions. Owner workflow: add or edit an event type in Cal.com (write a good description, set GBP price, seats, availability) and the website follows. Hidden event types and Cal.com's starter "15/30 min meeting" never show. Titles containing "private", "1-to-1" or "PT" are grouped under Private sessions. The old Google Sheet timetable code and the demo booking dialog are no longer used on the public page.
+- Still hard-coded on the home page and needing a human edit if the classes change: the hero line "Tuesday and Thursday nights at 7pm" and the Visit section's "When" row.
+
 ## Open questions for the owner (demo draft)
 
 - Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?

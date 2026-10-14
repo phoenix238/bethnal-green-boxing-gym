@@ -6,7 +6,8 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import BookingDialog from './components/BookingDialog.jsx';
 import OwnerPanel from './components/OwnerPanel.jsx';
-import { Approach, Club, Community, CtaBand, Hero, Join, Kit, Space, Story, Timetable, Visit } from './components/Sections.jsx';
+import { Approach, Club, Community, CtaBand, Hero, Join, Kit, Space, Story, Visit } from './components/Sections.jsx';
+import { ClassesPage, ClassesPreview } from './components/Classes.jsx';
 import { DEFAULT_CLASSES, initialTimetable, loadTimetable } from './timetable.js';
 
 // Prototype only: all data below lives in this browser's localStorage. There is no real booking, payment, login or shared database.
@@ -64,6 +65,15 @@ function App() {
   useEffect(() => save('bgbg-bookings-v1', bookings), [bookings]);
   useEffect(() => save('bgbg-members-v1', members), [members]);
   useEffect(() => save('bgbg-ledger-v1', ledger), [ledger]);
+  // Hash routing (#/classes) so the site works on any static host with no server rules.
+  const [hash, setHash] = useState(() => window.location.hash);
+  useEffect(() => { const on = () => setHash(window.location.hash); window.addEventListener('hashchange', on); return () => window.removeEventListener('hashchange', on); }, []);
+  const route = hash.startsWith('#/classes') ? 'classes' : 'home';
+  useEffect(() => {
+    // After a route change, jump to the section named in the hash (or the top of the new page).
+    const id = hash.startsWith('#/') ? '' : hash.slice(1);
+    window.requestAnimationFrame(() => { const el = id && document.getElementById(id); if (el) el.scrollIntoView(); else if (!id) window.scrollTo(0, 0); });
+  }, [route]);
   const notify = message => { setFlash(message); window.setTimeout(() => setFlash(''), 3200); };
   const addLedgerEntry = event => {
     event.preventDefault(); const data = new FormData(event.currentTarget);
@@ -93,17 +103,19 @@ function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <Header/>
     <main id="main">
-      <Hero classes={classes}/>
-      <Approach/>
-      <Timetable classes={classes} onBook={setDialog}/>
-      <Story/>
-      <Club/>
-      <Space/>
-      <Community/>
-      <Join/>
-      <Kit/>
-      <Visit/>
-      <CtaBand/>
+      {route === 'classes' ? <ClassesPage/> : <>
+        <Hero classes={classes}/>
+        <Approach/>
+        <ClassesPreview/>
+        <Story/>
+        <Club/>
+        <Space/>
+        <Community/>
+        <Join/>
+        <Kit/>
+        <Visit/>
+        <CtaBand/>
+      </>}
     </main>
     <Footer onOwnerDemo={() => setAdmin(true)}/>
     <div className="toast-region" role="status" aria-live="polite">{flash && <div className="toast"><Check size={17} aria-hidden="true"/>{flash}</div>}</div>

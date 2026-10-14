@@ -55,8 +55,8 @@ export const approach = {
 
 export const sessions = {
   eyebrow: 'The timetable',
-  heading: ['Two nights', 'a week.'],
-  intro: 'Tuesday and Thursday at 7pm. Both classes are open level and beginner friendly, so you don\'t need any experience to come along.',
+  heading: ['A range of', 'classes.'],
+  intro: 'First time or fiftieth, there\'s a class for you. Have a look at what\'s on, read what each one is, and book a place.',
   priceNote: '£10 a class. £5 if you rent a studio in the Proposition Studios building: ask at the desk or in the WhatsApp group for the code.',
   discountHint: 'Studio holder in the Proposition Studios building? Enter your code for the £5 rate.',
   bookingNotice: 'Online booking is not open yet. This preview does not take payment or hold a place.',
@@ -149,4 +149,16 @@ export const cta = {
 export const footer = {
   line: 'A community boxing club in Bethnal Green, East London. Online booking and the kit shop are not open yet.',
   instagram: null, // link to be supplied by the owner
+};
+
+// Text for the full classes page. The classes themselves (names, descriptions, lengths, dates) come live from Cal.com,
+// so the owner changes them there and the website follows.
+export const classesPage = {
+  eyebrow: 'What\'s on',
+  heading: ['Classes at', 'the club.'],
+  intro: 'Everything below is straight from our booking calendar, so it is always up to date. Pick a class and book your place.',
+  groupHeading: 'Group classes',
+  privateHeading: 'Private sessions',
+  empty: 'No classes are listed right now. Check back soon, or message the WhatsApp group.',
+  error: 'We couldn\'t load the class list just now.',
 };

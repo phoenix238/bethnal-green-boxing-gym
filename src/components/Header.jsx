@@ -5,7 +5,7 @@ import * as content from '../content.js';
 // Navigation labels are interface text; section copy itself lives in content.js.
 export const NAV_LINKS = [
   { href: '#approach', label: 'Approach' },
-  { href: '#timetable', label: 'Timetable' },
+  { href: '#/classes', label: 'Classes' },
   { href: '#story', label: 'Story' },
   { href: '#club', label: 'The club' },
   { href: '#space', label: 'The space' },
