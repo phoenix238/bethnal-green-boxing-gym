@@ -67,7 +67,6 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
-- The Space section heading ("A boxing gym among the artists") is the wrong direction per the owner: the gym is not about artists. Owner to pick a replacement.
 - Footer and WhatsApp copy still say online booking is not open, while Book buttons now open Cal.com. Fine while the site is unshared; update before it goes public.
 
 ## Run and verify

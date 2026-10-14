@@ -89,11 +89,11 @@ export const story = {
 
 export const gym = {
   eyebrow: 'The space',
-  heading: ['A boxing gym', 'among the artists.'],
-  // Proposition Studios premise is from the owner (October 2026). Heading still being chosen with the owner.
+  heading: ['Built by the community.', 'For the community.'],
+  // Owner chose this direction (October 2026): not about artists or Proposition Studios.
   paragraphs: [
-    'Proposition Studios finds spaces that aren\'t being used and turns them into studios for artists. The club trains in the basement of their building in Bethnal Green, right opposite York Hall.',
-    'Inside there are fight posters on the walls, kit donated by the community, a ring with the club\'s name on the canvas and a table piled with old boxing magazines.',
+    'A space nobody was using, turned into a boxing gym. The kit was donated by the community, the posters went up on the walls, and the ring went in.',
+    'The club trains in a basement in Bethnal Green, right opposite York Hall. There\'s a ring with the club\'s name on the canvas and a table piled with old boxing magazines.',
   ],
 };
 
