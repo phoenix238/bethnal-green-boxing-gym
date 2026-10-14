@@ -3,18 +3,18 @@ import { ArrowUpRight, Camera, MessageCircle } from 'lucide-react';
 import * as content from '../content.js';
 import { Logo, NAV_LINKS } from './Header.jsx';
 
-export default function Footer({ onOwnerDemo }) {
+export default function Footer({ onOwnerDemo, route }) {
   const { site, footer } = content;
   const instagram = typeof footer?.instagram === 'string' ? footer.instagram : footer?.instagram?.href ?? null;
   return <footer className="footer">
     <div className="footer-main">
       <div className="footer-brand">
-        <a className="footer-home" href="#top" aria-label={`${site?.name ?? 'Home'}, back to top`}><Logo className="logo-footer"/></a>
+        <a className="footer-home" href="#/" aria-label={`${site?.name ?? 'Home'}, home page`}><Logo className="logo-footer"/></a>
         {footer?.line ? <p className="footer-line">{footer.line}</p> : null}
         {site?.area ? <p className="footer-area">{site.area}</p> : null}
       </div>
       <nav className="footer-nav" aria-label="Footer">
-        <ul>{NAV_LINKS.map(link => <li key={link.href}><a href={link.href}>{link.label}</a></li>)}</ul>
+        <ul>{NAV_LINKS.map(link => <li key={link.href}><a href={link.href} aria-current={route === link.route ? 'page' : undefined}>{link.label}</a></li>)}</ul>
       </nav>
       <div className="footer-social-list">
         {content.media?.whatsapp ? <a className="footer-social footer-whatsapp" href={content.media.whatsapp} rel="noopener noreferrer" target="_blank"><MessageCircle size={18} aria-hidden="true"/> WhatsApp group <ArrowUpRight size={14} aria-hidden="true"/></a> : null}

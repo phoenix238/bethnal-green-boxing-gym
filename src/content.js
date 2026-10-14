@@ -36,15 +36,18 @@ export const media = {
 export const hero = {
   eyebrow: 'Bethnal Green · Opposite York Hall',
   title: ['Old-school boxing,', 'down in the basement.'],
-  lede: 'Classes for every level, and beginners are always welcome. This isn\'t a gym for looking in the mirror. You come down, you work, you sweat.',
-  primaryCta: 'See the timetable',
-  secondaryCta: 'Our story',
+  lede: [
+    'Classes for every level, and beginners are always welcome. This isn\'t a gym for looking in the mirror. You come down, you work, you sweat.',
+    'Come as you are. Leave a bit stronger.',
+  ],
+  primaryCta: 'Book a class', // opens the Cal.com booking calendar on the page
+  secondaryCta: 'See the classes',
 };
 
 export const approach = {
   eyebrow: 'How we do it',
   heading: ['Not a fancy gym.', 'A proper one.'],
-  lede: 'Old fight posters, donated bags and gloves, and a ring. Nothing shiny. Just a place to learn to box and get properly fit.',
+  lede: 'Old fight posters, kit donated by the community, and a ring. Nothing shiny. Just a place to learn to box and get properly fit.',
   body: 'Every class is open level. If you\'ve never thrown a punch, you start where you are. If you\'ve boxed for years, you\'ll still be working. Nobody here is trying to impress anyone.',
   values: [
     { title: 'Everyone starts somewhere', text: 'Classes are open level. First session or not, you train together and push at your own pace.' },
@@ -86,11 +89,12 @@ export const story = {
 
 export const gym = {
   eyebrow: 'The space',
-  heading: ['From a grubby basement', 'to a proper gym.'],
+  heading: ['A boxing gym', 'among the artists.'],
+  // Proposition Studios premise and "about four gyms" are from the owner (October 2026). Owner to confirm the wording.
   paragraphs: [
-    'The gym is in the basement of the Proposition Studios building in Bethnal Green, right opposite York Hall.',
-    'When Bernie was first shown it, the basement was dark and grubby. The brief from the chairman of Proposition Studios was short: turn it into a gym.',
-    'So that\'s what happened. Up went the fight posters. In came bags, gloves and kit, much of it donated, some of it by artists. There\'s a ring with the club\'s name on the canvas and a table piled with old boxing magazines.',
+    'Proposition Studios finds spaces that aren\'t being used and turns them into studios for artists. The club trains in the basement of their building in Bethnal Green, right opposite York Hall.',
+    'It\'s one of about four small gyms at Proposition Studios, and no two of them are alike.',
+    'Inside there are fight posters on the walls, kit donated by the community, a ring with the club\'s name on the canvas and a table piled with old boxing magazines.',
   ],
 };
 
@@ -142,8 +146,8 @@ export const visit = {
 
 export const cta = {
   heading: ['Come as you are.', 'Leave a bit stronger.'],
-  text: 'Open level, beginners welcome. No experience needed.',
-  button: 'See the timetable',
+  text: 'Whatever your level, there\'s a place for you here.',
+  button: 'See the classes',
 };
 
 export const footer = {

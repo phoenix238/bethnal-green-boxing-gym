@@ -7,7 +7,8 @@ import Footer from './components/Footer.jsx';
 import BookingDialog from './components/BookingDialog.jsx';
 import OwnerPanel from './components/OwnerPanel.jsx';
 import { Approach, Club, Community, CtaBand, Hero, Join, Kit, Space, Story, Visit } from './components/Sections.jsx';
-import { ClassesPage, ClassesPreview } from './components/Classes.jsx';
+import { ClassesPage, ClassesPreview, useClasses } from './components/Classes.jsx';
+import { initCal } from './calembed.js';
 import { DEFAULT_CLASSES, initialTimetable, loadTimetable } from './timetable.js';
 
 // Prototype only: all data below lives in this browser's localStorage. There is no real booking, payment, login or shared database.
@@ -34,6 +35,9 @@ const save = (key, value) => { try { localStorage.setItem(key, JSON.stringify(va
 const loadDiscount = () => { try { const v = JSON.parse(localStorage.getItem(DISCOUNT_KEY)); return typeof v === 'string' ? v : ''; } catch { return ''; } };
 const normaliseCode = value => String(value ?? '').trim().toUpperCase();
 // With a sheet configured the sheet (or its cached copy) is the timetable; without one, the local demo list is.
+// Pages of the site. The home page is kept to two sections: the hero and the classes.
+const PAGE_TITLES = { home: null, classes: 'Classes', story: 'Our story', gym: 'The gym', community: 'Community', visit: 'Visit' };
+const routeFor = hash => { if (hash === '' || hash === '#' || hash === '#/') return 'home'; const m = /^#\/([\w-]+)/.exec(hash); return m ? (m[1] in PAGE_TITLES ? m[1] : 'home') : null; };
 const savedClasses = () => TIMETABLE_CSV_URL ? initialTimetable().classes : load(STORAGE, initialTimetable().classes ?? DEFAULT_CLASSES);
 function App() {
   const [classes, setClasses] = useState(savedClasses);
@@ -65,15 +69,21 @@ function App() {
   useEffect(() => save('bgbg-bookings-v1', bookings), [bookings]);
   useEffect(() => save('bgbg-members-v1', members), [members]);
   useEffect(() => save('bgbg-ledger-v1', ledger), [ledger]);
-  // Hash routing (#/classes) so the site works on any static host with no server rules.
-  const [hash, setHash] = useState(() => window.location.hash);
-  useEffect(() => { const on = () => setHash(window.location.hash); window.addEventListener('hashchange', on); return () => window.removeEventListener('hashchange', on); }, []);
-  const route = hash.startsWith('#/classes') ? 'classes' : 'home';
+  // Hash routing (#/story, #/classes...) so the site works on any static host with no server rules.
+  // A plain anchor (#main, #join) keeps the current page and just scrolls to it.
+  const [route, setRoute] = useState(() => routeFor(window.location.hash) ?? 'home');
   useEffect(() => {
-    // After a route change, jump to the section named in the hash (or the top of the new page).
-    const id = hash.startsWith('#/') ? '' : hash.slice(1);
-    window.requestAnimationFrame(() => { const el = id && document.getElementById(id); if (el) el.scrollIntoView(); else if (!id) window.scrollTo(0, 0); });
-  }, [route]);
+    const on = () => {
+      const next = routeFor(window.location.hash);
+      if (next) { setRoute(next); window.scrollTo(0, 0); document.getElementById('main')?.focus({ preventScroll: true }); return; }
+      const el = document.getElementById(window.location.hash.slice(1)); if (el) el.scrollIntoView();
+    };
+    window.addEventListener('hashchange', on); return () => window.removeEventListener('hashchange', on);
+  }, []);
+  useEffect(() => { document.title = PAGE_TITLES[route] ? `${PAGE_TITLES[route]} · Bethnal Green Boxing Club` : 'Bethnal Green Boxing Club'; }, [route]);
+  // One Cal.com fetch shared by every page; the booking pop-up script loads once the page is idle.
+  const cal = useClasses();
+  useEffect(() => { const id = (window.requestIdleCallback ?? (fn => setTimeout(fn, 1500)))(initCal); return () => (window.cancelIdleCallback ?? clearTimeout)(id); }, []);
   const notify = message => { setFlash(message); window.setTimeout(() => setFlash(''), 3200); };
   const addLedgerEntry = event => {
     event.preventDefault(); const data = new FormData(event.currentTarget);
@@ -101,23 +111,16 @@ function App() {
   };
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
-    <Header/>
-    <main id="main">
-      {route === 'classes' ? <ClassesPage/> : <>
-        <Hero classes={classes}/>
-        <Approach/>
-        <ClassesPreview/>
-        <Story/>
-        <Club/>
-        <Space/>
-        <Community/>
-        <Join/>
-        <Kit/>
-        <Visit/>
-        <CtaBand/>
-      </>}
+    <Header route={route}/>
+    <main id="main" tabIndex={-1}>
+      {route === 'home' ? <><Hero cal={cal}/><ClassesPreview cal={cal}/></> : null}
+      {route === 'classes' ? <ClassesPage cal={cal}/> : null}
+      {route === 'story' ? <><Story first/><CtaBand/></> : null}
+      {route === 'gym' ? <><Approach first/><Club/><Space/><CtaBand/></> : null}
+      {route === 'community' ? <><Community first/><Kit/><CtaBand/></> : null}
+      {route === 'visit' ? <><Visit first/><Join/><CtaBand/></> : null}
     </main>
-    <Footer onOwnerDemo={() => setAdmin(true)}/>
+    <Footer onOwnerDemo={() => setAdmin(true)} route={route}/>
     <div className="toast-region" role="status" aria-live="polite">{flash && <div className="toast"><Check size={17} aria-hidden="true"/>{flash}</div>}</div>
     {dialog && <BookingDialog session={dialog} onClose={() => setDialog(null)} onSubmit={book} checkDiscount={checkDiscount}/>}
     {admin && <OwnerPanel onClose={() => setAdmin(false)} classes={classes} setClasses={setClasses} bookings={bookings} setBookings={setBookings} members={members} setMembers={setMembers} ledger={ledger} setLedger={setLedger} accountPeriod={accountPeriod} monthEntries={monthEntries} monthIncome={monthIncome} monthExpenses={monthExpenses} addLedgerEntry={addLedgerEntry} addMember={addMember} saveClass={saveClass} timetableStatus={timetableStatus} sheetConfigured={Boolean(TIMETABLE_CSV_URL)} sheetEditUrl={TIMETABLE_SHEET_EDIT_URL} discountCode={discountCode} setDiscountCode={setDiscountCode}/>}

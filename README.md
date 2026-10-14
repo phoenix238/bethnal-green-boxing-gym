@@ -1,6 +1,6 @@
 # Bethnal Green Boxing Club
 
-A responsive website prototype for the new community boxing club (repository name: bethnal-green-boxing-gym), built with React and Vite. It uses real photos of the gym and a design based on its fight-poster walls. All public copy lives in `src/content.js`. The public timetable starts with open-level Tuesday and Thursday sessions at 7pm. Copy welcomes beginners while keeping both sessions open to every level. Prices are £10 public and £5 for Proposition Studios artists (eligibility check still to be agreed).
+A responsive website prototype for the new community boxing club (repository name: bethnal-green-boxing-gym), built with React and Vite. It uses real photos of the gym and a design based on its fight-poster walls. All public copy lives in `src/content.js`. The site has separate pages (home, classes, story, the gym, community, visit) using `#/page` links, and Book buttons open the Cal.com booking calendar in a pop-up. The public timetable starts with open-level Tuesday and Thursday sessions at 7pm. Copy welcomes beginners while keeping both sessions open to every level. Prices are £10 public and £5 for Proposition Studios artists (eligibility check still to be agreed).
 
 ## Run locally
 
