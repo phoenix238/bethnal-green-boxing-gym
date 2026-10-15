@@ -58,6 +58,8 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 
 - **Rebalance pass (October 2026, owner request, branch `claude/epic-tesla-55oofm`, not on `main` until the owner approves).** Copy rewritten so the site balances Bernie, a small personal gym, and a good place to learn. Home is now: hero ("Learn to box with Bernie." with a photo (a class group in the ring, until the owner supplies a new one)), "You'll be trained by Bernie" (new `meet` copy), "What to expect" first-class steps (new `firstClass` copy, generic advice only), then the classes. This goes past the earlier "two sections at most" home-page rule on purpose, because the owner said the balance was off; owner to confirm. Story page ends on a fight-bill poster for round two and a "Train with Bernie" button instead of the generic band. Gym page order: the space, the people, how we train. Community page ends with the WhatsApp join block. No hero animation for now: the owner tried a pencil-sketch boxer and an anime impact frame, rejected both, and will supply a hero photo instead. Until then the hero shows the class group photo in the ring, `clubGroup`, at the owner's request (`hero.photo` in `src/content.js`; drop the new photo in `public/photos/`, add it to `photos`, and point `hero.photo` at it). Footer and WhatsApp copy now point to the Cal.com booking calendar.
 
+- Fixed a blank-page crash: the timetable cache read `localStorage` outside its try/catch, so any browser that blocks site storage (some privacy modes, sandboxed previews) showed an empty white page.
+
 ## Open questions for the owner (demo draft)
 
 - Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?

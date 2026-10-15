@@ -130,15 +130,18 @@ export async function fetchTimetable(url, { timeoutMs = FETCH_TIMEOUT_MS, fetchI
 
 // Guarded cache of the last good sheet copy, so a Google outage never blanks the timetable.
 const isClass = x => x !== null && typeof x === 'object' && typeof x.id === 'string' && typeof x.day === 'string' && typeof x.time === 'string' && typeof x.title === 'string';
-export function readCache(storage = globalThis.localStorage) {
+// Reading globalThis.localStorage itself throws when storage is blocked (sandboxed frames, some privacy modes),
+// so it is looked up inside the try, never as a default parameter.
+export function readCache(storage) {
   try {
+    storage ??= globalThis.localStorage;
     const saved = JSON.parse(storage.getItem(CACHE_KEY));
     const classes = Array.isArray(saved?.classes) ? saved.classes.filter(isClass).map(c => ({ ...c, attendees: [] })) : [];
     return classes.length ? { classes, updatedAt: typeof saved.updatedAt === 'string' ? saved.updatedAt : null } : null;
   } catch { return null; }
 }
-export function writeCache(classes, storage = globalThis.localStorage) {
-  try { storage.setItem(CACHE_KEY, JSON.stringify({ classes, updatedAt: new Date().toISOString() })); } catch { /* storage blocked: just no cache */ }
+export function writeCache(classes, storage) {
+  try { (storage ?? globalThis.localStorage).setItem(CACHE_KEY, JSON.stringify({ classes, updatedAt: new Date().toISOString() })); } catch { /* storage blocked: just no cache */ }
 }
 
 // What to show before (or instead of) a live fetch. source: 'cache' | 'default'.
