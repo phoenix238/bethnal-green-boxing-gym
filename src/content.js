@@ -45,8 +45,8 @@ export const hero = {
     'A small boxing club in a basement in Bethnal Green, run by Bernie Paul. Former pro. Once known as the Punching Postman.',
     'Every class is open level. Never boxed? Good. That\'s where everyone starts.',
   ],
-  // Hero picture: a key from `photos` below. Temporary: the ring, until the owner supplies the hero photo.
-  photo: 'ring',
+  // Hero picture: a key from `photos` below. Temporary: a class group in the ring, until the owner supplies the hero photo.
+  photo: 'clubGroup',
   primaryCta: 'Book a class', // opens the Cal.com booking calendar on the page
   secondaryCta: 'See the classes',
 };
