@@ -33,53 +33,86 @@ export const media = {
   whatsapp: 'https://chat.whatsapp.com/G5KmaFQfJpKEKg2zpGwjtI',
 };
 
+// Through-line: Home = Bernie + the gym + your first class. Classes = what's on and how to book.
+// Story = Bernie's boxing life. Gym = the room and the people in it. Community = why the club exists.
+// Visit = where, when, how much, how to ask. Each page has one job; don't repeat another page's job.
+
+// HOME
 export const hero = {
   eyebrow: 'Bethnal Green · Opposite York Hall',
-  title: ['Old-school boxing,', 'down in the basement.'],
+  title: ['Learn to box', 'with Bernie.'],
   lede: [
-    'Classes for every level, and beginners are always welcome. This isn\'t a gym for looking in the mirror. You come down, you work, you sweat.',
-    'Come as you are. Leave a bit stronger.',
+    'A small boxing club in a basement in Bethnal Green, run by Bernie Paul. Former pro. Once known as the Punching Postman.',
+    'Every class is open level. Never boxed? Good. That\'s where everyone starts.',
   ],
+  // Hero picture: a key from `photos` below. Temporary: a class group in the ring, until the owner supplies the hero photo.
+  photo: 'clubGroup',
   primaryCta: 'Book a class', // opens the Cal.com booking calendar on the page
   secondaryCta: 'See the classes',
 };
 
+// Home: short personal introduction to Bernie. Links on to the full story rather than telling it.
+export const meet = {
+  eyebrow: 'Your coach',
+  heading: ['You\'ll be trained', 'by Bernie.'],
+  paragraphs: [
+    'Bernie started boxing at 15 in north London. He turned pro in his mid-twenties, while still doing his post round, and won a Southern Area title fight at York Hall in 1995.',
+    'Now he runs his own club, right across the road from where he won it. It\'s his gym, and he takes the classes himself.',
+  ],
+  link: { label: 'Read Bernie\'s story', href: '#/story' },
+};
+
+// Home: what to expect. Only confirmed facts; the advice lines are deliberately generic.
+export const firstClass = {
+  eyebrow: 'Your first class',
+  heading: ['What to', 'expect.'],
+  intro: 'No experience needed. No need to be fit first. Here\'s how it works.',
+  steps: [
+    { title: 'Pick a class', text: 'Every class is open level, so beginners train alongside people who\'ve boxed for years. Go at your own pace.' },
+    { title: 'Book your place', text: 'Book online through our booking calendar. It\'s £10 a class, or £5 if you rent a studio in the building.' },
+    { title: 'Come down', text: 'Wear something you can move in. If you\'re not sure about anything, ask before you come.' },
+    { title: 'Got a question?', text: 'Message the WhatsApp group and ask. No question is too basic.' },
+  ],
+};
+
+// GYM page: what the club is like to train in.
 export const approach = {
-  eyebrow: 'How we do it',
+  eyebrow: 'How we train',
   heading: ['Not a fancy gym.', 'A proper one.'],
-  lede: 'Old fight posters, kit donated by the community, and a ring. Nothing shiny. Just a place to learn to box and get properly fit.',
-  body: 'Every class is open level. If you\'ve never thrown a punch, you start where you are. If you\'ve boxed for years, you\'ll still be working. Nobody here is trying to impress anyone.',
+  lede: 'No mirrors to pose in, nothing shiny. A ring, some bags, old fight posters on the walls, and a coach who has done it.',
+  body: 'You learn to box properly: how to stand, how to punch, how to move. It\'s hard work, and you\'ll feel it. But nobody\'s here to show off, and nobody gets left behind.',
   values: [
-    { title: 'Everyone starts somewhere', text: 'Classes are open level. First session or not, you train together and push at your own pace.' },
-    { title: 'Old school', text: 'Hard work and discipline. Proper boxing, taught the way it always has been.' },
-    { title: 'Giving back', text: 'It isn\'t all about the money. The club is here to give something back to Bethnal Green.' },
+    { title: 'Everyone starts somewhere', text: 'Classes are open level. First session or fiftieth, you train together and push at your own pace.' },
+    { title: 'Old school', text: 'Hard work and discipline. Boxing taught the way it always has been.' },
+    { title: 'Small and personal', text: 'This isn\'t a chain. It\'s Bernie\'s club, and he knows who\'s in the room.' },
   ],
 };
 
 export const sessions = {
   eyebrow: 'The timetable',
-  heading: ['A range of', 'classes.'],
-  intro: 'First time or fiftieth, there\'s a class for you. Have a look at what\'s on, read what each one is, and book a place.',
-  priceNote: '£10 a class. £5 if you rent a studio in the Proposition Studios building: ask at the desk or in the WhatsApp group for the code.',
+  heading: ['What\'s', 'on.'],
+  intro: 'Open-level classes, beginners welcome. See what\'s coming up and book a place.',
+  priceNote: '£10 a class. £5 if you rent a studio in the Proposition Studios building: ask in the WhatsApp group for the code.',
   discountHint: 'Studio holder in the Proposition Studios building? Enter your code for the £5 rate.',
   bookingNotice: 'Online booking is not open yet. This preview does not take payment or hold a place.',
 };
 
+// STORY page: Bernie's boxing life. The only place it is told in full.
 export const story = {
-  eyebrow: 'Our story',
+  eyebrow: 'Bernie\'s story',
   heading: ['Told to go and stick', 'to the heavy bag.'],
   paragraphs: [
-    'Bernie Paul started boxing at about 15, at Finchley Boxing Club, along with his brothers Steve and John. That was home for the best part of three years.',
-    'One of the trainers there had already made his mind up. Steve and John, he said, were going to be fighters. Bernie was told to go and stick to the heavy bag.',
-    'It didn\'t put him off. It made him hungrier. Steve and John were the more gifted boxers, but Bernie had the power.',
-    'After disagreements at Finchley, the brothers moved to Tottenham New Enterprise Boxing Club. It was a long trek from Highgate, and a hard, serious gym when you got there.',
+    'Bernie Paul started boxing at about 15, at Finchley Boxing Club, with his brothers Steve and John. That was home for the best part of three years.',
+    'One trainer there had already made up his mind. Steve and John were going to be fighters. Bernie should go and stick to the heavy bag.',
+    'It didn\'t put him off. It made him hungrier. His brothers were the more gifted boxers, but Bernie had the power.',
+    'The three of them moved on to Tottenham New Enterprise Boxing Club. A long trek from Highgate, and a hard, serious gym when you got there.',
     'The work paid off, and the amateur wins came.',
   ],
   pro: {
     heading: ['The Punching', 'Postman.'],
     paragraphs: [
-      'A shoulder injury kept Bernie out of the ring for years. He kept training anyway, and turned professional in his mid-twenties.',
-      'He kept his job as a postman the whole time. Royal Mail\'s London Magazine put him on the cover as the Punching Postman, Hornsey\'s Bernie Paul.',
+      'Then a shoulder injury kept him out of the ring for years. He kept training anyway, and turned professional in his mid-twenties.',
+      'He kept his job as a postman the whole way through. Royal Mail\'s London Magazine put him on the cover: the Punching Postman, Hornsey\'s Bernie Paul.',
       'On 29 November 1995 he boxed Jason Rowland at York Hall for the Southern Area light-welterweight title, and knocked him out on the bell at the end of the first round.',
       'York Hall is right across the road from the club. Bernie won a title there. Now he teaches boxing opposite it.',
     ],
@@ -87,22 +120,31 @@ export const story = {
   quote: null,
 };
 
+// GYM page: the room itself.
 export const gym = {
   eyebrow: 'The space',
   heading: ['Built by the community.', 'For the community.'],
   // Owner chose this direction (October 2026): not about artists or Proposition Studios.
   paragraphs: [
-    'A space nobody was using, turned into a boxing gym. The kit was donated by the community, the posters went up on the walls, and the ring went in.',
-    'The club trains in a basement in Bethnal Green, right opposite York Hall. There\'s a ring with the club\'s name on the canvas and a table piled with old boxing magazines.',
+    'It started as a basement nobody was using. The kit was donated by the community, the posters went up, and the ring went in, with the club\'s name on the canvas.',
+    'There\'s a training floor, a sofa, and a table piled with old Boxing News and The Ring. It looks like a boxing gym because it is one.',
   ],
 };
 
+// GYM page: the people.
+export const club = {
+  eyebrow: 'The club',
+  heading: ['The people', 'who train here.'],
+  text: 'Young and old, first-timers and people who\'ve boxed for years. Everyone trains together, and everyone gets in the photo at the end.',
+};
+
+// COMMUNITY page: why the club exists and where it's going.
 export const community = {
   eyebrow: 'Community',
   heading: ['Giving something', 'back.'],
   paragraphs: [
-    'Before this gym, Bernie ran a small training group from a garage during lockdown. Some young people came along, and it was clear what regular training, discipline and a bit of belonging did for them.',
-    'That\'s the heart of this club. It\'s not all about the money. It\'s about giving people somewhere to go, something to work at, and people in their corner.',
+    'Before this club, Bernie ran a small training group from a garage during lockdown. Some young people came along, and he saw what regular training, discipline and a bit of belonging did for them.',
+    'That\'s why the club is here. It\'s not all about the money. It\'s about giving people somewhere to go, something to work at, and someone in their corner.',
   ],
   goals: [
     'Find local funders and supporters to back the club\'s community work',
@@ -119,18 +161,13 @@ export const shop = {
   status: 'Coming soon',
 };
 
-export const club = {
-  eyebrow: 'The club',
-  heading: ['The people', 'who train here.'],
-  text: 'Young and old, first-timers and people who\'ve boxed for years. Everyone trains together, and everyone gets in the photo at the end.',
-};
-
+// VISIT page: practical details and how to ask.
 export const join = {
-  eyebrow: 'Get in touch',
+  eyebrow: 'Ask us anything',
   heading: ['Join the', 'WhatsApp group.'],
-  text: 'Hear about classes, ask a question before your first session, or just say hello.',
+  text: 'Not sure if it\'s for you? Ask a question before your first class, hear when classes change, or just say hello.',
   button: 'Join the WhatsApp group',
-  note: 'Online booking isn\'t open yet, so the WhatsApp group is the way to get in touch for now.',
+  note: 'Bookings go through the booking calendar. The WhatsApp group is for questions and news.',
 };
 
 export const visit = {
@@ -145,23 +182,23 @@ export const visit = {
 
 export const cta = {
   heading: ['Come as you are.', 'Leave a bit stronger.'],
-  text: 'Whatever your level, there\'s a place for you here.',
+  text: 'Open level, beginners welcome. Bernie will see you down there.',
   button: 'See the classes',
 };
 
 export const footer = {
-  line: 'A community boxing club in Bethnal Green, East London. Online booking and the kit shop are not open yet.',
+  line: 'Bernie Paul\'s community boxing club in Bethnal Green, East London. The kit shop isn\'t open yet.',
   instagram: null, // link to be supplied by the owner
 };
 
-// Text for the full classes page. The classes themselves (names, descriptions, lengths, dates) come live from Cal.com,
+// CLASSES page. The classes themselves (names, descriptions, lengths, dates) come live from Cal.com,
 // so the owner changes them there and the website follows.
 export const classesPage = {
   eyebrow: 'What\'s on',
   heading: ['Classes at', 'the club.'],
-  intro: 'Everything below is straight from our booking calendar, so it is always up to date. Pick a class and book your place.',
+  intro: 'Every class is open level, and beginners are welcome. The list below comes straight from our booking calendar, so it\'s always up to date. Pick one and book your place.',
   groupHeading: 'Group classes',
   privateHeading: 'Private sessions',
-  empty: 'No classes are listed right now. Check back soon, or message the WhatsApp group.',
+  empty: 'No classes are listed right now. Check back soon, or ask in the WhatsApp group.',
   error: 'We couldn\'t load the class list just now.',
 };

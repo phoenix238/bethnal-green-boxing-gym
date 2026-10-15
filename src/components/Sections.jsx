@@ -34,7 +34,7 @@ export function Hero({ cal }) {
         </div> : null}
       </div>
       <div className="hero-photo">
-        <Photo name="ring" eager className="pin-tilt-right" sizes="(min-width: 900px) 40vw, 92vw"/>
+        <Photo name={hero?.photo ?? 'ring'} eager className="pin-tilt-right" sizes="(min-width: 900px) 40vw, 92vw"/>
         {content.media?.logo?.src ? <div className="hero-badge"><Logo eager/></div> : null}
       </div>
     </div>
@@ -104,13 +104,15 @@ export function Story({ first = false }) {
       {prints.length ? <div className="scrapbook" role="group" aria-label="Scrapbook: the founder's boxing years">
         {prints.map(item => <Photo key={item.name} name={item.name} className={`scrap ${item.tilt}`} sizes="(min-width: 960px) 24vw, 46vw"/>)}
       </div> : null}
-      {pro?.heading || pro?.paragraphs ? <div className="story-chapter">
-        <div>
-          <p className="chapter-mark" aria-hidden="true">Round two</p>
-          {pro.heading ? <h3 className="h3"><Title parts={pro.heading}/></h3> : null}
-        </div>
-        <div className="chapter-copy"><Paragraphs items={pro.paragraphs}/></div>
+      {pro?.heading || pro?.paragraphs ? <div className="bill-poster">
+        <p className="chapter-mark" aria-hidden="true">Round two</p>
+        {pro.heading ? <h2 className="bill-poster-title"><Title parts={pro.heading}/></h2> : null}
+        <p className="bill-poster-meta" aria-hidden="true">York Hall <span>★</span> 29 Nov 1995 <span>★</span> Southern Area</p>
+        <div className="bill-poster-copy"><Paragraphs items={pro.paragraphs}/></div>
       </div> : null}
+      <div className="story-close">
+        <a className="btn btn-yellow" href="#/classes">Train with Bernie <ArrowRight size={18} aria-hidden="true"/></a>
+      </div>
     </div>
   </section>;
 }
@@ -199,14 +201,15 @@ export function Join() {
   </section>;
 }
 
-export function Space() {
+export function Space({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { gym } = content;
   return <section className="section space plaster-dark" id="space" aria-labelledby="space-title">
     <div className="wrap">
       <div className="split">
         <div>
           <Eyebrow>{gym?.eyebrow}</Eyebrow>
-          <h2 id="space-title" className="h2"><Title parts={gym?.heading}/></h2>
+          <H id="space-title" className="h2"><Title parts={gym?.heading}/></H>
         </div>
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
       </div>
@@ -292,6 +295,50 @@ export function CtaBand() {
       <h2 id="cta-title" className="cta-title"><Title parts={heading}/></h2>
       {cta?.text ? <p className="cta-text">{cta.text}</p> : null}
       <a className="btn btn-yellow" href="#/classes">{cta?.button ?? 'See the classes'} <ArrowRight size={18} aria-hidden="true"/></a>
+    </div>
+  </section>;
+}
+
+// Home: a short, personal hello from the coach, linking on to the full story.
+export function Meet() {
+  const { meet } = content;
+  if (!meet) return null;
+  return <section className="section section-tight meet floor" aria-labelledby="meet-title">
+    <div className="wrap meet-grid">
+      <div className="meet-photo">
+        <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+      </div>
+      <div className="meet-copy">
+        <Eyebrow>{meet.eyebrow}</Eyebrow>
+        <h2 id="meet-title" className="h2"><Title parts={meet.heading}/></h2>
+        <Paragraphs items={meet.paragraphs}/>
+        {meet.link ? <a className="btn btn-paper" href={meet.link.href}>{meet.link.label} <ArrowRight size={18} aria-hidden="true"/></a> : null}
+      </div>
+    </div>
+  </section>;
+}
+
+// Home: what a first class looks like, as numbered fight-bill cards.
+export function FirstClass() {
+  const { firstClass } = content;
+  const steps = Array.isArray(firstClass?.steps) ? firstClass.steps : [];
+  if (!steps.length) return null;
+  return <section className="section first-class plaster" aria-labelledby="first-class-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow>{firstClass.eyebrow}</Eyebrow>
+          <h2 id="first-class-title" className="h2"><Title parts={firstClass.heading}/></h2>
+        </div>
+        {firstClass.intro ? <div className="split-copy"><p className="lede">{firstClass.intro}</p></div> : null}
+      </div>
+      <ol className="posters posters-4">
+        {steps.map((step, index) => <li className={`poster poster-${(index % 3) + 1}`} key={index}>
+          <span className="poster-no" aria-hidden="true">Step {String(index + 1).padStart(2, '0')}</span>
+          <h3 className="poster-title">{step.title}</h3>
+          <p>{step.text}</p>
+        </li>)}
+      </ol>
     </div>
   </section>;
 }

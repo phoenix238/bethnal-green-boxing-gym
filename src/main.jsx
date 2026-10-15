@@ -6,7 +6,7 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import BookingDialog from './components/BookingDialog.jsx';
 import OwnerPanel from './components/OwnerPanel.jsx';
-import { Approach, Club, Community, CtaBand, Hero, Join, Kit, Space, Story, Visit } from './components/Sections.jsx';
+import { Approach, Club, Community, CtaBand, FirstClass, Hero, Meet, Join, Kit, Space, Story, Visit } from './components/Sections.jsx';
 import { ClassesPage, ClassesPreview, useClasses } from './components/Classes.jsx';
 import { initCal } from './calembed.js';
 import { DEFAULT_CLASSES, initialTimetable, loadTimetable } from './timetable.js';
@@ -35,7 +35,7 @@ const save = (key, value) => { try { localStorage.setItem(key, JSON.stringify(va
 const loadDiscount = () => { try { const v = JSON.parse(localStorage.getItem(DISCOUNT_KEY)); return typeof v === 'string' ? v : ''; } catch { return ''; } };
 const normaliseCode = value => String(value ?? '').trim().toUpperCase();
 // With a sheet configured the sheet (or its cached copy) is the timetable; without one, the local demo list is.
-// Pages of the site. The home page is kept to two sections: the hero and the classes.
+// Pages of the site. Home: hero, meet Bernie, your first class, then the classes.
 const PAGE_TITLES = { home: null, classes: 'Classes', story: 'Our story', gym: 'The gym', community: 'Community', visit: 'Visit' };
 const routeFor = hash => { if (hash === '' || hash === '#' || hash === '#/') return 'home'; const m = /^#\/([\w-]+)/.exec(hash); return m ? (m[1] in PAGE_TITLES ? m[1] : 'home') : null; };
 const savedClasses = () => TIMETABLE_CSV_URL ? initialTimetable().classes : load(STORAGE, initialTimetable().classes ?? DEFAULT_CLASSES);
@@ -113,11 +113,11 @@ function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <Header route={route}/>
     <main id="main" tabIndex={-1}>
-      {route === 'home' ? <><Hero cal={cal}/><ClassesPreview cal={cal}/></> : null}
+      {route === 'home' ? <><Hero cal={cal}/><Meet/><FirstClass/><ClassesPreview cal={cal}/></> : null}
       {route === 'classes' ? <ClassesPage cal={cal}/> : null}
-      {route === 'story' ? <><Story first/><CtaBand/></> : null}
-      {route === 'gym' ? <><Approach first/><Club/><Space/><CtaBand/></> : null}
-      {route === 'community' ? <><Community first/><Kit/><CtaBand/></> : null}
+      {route === 'story' ? <Story first/> : null}
+      {route === 'gym' ? <><Space first/><Club/><Approach/><CtaBand/></> : null}
+      {route === 'community' ? <><Community first/><Kit/><Join/></> : null}
       {route === 'visit' ? <><Visit first/><Join/><CtaBand/></> : null}
     </main>
     <Footer onOwnerDemo={() => setAdmin(true)} route={route}/>
