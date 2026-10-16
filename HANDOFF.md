@@ -60,7 +60,18 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 
 - Fixed a blank-page crash: the timetable cache read `localStorage` outside its try/catch, so any browser that blocks site storage (some privacy modes, sandboxed previews) showed an empty white page.
 
+## Reminder: medical partner and documents page (not built yet)
+
+The owner says Dr Alix Daniel (private GP, https://dralixdanielprivategp.com/) is coming on board as the gym's medical doctor, and that a document (details attached to the owner's message, **not yet in the repository**) needs to go on the website, probably on a new documents page. Branch `claude/optimistic-newton-rd8to1` is the placeholder for this work. Nothing has been added to the site.
+
+- Owner to supply: the document itself (file or text), where it should appear, and what Dr Daniel's role is in the club's own words.
+- Do not copy claims from the doctor's own site (years of experience, insurance cover, ratings, partner logos) onto this site until the owner and Dr Daniel confirm the wording. Her site gives no qualifications or GMC number; get her approval and check the register before naming her.
+- Likely shape when ready: a new hash route (for example `#/docs`) in `src/main.jsx`, a nav link in `src/components/Header.jsx`, copy in `src/content.js`, and files in `public/docs/`. PDFs should be reviewed for personal data before publishing, because this repository is public.
+- Do not publish health advice as the club's own. Keep the wording to who the doctor is and what the document says.
+
 ## Open questions for the owner (demo draft)
+
+- Medical partner: the document, its placement, Dr Daniel's agreed role and wording, and her consent to be named (see the reminder above).
 
 - Who will create the timetable Google Sheet, and which hosting provider will hold `VITE_TIMETABLE_CSV_URL`?
 - How studio holders receive the discount code, and how often it changes.
