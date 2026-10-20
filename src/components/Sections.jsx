@@ -86,7 +86,7 @@ export function Story({ first = false }) {
     <div className="wrap">
       <div className={hasHero ? 'story-grid' : 'story-grid story-grid-single'}>
         {hasHero ? <div className="story-photo">
-          <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+          <Photo name="ring" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
         </div> : null}
         <div className="story-copy">
           <Eyebrow>{story?.eyebrow}</Eyebrow>
@@ -300,7 +300,8 @@ export function CtaBand() {
 }
 
 // Gym: the coaches, as two fight-bill cards.
-export function Coaches() {
+export function Coaches({ first = false }) {
+  const H = first ? 'h1' : 'h2';
   const { coaches } = content;
   const people = Array.isArray(coaches?.people) ? coaches.people : [];
   if (!people.length) return null;
@@ -309,7 +310,7 @@ export function Coaches() {
       <div className="split">
         <div>
           <Eyebrow>{coaches.eyebrow}</Eyebrow>
-          <h2 id="coaches-title" className="h2"><Title parts={coaches.heading}/></h2>
+          <H id="coaches-title" className="h2"><Title parts={coaches.heading}/></H>
         </div>
         {coaches.lede ? <div className="split-copy"><p className="lede">{coaches.lede}</p></div> : null}
       </div>
@@ -324,6 +325,33 @@ export function Coaches() {
           {person.link ? <p><a className="btn btn-paper" href={person.link.href}>{person.link.label} <ArrowRight size={18} aria-hidden="true"/></a></p> : null}
         </li>)}
       </ul>
+    </div>
+  </section>;
+}
+
+// Doctor / white collar boxing page. Placeholder content only.
+export function Doctor({ first = false }) {
+  const { doctor } = content;
+  if (!doctor) return null;
+  const person = doctor.person;
+  const H = first ? 'h1' : 'h2';
+  return <section className="section doctor plaster" aria-labelledby="doctor-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow>{doctor.eyebrow}</Eyebrow>
+          <H id="doctor-title" className="h2"><Title parts={doctor.heading}/></H>
+        </div>
+        <div className="split-copy"><p className="lede">{doctor.lede}</p></div>
+      </div>
+      <Paragraphs items={doctor.paragraphs}/>
+      {person ? <ul className="posters posters-2"><li className="poster poster-1">
+        <span className="poster-no">{person.role}</span>
+        {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false}/> : null}
+        <h3 className="poster-title">{person.name}</h3>
+        <p>{person.bio}</p>
+      </li></ul> : null}
+      {doctor.note ? <p className="coach-note">{doctor.note}</p> : null}
     </div>
   </section>;
 }

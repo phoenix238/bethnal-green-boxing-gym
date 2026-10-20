@@ -7,7 +7,7 @@ export const site = {
   name: 'Bethnal Green Boxing Club',
   mark: 'BG',
   area: 'Bethnal Green, East London',
-  tagline: 'A proper boxing gym for the neighbourhood.',
+  tagline: 'A place to train in Bethnal Green.',
 };
 
 export const photos = {
@@ -25,6 +25,7 @@ export const photos = {
   // Members are identifiable: get everyone's consent (a parent's for anyone under 18) before these go on a public site.
   clubGroup: { src: 'photos/club-group.jpg', width: 1200, height: 900, alt: 'A class group in the ring with guards up, fight posters behind', caption: 'Guards up' },
   benPlaceholder: { src: 'photos/ben-placeholder.svg', width: 600, height: 750, alt: 'Placeholder silhouette: photo of Ben coming soon', caption: 'Photo coming soon' }, // PLACEHOLDER: swap for Ben's real photo
+  doctorPlaceholder: { src: 'photos/ben-placeholder.svg', width: 600, height: 750, alt: 'Placeholder silhouette: photo of the doctor coming soon', caption: 'Photo coming soon' },
   clubGroup2: { src: 'photos/club-group-2.jpg', width: 1200, height: 1600, alt: 'Another class group posing in the ring with guards up', caption: 'In the ring after class' },
 };
 
@@ -41,10 +42,10 @@ export const media = {
 // HOME
 export const hero = {
   eyebrow: 'Bethnal Green · Opposite York Hall',
-  title: ['Learn to box', 'with Bernie.'],
+  title: ['Train at Bethnal Green', 'Boxing Club.'],
   lede: [
-    'A small boxing club in a basement in Bethnal Green, run by Bernie Paul. Former pro. Once known as the Punching Postman.',
-    'Every class is open level. Never boxed? Good. That\'s where everyone starts.',
+    '[Placeholder] A place to train in Bethnal Green: group classes, one-to-one coaching and white collar boxing, for everyone in the neighbourhood.',
+    '[Placeholder] Every class is open level. Never boxed? Good. That\'s where everyone starts.',
   ],
   // Hero picture: a key from `photos` below. Temporary: a class group in the ring, until the owner supplies the hero photo.
   photo: 'clubGroup',
@@ -54,13 +55,13 @@ export const hero = {
 
 // Home: short personal introduction to Bernie. Links on to the full story rather than telling it.
 export const meet = {
-  eyebrow: 'Your coach',
-  heading: ['You\'ll be trained', 'by Bernie.'],
+  eyebrow: 'The club',
+  heading: ['A place', 'to train.'],
   paragraphs: [
-    'Bernie started boxing at 15 in north London. He turned pro in his mid-twenties, while still doing his post round, and won a Southern Area title fight at York Hall in 1995.',
-    'Now he runs his own club, right across the road from where he won it. He takes the group classes with his coaching partner, Ben.',
+    '[Placeholder] What the club is and who it is for. To be written by the owner.',
+    '[Placeholder] Two coaches, Bernie and Ben, run the group classes. Ben also takes private one-to-one lessons.',
   ],
-  link: { label: 'Read Bernie\'s story', href: '#/story' },
+  link: { label: 'Meet the coaches', href: '#/coaches' },
 };
 
 // GYM page: the coaches. Ben's details are PLACEHOLDERS: his Facebook page is login-walled, so nothing about his
@@ -74,7 +75,7 @@ export const coaches = {
       name: 'Bernie Paul',
       role: 'Founder · Group classes',
       photo: 'founderPostbox',
-      bio: 'Former pro and founder of the club. Once known as the Punching Postman. Takes the group classes.',
+      bio: 'Founder of the club. Takes the group classes. [Placeholder: short coach intro to be written with Bernie.]',
       link: { label: 'Read Bernie\'s story', href: '#/story' },
     },
     {
@@ -86,6 +87,20 @@ export const coaches = {
       book: 'Book a private lesson',
     },
   ],
+};
+
+// DOCTOR page: the club's doctor and white collar boxing. ALL PLACEHOLDER: no name, credentials or medical claims
+// have been supplied. Do not state what the doctor does or approves until the owner and the doctor confirm it.
+export const doctor = {
+  eyebrow: 'White collar boxing',
+  heading: ['Boxing for', 'everyone.'],
+  lede: '[Placeholder] The club is working with a doctor so it can offer white collar boxing. Details to be confirmed.',
+  paragraphs: [
+    '[Placeholder] What white collar boxing is at the club and who can take part.',
+    '[Placeholder] What the doctor\'s role is, what health checks or forms are needed, and how to ask. To be confirmed with the doctor.',
+  ],
+  person: { name: 'Dr [Name to be confirmed]', role: 'Club doctor', photo: 'doctorPlaceholder', bio: '[Placeholder] Short introduction to the doctor, once they have agreed to be named.' },
+  note: 'This page is a placeholder. No fights or medical services are being offered yet.',
 };
 
 // Home: what to expect. Only confirmed facts; the advice lines are deliberately generic.
@@ -104,13 +119,13 @@ export const firstClass = {
 // GYM page: what the club is like to train in.
 export const approach = {
   eyebrow: 'How we train',
-  heading: ['Not a fancy gym.', 'A proper one.'],
-  lede: 'No mirrors to pose in, nothing shiny. A ring, some bags, old fight posters on the walls, and a coach who has done it.',
-  body: 'You learn to box properly: how to stand, how to punch, how to move. It\'s hard work, and you\'ll feel it. But nobody\'s here to show off, and nobody gets left behind.',
+  heading: ['How we', 'train.'],
+  lede: '[Placeholder] A short line on what training at the club is like.',
+  body: '[Placeholder] What you learn, how hard it is, and what kind of club this is. To be written by the owner.',
   values: [
     { title: 'Everyone starts somewhere', text: 'Classes are open level. First session or fiftieth, you train together and push at your own pace.' },
     { title: 'Old school', text: 'Hard work and discipline. Boxing taught the way it always has been.' },
-    { title: 'Small and personal', text: 'This isn\'t a chain. It\'s Bernie\'s club, and he knows who\'s in the room.' },
+    { title: 'Small and personal', text: '[Placeholder] This isn\'t a chain. It\'s a small, local club.' },
   ],
 };
 
@@ -169,8 +184,8 @@ export const community = {
   eyebrow: 'Community',
   heading: ['Giving something', 'back.'],
   paragraphs: [
-    'Before this club, Bernie ran a small training group from a garage during lockdown. Some young people came along, and he saw what regular training, discipline and a bit of belonging did for them.',
-    'That\'s why the club is here. It\'s not all about the money. It\'s about giving people somewhere to go, something to work at, and someone in their corner.',
+    '[Placeholder] The community project: what it is, who it is for and how it started. To be written by the owner.',
+    '[Placeholder] How people can get involved, support it or ask for help.',
   ],
   goals: [
     'Find local funders and supporters to back the club\'s community work',
@@ -208,12 +223,12 @@ export const visit = {
 
 export const cta = {
   heading: ['Come as you are.', 'Leave a bit stronger.'],
-  text: 'Open level, beginners welcome. Bernie will see you down there.',
+  text: '[Placeholder] Open level, beginners welcome. We\'ll see you down there.',
   button: 'See the classes',
 };
 
 export const footer = {
-  line: 'Bernie Paul\'s community boxing club in Bethnal Green, East London. The kit shop isn\'t open yet.',
+  line: 'Bethnal Green Boxing Club, Bethnal Green, East London. The kit shop isn\'t open yet.',
   instagram: null, // link to be supplied by the owner
 };
 
