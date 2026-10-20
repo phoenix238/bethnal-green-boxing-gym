@@ -685,6 +685,7 @@ main:focus { outline: none; }
 /* Gym: coaches */
 .posters-2 { list-style: none; padding: 0; display: grid; gap: 32px; margin-top: clamp(28px, 4vw, 48px); }
 @media (min-width: 760px) { .posters-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.coach-photo { max-width: 260px; margin: 0 0 18px; }
 .coach-note { margin-top: 12px; font-weight: 700; }
 
 /* Home: meet the coach on the black floor band */

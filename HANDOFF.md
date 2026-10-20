@@ -71,7 +71,7 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
-- Ben Doughty (coach, one-to-one + group classes with Bernie): his Facebook page is login-walled so nothing was read. His bio in `coaches` (`src/content.js`) is a placeholder; needs his own text, a photo, one-to-one price/booking method, and his agreement to be named. Home copy now says Bernie takes group classes with Ben; confirm.
+- Ben Doughty (coach, one-to-one + group classes with Bernie): his Facebook page is login-walled and his YouTube channel (@hardestgame007, "The Hardest Game") showed only its title, so nothing about his background was read. His bio in `coaches` (`src/content.js`) is a placeholder; needs his own text and a real photo (currently `public/photos/ben-placeholder.svg`). Private lesson £40, booked through the Cal.com link (the button opens the main Cal.com page; add a private-lesson event slug to `BookButton` once it exists). Owner said Ben agrees to be named (message was garbled; confirm). Home copy says Bernie takes group classes with Ben; confirm.
 - Did 29 November 1995 win the Southern Area title or defend it? Home copy says he "won a Southern Area title fight", based on the photo caption.
 - First-class practicalities for "What to expect": class length, arrive early?, are gloves and wraps provided? Full address.
 

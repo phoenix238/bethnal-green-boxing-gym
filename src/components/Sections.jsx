@@ -316,9 +316,11 @@ export function Coaches() {
       <ul className="posters posters-2">
         {people.map((person, index) => <li className={`poster poster-${index === 0 ? 1 : 3}`} key={person.name}>
           <span className="poster-no">{person.role}</span>
+          {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false} sizes="(min-width: 760px) 40vw, 90vw"/> : null}
           <h3 className="poster-title">{person.name}</h3>
           <p>{person.bio}</p>
           {person.note ? <p className="coach-note">{person.note}</p> : null}
+          {person.book ? <p><BookButton label={<>{person.book} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/></p> : null}
           {person.link ? <p><a className="btn btn-paper" href={person.link.href}>{person.link.label} <ArrowRight size={18} aria-hidden="true"/></a></p> : null}
         </li>)}
       </ul>

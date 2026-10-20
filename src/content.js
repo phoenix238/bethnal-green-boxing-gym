@@ -24,6 +24,7 @@ export const photos = {
   founderSparring: { src: 'photos/founder-sparring.jpg', width: 482, height: 357, alt: 'Black and white photo of Bernie Paul in an exchange at close range', caption: 'Bernie Paul in action' },
   // Members are identifiable: get everyone's consent (a parent's for anyone under 18) before these go on a public site.
   clubGroup: { src: 'photos/club-group.jpg', width: 1200, height: 900, alt: 'A class group in the ring with guards up, fight posters behind', caption: 'Guards up' },
+  benPlaceholder: { src: 'photos/ben-placeholder.svg', width: 600, height: 750, alt: 'Placeholder silhouette: photo of Ben coming soon', caption: 'Photo coming soon' }, // PLACEHOLDER: swap for Ben's real photo
   clubGroup2: { src: 'photos/club-group-2.jpg', width: 1200, height: 1600, alt: 'Another class group posing in the ring with guards up', caption: 'In the ring after class' },
 };
 
@@ -72,14 +73,17 @@ export const coaches = {
     {
       name: 'Bernie Paul',
       role: 'Founder · Group classes',
+      photo: 'founderPostbox',
       bio: 'Former pro and founder of the club. Once known as the Punching Postman. Takes the group classes.',
       link: { label: 'Read Bernie\'s story', href: '#/story' },
     },
     {
       name: 'Ben Doughty',
       role: 'Coach · One-to-one coaching · Group classes',
+      photo: 'benPlaceholder',
       bio: 'Ben\'s coaching background goes here. [Placeholder: to be written with Ben.]',
-      note: 'One-to-one sessions with Ben: ask in the WhatsApp group. Prices and booking to be confirmed.',
+      note: 'Private one-to-one lesson with Ben: £40. Book online through our booking calendar.',
+      book: 'Book a private lesson',
     },
   ],
 };
