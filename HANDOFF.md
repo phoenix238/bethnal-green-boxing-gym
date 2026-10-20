@@ -71,7 +71,7 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
-- Does Bernie take every class himself? Home copy says "he takes the classes himself".
+- Ben Doughty (coach, one-to-one + group classes with Bernie): his Facebook page is login-walled and his YouTube channel (@hardestgame007, "The Hardest Game") showed only its title, so nothing about his background was read. His bio in `coaches` (`src/content.js`) is a placeholder; needs his own text and a real photo (currently `public/photos/ben-placeholder.svg`). Private lesson £40, booked through the Cal.com link (the button opens the main Cal.com page; add a private-lesson event slug to `BookButton` once it exists). Owner said Ben agrees to be named (message was garbled; confirm). Home copy says Bernie takes group classes with Ben; confirm.
 - Did 29 November 1995 win the Southern Area title or defend it? Home copy says he "won a Southern Area title fight", based on the photo caption.
 - First-class practicalities for "What to expect": class length, arrive early?, are gloves and wraps provided? Full address.
 
@@ -108,3 +108,12 @@ Use this GitHub repository as the shared checkpoint. Before changing code, the n
 Suggested message to Claude after opening the GitHub repository:
 
 > Please continue the Bethnal Green Boxing Gym website from this repository. Read `CLAUDE.md`, `HANDOFF.md`, and `README.md` first. Preserve the confirmed owner decisions and the prototype/live-service boundaries. Tell me what you found and what you plan to change, then work in small reviewable commits. Do not invent founder facts or request/commit secret credentials.
+
+## Club-first rethink (October 2026, owner request)
+
+The site is being refocused on **Bethnal Green Boxing Club as a place to train**, not on Bernie alone. Home, Gym, Community, call-to-action and footer copy are now clearly marked `[Placeholder]` so the owner can see the shape and fill it in. Bernie's confirmed story page is untouched (still at `#/story`, linked from the Coaches page); the previous home/gym/community wording is in git history before this change.
+
+New structure: Classes · Coaches (Bernie + Ben) · White collar · The gym · Community · Visit.
+
+- **White collar page (`#/doctor`)**: placeholder only. No doctor name, credentials or medical claims were supplied. Open questions: doctor's name and agreement to be named; what the doctor actually does; what health forms/checks are needed; whether white collar fights need extra approval or insurance. The site must not claim medical clearance or run fights until confirmed. No health data is collected by the site.
+- Community project: copy is a placeholder. Owner to write.

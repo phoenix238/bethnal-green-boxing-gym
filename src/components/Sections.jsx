@@ -86,7 +86,7 @@ export function Story({ first = false }) {
     <div className="wrap">
       <div className={hasHero ? 'story-grid' : 'story-grid story-grid-single'}>
         {hasHero ? <div className="story-photo">
-          <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+          <Photo name="ring" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
         </div> : null}
         <div className="story-copy">
           <Eyebrow>{story?.eyebrow}</Eyebrow>
@@ -295,6 +295,63 @@ export function CtaBand() {
       <h2 id="cta-title" className="cta-title"><Title parts={heading}/></h2>
       {cta?.text ? <p className="cta-text">{cta.text}</p> : null}
       <a className="btn btn-yellow" href="#/classes">{cta?.button ?? 'See the classes'} <ArrowRight size={18} aria-hidden="true"/></a>
+    </div>
+  </section>;
+}
+
+// Gym: the coaches, as two fight-bill cards.
+export function Coaches({ first = false }) {
+  const H = first ? 'h1' : 'h2';
+  const { coaches } = content;
+  const people = Array.isArray(coaches?.people) ? coaches.people : [];
+  if (!people.length) return null;
+  return <section className="section coaches plaster" aria-labelledby="coaches-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow>{coaches.eyebrow}</Eyebrow>
+          <H id="coaches-title" className="h2"><Title parts={coaches.heading}/></H>
+        </div>
+        {coaches.lede ? <div className="split-copy"><p className="lede">{coaches.lede}</p></div> : null}
+      </div>
+      <ul className="posters posters-2">
+        {people.map((person, index) => <li className={`poster poster-${index === 0 ? 1 : 3}`} key={person.name}>
+          <span className="poster-no">{person.role}</span>
+          {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false} sizes="(min-width: 760px) 40vw, 90vw"/> : null}
+          <h3 className="poster-title">{person.name}</h3>
+          <p>{person.bio}</p>
+          {person.note ? <p className="coach-note">{person.note}</p> : null}
+          {person.book ? <p><BookButton label={<>{person.book} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/></p> : null}
+          {person.link ? <p><a className="btn btn-paper" href={person.link.href}>{person.link.label} <ArrowRight size={18} aria-hidden="true"/></a></p> : null}
+        </li>)}
+      </ul>
+    </div>
+  </section>;
+}
+
+// Doctor / white collar boxing page. Placeholder content only.
+export function Doctor({ first = false }) {
+  const { doctor } = content;
+  if (!doctor) return null;
+  const person = doctor.person;
+  const H = first ? 'h1' : 'h2';
+  return <section className="section doctor plaster" aria-labelledby="doctor-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow>{doctor.eyebrow}</Eyebrow>
+          <H id="doctor-title" className="h2"><Title parts={doctor.heading}/></H>
+        </div>
+        <div className="split-copy"><p className="lede">{doctor.lede}</p></div>
+      </div>
+      <Paragraphs items={doctor.paragraphs}/>
+      {person ? <ul className="posters posters-2"><li className="poster poster-1">
+        <span className="poster-no">{person.role}</span>
+        {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false}/> : null}
+        <h3 className="poster-title">{person.name}</h3>
+        <p>{person.bio}</p>
+      </li></ul> : null}
+      {doctor.note ? <p className="coach-note">{doctor.note}</p> : null}
     </div>
   </section>;
 }

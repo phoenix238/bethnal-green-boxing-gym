@@ -6,7 +6,8 @@ import { BookButton } from './Classes.jsx';
 // The site's pages (hash routes, so it works on any static host). Labels are interface text; copy lives in content.js.
 export const NAV_LINKS = [
   { route: 'classes', href: '#/classes', label: 'Classes' },
-  { route: 'story', href: '#/story', label: 'Our story' },
+  { route: 'coaches', href: '#/coaches', label: 'Coaches' },
+  { route: 'doctor', href: '#/doctor', label: 'White collar' },
   { route: 'gym', href: '#/gym', label: 'The gym' },
   { route: 'community', href: '#/community', label: 'Community' },
   { route: 'visit', href: '#/visit', label: 'Visit' },
