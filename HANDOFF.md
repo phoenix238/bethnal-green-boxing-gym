@@ -71,7 +71,7 @@ React + Vite front-end. `src/main.jsx` holds the app state and the guarded `loca
 - Sign-off for the one quote on the site ("It breaks you down to build you up."), taken from the machine transcript.
 - Whether the site can say he boxed professionally, and whether the titles can be stated, in what exact words.
 - What "Proposition Studios artist" means for the £5 rate and how it is checked.
-- Does Bernie take every class himself? Home copy says "he takes the classes himself".
+- Ben Doughty (coach, one-to-one + group classes with Bernie): his Facebook page is login-walled so nothing was read. His bio in `coaches` (`src/content.js`) is a placeholder; needs his own text, a photo, one-to-one price/booking method, and his agreement to be named. Home copy now says Bernie takes group classes with Ben; confirm.
 - Did 29 November 1995 win the Southern Area title or defend it? Home copy says he "won a Southern Area title fight", based on the photo caption.
 - First-class practicalities for "What to expect": class length, arrive early?, are gloves and wraps provided? Full address.
 

@@ -299,6 +299,33 @@ export function CtaBand() {
   </section>;
 }
 
+// Gym: the coaches, as two fight-bill cards.
+export function Coaches() {
+  const { coaches } = content;
+  const people = Array.isArray(coaches?.people) ? coaches.people : [];
+  if (!people.length) return null;
+  return <section className="section coaches plaster" aria-labelledby="coaches-title">
+    <div className="wrap">
+      <div className="split">
+        <div>
+          <Eyebrow>{coaches.eyebrow}</Eyebrow>
+          <h2 id="coaches-title" className="h2"><Title parts={coaches.heading}/></h2>
+        </div>
+        {coaches.lede ? <div className="split-copy"><p className="lede">{coaches.lede}</p></div> : null}
+      </div>
+      <ul className="posters posters-2">
+        {people.map((person, index) => <li className={`poster poster-${index === 0 ? 1 : 3}`} key={person.name}>
+          <span className="poster-no">{person.role}</span>
+          <h3 className="poster-title">{person.name}</h3>
+          <p>{person.bio}</p>
+          {person.note ? <p className="coach-note">{person.note}</p> : null}
+          {person.link ? <p><a className="btn btn-paper" href={person.link.href}>{person.link.label} <ArrowRight size={18} aria-hidden="true"/></a></p> : null}
+        </li>)}
+      </ul>
+    </div>
+  </section>;
+}
+
 // Home: a short, personal hello from the coach, linking on to the full story.
 export function Meet() {
   const { meet } = content;

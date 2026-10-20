@@ -57,9 +57,31 @@ export const meet = {
   heading: ['You\'ll be trained', 'by Bernie.'],
   paragraphs: [
     'Bernie started boxing at 15 in north London. He turned pro in his mid-twenties, while still doing his post round, and won a Southern Area title fight at York Hall in 1995.',
-    'Now he runs his own club, right across the road from where he won it. It\'s his gym, and he takes the classes himself.',
+    'Now he runs his own club, right across the road from where he won it. He takes the group classes with his coaching partner, Ben.',
   ],
   link: { label: 'Read Bernie\'s story', href: '#/story' },
+};
+
+// GYM page: the coaches. Ben's details are PLACEHOLDERS: his Facebook page is login-walled, so nothing about his
+// background has been read. Replace `bio` (and add a `photo` key from `photos`) once Ben supplies/approves his own text.
+export const coaches = {
+  eyebrow: 'Your coaches',
+  heading: ['Meet the', 'coaches.'],
+  lede: 'Two coaches, one small club. Bernie and Ben take the group classes together. For one-to-one work, see Ben.',
+  people: [
+    {
+      name: 'Bernie Paul',
+      role: 'Founder · Group classes',
+      bio: 'Former pro and founder of the club. Once known as the Punching Postman. Takes the group classes.',
+      link: { label: 'Read Bernie\'s story', href: '#/story' },
+    },
+    {
+      name: 'Ben Doughty',
+      role: 'Coach · One-to-one coaching · Group classes',
+      bio: 'Ben\'s coaching background goes here. [Placeholder: to be written with Ben.]',
+      note: 'One-to-one sessions with Ben: ask in the WhatsApp group. Prices and booking to be confirmed.',
+    },
+  ],
 };
 
 // Home: what to expect. Only confirmed facts; the advice lines are deliberately generic.
