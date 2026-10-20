@@ -51,6 +51,27 @@ export const hero = {
   secondaryCta: 'See the classes',
 };
 
+// DOCTOR PAGE (#/doctor). DRAFT: the owner's plan, not yet approved by Dr Daniel. Do not add her qualifications,
+// GMC number, photo or any claim from her own website until she confirms the wording (see HANDOFF.md).
+export const doctor = {
+  eyebrow: 'Our club doctor',
+  heading: ['A doctor', 'on board.'],
+  paragraphs: [
+    'A boxing club should have a doctor behind it. Ours is Dr Alix Daniel, a private GP based on Harley Street.',
+    'Dr Daniel is joining the club to look after the people who box here.',
+  ],
+  // Draft: owner's current plan ("I think"); confirm each line with Dr Daniel before launch.
+  items: [
+    { label: 'Before fights', value: 'Medical checks for anyone boxing.' },
+    { label: 'At the club', value: 'Visits training about once a week to answer questions.' },
+    { label: 'Her practice', value: 'Dr Alix Daniel Private GP Services, 10 Harley Street, London W1G 9PF.' },
+  ],
+  link: { label: 'Dr Daniel\'s own website', href: 'https://dralixdanielprivategp.com/' },
+  // Shown on the page while the wording is unapproved. Set to null to hide it once Dr Daniel signs off.
+  draftNote: 'Draft wording. Dr Daniel has not yet approved this page.',
+  safety: 'This page is not medical advice. For anything urgent, call 999 or 111.',
+};
+
 // Home: short personal introduction to Bernie. Links on to the full story rather than telling it.
 export const meet = {
   eyebrow: 'Your coach',

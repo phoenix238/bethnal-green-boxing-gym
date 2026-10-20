@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { route: 'story', href: '#/story', label: 'Our story' },
   { route: 'gym', href: '#/gym', label: 'The gym' },
   { route: 'community', href: '#/community', label: 'Community' },
+  { route: 'doctor', href: '#/doctor', label: 'Doctor' },
   { route: 'visit', href: '#/visit', label: 'Visit' },
 ];
 

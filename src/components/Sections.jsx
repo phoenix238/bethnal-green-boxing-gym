@@ -286,6 +286,29 @@ export function Visit({ first = false }) {
   </section>;
 }
 
+export function Doctor({ first = false }) {
+  const H = first ? 'h1' : 'h2';
+  const { doctor } = content;
+  if (!doctor) return null;
+  const items = Array.isArray(doctor.items) ? doctor.items : [];
+  return <section className="section visit plaster" id="doctor" aria-labelledby="doctor-title">
+    <div className="wrap">
+      <Eyebrow>{doctor.eyebrow}</Eyebrow>
+      <H id="doctor-title" className="h2"><Title parts={doctor.heading}/></H>
+      {doctor.draftNote ? <p className="draft-note">{doctor.draftNote}</p> : null}
+      <Paragraphs items={doctor.paragraphs} className="lede"/>
+      {items.length ? <dl className="tickets">
+        {items.map((item, index) => <div className="ticket" key={index}>
+          <dt>{item.label}</dt>
+          <dd>{item.value}</dd>
+        </div>)}
+      </dl> : null}
+      {doctor.link ? <p className="doctor-link"><a className="btn btn-paper" href={doctor.link.href} rel="noopener noreferrer" target="_blank">{doctor.link.label} <ArrowUpRight size={18} aria-hidden="true"/></a></p> : null}
+      {doctor.safety ? <p>{doctor.safety}</p> : null}
+    </div>
+  </section>;
+}
+
 export function CtaBand() {
   const { site } = content;
   const cta = content.cta ?? null; // optional export; falls back to the tagline and hero button text
