@@ -164,7 +164,7 @@ export const firstClass = {
     },
     {
       "title": "Come down",
-      "text": "Wear comfortable training clothes and training shoes. Gloves are the only equipment available to borrow."
+      "text": "Wear comfortable training clothes and training shoes. We have gloves you can borrow if you need them."
     },
     {
       "title": "Ask us anything",
@@ -456,7 +456,7 @@ export const visit = {
     },
     {
       "label": "Your first visit",
-      "value": "Wear comfortable training clothes and training shoes. Gloves are the only equipment available to borrow."
+      "value": "Wear comfortable training clothes and training shoes. We have gloves you can borrow if you need them."
     }
   ],
   "directions": {
