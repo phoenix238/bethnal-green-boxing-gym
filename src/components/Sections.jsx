@@ -19,7 +19,7 @@ export function Hero({ cal }) {
         <h1 id="hero-title" className="hero-title"><Title parts={hero?.title}/></h1>
         <Paragraphs items={hero?.lede} className="hero-lede"/>
         <div className="hero-actions">
-          <BookButton label={<>{hero?.primaryCta ?? 'Book a class'} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/>
+          <BookButton slug="boxingmixedlevels" label={<>{hero?.primaryCta ?? 'Book a class'} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/>
           {hero?.secondaryCta ? <a className="btn btn-paper" href="#/classes">{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></a> : null}
         </div>
         {next.length ? <div className="hero-ticket">
@@ -86,7 +86,7 @@ export function Story({ first = false }) {
     <div className="wrap">
       <div className={hasHero ? 'story-grid' : 'story-grid story-grid-single'}>
         {hasHero ? <div className="story-photo">
-          <Photo name="ring" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+          <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
         </div> : null}
         <div className="story-copy">
           <Eyebrow>{story?.eyebrow}</Eyebrow>
@@ -107,11 +107,11 @@ export function Story({ first = false }) {
       {pro?.heading || pro?.paragraphs ? <div className="bill-poster">
         <p className="chapter-mark" aria-hidden="true">Round two</p>
         {pro.heading ? <h2 className="bill-poster-title"><Title parts={pro.heading}/></h2> : null}
-        <p className="bill-poster-meta" aria-hidden="true">York Hall <span>★</span> 29 Nov 1995 <span>★</span> Southern Area</p>
+        <p className="bill-poster-meta" aria-hidden="true">Bethnal Green <span>★</span> A place to train <span>★</span> A place to belong</p>
         <div className="bill-poster-copy"><Paragraphs items={pro.paragraphs}/></div>
       </div> : null}
       <div className="story-close">
-        <a className="btn btn-yellow" href="#/classes">Train with Bernie <ArrowRight size={18} aria-hidden="true"/></a>
+        <a className="btn btn-yellow" href="#/classes">Train at the club <ArrowRight size={18} aria-hidden="true"/></a>
       </div>
     </div>
   </section>;
@@ -175,7 +175,7 @@ export function Club() {
       <div className="club-grid">
         {video ? <ClubVideo video={video}/> : null}
         <Photo name="clubGroup" className="club-photo-wide pin-tilt-right" sizes="(min-width: 960px) 34vw, 92vw"/>
-        <Photo name="clubGroup2" className="club-photo-tall pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
+        <Photo name="trainingFocus" className="club-photo-tall pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
       </div>
     </div>
   </section>;
@@ -216,7 +216,7 @@ export function Space({ first = false }) {
       <div className="collage">
         <Photo name="lounge" className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
         <Photo name="floor" className="collage-tall pin-tilt-right" sizes="(min-width: 900px) 25vw, 46vw"/>
-        <Photo name="magazinesTable" className="collage-tall pin-tilt-left-sm" sizes="(min-width: 900px) 25vw, 46vw"/>
+        <Photo name="trainingFootwork" className="collage-tall pin-tilt-left-sm" sizes="(min-width: 900px) 25vw, 46vw"/>
       </div>
     </div>
   </section>;
@@ -282,6 +282,7 @@ export function Visit({ first = false }) {
           <dd>{item.value}</dd>
         </div>)}
       </dl> : null}
+      {visit.directions ? <div className="visit-directions"><p>{visit.directions.note}</p><a className="btn btn-paper" href={visit.directions.href} target="_blank" rel="noopener noreferrer">{visit.directions.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens Facebook in a new tab)</span></a></div> : null}
     </div>
   </section>;
 }
@@ -321,15 +322,15 @@ export function Coaches({ first = false }) {
           <h3 className="poster-title">{person.name}</h3>
           <p>{person.bio}</p>
           {person.note ? <p className="coach-note">{person.note}</p> : null}
-          {person.book ? <p><BookButton label={<>{person.book} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/></p> : null}
-          {person.link ? <p><a className="btn btn-paper" href={person.link.href}>{person.link.label} <ArrowRight size={18} aria-hidden="true"/></a></p> : null}
+          {person.book ? <p><BookButton slug={person.slug} label={<>{person.book} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/></p> : null}
+          {person.link ? <p><a className="btn btn-paper" href={person.link.href} target={person.link.external ? "_blank" : undefined} rel={person.link.external ? "noopener noreferrer" : undefined}>{person.link.label} {person.link.external ? <ArrowUpRight size={18} aria-hidden="true"/> : <ArrowRight size={18} aria-hidden="true"/>}{person.link.external ? <span className="sr-only"> (opens YouTube in a new tab)</span> : null}</a></p> : null}
         </li>)}
       </ul>
     </div>
   </section>;
 }
 
-// Doctor / white collar boxing page. Placeholder content only.
+// Medical advisor introduction and planned club involvement.
 export function Doctor({ first = false }) {
   const { doctor } = content;
   if (!doctor) return null;
@@ -348,9 +349,10 @@ export function Doctor({ first = false }) {
       {person ? <ul className="posters posters-2"><li className="poster poster-1">
         <span className="poster-no">{person.role}</span>
         {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false}/> : null}
-        <h3 className="poster-title">{person.name}</h3>
+        <h2 className="poster-title">{person.name}</h2>
         <p>{person.bio}</p>
       </li></ul> : null}
+      {person?.link ? <p><a className="btn btn-paper" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p> : null}
       {doctor.note ? <p className="coach-note">{doctor.note}</p> : null}
     </div>
   </section>;
@@ -363,7 +365,7 @@ export function Meet() {
   return <section className="section section-tight meet floor" aria-labelledby="meet-title">
     <div className="wrap meet-grid">
       <div className="meet-photo">
-        <Photo name="founderPostbox" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+        <Photo name="trainingPartners" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
       </div>
       <div className="meet-copy">
         <Eyebrow>{meet.eyebrow}</Eyebrow>
@@ -398,4 +400,17 @@ export function FirstClass() {
       </ol>
     </div>
   </section>;
+}
+
+// Two clear booking routes, reusing the site's existing fight-bill cards.
+export function TrainingOptions() {
+  const { trainingOptions } = content;
+  return <section className="section plaster" aria-labelledby="training-title"><div className="wrap">
+    <Eyebrow>{trainingOptions.eyebrow}</Eyebrow>
+    <h2 id="training-title" className="h2"><Title parts={trainingOptions.heading}/></h2>
+    <ul className="posters posters-2">{trainingOptions.options.map((option, index) => <li className={`poster poster-${index === 0 ? 1 : 3}`} key={option.slug}>
+      <h3 className="poster-title">{option.title}</h3><p>{option.text}</p><p className="coach-note">{option.note}</p>
+      <p><BookButton slug={option.slug} label={option.label} className="btn btn-yellow"/></p>
+    </li>)}</ul>
+  </div></section>;
 }

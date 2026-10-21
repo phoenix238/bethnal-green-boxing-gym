@@ -117,3 +117,12 @@ New structure: Classes · Coaches (Bernie + Ben) · White collar · The gym · C
 
 - **White collar page (`#/doctor`)**: placeholder only. No doctor name, credentials or medical claims were supplied. Open questions: doctor's name and agreement to be named; what the doctor actually does; what health forms/checks are needed; whether white collar fights need extra approval or insurance. The site must not claim medical clearance or run fights until confirmed. No health data is collected by the site.
 - Community project: copy is a placeholder. Owner to write.
+
+
+## Club-first launch copy and media — 21 October 2026
+
+The owner's latest instructions supersede the old naming/address/audience questions: call the founder **JB**, explain the historical Bernie Paul name once, current classes are **18+**, group classes **£10**, address **279 Cambridge Heath Road, London, E2 0EL**. Two full interview transcripts and Dr Alix Daniel's proposed biography were supplied. Raw interviews remain private.
+
+See [docs/LAUNCH_REVIEW.md](docs/LAUNCH_REVIEW.md) for source decisions, navigation changes, media selections, unconfirmed practicalities and separate JB/Ben/doctor checklists. This review includes the new doctor introduction and directions-reel link. The existing visual style and legacy routes remain. Cal.com availability is unchanged; editorial copy for the two known events now lives in content.js, so original event descriptions also need updating in Cal.com. Medical arrangements remain described as planned. Owner demo and the existing demo notice are unchanged.
+
+Ben’s coach bio now mentions his boxing podcasts and links to the owner-supplied YouTube channel (`@hardestgame007`), opening in a new tab. No video embed or episode claims were added.

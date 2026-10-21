@@ -39,18 +39,22 @@ export function nextSessions(classes, limit = 3) {
 }
 
 function ClassCard({ c, full }) {
+  // Editorial copy for these two known sessions; availability and booking links remain live.
+  const copy = content.classCopy?.[c.slug];
+  const title = copy?.title ?? c.title;
+  const description = copy?.description ?? c.description;
   return <li className="class-card">
     <div className="class-card-main">
-      <h3 className="class-card-title">{c.title}</h3>
+      <h3 className="class-card-title">{title}</h3>
       <p className="class-card-meta">
         {c.minutes ? <span><Clock3 size={15} aria-hidden="true"/>{c.minutes} min</span> : null}
         {c.places ? <span><Users size={15} aria-hidden="true"/>{c.places} places</span> : null}
         {c.price ? <span className="class-card-price">{c.price}</span> : null}
       </p>
-      {c.description ? <p className={full ? 'class-card-desc' : 'class-card-desc class-card-desc-short'}>{c.description}</p> : null}
+      {description ? <p className={full ? 'class-card-desc' : 'class-card-desc class-card-desc-short'}>{description}</p> : null}
       {c.next?.length ? <p className="class-card-next"><b>Next:</b> {c.next.map(formatSlot).filter(Boolean).join(' · ')}</p> : null}
     </div>
-    <BookButton slug={c.slug} title={c.title}/>
+    <BookButton slug={c.slug} title={title}/>
   </li>;
 }
 
@@ -106,11 +110,11 @@ export function ClassesPage({ cal }) {
       <Paragraphs items={t.intro} className="lede"/>
       <Status status={status} count={classes.length}/>
       {group.length ? <>
-        <h2 className="h3 class-group-title">{t.groupHeading ?? 'Group classes'}</h2>
+        <h2 className="h3 class-group-title">{t.groupHeading ?? 'Group classes'}</h2><Paragraphs items={t.groupIntro}/>
         <ul className="class-list">{group.map(c => <ClassCard key={c.slug} c={c} full/>)}</ul>
       </> : null}
       {priv.length ? <>
-        <h2 className="h3 class-group-title">{t.privateHeading ?? 'Private sessions'}</h2>
+        <h2 className="h3 class-group-title">{t.privateHeading ?? 'Private sessions'}</h2><Paragraphs items={t.privateIntro}/>
         <ul className="class-list">{priv.map(c => <ClassCard key={c.slug} c={c} full/>)}</ul>
       </> : null}
       <p className="class-foot">{content.sessions?.priceNote}</p>
