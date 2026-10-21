@@ -94,6 +94,14 @@ This branch does not deploy to GitHub Pages until merged into main. It does not 
 
 - Club enquiry email confirmed as **bethnalgreenbc@gmail.com**. First-visit and white collar enquiries now use email; a global email link is in the footer. The separately labelled WhatsApp group remains for people who want to join.
 - All tenant discount and age-restriction wording removed from the public website and metadata. Discount controls and reduced-price inputs removed from the hidden local demo too; old browser-stored reduced prices no longer apply.
-- First-visit copy confirms visitors wear training clothes and training shoes; only gloves are available to borrow.
+- First-visit copy: “Wear comfortable training clothes and training shoes. We have gloves you can borrow if you need them.”
 - Hero rebalanced around a portrait version of the supplied SSD promo, with a smaller title, direct group/private booking buttons and no York Hall tag. Landscape footage remains on the Club page.
 - Group picture now uses the saved Resolve grade, matching the darker photos. The third gallery image is the candid **PTM08631**; the Club introduction uses **PTM08539**. No homepage still is repeated.
+
+## Club page feedback — 22 October
+
+- Homepage promo now shows the confirmed weekly group schedule: Tuesdays 6pm and Thursdays 7pm. Live availability remains in the booking calendar and timetable below.
+- Replaced the empty lounge/floor images in the Club collage with SSD training shots **PTM08449** and **PTM08082**. PTM08082 is cropped from the existing Resolve still export to remove its black sidebars; the original grade and source files are unchanged.
+- Lifted the displayed brightness of the retained **PTM08472** pad-work shot, with a small contrast reduction to help the boxer on the right read more clearly. No source photograph was overwritten.
+- Removed all community goals and the minibus/funding/council plans. The section now describes JB’s motivation and the spirit of training together.
+- Medical arrangements now direct visitors to speak to JB or email the club, referring to Dr Alix in that sentence. Her full name remains Dr Alix Daniel in her profile.

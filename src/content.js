@@ -92,14 +92,8 @@ export const community = {
   ],
   "paragraphs": [
     "The club grew out of JB’s wish to bring people together through boxing. His earlier training group showed him what regular training, encouragement and a sense of belonging could mean to people.",
-    "Longer term, JB wants the club to do more for the wider community, with help from local supporters and funders."
-  ],
-  "goals": [
-    "Find local funders and supporters to back the club's community work",
-    "Raise money for a minibus, so the club can run day trips for young people and adults who need a break",
-    "Work with the council to support young people in Bethnal Green"
-  ],
-  "note": "These are goals the club is working towards, not services running today."
+    "That same spirit is at the heart of Bethnal Green Boxing Club: a place to train, get to know people and encourage each other along the way."
+  ]
 };
 
 export const cta = {
@@ -142,7 +136,7 @@ export const doctor = {
       "href": "https://dralixdanielprivategp.com/"
     }
   },
-  "note": "Medical appointments are arranged separately from training. Contact Dr Daniel’s practice for services, fees and availability, including fitness certificates and event attendance."
+  "note": "To arrange an appointment with Dr Alix, speak to JB or"
 };
 
 export const firstClass = {
@@ -372,7 +366,8 @@ export const photos = {
   "jbCurrent": {"src":"photos/jb-coaching.jpg","width":750,"height":900,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
   "benCurrent": {"src":"photos/ben-coaching.jpg","width":750,"height":900,"alt":"Ben coaching during a group boxing session","caption":"Ben in the gym"},
   "trainingTogether": {"src":"photos/training-together.jpg","width":720,"height":1080,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
-  "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"}
+  "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"},
+  "trainingWithJb": {"src":"photos/training-with-jb.jpg","width":720,"height":1080,"alt":"JB holding pads for a boxer during a training session","caption":"In your corner"}
 
 };
 
@@ -384,6 +379,7 @@ export const sessions = {
   ],
   "intro": "Group boxing with JB and Ben. One-to-one coaching with Ben. Find your next session below.",
   "priceNote": "Group classes: £10.",
+  "weekly": ["Tuesdays 6pm", "Thursdays 7pm"],
   "bookingNotice": "Class bookings are handled by Cal.com. Check the calendar for current availability."
 };
 

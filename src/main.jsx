@@ -106,7 +106,7 @@ function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <Header route={route}/>
     <main id="main" tabIndex={-1}>
-      {route === 'home' ? <><Hero cal={cal}/><TrainingOptions/><TrainingGallery/><ClassesPreview cal={cal}/><Meet/><FirstClass/><CtaBand/></> : null}
+      {route === 'home' ? <><Hero/><TrainingOptions/><TrainingGallery/><ClassesPreview cal={cal}/><Meet/><FirstClass/><CtaBand/></> : null}
       {route === 'classes' ? <ClassesPage cal={cal}/> : null}
       {route === 'coaches' ? <><Coaches first/><CtaBand/></> : null}
       {route === 'doctor' ? <><Doctor first/><CtaBand/></> : null}

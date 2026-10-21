@@ -2,13 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ArrowUpRight, MessageCircle, Mail, Pause, Play } from 'lucide-react';
 import * as content from '../content.js';
 import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
-import { BookButton, nextSessions } from './Classes.jsx';
-import { formatSlot } from '../calclasses.js';
+import { BookButton } from './Classes.jsx';
 
-// The hero's ticket shows the next few class dates straight from Cal.com, so it never goes out of date.
-export function Hero({ cal }) {
+// The weekly promo is separate from the live booking calendar below.
+export function Hero() {
   const { hero, sessions } = content;
-  const next = nextSessions(cal?.classes ?? []);
   return <section className="hero plaster" aria-labelledby="hero-title">
     <div className="hero-inner">
       <div className="hero-heading">
@@ -23,16 +21,16 @@ export function Hero({ cal }) {
           <BookButton slug="boxingmixedlevels" label={<>{hero?.primaryCta ?? 'Book a class'} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/>
           {hero?.secondaryCta ? <BookButton slug="private-one-on-one" label={<>{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-paper"/> : null}
         </div>
-        {next.length ? <div className="hero-ticket">
-          <p className="hero-ticket-label">Next up</p>
+        <div className="hero-ticket">
+          <p className="hero-ticket-label">Weekly group classes</p>
           <p className="bill-line">
-            {next.map((slot, index) => <React.Fragment key={slot.iso + slot.slug}>
+            {sessions.weekly.map((slot, index) => <React.Fragment key={slot}>
               {index > 0 ? <span className="bill-star" aria-hidden="true">★</span> : null}
-              <span className="bill-slot">{formatSlot(slot.iso)}</span>
+              <span className="bill-slot">{slot}</span>
             </React.Fragment>)}
           </p>
           {sessions?.priceNote ? <p className="hero-ticket-note">{sessions.priceNote}</p> : null}
-        </div> : null}
+        </div>
       </div>
       <div className="hero-photo hero-film">
         <ClubVideo video={content.media.heroVideo}/>
@@ -176,7 +174,7 @@ export function Club() {
       <div className="club-grid">
         {video ? <ClubVideo video={video}/> : null}
         <Photo name="clubGroup" className="club-photo-wide pin-tilt-right" sizes="(min-width: 960px) 34vw, 92vw"/>
-        <Photo name="trainingFocus" className="club-photo-tall pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
+        <Photo name="trainingFocus" className="club-photo-tall club-photo-brighter pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
       </div>
     </div>
   </section>;
@@ -215,8 +213,8 @@ export function Space({ first = false }) {
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
       </div>
       <div className="collage">
-        <Photo name="lounge" className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
-        <Photo name="floor" className="collage-tall pin-tilt-right" sizes="(min-width: 900px) 25vw, 46vw"/>
+        <Photo name="trainingPartners" className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
+        <Photo name="trainingWithJb" className="collage-tall pin-tilt-right" sizes="(min-width: 900px) 25vw, 46vw"/>
         <Photo name="trainingFootwork" className="collage-tall pin-tilt-left-sm" sizes="(min-width: 900px) 25vw, 46vw"/>
       </div>
     </div>
@@ -226,23 +224,13 @@ export function Space({ first = false }) {
 export function Community({ first = false }) {
   const H = first ? 'h1' : 'h2';
   const { community } = content;
-  const goals = Array.isArray(community?.goals) ? community.goals : [];
   return <section className="section community halftone" id="community" aria-labelledby="community-title">
     <div className="wrap split split-community">
       <div>
         <Eyebrow>{community?.eyebrow}</Eyebrow>
         <H id="community-title" className="h2"><Title parts={community?.heading}/></H>
-        <Paragraphs items={community?.paragraphs}/>
       </div>
-      {goals.length ? <div className="aims" role="group" aria-labelledby="aims-title">
-        <div className="aims-head">
-          <h3 id="aims-title" className="aims-title">Aims</h3>
-          {community?.note ? <p className="aims-note">{community.note}</p> : null}
-        </div>
-        <ol className="aims-list">
-          {goals.map((goal, index) => <li key={index}><span className="aims-no" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{goal}</span></li>)}
-        </ol>
-      </div> : null}
+      <div className="split-copy"><Paragraphs items={community?.paragraphs}/></div>
     </div>
   </section>;
 }
@@ -361,7 +349,7 @@ export function Doctor({ first = false }) {
         <Paragraphs items={person.paragraphs}/>
       </li></ul> : null}
       {person?.link ? <p><a className="btn btn-paper" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p> : null}
-      {doctor.note ? <p className="coach-note">{doctor.note}</p> : null}
+      {doctor.note ? <p className="coach-note">{doctor.note} <a href={`mailto:${content.media.email}`}>email the club</a>.</p> : null}
     </div>
   </section>;
 }
