@@ -707,3 +707,6 @@ main:focus { outline: none; }
 
 /* Unloaded photos still read as a print, not a gap */
 .pin-frame img { background: var(--plaster-dark); }
+
+.visit-directions { margin-top: 28px; }
+.visit-directions p { margin-bottom: 14px; }
