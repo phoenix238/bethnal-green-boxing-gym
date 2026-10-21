@@ -126,3 +126,10 @@ The owner's latest instructions supersede the old naming/address/audience questi
 See [docs/LAUNCH_REVIEW.md](docs/LAUNCH_REVIEW.md) for source decisions, navigation changes, media selections, unconfirmed practicalities and separate JB/Ben/doctor checklists. This review includes the new doctor introduction and directions-reel link. The existing visual style and legacy routes remain. Cal.com availability is unchanged; editorial copy for the two known events now lives in content.js, so original event descriptions also need updating in Cal.com. Medical arrangements remain described as planned. Owner demo and the existing demo notice are unchanged.
 
 Ben’s coach bio now mentions his boxing podcasts and links to the owner-supplied YouTube channel (`@hardestgame007`), opening in a new tab. No video embed or episode claims were added.
+
+
+## Final independent review pass — 21 October 2026
+
+The user authorized a lead builder, copy specialist and independent reviewer. Their final desktop/390px review passed. The SSD loop now leads the homepage and current SSD photographs form a visible gallery; current JB/Ben coaching portraits come from named frames in the supplied promo. Ben's podcast links appear on his profile and in the footer. The white collar page explains the format, offers an interest enquiry, then introduces associated medical advisor Dr Alix Daniel. See the updated launch review for full details.
+
+Owner-demo entry points are now gated by `?demo=1`; this is a discoverability gate only, not authentication. Footer booking wording describes the Cal.com handoff accurately. Booking links are no longer intercepted until the embed script has loaded. Saved class lists expire after 24h, remove past dates and show a calendar fallback notice. 18 tests pass. A pull-request workflow runs tests and build. No production deployment, real booking or payment was performed.

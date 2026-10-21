@@ -6,13 +6,14 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import BookingDialog from './components/BookingDialog.jsx';
 import OwnerPanel from './components/OwnerPanel.jsx';
-import { Approach, Club, Coaches, Community, Doctor, CtaBand, FirstClass, Hero, Meet, Join, Space, Story, TrainingOptions, Visit } from './components/Sections.jsx';
+import { Approach, Club, Coaches, Community, Doctor, CtaBand, FirstClass, Hero, Meet, Join, Space, Story, TrainingGallery, TrainingOptions, Visit } from './components/Sections.jsx';
 import { ClassesPage, ClassesPreview, useClasses } from './components/Classes.jsx';
 import { initCal } from './calembed.js';
 import { DEFAULT_CLASSES, initialTimetable, loadTimetable } from './timetable.js';
 
 // Prototype only: all data below lives in this browser's localStorage. There is no real booking, payment, login or shared database.
 const STORAGE = 'bgbg-classes-v1';
+const SHOW_OWNER_DEMO = new URLSearchParams(window.location.search).get('demo') === '1';
 const DISCOUNT_KEY = 'bgbg-discount-v1';
 // Public, non-secret settings (see docs/TIMETABLE.md and .env.example). Blank = no Google Sheet yet.
 const TIMETABLE_CSV_URL = (import.meta.env.VITE_TIMETABLE_CSV_URL ?? '').trim();
@@ -113,7 +114,7 @@ function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <Header route={route}/>
     <main id="main" tabIndex={-1}>
-      {route === 'home' ? <><Hero cal={cal}/><TrainingOptions/><ClassesPreview cal={cal}/><Meet/><FirstClass/><CtaBand/></> : null}
+      {route === 'home' ? <><Hero cal={cal}/><TrainingOptions/><TrainingGallery/><ClassesPreview cal={cal}/><Meet/><FirstClass/><CtaBand/></> : null}
       {route === 'classes' ? <ClassesPage cal={cal}/> : null}
       {route === 'coaches' ? <><Coaches first/><CtaBand/></> : null}
       {route === 'doctor' ? <><Doctor first/><CtaBand/></> : null}
@@ -122,11 +123,11 @@ function App() {
       {route === 'community' ? <><Community first/><Join/></> : null}
       {route === 'visit' ? <><Visit first/><Join/><CtaBand/></> : null}
     </main>
-    <Footer onOwnerDemo={() => setAdmin(true)} route={route}/>
+    <Footer onOwnerDemo={SHOW_OWNER_DEMO ? () => setAdmin(true) : undefined} route={route}/>
     <div className="toast-region" role="status" aria-live="polite">{flash && <div className="toast"><Check size={17} aria-hidden="true"/>{flash}</div>}</div>
     {dialog && <BookingDialog session={dialog} onClose={() => setDialog(null)} onSubmit={book} checkDiscount={checkDiscount}/>}
     {admin && <OwnerPanel onClose={() => setAdmin(false)} classes={classes} setClasses={setClasses} bookings={bookings} setBookings={setBookings} members={members} setMembers={setMembers} ledger={ledger} setLedger={setLedger} accountPeriod={accountPeriod} monthEntries={monthEntries} monthIncome={monthIncome} monthExpenses={monthExpenses} addLedgerEntry={addLedgerEntry} addMember={addMember} saveClass={saveClass} timetableStatus={timetableStatus} sheetConfigured={Boolean(TIMETABLE_CSV_URL)} sheetEditUrl={TIMETABLE_SHEET_EDIT_URL} discountCode={discountCode} setDiscountCode={setDiscountCode}/>}
-    <button type="button" className="admin-shortcut" aria-label="Open owner demo" title="Owner demo (browser-only data)" onClick={() => setAdmin(true)}><Users size={18} aria-hidden="true"/></button>
+    {SHOW_OWNER_DEMO ? <button type="button" className="admin-shortcut" aria-label="Open owner demo" title="Owner demo (browser-only data)" onClick={() => setAdmin(true)}><Users size={18} aria-hidden="true"/></button> : null}
   </>;
 }
 

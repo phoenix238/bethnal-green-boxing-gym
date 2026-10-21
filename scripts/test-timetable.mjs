@@ -1,6 +1,6 @@
 // Unit tests for the Google Sheet timetable parser. Run with: npm test
 import assert from 'node:assert/strict';
-import { normaliseEventTypes, normaliseSlots, formatPrice } from '../src/calclasses.js';
+import { normaliseEventTypes, normaliseSlots, formatPrice, upcomingSlots, cachedClasses } from '../src/calclasses.js';
 import { parseCSV, csvToClasses, normaliseTime, normaliseDay, fetchTimetable, loadTimetable, DEFAULT_CLASSES, CACHE_KEY } from '../src/timetable.js';
 
 let passed = 0;
@@ -125,6 +125,53 @@ test('cal: slots are sorted and limited, garbage is safe', () => {
   assert.equal(formatPrice(0, 'gbp'), null);
   assert.deepEqual(normaliseEventTypes(undefined, 'u'), []);
   assert.deepEqual(normaliseSlots(null), []);
+});
+
+test('cal: past or invalid slots never appear as upcoming', () => {
+  const now = Date.parse('2026-10-21T19:00:00Z');
+  assert.deepEqual(upcomingSlots(['bad', '2026-10-21T19:00:00Z', '2026-10-22T19:00:00Z', '2026-10-21T18:00:00Z'], now), ['2026-10-22T19:00:00Z']);
+});
+
+test('cal: expired cache is rejected and fresh fallback omits past dates', () => {
+  const previous = globalThis.localStorage;
+  const now = Date.now();
+  let saved = {username:'club', at:now, classes:[{slug:'group',title:'Boxing',next:[new Date(now-1000).toISOString(),new Date(now+864e5).toISOString()]}]};
+  globalThis.localStorage = {getItem: () => JSON.stringify(saved)};
+  try {
+    assert.equal(cachedClasses('club')[0].next.length, 1);
+    saved.at = now - 864e5 - 1;
+    assert.equal(cachedClasses('club'), null);
+    saved.at = now;
+    assert.equal(cachedClasses('another-club'), null);
+    saved.classes = [null, {slug:'broken'}];
+    assert.deepEqual(cachedClasses('club'), []);
+  } finally { if (previous === undefined) delete globalThis.localStorage; else globalThis.localStorage = previous; }
+});
+
+test('booking: normal link survives slow or blocked embed; modal only intercepts when loaded', async () => {
+  const previous = globalThis.window;
+  const listeners = {};
+  const script = {addEventListener: (name, fn) => {listeners[name] = fn;}};
+  globalThis.window = {document:{createElement:()=>script, head:{appendChild:()=>script}}};
+  try {
+    const {openCal} = await import('../src/calembed.js');
+    let prevented = false;
+    const event = {button:0, preventDefault:()=>{prevented=true;}};
+    openCal(event, 'club/group');
+    assert.equal(prevented, false);
+    listeners.load();
+    let called;
+    window.Cal = (...args) => {called=args;};
+    openCal(event, 'club/group');
+    assert.equal(prevented, true);
+    assert.equal(called[0], 'modal');
+    prevented=false;
+    openCal({...event,ctrlKey:true}, 'club/group');
+    assert.equal(prevented, false);
+    listeners.error();
+    openCal(event, 'club/group');
+    assert.equal(prevented, false);
+  } finally { if (previous === undefined) delete globalThis.window; else globalThis.window=previous; }
 });
 
 for (const [name, fn] of tests) {
