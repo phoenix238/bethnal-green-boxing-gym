@@ -323,7 +323,7 @@ export function Coaches({ first = false }) {
           <p>{person.bio}</p>
           {person.note ? <p className="coach-note">{person.note}</p> : null}
           {person.book ? <p><BookButton slug={person.slug} label={<>{person.book} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/></p> : null}
-          {person.link ? <p><a className="btn btn-paper" href={person.link.href}>{person.link.label} <ArrowRight size={18} aria-hidden="true"/></a></p> : null}
+          {person.link ? <p><a className="btn btn-paper" href={person.link.href} target={person.link.external ? "_blank" : undefined} rel={person.link.external ? "noopener noreferrer" : undefined}>{person.link.label} {person.link.external ? <ArrowUpRight size={18} aria-hidden="true"/> : <ArrowRight size={18} aria-hidden="true"/>}{person.link.external ? <span className="sr-only"> (opens YouTube in a new tab)</span> : null}</a></p> : null}
         </li>)}
       </ul>
     </div>

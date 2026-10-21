@@ -25,6 +25,8 @@ The club combines the space, coaches, training approach, session media and commu
 - Owner supplied the coaches' directions reel: https://www.facebook.com/reel/1158733356862918 . Facebook did not load for inspection; the Visit page links to it without invented written entrance instructions or an automatic Facebook embed.
 - Known Cal.com session slugs have edited site titles/descriptions to remove typos. Their dates, duration, capacity and price metadata still come from Cal.com. Unknown future session types use their own Cal.com descriptions. Update the original descriptions in Cal.com too so the booking destination matches.
 
+- Owner confirmed Ben makes boxing podcasts and supplied his YouTube channel: https://www.youtube.com/@hardestgame007 . Ben’s coach card now links to it in a new tab, using the clean URL without tracking parameters. No unverified episode details or career claims were added.
+
 ## Media selection
 
 Reviewed the 33-photo source contact sheet, available Resolve grade exports and the existing website-loop storyboard. Website images preserve the saved **top 33 / Boxing Gym Grade** treatment. No new colour treatment was applied; only black export bars were removed and web sizes made.

@@ -71,10 +71,15 @@ export const coaches = {
       "name": "Ben Doughty",
       "role": "Coach · One-to-one coaching · Group classes",
       "photo": null,
-      "bio": "Ben takes the group classes alongside JB and offers one-to-one coaching. Work with him on the fundamentals, return to training after a break or focus on a part of your boxing you want to improve.",
+      "bio": "Ben takes the group classes alongside JB and offers one-to-one coaching. Work with him on the fundamentals, return to training after a break or focus on a part of your boxing you want to improve. Away from coaching, Ben also makes boxing podcasts on his YouTube channel.",
       "note": "Private sessions: £40. Check available times in the booking calendar.",
       "book": "Book a private lesson",
-      "slug": "private-one-on-one"
+      "slug": "private-one-on-one",
+      "link": {
+        "label": "Watch Ben’s boxing podcasts",
+        "href": "https://www.youtube.com/@hardestgame007",
+        "external": true
+      }
     }
   ]
 };
