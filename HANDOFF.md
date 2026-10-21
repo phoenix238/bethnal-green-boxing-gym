@@ -133,3 +133,10 @@ Ben’s coach bio now mentions his boxing podcasts and links to the owner-suppli
 The user authorized a lead builder, copy specialist and independent reviewer. Their final desktop/390px review passed. The SSD loop now leads the homepage and current SSD photographs form a visible gallery; current JB/Ben coaching portraits come from named frames in the supplied promo. Ben's podcast links appear on his profile and in the footer. The white collar page explains the format, offers an interest enquiry, then introduces associated medical advisor Dr Alix Daniel. See the updated launch review for full details.
 
 Owner-demo entry points are now gated by `?demo=1`; this is a discoverability gate only, not authentication. Footer booking wording describes the Cal.com handoff accurately. Booking links are no longer intercepted until the embed script has loaded. Saved class lists expire after 24h, remove past dates and show a calendar fallback notice. 18 tests pass. A pull-request workflow runs tests and build. No production deployment, real booking or payment was performed.
+
+
+## Owner browser feedback — 22 October 2026
+
+Supersedes earlier age/discount instructions: remove public age restrictions and the Proposition Studios discount across the site. Group price stays £10. Hidden demo discount code/reduced-price controls are removed too; old saved reduced prices are ignored. Borrowed gloves are available, and visitors need training clothes and training shoes; no need to ask what to bring. Club email is **bethnalgreenbc@gmail.com**, used for first-visit and white collar enquiries and linked in the footer. WhatsApp remains a separately labelled group.
+
+Hero uses a larger portrait SSD promo with smaller heading, direct one-to-one button, and no York Hall eyebrow. Group photo has now been re-exported successfully with its saved Resolve grade. New candid PTM08631 replaces the gallery's third image; PTM08539 replaces the repeated introduction image.

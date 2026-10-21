@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ArrowUpRight, MessageCircle, Pause, Play } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MessageCircle, Mail, Pause, Play } from 'lucide-react';
 import * as content from '../content.js';
 import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
 import { BookButton, nextSessions } from './Classes.jsx';
@@ -21,7 +21,7 @@ export function Hero({ cal }) {
         <Paragraphs items={hero?.lede} className="hero-lede"/>
         <div className="hero-actions">
           <BookButton slug="boxingmixedlevels" label={<>{hero?.primaryCta ?? 'Book a class'} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/>
-          {hero?.secondaryCta ? <a className="btn btn-paper" href="#/classes">{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></a> : null}
+          {hero?.secondaryCta ? <BookButton slug="private-one-on-one" label={<>{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-paper"/> : null}
         </div>
         {next.length ? <div className="hero-ticket">
           <p className="hero-ticket-label">Next up</p>
@@ -35,8 +35,8 @@ export function Hero({ cal }) {
         </div> : null}
       </div>
       <div className="hero-photo hero-film">
-        <ClubVideo video={content.media.video}/>
-        <p className="hero-film-note">{content.media.video.note}</p>
+        <ClubVideo video={content.media.heroVideo}/>
+        <p className="hero-film-note">{content.media.heroVideo.note}</p>
       </div>
     </div>
   </section>;
@@ -350,7 +350,7 @@ export function Doctor({ first = false }) {
       <Paragraphs items={doctor.paragraphs}/>
       {doctor.interest ? <div className="doctor-interest">
         <h2 className="h3">{doctor.interest.heading}</h2><p>{doctor.interest.text}</p>
-        <a className="btn btn-yellow" href={doctor.interest.href} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/>{doctor.interest.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens WhatsApp in a new tab)</span></a>
+        <a className="btn btn-yellow" href={doctor.interest.href}><Mail size={18} aria-hidden="true"/>{doctor.interest.label}<ArrowUpRight size={18} aria-hidden="true"/></a>
       </div> : null}
       {doctor.profileHeading ? <h2 className="h3 doctor-profile-heading">{doctor.profileHeading}</h2> : null}
       {person ? <ul className="posters posters-2"><li className="poster poster-1">
@@ -373,7 +373,7 @@ export function Meet() {
   return <section className="section section-tight meet floor" aria-labelledby="meet-title">
     <div className="wrap meet-grid">
       <div className="meet-photo">
-        <Photo name="trainingPartners" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+        <Photo name="trainingFocusPortrait" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
       </div>
       <div className="meet-copy">
         <Eyebrow>{meet.eyebrow}</Eyebrow>
@@ -406,7 +406,7 @@ export function FirstClass() {
           <p>{step.text}</p>
         </li>)}
       </ol>
-      <p className="first-question"><a className="btn btn-paper" href={content.media.whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/>{firstClass.question}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens WhatsApp in a new tab)</span></a></p>
+      <p className="first-question"><a className="btn btn-paper" href={`mailto:${content.media.email}`}><Mail size={18} aria-hidden="true"/>{firstClass.question}<ArrowUpRight size={18} aria-hidden="true"/></a></p>
     </div>
   </section>;
 }

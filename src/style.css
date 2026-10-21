@@ -711,13 +711,20 @@ main:focus { outline: none; }
 .visit-directions { margin-top: 28px; }
 .visit-directions p { margin-bottom: 14px; }
 
-/* Homepage media sits immediately below the name on a phone. */
+/* Portrait-led hero: the film shares the stage with a restrained title. */
 .hero-heading { grid-area: heading; }
 .hero-copy { grid-area: copy; }
 .hero-film { grid-area: film; align-self: start; }
-.hero-inner { grid-template-areas: "heading" "film" "copy"; gap: 28px; }
-.hero-heading .hero-title { margin-bottom: 0; }
-.hero-film .club-video-frame { box-shadow: 7px 7px 0 var(--red); border-color: var(--ink); }
+.hero-inner { grid-template-areas: "heading" "copy" "film"; gap: 24px; padding-block: clamp(28px,4vw,56px); }
+.hero-heading .hero-title { margin-bottom: 0; font-size: clamp(48px,7.3vw,84px); line-height: .95; }
+.hero-title .t-plain, .hero-title .t-em { display: block; }
+.hero-title .t-em { margin-left: 0; }
+.hero-tags { margin-bottom: 20px; }
+.hero-lede { font-size: clamp(18px,1.7vw,21px); max-width: 40ch; margin-bottom: 20px; }
+.hero-actions { gap: 14px; margin-bottom: 24px; }
+.hero-film { width: min(100%,350px); max-width: none; margin-inline: auto; }
+.hero-film .club-video-frame { box-shadow: 8px 8px 0 var(--red); border-color: var(--ink); }
+.hero-film .club-video video { aspect-ratio: 9 / 16; object-fit: contain; }
 .hero-film .club-video figcaption { color: var(--muted); }
 .hero-film-note { font-size: 14px; margin: 12px 0 0; }
 .training-gallery { color: var(--paper); }
@@ -737,15 +744,23 @@ main:focus { outline: none; }
 .coach-photo { max-width: 100%; }
 .coach-photo img { aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 28%; }
 @media (min-width: 900px) {
- .hero-inner { grid-template-columns: minmax(0,1fr) minmax(0,1fr); grid-template-areas: "heading heading" "copy film"; gap: 36px 56px; }
- .hero-title { font-size: clamp(72px,8vw,128px); }
- .hero-title .t-plain, .hero-title .t-em { display: inline-block; }
- .hero-title .t-em { margin-left: .12em; }
- .hero-lede { max-width: 38ch; }
- .hero-film { margin-top: 3px; }
+ .hero-inner { grid-template-columns: minmax(0,1.25fr) minmax(0,.85fr); grid-template-areas: "heading film" "copy film"; gap: 22px 64px; align-items: start; }
+ .hero-heading { align-self: end; }
+ .hero-film { width: min(100%,350px); }
+ .hero-heading .hero-title { font-size: clamp(62px,6.3vw,84px); }
+ .hero-title .t-plain, .hero-title .t-em { display: block; }
+ .hero-title .t-em { margin-left: 0; }
  .training-gallery-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; }
  .training-gallery-grid .gallery-group img { aspect-ratio: 3/2; }
+}
+@media (max-width: 899px) {
+ .hero-film { width: min(100%,310px); }
+ .hero-ticket { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .poster { transform: none; } }
 
 .menu-toggle { color: var(--ink); }
+
+.hero-film .video-toggle { top: 12px; right: 12px; bottom: auto; left: auto; }
+
+.training-gallery-grid .pin:last-child img { aspect-ratio: 4 / 5; }

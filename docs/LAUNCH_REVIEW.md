@@ -3,8 +3,8 @@
 ## Confirmed in this conversation
 
 - Use **JB** publicly. Explain once that he was known as **Bernie Paul** during his boxing career.
-- The club welcomes **adults aged 18 and over** for now, including beginners, returning amateurs and experienced boxers.
-- Group classes cost **£10**. The existing £5 Proposition Studios tenant rate and £40 private sessions remain as previously supplied; confirm these before launch.
+- Public copy welcomes beginners, returning amateurs and experienced boxers. The owner removed age-restriction wording on 22 October.
+- Group classes cost **£10**. Private sessions are £40 as previously supplied. The owner removed the tenant discount on 22 October.
 - Address: **279 Cambridge Heath Road, London, E2 0EL**. Basement of the Proposition Studios building, opposite York Hall.
 - Keep the established fight-poster visual style. Focus the writing on the club and ways to train.
 
@@ -34,14 +34,14 @@ Reviewed the 33-photo source contact sheet, available Resolve grade exports and 
 | Source | Use | Reason |
 | --- | --- | --- |
 | PTM08037 | Homepage photo gallery | Coaching in progress with other people in the room; makes training the subject. |
-| PTM08449 | Homepage club introduction | Clear partner pad work and the gym's poster wall. |
+| PTM08449 | Retained asset | Replaced on the homepage to avoid repeating the same image. |
 | PTM08472 | Club training section | Close view of focused training and technique. |
 | PTM08481 | Gym detail | Boxing boots and the ring canvas; useful detail between wider pictures. |
 | Final Exports / 2026-10-20 BGBC Website Loop — 12.5s | Homepage hero and Club session video | Short landscape sequence with varied training, coaching and movement. Web copy is 1280×720 H.264, silent, about 3.3 MB. Existing play/pause and reduced-motion handling retained. |
 
 Additional SSD media now used:
 
-- **PTM08321.JPG**: current group picture in the homepage gallery, web-sized from the camera JPEG. The separate Resolve photo export was unavailable for this frame; no new colour grade is claimed.
+- **PTM08321**: current group picture in the homepage gallery. On 22 October the matching saved Resolve grade was successfully exported and replaced the earlier camera JPEG.
 - **Final Exports / Landscape 30s promo, 3s and 6s**: current coaching portraits of Ben and JB, identified by the existing on-video name labels. Cropped frames replace Ben's missing picture and JB's historical coach-card portrait. The historical photo remains on his story page.
 
 The 30-second landscape promo is a good candidate for an optional watch-in-full feature after its captions and audio are reviewed. Keep the vertical promo for social channels; it is not the best fit for a wide site panel. Raw camera files and full video masters are not committed.
@@ -53,10 +53,10 @@ Resolve's photo export returned a mixture of successes and failures. Selected im
 ### JB
 
 - [ ] Approve the short biography and revised club story; confirm an exact opening date only if it is to be published.
-- [ ] Confirm the £5 tenant eligibility/code arrangement and final group-session description.
+- [ ] Approve the final group-session description.
 - [ ] Supply or approve written entrance instructions, an entrance photo and access details.
-- [ ] Confirm equipment provision, arrival time and cancellation policy with Ben.
-- [ ] Identify which community activities are happening today, if any. Minibus, council work and youth support remain ambitions; current classes are 18+.
+- [ ] Confirm arrival time and cancellation policy with Ben. Only gloves are available to borrow; visitors need training clothes and training shoes.
+- [ ] Identify which community activities are happening today, if any. Minibus, council work and youth support remain ambitions; the site no longer advertises an age restriction.
 - [ ] Approve the selected public photos/video and confirm their existing consent covers these new selections. Record consent privately, outside GitHub.
 
 ### Ben
@@ -64,7 +64,7 @@ Resolve's photo export returned a mixture of successes and failures. Selected im
 - [ ] Supply a short coaching background and approve the selected current video-frame portrait, or provide a preferred portrait.
 - [ ] Approve the group/private descriptions and confirm the £40 private-session price and duration.
 - [ ] Confirm what happens in each group session and how optional sparring works, including what beginners should expect.
-- [ ] Confirm gloves/wraps, arrival time and first-visit practicalities.
+- [ ] Confirm arrival time and any remaining first-visit practicalities. Only gloves can be borrowed; visitors bring training clothes and training shoes.
 - [ ] Correct the original Cal.com event titles/descriptions, verify availability, location and cancellation terms. Site editorial copy does not update Cal.com itself.
 
 ### Dr Alix Daniel
@@ -89,3 +89,11 @@ Resolve's photo export returned a mixture of successes and failures. Selected im
 - Independent reviewer checked source and the final desktop/390px phone preview. Review findings led to homepage media, a clear enquiry-first white collar page, hidden public demo controls, a reliable booking link while the embed loads, a 24-hour cache limit with a saved-data notice, and removal of past dates. A PR workflow now runs the tests and production build.
 
 This branch does not deploy to GitHub Pages until merged into main. It does not change payments, Cal.com configuration or owner-dashboard storage.
+
+## Browser feedback pass — 22 October
+
+- Club enquiry email confirmed as **bethnalgreenbc@gmail.com**. First-visit and white collar enquiries now use email; a global email link is in the footer. The separately labelled WhatsApp group remains for people who want to join.
+- All tenant discount and age-restriction wording removed from the public website and metadata. Discount controls and reduced-price inputs removed from the hidden local demo too; old browser-stored reduced prices no longer apply.
+- First-visit copy confirms visitors wear training clothes and training shoes; only gloves are available to borrow.
+- Hero rebalanced around a portrait version of the supplied SSD promo, with a smaller title, direct group/private booking buttons and no York Hall tag. Landscape footage remains on the Club page.
+- Group picture now uses the saved Resolve grade, matching the darker photos. The third gallery image is the candid **PTM08631**; the Club introduction uses **PTM08539**. No homepage still is repeated.
