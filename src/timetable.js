@@ -7,8 +7,8 @@ export const FETCH_TIMEOUT_MS = 5000;
 
 // The two confirmed sessions (HANDOFF.md). Used when no sheet is set up and nothing is cached.
 export const DEFAULT_CLASSES = [
-  { id: 'tuesday-open', title: 'Open level boxing', level: 'All levels', coach: null, day: 'Tuesday', time: '7:00 PM', duration: null, price: 10, communityPrice: 5, capacity: null, notes: null, attendees: [] },
-  { id: 'thursday-open', title: 'Open level boxing', level: 'All levels', coach: null, day: 'Thursday', time: '7:00 PM', duration: null, price: 10, communityPrice: 5, capacity: null, notes: null, attendees: [] },
+  { id: 'tuesday-open', title: 'Open level boxing', level: 'All levels', coach: null, day: 'Tuesday', time: '7:00 PM', duration: null, price: 10, communityPrice: null, capacity: null, notes: null, attendees: [] },
+  { id: 'thursday-open', title: 'Open level boxing', level: 'All levels', coach: null, day: 'Thursday', time: '7:00 PM', duration: null, price: 10, communityPrice: null, capacity: null, notes: null, attendees: [] },
 ];
 
 const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];

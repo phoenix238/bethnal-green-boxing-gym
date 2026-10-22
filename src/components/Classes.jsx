@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Clock3, Users } from 'lucide-react';
 import * as content from '../content.js';
-import { fetchClasses, cachedClasses, formatSlot } from '../calclasses.js';
+import { fetchClasses, cachedClasses, formatSlot, upcomingSlots } from '../calclasses.js';
 import { openCal } from '../calembed.js';
 import { Eyebrow, Paragraphs, Title } from './ui.jsx';
 
@@ -33,7 +33,7 @@ export function BookButton({ slug, label = 'Book', title, className = 'btn btn-y
 export function nextSessions(classes, limit = 3) {
   const group = classes.filter(c => c.kind === 'group');
   return (group.length ? group : classes)
-    .flatMap(c => (c.next ?? []).map(iso => ({ iso, title: c.title, slug: c.slug })))
+    .flatMap(c => upcomingSlots(c.next).map(iso => ({ iso, title: c.title, slug: c.slug })))
     .sort((a, b) => a.iso.localeCompare(b.iso))
     .slice(0, limit);
 }
@@ -43,6 +43,7 @@ function ClassCard({ c, full }) {
   const copy = content.classCopy?.[c.slug];
   const title = copy?.title ?? c.title;
   const description = copy?.description ?? c.description;
+  const next = upcomingSlots(c.next);
   return <li className="class-card">
     <div className="class-card-main">
       <h3 className="class-card-title">{title}</h3>
@@ -52,7 +53,7 @@ function ClassCard({ c, full }) {
         {c.price ? <span className="class-card-price">{c.price}</span> : null}
       </p>
       {description ? <p className={full ? 'class-card-desc' : 'class-card-desc class-card-desc-short'}>{description}</p> : null}
-      {c.next?.length ? <p className="class-card-next"><b>Next:</b> {c.next.map(formatSlot).filter(Boolean).join(' · ')}</p> : null}
+      {next.length ? <p className="class-card-next"><b>Next:</b> {next.map(formatSlot).filter(Boolean).join(' · ')}</p> : null}
     </div>
     <BookButton slug={c.slug} title={title}/>
   </li>;
@@ -61,6 +62,7 @@ function ClassCard({ c, full }) {
 function Status({ status, count }) {
   const t = content.classesPage ?? {};
   if (status === 'loading') return <p className="class-status" role="status">Loading classes…</p>;
+  if (status === 'cached') return <p className="class-status" role="status">Showing a saved class list. <a href={CAL_PROFILE_URL} target="_blank" rel="noopener noreferrer">Check the booking calendar for current availability</a>.</p>;
   if (status === 'error') return <p className="class-status" role="status">{t.error ?? 'We couldn’t load the class list just now.'} <a href={CAL_PROFILE_URL} target="_blank" rel="noopener">See classes on Cal.com</a></p>;
   if (!count) return <p className="class-status" role="status">{t.empty ?? 'No classes are listed right now. Check back soon.'}</p>;
   return null;

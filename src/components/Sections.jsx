@@ -1,41 +1,44 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ArrowUpRight, MessageCircle, Pause, Play } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MessageCircle, Mail, Pause, Play } from 'lucide-react';
 import * as content from '../content.js';
 import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
-import { Logo } from './Header.jsx';
-import { BookButton, nextSessions } from './Classes.jsx';
-import { formatSlot } from '../calclasses.js';
+import { BookButton } from './Classes.jsx';
 
-// The hero's ticket shows the next few class dates straight from Cal.com, so it never goes out of date.
-export function Hero({ cal }) {
+// The weekly promo is separate from the live booking calendar below.
+export function Hero() {
   const { hero, sessions } = content;
-  const next = nextSessions(cal?.classes ?? []);
   return <section className="hero plaster" aria-labelledby="hero-title">
     <div className="hero-inner">
-      <div className="hero-copy">
+      <div className="hero-heading">
         <div className="hero-tags">
           {hero?.eyebrow ? <span className="tag tag-red">{hero.eyebrow}</span> : null}
         </div>
         <h1 id="hero-title" className="hero-title"><Title parts={hero?.title}/></h1>
+      </div>
+      <div className="hero-copy">
         <Paragraphs items={hero?.lede} className="hero-lede"/>
         <div className="hero-actions">
           <BookButton slug="boxingmixedlevels" label={<>{hero?.primaryCta ?? 'Book a class'} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-yellow"/>
-          {hero?.secondaryCta ? <a className="btn btn-paper" href="#/classes">{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></a> : null}
+          {hero?.secondaryCta ? <BookButton slug="private-one-on-one" label={<>{hero.secondaryCta} <ArrowRight size={18} aria-hidden="true"/></>} className="btn btn-paper"/> : null}
         </div>
-        {next.length ? <div className="hero-ticket">
-          <p className="hero-ticket-label">Next up</p>
+        <div className="hero-ticket">
+          <p className="hero-ticket-label">Weekly group classes</p>
           <p className="bill-line">
-            {next.map((slot, index) => <React.Fragment key={slot.iso + slot.slug}>
+            {sessions.weekly.map((slot, index) => <React.Fragment key={slot}>
               {index > 0 ? <span className="bill-star" aria-hidden="true">★</span> : null}
-              <span className="bill-slot">{formatSlot(slot.iso)}</span>
+              <span className="bill-slot">{slot}</span>
             </React.Fragment>)}
           </p>
           {sessions?.priceNote ? <p className="hero-ticket-note">{sessions.priceNote}</p> : null}
-        </div> : null}
+          <div className="hero-ticket-private">
+            <p className="hero-ticket-label">{sessions.privatePromo.title}</p>
+            <BookButton slug="private-one-on-one" className="hero-private-link" label={<>{sessions.privatePromo.link} <ArrowRight size={16} aria-hidden="true"/></>}/>
+          </div>
+        </div>
       </div>
-      <div className="hero-photo">
-        <Photo name={hero?.photo ?? 'ring'} eager className="pin-tilt-right" sizes="(min-width: 900px) 40vw, 92vw"/>
-        {content.media?.logo?.src ? <div className="hero-badge"><Logo eager/></div> : null}
+      <div className="hero-photo hero-film">
+        <ClubVideo video={content.media.heroVideo}/>
+        <p className="hero-film-note">{content.media.heroVideo.note}</p>
       </div>
     </div>
   </section>;
@@ -175,7 +178,7 @@ export function Club() {
       <div className="club-grid">
         {video ? <ClubVideo video={video}/> : null}
         <Photo name="clubGroup" className="club-photo-wide pin-tilt-right" sizes="(min-width: 960px) 34vw, 92vw"/>
-        <Photo name="trainingFocus" className="club-photo-tall pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
+        <Photo name="trainingFocus" className="club-photo-tall club-photo-brighter pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
       </div>
     </div>
   </section>;
@@ -214,8 +217,8 @@ export function Space({ first = false }) {
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
       </div>
       <div className="collage">
-        <Photo name="lounge" className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
-        <Photo name="floor" className="collage-tall pin-tilt-right" sizes="(min-width: 900px) 25vw, 46vw"/>
+        <Photo name="trainingPartners" className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
+        <Photo name="trainingWithJb" className="collage-tall pin-tilt-right" sizes="(min-width: 900px) 25vw, 46vw"/>
         <Photo name="trainingFootwork" className="collage-tall pin-tilt-left-sm" sizes="(min-width: 900px) 25vw, 46vw"/>
       </div>
     </div>
@@ -225,23 +228,13 @@ export function Space({ first = false }) {
 export function Community({ first = false }) {
   const H = first ? 'h1' : 'h2';
   const { community } = content;
-  const goals = Array.isArray(community?.goals) ? community.goals : [];
   return <section className="section community halftone" id="community" aria-labelledby="community-title">
     <div className="wrap split split-community">
       <div>
         <Eyebrow>{community?.eyebrow}</Eyebrow>
         <H id="community-title" className="h2"><Title parts={community?.heading}/></H>
-        <Paragraphs items={community?.paragraphs}/>
       </div>
-      {goals.length ? <div className="aims" role="group" aria-labelledby="aims-title">
-        <div className="aims-head">
-          <h3 id="aims-title" className="aims-title">Aims</h3>
-          {community?.note ? <p className="aims-note">{community.note}</p> : null}
-        </div>
-        <ol className="aims-list">
-          {goals.map((goal, index) => <li key={index}><span className="aims-no" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><span>{goal}</span></li>)}
-        </ol>
-      </div> : null}
+      <div className="split-copy"><Paragraphs items={community?.paragraphs}/></div>
     </div>
   </section>;
 }
@@ -282,6 +275,7 @@ export function Visit({ first = false }) {
           <dd>{item.value}</dd>
         </div>)}
       </dl> : null}
+      <p className="visit-directions"><a className="btn btn-yellow" href={visit.map.href} target="_blank" rel="noopener noreferrer">{visit.map.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens Google Maps in a new tab)</span></a></p>
       {visit.directions ? <div className="visit-directions"><p>{visit.directions.note}</p><a className="btn btn-paper" href={visit.directions.href} target="_blank" rel="noopener noreferrer">{visit.directions.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens Facebook in a new tab)</span></a></div> : null}
     </div>
   </section>;
@@ -346,14 +340,20 @@ export function Doctor({ first = false }) {
         <div className="split-copy"><p className="lede">{doctor.lede}</p></div>
       </div>
       <Paragraphs items={doctor.paragraphs}/>
+      {doctor.interest ? <div className="doctor-interest">
+        <h2 className="h3">{doctor.interest.heading}</h2><p>{doctor.interest.text}</p>
+        <a className="btn btn-yellow" href={doctor.interest.href}><Mail size={18} aria-hidden="true"/>{doctor.interest.label}<ArrowUpRight size={18} aria-hidden="true"/></a>
+      </div> : null}
+      {doctor.profileHeading ? <h2 className="h3 doctor-profile-heading">{doctor.profileHeading}</h2> : null}
       {person ? <ul className="posters posters-2"><li className="poster poster-1">
         <span className="poster-no">{person.role}</span>
         {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false}/> : null}
-        <h2 className="poster-title">{person.name}</h2>
+        <h3 className="poster-title">{person.name}</h3>
         <p>{person.bio}</p>
+        <Paragraphs items={person.paragraphs}/>
       </li></ul> : null}
       {person?.link ? <p><a className="btn btn-paper" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p> : null}
-      {doctor.note ? <p className="coach-note">{doctor.note}</p> : null}
+      {doctor.note ? <p className="coach-note">{doctor.note} <a href={`mailto:${content.media.email}`}>email the club</a>.</p> : null}
     </div>
   </section>;
 }
@@ -365,7 +365,7 @@ export function Meet() {
   return <section className="section section-tight meet floor" aria-labelledby="meet-title">
     <div className="wrap meet-grid">
       <div className="meet-photo">
-        <Photo name="trainingPartners" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+        <Photo name="trainingFocusPortrait" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
       </div>
       <div className="meet-copy">
         <Eyebrow>{meet.eyebrow}</Eyebrow>
@@ -398,6 +398,7 @@ export function FirstClass() {
           <p>{step.text}</p>
         </li>)}
       </ol>
+      <p className="first-question"><a className="btn btn-paper" href={`mailto:${content.media.email}`}><Mail size={18} aria-hidden="true"/>{firstClass.question}<ArrowUpRight size={18} aria-hidden="true"/></a></p>
     </div>
   </section>;
 }
@@ -412,5 +413,15 @@ export function TrainingOptions() {
       <h3 className="poster-title">{option.title}</h3><p>{option.text}</p><p className="coach-note">{option.note}</p>
       <p><BookButton slug={option.slug} label={option.label} className="btn btn-yellow"/></p>
     </li>)}</ul>
+  </div></section>;
+}
+
+// Current SSD photographs, visible on the homepage rather than buried in the club page.
+export function TrainingGallery() {
+  const gallery = content.trainingGallery;
+  return <section className="section training-gallery floor" aria-labelledby="gallery-title"><div className="wrap">
+    <div className="split"><div><Eyebrow>{gallery.eyebrow}</Eyebrow><h2 id="gallery-title" className="h2"><Title parts={gallery.heading}/></h2></div>
+    <div className="split-copy"><p className="lede">{gallery.text}</p><a className="text-link" href={gallery.link.href}>{gallery.link.label} <ArrowRight size={18} aria-hidden="true"/></a></div></div>
+    <div className="training-gallery-grid">{gallery.photos.map((name, index) => <Photo key={name} name={name} className={index === 0 ? 'gallery-group' : undefined} sizes={index === 0 ? '(min-width: 900px) 42vw, 92vw' : '(min-width: 900px) 28vw, 92vw'}/>)}</div>
   </div></section>;
 }

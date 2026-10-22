@@ -26,12 +26,12 @@ export const approach = {
 };
 
 export const classesPage = {
-  "eyebrow": "What's on",
+  "eyebrow": "Classes & coaching",
   "heading": [
     "Find your",
     "way to train."
   ],
-  "intro": "Learn the basics, get back into boxing or keep developing your skills. Join an open-level group class with JB and Ben, or book individual coaching with Ben. All sessions are for adults aged 18 and over.",
+  "intro": "Learn the basics, get back into boxing or keep developing your skills. Join an open-level group class with JB and Ben, or book individual coaching with Ben.",
   "groupHeading": "Group boxing · All levels",
   "privateHeading": "One-to-one with Ben",
   "empty": "No classes are listed right now. Check back soon, or ask in the WhatsApp group.",
@@ -60,7 +60,7 @@ export const coaches = {
     {
       "name": "JB",
       "role": "Founder · Group classes",
-      "photo": "founderPostbox",
+      "photo": "jbCurrent",
       "bio": "JB is the club’s founder and takes the group classes. Known as Bernie Paul during his boxing career, he started at Finchley Boxing Club, later turned professional and balanced boxing with his job as a Royal Mail postman. Today, his focus is on giving something back through the club.",
       "link": {
         "label": "Read JB’s story",
@@ -70,7 +70,7 @@ export const coaches = {
     {
       "name": "Ben Doughty",
       "role": "Coach · One-to-one coaching · Group classes",
-      "photo": null,
+      "photo": "benCurrent",
       "bio": "Ben takes the group classes alongside JB and offers one-to-one coaching. Work with him on the fundamentals, return to training after a break or focus on a part of your boxing you want to improve. Away from coaching, Ben also makes boxing podcasts on his YouTube channel.",
       "note": "Private sessions: £40. Check available times in the booking calendar.",
       "book": "Book a private lesson",
@@ -92,14 +92,8 @@ export const community = {
   ],
   "paragraphs": [
     "The club grew out of JB’s wish to bring people together through boxing. His earlier training group showed him what regular training, encouragement and a sense of belonging could mean to people.",
-    "Today, the gym welcomes adults aged 18 and over. Longer term, JB wants the club to do more for the wider community, with help from local supporters and funders."
-  ],
-  "goals": [
-    "Find local funders and supporters to back the club's community work",
-    "Raise money for a minibus, so the club can run day trips for young people and adults who need a break",
-    "Work with the council to support young people in Bethnal Green"
-  ],
-  "note": "These are goals the club is working towards, not services running today."
+    "That same spirit is at the heart of Bethnal Green Boxing Club: a place to train, get to know people and encourage each other along the way."
+  ]
 };
 
 export const cta = {
@@ -112,35 +106,47 @@ export const cta = {
 };
 
 export const doctor = {
-  "eyebrow": "White collar boxing & wellbeing",
+  "eyebrow": "White collar boxing",
   "heading": [
-    "Meet our",
-    "medical advisor."
+    "Thinking about",
+    "stepping into the ring?"
   ],
-  "lede": "Dr Alix Daniel is joining Bethnal Green Boxing Club as medical advisor, supporting the club’s plans for white collar boxing and taking time to meet the people who train here.",
+  "lede": "White collar boxing gives people outside the professional boxing circuit the opportunity to train towards a bout. For many, it’s a first experience of preparing for an event and putting their skills to the test.",
   "paragraphs": [
-    "Planning to take part in white collar boxing? Speak to the club about training and how to arrange a medical examination with Dr Daniel.",
-    "Her proposed involvement includes confidential medical advice, specialist referrals, arranging blood tests or scans, fitness certificates and attendance at white collar boxing events. She also plans to visit selected training sessions to talk with the club community."
+    "It starts with training: learning technique, building fitness and getting to know what boxing involves. Event formats and entry requirements vary, so speak to JB and Ben about your experience, your goals and what taking part would mean for you.",
+    "You don’t need to have a bout in mind to train here. Our group classes and one-to-one sessions welcome beginners and experienced boxers, whether you want to compete or simply enjoy your boxing."
   ],
+  "interest": {
+    "heading": "Interested in white collar boxing?",
+    "text": "Start with a conversation. Ask JB and Ben about training, upcoming opportunities and arranging a medical examination with our associated GP, Dr Alix Daniel.",
+    "label": "Ask about white collar boxing",
+    "href": "mailto:bethnalgreenbc@gmail.com?subject=White%20collar%20boxing"
+  },
+  "profileHeading": "Our associated medical advisor",
   "person": {
     "name": "Dr Alix Daniel",
-    "role": "Medical advisor · Private GP",
-    "bio": "Dr Daniel qualified in medicine in Brittany, France, in 1991 and holds Master’s degrees in tropical medicine, public health and nutrition. With more than three decades of medical experience, her interests include preventive and lifestyle medicine, wellbeing and second opinions. Her private practice is at 10 Harley Street, London, where she consults in English and French. Outside medicine, she is passionate about sport, art and ethics.",
+    "role": "Medical advisor · Private GP · MD",
+    "bio": "Dr Alix Daniel joins the Bethnal Green Boxing Club community as medical advisor. She obtained her MD in Brittany, France, in 1991 and holds Master’s degrees in tropical medicine, public health and nutrition, with studies at the Faculty of Medicine in Brest and the London School of Hygiene & Tropical Medicine. With more than 35 years of experience as a private GP, her interests include preventive medicine, lifestyle medicine, wellbeing care, second opinions and personalised prescribing.",
+    "paragraphs": [
+      "Her private practice is based at 10 Harley Street, London, where she consults in English and French. Her interests beyond medicine include sport, art and ethics.",
+      "Her involvement with the club includes confidential medical advice and examinations for people interested in white collar boxing, with specialist referrals, blood tests or scans arranged through her practice as appropriate. She also plans to visit training sessions to meet members and attend white collar boxing events."
+    ],
     "link": {
-      "label": "Visit Dr Daniel’s practice",
+      "label": "Visit Dr Alix Daniel’s practice",
       "href": "https://dralixdanielprivategp.com/"
     }
   },
-  "note": "Club visits, examinations and event attendance are being arranged. Contact Dr Daniel’s practice for appointment information and fees; medical appointments are separate from class bookings."
+  "note": "To arrange an appointment with Dr Alix, speak to JB or"
 };
 
 export const firstClass = {
+  question: "Email the club",
   "eyebrow": "Your first class",
   "heading": [
     "Your first session",
     "starts here."
   ],
-  "intro": "New to boxing or finding your feet again? Everyone aged 18 and over is welcome.",
+  "intro": "New to boxing or finding your feet again? You’re welcome here.",
   "steps": [
     {
       "title": "Choose your training",
@@ -152,18 +158,19 @@ export const firstClass = {
     },
     {
       "title": "Come down",
-      "text": "Wear comfortable training clothes. Ask the club what equipment you’ll need before your first session."
+      "text": "Wear comfortable training clothes and training shoes. We have gloves you can borrow if you need them."
     },
     {
       "title": "Ask us anything",
-      "text": "Not sure which session to choose? Join the WhatsApp group and ask JB or Ben before you book."
+      "text": "Not sure which session to choose? Email the club and we’ll help you find the right one."
     }
   ]
 };
 
 export const footer = {
-  "line": "Group boxing classes and one-to-one coaching. 279 Cambridge Heath Road, London, E2 0EL. Adults 18+.",
-  "instagram": null
+  "line": "Group boxing classes and one-to-one coaching. 279 Cambridge Heath Road, London, E2 0EL.",
+  "instagram": null,
+  "podcast": {"label":"Ben’s boxing podcasts","href":"https://www.youtube.com/@hardestgame007"}
 };
 
 export const gym = {
@@ -179,18 +186,18 @@ export const gym = {
 };
 
 export const hero = {
-  "eyebrow": "Bethnal Green · Opposite York Hall",
+  "eyebrow": "Boxing in East London",
   "title": [
     "Bethnal Green",
     "Boxing Club."
   ],
   "lede": [
-    "Your first session. Your return to boxing. Your next step.",
-    "Group classes and one-to-one coaching for adults aged 18 and over. New to boxing, coming back after a break or already experienced? Come down and train."
+    "Your first session. Your return to boxing. Your club.",
+    "Group classes and one-to-one coaching. New to boxing, coming back after a break or already experienced? Come down and train."
   ],
   "photo": "trainingCoaches",
   "primaryCta": "Book a group class",
-  "secondaryCta": "Classes & coaching"
+  "secondaryCta": "Book a one-to-one"
 };
 
 export const join = {
@@ -205,6 +212,8 @@ export const join = {
 };
 
 export const media = {
+  "email": "bethnalgreenbc@gmail.com",
+  "heroVideo": {"src":"video/hero-portrait.mp4","poster":"video/hero-portrait-poster.jpg","alt":"Training at Bethnal Green Boxing Club","note":"A look inside a session with JB, Ben and the club."},
   "logo": {
     "src": "logo.jpg",
     "width": 1063,
@@ -214,7 +223,8 @@ export const media = {
   "video": {
     "src": "video/club-loop.mp4",
     "poster": "video/club-loop-poster.jpg",
-    "alt": "Inside a group session at Bethnal Green Boxing Club"
+    "alt": "Inside a group session at Bethnal Green Boxing Club",
+    "note": "JB, Ben and the people who train here. Take a look inside."
   },
   "whatsapp": "https://chat.whatsapp.com/G5KmaFQfJpKEKg2zpGwjtI"
 };
@@ -351,19 +361,27 @@ export const photos = {
     "height": 1080,
     "alt": "Boxing boots on the Bethnal Green Boxing Club ring canvas",
     "caption": "Find your feet"
-  }
+  },
+  "currentGroup": {"src":"photos/current-group.jpg","width":1620,"height":1080,"alt":"The class group standing together in the Bethnal Green boxing ring after training","caption":"In it together"},
+  "jbCurrent": {"src":"photos/jb-coaching.jpg","width":750,"height":900,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
+  "benCurrent": {"src":"photos/ben-coaching.jpg","width":750,"height":900,"alt":"Ben coaching during a group boxing session","caption":"Ben in the gym"},
+  "trainingTogether": {"src":"photos/training-together.jpg","width":720,"height":1080,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
+  "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"},
+  "trainingWithJb": {"src":"photos/training-with-jb.jpg","width":720,"height":1080,"alt":"JB holding pads for a boxer during a training session","caption":"In your corner"}
+
 };
 
 export const sessions = {
   "eyebrow": "The timetable",
   "heading": [
-    "What's",
-    "on."
+    "Make time",
+    "to train."
   ],
   "intro": "Group boxing with JB and Ben. One-to-one coaching with Ben. Find your next session below.",
-  "priceNote": "Group classes: £10 · £5 for Proposition Studios tenants with a booking code · Adults 18+.",
-  "discountHint": "Studio holder in the Proposition Studios building? Enter your code for the £5 rate.",
-  "bookingNotice": "Online booking is not open yet. This preview does not take payment or hold a place."
+  "priceNote": "Group classes: £10.",
+  "weekly": ["Tuesdays 6pm", "Thursdays 7pm"],
+  "privatePromo": {"title": "One-to-one coaching with Ben", "link": "Check available times"},
+  "bookingNotice": "Class bookings are handled by Cal.com. Check the calendar for current availability."
 };
 
 export const shop = {
@@ -410,6 +428,7 @@ export const story = {
 };
 
 export const visit = {
+  map: {label: "Find us on the map", href: "https://www.google.com/maps/search/?api=1&query=279+Cambridge+Heath+Road+London+E2+0EL"},
   "eyebrow": "Find us",
   "heading": [
     "Come down",
@@ -422,19 +441,19 @@ export const visit = {
     },
     {
       "label": "Group classes",
-      "value": "£10 per class. £5 for Proposition Studios tenants with a booking code. Check the calendar for current times."
+      "value": "£10 per class. Check the calendar for current times."
     },
     {
       "label": "One-to-one coaching",
-      "value": "Private sessions with Ben: £40. Book through the calendar."
+      "value": "Private sessions with Ben: £40. Check the calendar for available times."
     },
     {
       "label": "Who can train?",
-      "value": "Adults aged 18 and over. Beginners, returning boxers and experienced participants are welcome."
+      "value": "Beginners, returning boxers and experienced participants are welcome."
     },
     {
       "label": "Your first visit",
-      "value": "Wear comfortable training clothes. Ask the club about equipment and arrival details before your first session."
+      "value": "Wear comfortable training clothes and training shoes. We have gloves you can borrow if you need them."
     }
   ],
   "directions": {
@@ -456,14 +475,14 @@ export const trainingOptions = {
       "text": "Learn the basics, return after a break or build on your experience. Train with JB, Ben and the people who make the club.",
       "label": "Find a group class",
       "slug": "boxingmixedlevels",
-      "note": "£10 per class · Adults 18+"
+      "note": "£10 per class"
     },
     {
       "title": "One-to-one with Ben",
       "text": "Time to focus on your boxing. Work on your technique, build your confidence or get individual help with your next step.",
       "label": "Book a private session",
       "slug": "private-one-on-one",
-      "note": "£40 per session · Adults 18+"
+      "note": "£40 per session"
     }
   ]
 };
@@ -477,4 +496,12 @@ export const classCopy = {
     "title": "One-to-one boxing with Ben",
     "description": "Individual coaching focused on what you want to work on. Learn the fundamentals, return to boxing after a break or sharpen a specific part of your technique."
   }
+};
+
+export const trainingGallery = {
+  eyebrow: 'Inside the club',
+  heading: ['Real people.', 'Proper training.'],
+  text: 'Pad work, footwork and a room full of people putting the work in. This is Bethnal Green Boxing Club.',
+  link: {label: 'Get to know the club', href: '#/gym'},
+  photos: ['currentGroup', 'trainingCoaches', 'trainingTogether'],
 };

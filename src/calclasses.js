@@ -38,6 +38,11 @@ export function normaliseEventTypes(data, username) {
     }));
 }
 
+// Hide elapsed or malformed dates from both fresh and saved schedules.
+export function upcomingSlots(slots, now = Date.now()) {
+  return Array.isArray(slots) ? slots.filter(iso => typeof iso === 'string' && Date.parse(iso) > now).sort((a, b) => Date.parse(a) - Date.parse(b)) : [];
+}
+
 // Next few dates for one event type, as ISO strings.
 export function normaliseSlots(data, limit = 3) {
   if (!data || typeof data !== 'object') return [];
@@ -73,7 +78,8 @@ export async function fetchClasses(username, { timeoutMs = 6000 } = {}) {
 export function cachedClasses(username) {
   try {
     const saved = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
-    return saved && saved.username === username && Array.isArray(saved.classes) ? saved.classes : null;
+    if (!saved || saved.username !== username || !Array.isArray(saved.classes) || !Number.isFinite(saved.at) || Date.now() - saved.at > 864e5 || saved.at > Date.now()) return null;
+    return saved.classes.filter(c => c && typeof c === 'object' && typeof c.slug === 'string' && typeof c.title === 'string').map(c => ({ ...c, next: upcomingSlots(c.next) }));
   } catch { return null; }
 }
 

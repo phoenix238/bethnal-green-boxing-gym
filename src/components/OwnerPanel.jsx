@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { ArrowUpRight, Minus, Plus, ShieldCheck, Tag, X } from 'lucide-react';
+import React, { useRef } from 'react';
+import { ArrowUpRight, Minus, Plus, ShieldCheck, X } from 'lucide-react';
 import { useDialog } from './ui.jsx';
 
 const clock = iso => { const d = iso ? new Date(iso) : null; return d && !Number.isNaN(d.getTime()) ? d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : null; };
@@ -12,11 +12,8 @@ const sourceLabel = status => {
 };
 
 // Owner demo: everything here is stored in this browser's localStorage only. No sign-in, no shared database, no real accounts.
-export default function OwnerPanel({ onClose, classes, setClasses, bookings, setBookings, members, setMembers, ledger, setLedger, accountPeriod, monthEntries, monthIncome, monthExpenses, addLedgerEntry, addMember, saveClass, timetableStatus, sheetConfigured, sheetEditUrl, discountCode, setDiscountCode }) {
+export default function OwnerPanel({ onClose, classes, setClasses, bookings, setBookings, members, setMembers, ledger, setLedger, accountPeriod, monthEntries, monthIncome, monthExpenses, addLedgerEntry, addMember, saveClass, timetableStatus, sheetConfigured, sheetEditUrl }) {
   const ref = useRef(null);
-  const [codeDraft, setCodeDraft] = useState(discountCode ?? '');
-  const [codeSaved, setCodeSaved] = useState(false);
-  const saveCode = event => { event.preventDefault(); setDiscountCode(codeDraft.trim()); setCodeSaved(true); };
   useDialog(ref, onClose);
   return <div className="admin-backdrop" role="presentation" onClick={event => event.target === event.currentTarget && onClose()}>
     <section ref={ref} className="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-title" tabIndex={-1}>
@@ -57,16 +54,6 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
         </div>
       </div>
 
-      <form className="admin-card" onSubmit={saveCode}>
-        <h3><Tag size={17} aria-hidden="true"/> Studio-holder discount code</h3>
-        <p className="admin-note">Give this code to people who qualify for the reduced price. Leave it empty to switch the discount off. It is never shown to visitors.</p>
-        <div className="code-row">
-          <label>Discount code<input name="discountCode" value={codeDraft} autoComplete="off" spellCheck="false" onChange={event => { setCodeDraft(event.target.value); setCodeSaved(false); }} placeholder="Empty = no discount"/></label>
-          <button className="btn btn-ink btn-small" type="submit">Save code</button>
-        </div>
-        <p className="admin-note" role="status">{codeSaved ? (codeDraft.trim() ? 'Code saved in this browser.' : 'Discount switched off.') : discountCode ? 'A code is set.' : 'No code set: nobody can get the reduced price.'}</p>
-        <p className="local-only"><strong>Demo only:</strong> a real discount code must be checked on the server when online payment is added.</p>
-      </form>
 
       <div className="admin-divider"><span>Classes &amp; attendance</span><span>Local demo data</span></div>
 
@@ -89,7 +76,6 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
           <label>Start time<input name="time" type="time" required/></label>
           <label>Duration (min)<input name="duration" type="number" min="20" placeholder="Minutes" required/></label>
           <label>Public price (£)<input name="price" type="number" min="0.5" step="0.5" placeholder="10" defaultValue="10" required/></label>
-          <label>Reduced price (£)<input name="communityPrice" type="number" min="0.5" step="0.5" placeholder="5" defaultValue="5" required/></label>
           <label>Coach<input name="coach" placeholder="Coach name"/></label>
           <label>Places<input name="capacity" type="number" min="1" placeholder="Max people" required/></label>
         </div>
@@ -100,7 +86,7 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
       <div className="admin-list">
         <h3>Upcoming sessions</h3>
         {classes.length ? classes.map(c => <div className="admin-row" key={c.id}>
-          <div><b>{c.title}</b><span>{c.day} · {c.time} · {c.price == null ? 'price to be confirmed' : `public £${Number(c.price).toFixed(2)}`}{c.communityPrice != null ? ` / reduced £${Number(c.communityPrice).toFixed(2)}` : ''}</span></div>
+          <div><b>{c.title}</b><span>{c.day} · {c.time} · {c.price == null ? 'price to be confirmed' : `public £${Number(c.price).toFixed(2)}`}</span></div>
           {!sheetConfigured ? <button type="button" className="row-btn" aria-label={`Remove ${c.title} on ${c.day}`} onClick={() => setClasses(prev => prev.filter(x => x.id !== c.id))}><Minus size={16} aria-hidden="true"/></button> : null}
         </div>) : <p className="admin-empty">Add the first real class and its schedule.</p>}
       </div>
@@ -123,7 +109,7 @@ export default function OwnerPanel({ onClose, classes, setClasses, bookings, set
       <div className="admin-list">
         <h3>Booking list</h3>
         {bookings.length ? bookings.map(b => <div className="admin-row" key={b.id}>
-          <div><b>{b.name}</b><span>{b.className} · {b.day} {b.time} · {b.price == null ? 'price TBC' : `£${Number(b.price).toFixed(2)}`}{b.rate === 'community' ? ' (discount code)' : ''} · {b.email}</span><small>{b.status}</small></div>
+          <div><b>{b.name}</b><span>{b.className} · {b.day} {b.time} · {b.price == null ? 'price TBC' : `£${Number(b.price).toFixed(2)}`} · {b.email}</span><small>{b.status}</small></div>
           <label className="attendance"><input type="checkbox" onChange={e => setBookings(prev => prev.map(x => x.id === b.id ? { ...x, attended: e.target.checked } : x))} checked={!!b.attended}/> Attended</label>
         </div>) : <p className="admin-empty">No bookings yet.</p>}
       </div>

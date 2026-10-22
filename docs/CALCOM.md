@@ -1,3 +1,5 @@
+> Update, 22 October 2026: the club has removed the Proposition Studios discount from the website. Older setup notes below are historical; use the standard £10 group rate.
+
 # Cal.com: live timetable and bookings
 
 Cal.com is the club's booking system. The owner manages classes, private sessions and instructors there, and the website shows the Cal.com booking page inside the timetable section.

@@ -53,7 +53,7 @@ export function Photo({ name, className = '', eager = false, caption = true, siz
   return <figure className={`pin ${className}`.trim()}>
     <div className="pin-frame">
       <img src={photo.src} srcSet={srcSet} sizes={srcSet ? sizes ?? '(max-width: 700px) 90vw, 600px' : undefined}
-        alt={photo.alt ?? ''} width={width} height={height}
+        style={photo.position ? { objectPosition: photo.position } : undefined} alt={photo.alt ?? ''} width={width} height={height}
         loading={eager ? 'eager' : 'lazy'} decoding={eager ? 'sync' : 'async'} fetchPriority={eager ? 'high' : undefined}/>
     </div>
     {label ? <figcaption>{label}</figcaption> : null}
