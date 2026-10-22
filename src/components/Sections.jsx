@@ -365,7 +365,7 @@ export function Meet() {
   return <section className="section section-tight meet floor" aria-labelledby="meet-title">
     <div className="wrap meet-grid">
       <div className="meet-photo">
-        <Photo name="trainingFocusPortrait" className="pin-tilt-left" sizes="(min-width: 960px) 40vw, 92vw"/>
+        <Photo name="trainingGuard" className="pin-tilt-left meet-training-photo" sizes="(min-width: 960px) 40vw, 92vw"/>
       </div>
       <div className="meet-copy">
         <Eyebrow>{meet.eyebrow}</Eyebrow>

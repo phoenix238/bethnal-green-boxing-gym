@@ -768,3 +768,6 @@ main:focus { outline: none; }
 .hero-film .video-toggle { top: 12px; right: 12px; bottom: auto; left: auto; }
 
 .training-gallery-grid .pin:last-child img { aspect-ratio: 4 / 5; }
+.training-gallery-grid .pin:nth-child(2) img { aspect-ratio: 4 / 5; }
+.training-gallery-grid img[src*="ptm08062"], .meet-training-photo img { filter: brightness(1.25); }
+.meet-training-photo img { aspect-ratio: 4 / 5; object-fit: cover; }

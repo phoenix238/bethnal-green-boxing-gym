@@ -105,3 +105,9 @@ This branch does not deploy to GitHub Pages until merged into main. It does not 
 - Lifted the displayed brightness of the retained **PTM08472** pad-work shot, with a small contrast reduction to help the boxer on the right read more clearly. No source photograph was overwritten.
 - Removed all community goals and the minibus/funding/council plans. The section now describes JB’s motivation and the spirit of training together.
 - Medical arrangements now direct visitors to speak to JB or email the club, referring to Dr Alix in that sentence. Her full name remains Dr Alix Daniel in her profile.
+
+## Photo balance and editing collection — 22 October
+
+- Added two men’s training images from the saved Resolve cinematic grade: **PTM08062** in the homepage gallery and **PTM08112** beside the club introduction. The group photograph and candid women’s training image remain in the gallery.
+- Preserved the original grade in the supplied editing copies; the website adds a small brightness lift for display. Each new web image has a 600px responsive version and an accurate description.
+- Supplied a separate compact editing folder with the 16 unique photos currently displayed across Home, Club, Coaches and JB’s Story: eight cinematic PNG stills, eight largest available website JPGs, and a CSV mapping files back to website paths. The set excludes duplicate thumbnails, unused images, logos, videos and the full RAW shoot. Sources are unchanged.
