@@ -178,7 +178,7 @@ export function Club() {
       <div className="club-grid">
         {video ? <ClubVideo video={video}/> : null}
         <Photo name="clubGroup" className="club-photo-wide pin-tilt-right" sizes="(min-width: 960px) 34vw, 92vw"/>
-        <Photo name="trainingFocus" className="club-photo-tall club-photo-brighter pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
+        <Photo name="trainingFocus" className="club-photo-tall pin-tilt-left-sm" sizes="(min-width: 960px) 24vw, 70vw"/>
       </div>
     </div>
   </section>;
