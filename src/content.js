@@ -380,6 +380,7 @@ export const sessions = {
   "intro": "Group boxing with JB and Ben. One-to-one coaching with Ben. Find your next session below.",
   "priceNote": "Group classes: £10.",
   "weekly": ["Tuesdays 6pm", "Thursdays 7pm"],
+  "privatePromo": {"title": "One-to-one coaching with Ben", "link": "Check available times"},
   "bookingNotice": "Class bookings are handled by Cal.com. Check the calendar for current availability."
 };
 

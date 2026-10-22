@@ -30,6 +30,10 @@ export function Hero() {
             </React.Fragment>)}
           </p>
           {sessions?.priceNote ? <p className="hero-ticket-note">{sessions.priceNote}</p> : null}
+          <div className="hero-ticket-private">
+            <p className="hero-ticket-label">{sessions.privatePromo.title}</p>
+            <BookButton slug="private-one-on-one" className="hero-private-link" label={<>{sessions.privatePromo.link} <ArrowRight size={16} aria-hidden="true"/></>}/>
+          </div>
         </div>
       </div>
       <div className="hero-photo hero-film">
