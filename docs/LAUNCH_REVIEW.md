@@ -105,3 +105,17 @@ This branch does not deploy to GitHub Pages until merged into main. It does not 
 - Lifted the displayed brightness of the retained **PTM08472** pad-work shot, with a small contrast reduction to help the boxer on the right read more clearly. No source photograph was overwritten.
 - Removed all community goals and the minibus/funding/council plans. The section now describes JB’s motivation and the spirit of training together.
 - Medical arrangements now direct visitors to speak to JB or email the club, referring to Dr Alix in that sentence. Her full name remains Dr Alix Daniel in her profile.
+
+## Photo balance and editing collection — 22 October
+
+- Added two men’s training images from the saved Resolve cinematic grade: **PTM08062** in the homepage gallery and **PTM08112** beside the club introduction. The group photograph and candid women’s training image remain in the gallery.
+- Preserved the original grade in the supplied editing copies; the website adds a small brightness lift for display. Each new web image has a 600px responsive version and an accurate description.
+- Supplied a separate compact editing folder with the 16 unique photos currently displayed across Home, Club, Coaches and JB’s Story: eight cinematic PNG stills, eight largest available website JPGs, and a CSV mapping files back to website paths. The set excludes duplicate thumbnails, unused images, logos, videos and the full RAW shoot. Sources are unchanged.
+
+## Owner exposure corrections and SSD organisation — 22 October
+
+- Exported the saved darktable RAW edits for the eight current training photographs: PTM08062, PTM08082, PTM08112, PTM08321, PTM08449, PTM08472, PTM08481 and PTM08631. Chose the latest edited version per image across the original-shoot and selected-33 film rolls; verified each XMP history end against darktable’s saved database history before export.
+- Replaced their website JPEGs and responsive 600px versions. Larger files are capped at 2400px on the longest side, with matching intrinsic image dimensions. Removed the extra CSS brightness/contrast adjustments so the owner’s exported exposures are displayed directly.
+- Full-resolution corrected JPEGs and the complete 16-photo website export set are saved on Extreme Pro under `Boxing Gym Edits/Exports/Photos/Exposure Corrected`.
+- Camera photos/videos, selected RAWs, cinematic still exports, previews, earlier renders and local collected media now have organised SSD locations. Old paths remain as compatibility links for darktable/Resolve and existing documents. Every cross-volume media copy was verified before its local source was removed.
+- Website source code, dependencies and the build’s small working media copies remain local pending explicit approval to move the entire website working folder; automatic approval review rejected moving code/dependencies under the media-only authorisation.

@@ -343,31 +343,33 @@ export const photos = {
   },
   "trainingPartners": {
     "src": "photos/ptm08449.jpg",
-    "width": 1620,
-    "height": 1080,
+    "width": 2400,
+    "height": 1600,
     "alt": "Two boxers practising pad work in the ring, with fight posters behind them",
     "caption": "Learn together"
   },
   "trainingFocus": {
     "src": "photos/ptm08472.jpg",
-    "width": 1620,
-    "height": 1080,
+    "width": 2400,
+    "height": 1600,
     "alt": "Two boxers focused on pad work in the ring",
     "caption": "Keep improving"
   },
   "trainingFootwork": {
     "src": "photos/ptm08481.jpg",
-    "width": 1620,
-    "height": 1080,
+    "width": 2400,
+    "height": 1600,
     "alt": "Boxing boots on the Bethnal Green Boxing Club ring canvas",
     "caption": "Find your feet"
   },
-  "currentGroup": {"src":"photos/current-group.jpg","width":1620,"height":1080,"alt":"The class group standing together in the Bethnal Green boxing ring after training","caption":"In it together"},
+  "currentGroup": {"src":"photos/current-group.jpg","width":2400,"height":1600,"alt":"The class group standing together in the Bethnal Green boxing ring after training","caption":"In it together"},
   "jbCurrent": {"src":"photos/jb-coaching.jpg","width":750,"height":900,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
   "benCurrent": {"src":"photos/ben-coaching.jpg","width":750,"height":900,"alt":"Ben coaching during a group boxing session","caption":"Ben in the gym"},
-  "trainingTogether": {"src":"photos/training-together.jpg","width":720,"height":1080,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
+  "trainingTogether": {"src":"photos/training-together.jpg","width":1600,"height":2400,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
   "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"},
-  "trainingWithJb": {"src":"photos/training-with-jb.jpg","width":720,"height":1080,"alt":"JB holding pads for a boxer during a training session","caption":"In your corner"}
+  "trainingWithJb": {"src":"photos/training-with-jb.jpg","width":1600,"height":2400,"alt":"JB holding pads for a boxer during a training session","caption":"In your corner"},
+  "trainingPads": {"src":"photos/ptm08062.jpg","width":1600,"height":2400,"alt":"A man practising pad work with JB in the club ring","caption":"Working together","position":"50% 35%"},
+  "trainingGuard": {"src":"photos/ptm08112.jpg","width":1590,"height":2400,"alt":"A man focused on pad work with his gloves raised in the club ring","caption":"Find your focus","position":"50% 45%"}
 
 };
 
@@ -503,5 +505,5 @@ export const trainingGallery = {
   heading: ['Real people.', 'Proper training.'],
   text: 'Pad work, footwork and a room full of people putting the work in. This is Bethnal Green Boxing Club.',
   link: {label: 'Get to know the club', href: '#/gym'},
-  photos: ['currentGroup', 'trainingCoaches', 'trainingTogether'],
+  photos: ['currentGroup', 'trainingPads', 'trainingTogether'],
 };
