@@ -45,17 +45,22 @@ export default function Header({ route }) {
   return <>
     <div className="topline" aria-hidden="true"><span>{content.site?.area}</span><span className="topline-star" aria-hidden="true">★</span><span className="topline-tag">{content.site?.tagline}</span></div>
     <header className="header">
-      <a className="header-home" href="#/" aria-label={`${content.site?.name ?? 'Home'}, home page`}><Logo className="logo-header" eager/></a>
-      <nav className={open ? 'nav nav-open' : 'nav'} id="site-nav" aria-label="Main">
-        <ul>
-          {NAV_LINKS.map(link => <li key={link.href}><a href={link.href} onClick={close} aria-current={route === link.route ? 'page' : undefined}>{link.label}</a></li>)}
-        </ul>
-        <BookButton label="Book a class" className="btn btn-yellow nav-mobile-cta" onOpen={close}/>
-      </nav>
-      <BookButton label="Book a class" className="btn btn-yellow btn-small header-cta"/>
-      <button ref={toggleRef} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen(value => !value)}>
-        {open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}<span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-      </button>
+      <div className="header-inner">
+        <a className="header-home" href="#/" onClick={close} aria-current={route === 'home' ? 'page' : undefined} aria-label={`${content.site?.name ?? 'Home'}, home page`}>
+          <Logo className="logo-header" eager/>
+          <span className="header-home-label" aria-hidden="true">Home</span>
+        </a>
+        <nav className={open ? 'nav nav-open' : 'nav'} id="site-nav" aria-label="Main">
+          <ul>
+            {NAV_LINKS.map(link => <li key={link.href}><a href={link.href} onClick={close} aria-current={route === link.route ? 'page' : undefined}>{link.label}</a></li>)}
+          </ul>
+          <BookButton label="Book a class" className="btn btn-yellow nav-mobile-cta" onOpen={close}/>
+        </nav>
+        <BookButton label="Book a class" className="btn btn-yellow btn-small header-cta"/>
+        <button ref={toggleRef} className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-nav" onClick={() => setOpen(value => !value)}>
+          {open ? <X aria-hidden="true"/> : <Menu aria-hidden="true"/>}<span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
+        </button>
+      </div>
     </header>
   </>;
 }
