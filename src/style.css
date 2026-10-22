@@ -768,3 +768,24 @@ main:focus { outline: none; }
 .training-gallery-grid .pin:last-child img { aspect-ratio: 4 / 5; }
 .training-gallery-grid .pin:nth-child(2) img { aspect-ratio: 4 / 5; }
 .meet-training-photo img { aspect-ratio: 4 / 5; object-fit: cover; }
+
+/* A centred home target on phones, and a defined brand column on desktop. */
+:root { --header-h: 88px; }
+.header { display: block; padding-inline: 0; }
+.header-inner { height: 100%; max-width: 1280px; margin-inline: auto; padding-inline: var(--gutter); display: grid; grid-template-columns: 48px minmax(0,1fr) 48px; align-items: center; gap: 12px; }
+.header-home { grid-column: 2; grid-row: 1; justify-self: center; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 152px; min-height: 78px; padding: 4px 12px; border: 1px solid transparent; text-decoration: none; }
+.header-home:hover { border-color: var(--yellow); background: rgba(255,255,255,.04); }
+.header-home:focus-visible { outline: 3px solid var(--yellow); outline-offset: 1px; }
+.header-home-label { color: var(--yellow); font-size: 10px; font-weight: 800; letter-spacing: .16em; line-height: 1; text-transform: uppercase; }
+.logo-header { height: 58px; width: 116px; }
+.header .menu-toggle { grid-column: 3; grid-row: 1; }
+@media (min-width: 960px) {
+ :root { --header-h: 96px; }
+ .header-inner { grid-template-columns: minmax(156px,180px) minmax(0,1fr) auto; gap: 18px; }
+ .header-home { grid-column: 1; width: 100%; min-height: 86px; }
+ .logo-header { height: 64px; width: 128px; }
+ .header .nav { grid-column: 2; grid-row: 1; justify-self: center; }
+ .header .nav ul { justify-content: center; gap: clamp(12px,1.4vw,22px); }
+ .header .nav a:not(.btn) { font-size: clamp(12px,1.08vw,14px); letter-spacing: .07em; }
+ .header-cta { grid-column: 3; grid-row: 1; margin-left: 0; }
+}
