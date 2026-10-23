@@ -144,3 +144,7 @@ Hero uses a larger portrait SSD promo with smaller heading, direct one-to-one bu
 ## Doctor portrait — 23 October 2026
 
 Added the owner-supplied portrait of Dr Alix Daniel to her medical advisor profile. The original WebP is preserved in public/photos/doctor-alix.webp, with accurate dimensions, descriptive alternative text and a profile crop focused on her face.
+
+## Space hire — 23 October 2026
+
+Added a space hire section to The club page and a shorter homepage introduction. Covers private one-to-one training, classes/groups, filming/photography and other enquiries. The owner confirmed that enquiries should go to the club email: the “Enquire to book” button opens bethnalgreenbc@gmail.com with the subject “Space hire enquiry”. No hire prices, capacity or availability are assumed.

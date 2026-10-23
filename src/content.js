@@ -509,3 +509,19 @@ export const trainingGallery = {
   link: {label: 'Get to know the club', href: '#/gym'},
   photos: ['currentGroup', 'trainingPads', 'trainingTogether'],
 };
+
+
+export const spaceHire = {
+  eyebrow: 'Space hire',
+  heading: ['Your session.', 'Our space.'],
+  intro: 'Hire the boxing space at Bethnal Green Boxing Club for private one-to-one training, classes, filming or a project of your own.',
+  uses: [
+    {title: 'One-to-one training', text: 'Looking for a space to train a private client? Get in touch to discuss your session.'},
+    {title: 'Classes & groups', text: 'Bring your class or group to the club. Tell us what you have planned and how many people you expect.'},
+    {title: 'Filming & photography', text: 'Use the boxing space as a setting for your next shoot. Share your brief and the time you need.'},
+    {title: 'Something else?', text: 'Have another idea for the space? Tell us about it and we can talk it through.'},
+  ],
+  enquiry: 'Email the club with your preferred date, how long you need the space and what you plan to use it for. We’ll discuss availability and hire costs with you.',
+  label: 'Enquire to book',
+  subject: 'Space hire enquiry',
+};
