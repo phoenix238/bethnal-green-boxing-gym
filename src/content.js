@@ -125,6 +125,7 @@ export const doctor = {
   "profileHeading": "Our associated medical advisor",
   "person": {
     "name": "Dr Alix Daniel",
+    "photo": "doctorAlix",
     "role": "Medical advisor · Private GP · MD",
     "bio": "Dr Alix Daniel joins the Bethnal Green Boxing Club community as medical advisor. She obtained her MD in Brittany, France, in 1991 and holds Master’s degrees in tropical medicine, public health and nutrition, with studies at the Faculty of Medicine in Brest and the London School of Hygiene & Tropical Medicine. With more than 35 years of experience as a private GP, her interests include preventive medicine, lifestyle medicine, wellbeing care, second opinions and personalised prescribing.",
     "paragraphs": [
@@ -320,12 +321,13 @@ export const photos = {
     "alt": "Placeholder silhouette: photo of Ben coming soon",
     "caption": "Photo coming soon"
   },
-  "doctorPlaceholder": {
-    "src": "photos/ben-placeholder.svg",
-    "width": 600,
-    "height": 750,
-    "alt": "Placeholder silhouette: photo of the doctor coming soon",
-    "caption": "Photo coming soon"
+  "doctorAlix": {
+    "src": "photos/doctor-alix.webp",
+    "width": 1280,
+    "height": 1920,
+    "alt": "Dr Alix Daniel seated at her desk with a stethoscope",
+    "caption": "Dr Alix Daniel",
+    "position": "50% 38%"
   },
   "clubGroup2": {
     "src": "photos/club-group-2.jpg",
