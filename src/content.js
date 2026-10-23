@@ -36,7 +36,7 @@ export const classesPage = {
   "privateHeading": "One-to-one with Ben",
   "empty": "No classes are listed right now. Check back soon, or ask in the WhatsApp group.",
   "error": "We couldn't load the class list just now.",
-  "groupIntro": "Shadowboxing, pad work and conditioning in a group. Newcomers and experienced boxers train together. Group classes are £10.",
+  "groupIntro": "Shadowboxing, pad work and conditioning in a group. Newcomers and experienced boxers train together. Group classes are £10. Book online or just turn up and pay on arrival.",
   "privateIntro": "Individual coaching focused on your goals: learn the fundamentals, sharpen your technique or work on a specific part of your boxing. Private sessions with Ben are £40."
 };
 
@@ -61,7 +61,7 @@ export const coaches = {
       "name": "JB",
       "role": "Founder · Group classes",
       "photo": "jbCurrent",
-      "bio": "JB is the club’s founder and takes the group classes. Known as Bernie Paul during his boxing career, he started at Finchley Boxing Club, later turned professional and balanced boxing with his job as a Royal Mail postman. Today, his focus is on giving something back through the club.",
+      "bio": "Jean Bernard Paul, known here as JB, is the club’s founder and takes the group classes. In his boxing days, he was Bernie Paul, the Punching Postman. He started at Finchley Boxing Club and later balanced professional boxing with his job as a Royal Mail postman. Today, his focus is on giving something back through the club.",
       "link": {
         "label": "Read JB’s story",
         "href": "#/story"
@@ -153,8 +153,8 @@ export const firstClass = {
       "text": "Join an open-level group class or book one-to-one coaching with Ben. You don’t need boxing experience to get started."
     },
     {
-      "title": "Book your place",
-      "text": "Group classes are £10. Check the booking calendar for available sessions and reserve your place."
+      "title": "Book or drop in",
+      "text": "Group classes are £10. Book online if you like, or just turn up and pay on arrival. No booking needed for group classes."
     },
     {
       "title": "Come down",
@@ -208,7 +208,7 @@ export const join = {
   ],
   "text": "Not sure if it's for you? Ask a question before your first class, hear when classes change, or just say hello.",
   "button": "Join the WhatsApp group",
-  "note": "Bookings go through the booking calendar. The WhatsApp group is for questions and news."
+  "note": "Book group classes online or just turn up and pay on arrival. Arrange one-to-one sessions with Ben through the booking calendar. The WhatsApp group is for questions and news."
 };
 
 export const media = {
@@ -363,12 +363,12 @@ export const photos = {
     "caption": "Find your feet"
   },
   "currentGroup": {"src":"photos/current-group-exposure-corrected.jpg","width":2400,"height":1600,"alt":"The class group standing together in the Bethnal Green boxing ring after training","caption":"In it together"},
-  "jbCurrent": {"src":"photos/jb-coaching.jpg","width":750,"height":900,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
-  "benCurrent": {"src":"photos/ben-coaching.jpg","width":750,"height":900,"alt":"Ben coaching during a group boxing session","caption":"Ben in the gym"},
+  "jbCurrent": {"src":"photos/jb-portrait.jpg","width":800,"height":1000,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
+  "benCurrent": {"src":"photos/ben-portrait.jpg","width":800,"height":1000,"alt":"Ben demonstrating his boxing guard in the club ring","caption":"Ben in the gym"},
   "trainingTogether": {"src":"photos/training-together-exposure-corrected.jpg","width":1600,"height":2400,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
   "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"},
-  "trainingWithJb": {"src":"photos/training-with-jb-exposure-corrected.jpg","width":1600,"height":2400,"alt":"JB holding pads for a boxer during a training session","caption":"In your corner"},
-  "trainingPads": {"src":"photos/ptm08062-exposure-corrected.jpg","width":1600,"height":2400,"alt":"A man practising pad work with JB in the club ring","caption":"Working together","position":"50% 35%"},
+  "trainingWithJb": {"src":"photos/training-with-jb-exposure-corrected.jpg","width":1600,"height":2400,"alt":"Ben holding pads for a boxer during a training session","caption":"In your corner"},
+  "trainingPads": {"src":"photos/ptm08062-exposure-corrected.jpg","width":1600,"height":2400,"alt":"A man practising pad work with Ben in the club ring","caption":"Working together","position":"50% 35%"},
   "trainingGuard": {"src":"photos/ptm08112-exposure-corrected.jpg","width":1590,"height":2400,"alt":"A man focused on pad work with his gloves raised in the club ring","caption":"Find your focus","position":"50% 45%"}
 
 };
@@ -380,10 +380,10 @@ export const sessions = {
     "to train."
   ],
   "intro": "Group boxing with JB and Ben. One-to-one coaching with Ben. Find your next session below.",
-  "priceNote": "Group classes: £10.",
+  "priceNote": "Group classes: £10. Book online or just turn up and pay on arrival.",
   "weekly": ["Tuesdays 6pm", "Thursdays 7pm"],
   "privatePromo": {"title": "One-to-one coaching with Ben", "link": "Check available times"},
-  "bookingNotice": "Class bookings are handled by Cal.com. Check the calendar for current availability."
+  "bookingNotice": "Book group classes online or just turn up and pay on arrival. One-to-one sessions with Ben can be booked through Cal.com."
 };
 
 export const shop = {
@@ -410,7 +410,7 @@ export const story = {
     "A club to give back."
   ],
   "paragraphs": [
-    "You’ll know him as JB. During his boxing career, he was known as Bernie Paul.",
+    "You’ll know him as JB: Jean Bernard Paul. In his boxing days, he was known as Bernie Paul, the Punching Postman, balancing his life in the ring with his job as a Royal Mail postman.",
     "He started boxing at about 15 at Finchley Boxing Club, training alongside his brothers Steve and John. They later moved to Tottenham New Enterprise Boxing Club, making the journey from Highgate to train.",
     "A shoulder injury interrupted his amateur career, but he kept running and training through the years away from competition. In his mid-twenties, he turned professional while continuing his work as a Royal Mail postman."
   ],
@@ -443,7 +443,7 @@ export const visit = {
     },
     {
       "label": "Group classes",
-      "value": "£10 per class. Check the calendar for current times."
+      "value": "£10 per class. Tuesdays at 6pm and Thursdays at 7pm. Book online or just turn up and pay on arrival."
     },
     {
       "label": "One-to-one coaching",

@@ -25,7 +25,7 @@ export default function Footer({ onOwnerDemo, route }) {
     </div>
     <div className="footer-bottom">
       <span>© {new Date().getFullYear()} {site?.name}</span>
-      <span className="footer-proto">Class bookings are handled by Cal.com</span>
+      <span className="footer-proto">Book online with Cal.com or pay on arrival for group classes</span>
       {onOwnerDemo ? <button type="button" className="footer-owner" onClick={onOwnerDemo}>Owner demo</button> : null}
     </div>
   </footer>;
