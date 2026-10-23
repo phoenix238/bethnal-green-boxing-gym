@@ -425,3 +425,26 @@ export function TrainingGallery() {
     <div className="training-gallery-grid">{gallery.photos.map((name, index) => <Photo key={name} name={name} className={index === 0 ? 'gallery-group' : undefined} sizes={index === 0 ? '(min-width: 900px) 42vw, 92vw' : '(min-width: 900px) 28vw, 92vw'}/>)}</div>
   </div></section>;
 }
+
+
+export function SpaceHire({ compact = false }) {
+  const hire = content.spaceHire;
+  const emailHref = `mailto:${content.media.email}?subject=${encodeURIComponent(hire.subject)}`;
+  return <section className="section space-hire plaster" aria-labelledby="space-hire-title">
+    <div className="wrap">
+      <div className="split">
+        <div><Eyebrow>{hire.eyebrow}</Eyebrow><h2 id="space-hire-title" className="h2"><Title parts={hire.heading}/></h2></div>
+        <div className="split-copy"><p className="lede">{hire.intro}</p></div>
+      </div>
+      {!compact ? <ul className="posters posters-4">
+        {hire.uses.map((use, index) => <li className={`poster poster-${index % 3 + 1}`} key={use.title}>
+          <h3 className="poster-title">{use.title}</h3><p>{use.text}</p>
+        </li>)}
+      </ul> : null}
+      <p className="space-hire-enquiry">{hire.enquiry}</p>
+      <a className="btn btn-yellow" href={emailHref}><Mail size={18} aria-hidden="true"/>{hire.label}<ArrowUpRight size={18} aria-hidden="true"/></a>
+      <p className="space-hire-email"><a href={emailHref}>{content.media.email}</a></p>
+      {compact ? <a className="text-link" href="#/gym">Explore the club and space hire <ArrowRight size={18} aria-hidden="true"/></a> : null}
+    </div>
+  </section>;
+}

@@ -125,6 +125,7 @@ export const doctor = {
   "profileHeading": "Our associated medical advisor",
   "person": {
     "name": "Dr Alix Daniel",
+    "photo": "doctorAlix",
     "role": "Medical advisor · Private GP · MD",
     "bio": "Dr Alix Daniel joins the Bethnal Green Boxing Club community as medical advisor. She obtained her MD in Brittany, France, in 1991 and holds Master’s degrees in tropical medicine, public health and nutrition, with studies at the Faculty of Medicine in Brest and the London School of Hygiene & Tropical Medicine. With more than 35 years of experience as a private GP, her interests include preventive medicine, lifestyle medicine, wellbeing care, second opinions and personalised prescribing.",
     "paragraphs": [
@@ -320,12 +321,13 @@ export const photos = {
     "alt": "Placeholder silhouette: photo of Ben coming soon",
     "caption": "Photo coming soon"
   },
-  "doctorPlaceholder": {
-    "src": "photos/ben-placeholder.svg",
-    "width": 600,
-    "height": 750,
-    "alt": "Placeholder silhouette: photo of the doctor coming soon",
-    "caption": "Photo coming soon"
+  "doctorAlix": {
+    "src": "photos/doctor-alix.webp",
+    "width": 1280,
+    "height": 1920,
+    "alt": "Dr Alix Daniel seated at her desk with a stethoscope",
+    "caption": "Dr Alix Daniel",
+    "position": "50% 38%"
   },
   "clubGroup2": {
     "src": "photos/club-group-2.jpg",
@@ -506,4 +508,20 @@ export const trainingGallery = {
   text: 'Pad work, footwork and a room full of people putting the work in. This is Bethnal Green Boxing Club.',
   link: {label: 'Get to know the club', href: '#/gym'},
   photos: ['currentGroup', 'trainingPads', 'trainingTogether'],
+};
+
+
+export const spaceHire = {
+  eyebrow: 'Space hire',
+  heading: ['Your session.', 'Our space.'],
+  intro: 'Hire the boxing space at Bethnal Green Boxing Club for private one-to-one training, classes, filming or a project of your own.',
+  uses: [
+    {title: 'One-to-one training', text: 'Looking for a space to train a private client? Get in touch to discuss your session.'},
+    {title: 'Classes & groups', text: 'Bring your class or group to the club. Tell us what you have planned and how many people you expect.'},
+    {title: 'Filming & photography', text: 'Use the boxing space as a setting for your next shoot. Share your brief and the time you need.'},
+    {title: 'Something else?', text: 'Have another idea for the space? Tell us about it and we can talk it through.'},
+  ],
+  enquiry: 'Email the club with your preferred date, how long you need the space and what you plan to use it for. We’ll discuss availability and hire costs with you.',
+  label: 'Enquire to book',
+  subject: 'Space hire enquiry',
 };

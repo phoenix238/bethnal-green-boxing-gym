@@ -140,3 +140,11 @@ Owner-demo entry points are now gated by `?demo=1`; this is a discoverability ga
 Supersedes earlier age/discount instructions: remove public age restrictions and the Proposition Studios discount across the site. Group price stays £10. Hidden demo discount code/reduced-price controls are removed too; old saved reduced prices are ignored. Borrowed gloves are available, and visitors need training clothes and training shoes; no need to ask what to bring. Club email is **bethnalgreenbc@gmail.com**, used for first-visit and white collar enquiries and linked in the footer. WhatsApp remains a separately labelled group.
 
 Hero uses a larger portrait SSD promo with smaller heading, direct one-to-one button, and no York Hall eyebrow. Group photo has now been re-exported successfully with its saved Resolve grade. New candid PTM08631 replaces the gallery's third image; PTM08539 replaces the repeated introduction image.
+
+## Doctor portrait — 23 October 2026
+
+Added the owner-supplied portrait of Dr Alix Daniel to her medical advisor profile. The original WebP is preserved in public/photos/doctor-alix.webp, with accurate dimensions, descriptive alternative text and a profile crop focused on her face.
+
+## Space hire — 23 October 2026
+
+Added a space hire section to The club page and a shorter homepage introduction. Covers private one-to-one training, classes/groups, filming/photography and other enquiries. The owner confirmed that enquiries should go to the club email: the “Enquire to book” button opens bethnalgreenbc@gmail.com with the subject “Space hire enquiry”. No hire prices, capacity or availability are assumed.

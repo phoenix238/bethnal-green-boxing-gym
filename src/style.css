@@ -789,3 +789,6 @@ main:focus { outline: none; }
  .header .nav a:not(.btn) { font-size: clamp(12px,1.08vw,14px); letter-spacing: .07em; }
  .header-cta { grid-column: 3; grid-row: 1; margin-left: 0; }
 }
+
+.space-hire-enquiry { max-width: 65ch; margin: 28px 0 20px; }
+.space-hire-email { margin: 14px 0 20px; overflow-wrap: anywhere; }
