@@ -40,7 +40,7 @@ export const classesPage = {
   "privateHeading": "One-to-one with Ben",
   "empty": "No classes are listed right now. Check back soon, or contact the club on WhatsApp.",
   "error": "We couldn't load the class list just now.",
-  "groupIntro": "Shadowboxing, pad work and conditioning in a group. Newcomers and experienced boxers train together. Group classes are £10.",
+  "groupIntro": "Shadowboxing, pad work and conditioning in a group. Newcomers and experienced boxers train together. Group classes are £10. Book online or just turn up and pay on arrival.",
   "privateIntro": "Individual coaching focused on your goals: learn the fundamentals, sharpen your technique or work on a specific part of your boxing. Private sessions with Ben are £40."
 };
 
@@ -388,8 +388,8 @@ export const photos = {
   "benCurrent": {"src":"photos/ben-boxing-club-profile.jpg","width":1600,"height":1068,"alt":"Ben Doughty demonstrating a boxing stance in the gym","caption":"Ben Doughty · Head trainer · Photo: Clugstons Photography","position":"50% 50%"},
   "trainingTogether": {"src":"photos/training-together-exposure-corrected.jpg","width":1600,"height":2400,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
   "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"},
-  "trainingWithJb": {"src":"photos/training-with-jb-exposure-corrected.jpg","width":1600,"height":2400,"alt":"JB holding pads for a boxer during a training session","caption":"In your corner"},
-  "trainingPads": {"src":"photos/ptm08062-exposure-corrected.jpg","width":1600,"height":2400,"alt":"A man practising pad work with JB in the club ring","caption":"Working together","position":"50% 35%"},
+  "trainingWithJb": {"src":"photos/training-with-jb-exposure-corrected.jpg","width":1600,"height":2400,"alt":"Ben holding pads for a boxer during a training session","caption":"In your corner"},
+  "trainingPads": {"src":"photos/ptm08062-exposure-corrected.jpg","width":1600,"height":2400,"alt":"A man practising pad work with Ben in the club ring","caption":"Working together","position":"50% 35%"},
   "trainingGuard": {"src":"photos/ptm08112-exposure-corrected.jpg","width":1590,"height":2400,"alt":"A man focused on pad work with his gloves raised in the club ring","caption":"Find your focus","position":"50% 45%"}
 
 };
@@ -401,10 +401,10 @@ export const sessions = {
     "to train."
   ],
   "intro": "Group boxing with JB and Ben. One-to-one coaching with Ben. Find your next session below.",
-  "priceNote": "Group classes: £10.",
+  "priceNote": "Group classes: £10. Book online or just turn up and pay on arrival.",
   "weekly": ["Tuesdays 6pm", "Thursdays 7pm"],
   "privatePromo": {"title": "One-to-one coaching with Ben", "link": "Check available times"},
-  "bookingNotice": "Class bookings are handled by Cal.com. Check the calendar for current availability."
+  "bookingNotice": "Book group classes online or just turn up and pay on arrival. One-to-one sessions with Ben can be booked through Cal.com."
 };
 
 export const shop = {
