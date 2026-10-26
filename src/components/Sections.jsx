@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ArrowUpRight, MessageCircle, Mail, Pause, Play, Volume2, VolumeX, X } from 'lucide-react';
 import * as content from '../content.js';
 import { Eyebrow, Paragraphs, Photo, Title } from './ui.jsx';
-import { BookButton } from './Classes.jsx';
+import { BookButton, BenBookingOptions } from './Classes.jsx';
 import { tribute } from '../tribute.js';
 
 // The weekly promo is separate from the live booking calendar below.
@@ -179,7 +179,7 @@ function ClubVideo({ video, autoplaySound = false }) {
     if (reduce?.matches) userPaused.current = true;
     const pause = () => { requestId.current += 1; node.pause(); };
     const resumeIfVisible = () => {
-      if (visible.current && !document.hidden && !userPaused.current) play();
+      if (visible.current && !document.hidden && !userPaused.current) { if (node.paused) play(); }
       else pause();
     };
     const onReduce = event => {
@@ -191,8 +191,12 @@ function ClubVideo({ video, autoplaySound = false }) {
     if ('IntersectionObserver' in window) {
       observer = new IntersectionObserver(([entry]) => {
         visible.current = entry.isIntersecting && entry.intersectionRatio >= 0.25;
+        if (autoplaySound) {
+          const progress = Math.max(0, Math.min(1, (entry.intersectionRatio - 0.25) / 0.7));
+          node.volume = progress * progress * (3 - 2 * progress);
+        }
         resumeIfVisible();
-      }, { threshold: [0, 0.25], rootMargin: '-96px 0px 0px 0px' });
+      }, { threshold: Array.from({ length: 101 }, (_, index) => index / 100), rootMargin: '-96px 0px 0px 0px' });
       observer.observe(node);
     }
     return () => {
@@ -368,7 +372,7 @@ export function Space({ first = false }) {
         <div className="split-copy"><Paragraphs items={gym?.paragraphs}/></div>
       </div>
       <div className="collage">
-        <Photo name="trainingPartners" className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
+        <Photo name="trainingPartners" eager={first} className="collage-wide pin-tilt-left" sizes="(min-width: 900px) 50vw, 92vw"/>
         <Photo name="trainingWithJb" className="collage-tall pin-tilt-right" sizes="(min-width: 900px) 25vw, 46vw"/>
         <Photo name="trainingFootwork" className="collage-tall pin-tilt-left-sm" sizes="(min-width: 900px) 25vw, 46vw"/>
       </div>
@@ -420,14 +424,16 @@ export function Visit({ first = false }) {
     <div className="wrap">
       <Eyebrow>{visit?.eyebrow}</Eyebrow>
       <H id="visit-title" className="h2"><Title parts={visit?.heading}/></H>
+      <div className="btn-row visit-actions">
+      <p className="visit-contact"><a className="btn btn-whatsapp" href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>WhatsApp {content.media.phone}</a></p>
+      <p className="visit-directions"><a className="btn btn-yellow" href={visit.map.href} target="_blank" rel="noopener noreferrer">{visit.map.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens Google Maps in a new tab)</span></a></p>
+      </div>
       {items.length ? <dl className="tickets">
         {items.map((item, index) => <div className="ticket" key={index}>
           <dt>{item.label}</dt>
-          <dd>{item.value}</dd>
+          <dd>{item.value}{item.label === 'One-to-one coaching' ? <p><a href="#/classes/private-coaching">Book online or contact Ben directly</a></p> : null}</dd>
         </div>)}
       </dl> : null}
-      <p className="visit-contact"><a className="btn btn-whatsapp" href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer"><MessageCircle size={18}/>WhatsApp {content.media.phone}</a></p>
-      <p className="visit-directions"><a className="btn btn-yellow" href={visit.map.href} target="_blank" rel="noopener noreferrer">{visit.map.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens Google Maps in a new tab)</span></a></p>
       {visit.directions ? <div className="visit-directions"><p>{visit.directions.note}</p><a className="btn btn-paper" href={visit.directions.href} target="_blank" rel="noopener noreferrer">{visit.directions.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens Facebook in a new tab)</span></a></div> : null}
     </div>
   </section>;
@@ -448,6 +454,28 @@ export function CtaBand() {
 
 // Gym: the coaches, as two fight-bill cards.
 export function Coaches({ first = false }) {
+  if (first) return <>
+    <section className="section plaster coaches-intro"><div className="wrap">
+      <Eyebrow>Boxing coaches in Bethnal Green</Eyebrow><h1 className="h2">Meet the<br/><em>coaches.</em></h1>
+      <p className="lede">Get to know Bernie Paul and Ben Doughty, their boxing backgrounds and their work in the gym today.</p>
+      <nav className="profile-jumps btn-row" aria-label="Coach biographies">
+        <a className="btn btn-yellow" href="#/coaches/coach-bernie">Bernie’s story <ArrowRight size={18} aria-hidden="true"/></a>
+        <a className="btn btn-paper" href="#/coaches/coach-ben">Ben’s profile <ArrowRight size={18} aria-hidden="true"/></a>
+      </nav>
+    </div></section>
+    <section className="section founder-profile plaster" id="coach-bernie" tabIndex={-1} aria-labelledby="founder-profile-title"><div className="wrap trainer-grid">
+      <Photo name="bernieArchive" className="trainer-portrait" sizes="(min-width:960px) 40vw, 90vw"/>
+      <div><Eyebrow>Founder & Head Coach</Eyebrow><h2 id="founder-profile-title" className="h2">Bernie Paul.<br/><em>The Punching Postman.</em></h2>
+        <DaughterTribute compact/>
+        <div className="profile-next"><h3 className="h3">Train with Bernie.</h3><p>Bernie and Ben lead the club’s group classes together. Tuesdays at 6pm and Thursdays at 7pm · £10.</p>
+          <BookButton slug="boxingmixedlevels" label="Book a group class"/>
+          <p><a className="text-link" href="#/story">Explore Bernie’s boxing archive <ArrowRight size={18} aria-hidden="true"/></a></p>
+          <a className="text-link" href="#/coaches/coach-ben">Meet Ben Doughty <ArrowRight size={18} aria-hidden="true"/></a>
+        </div>
+      </div>
+    </div></section>
+    <HeadTrainer full headingLevel="h2"/>
+  </>;
   const H = first ? 'h1' : 'h2';
   const { coaches } = content;
   const people = Array.isArray(coaches?.people) ? coaches.people : [];
@@ -561,7 +589,7 @@ export function TrainingOptions() {
     <h2 id="training-title" className="h2"><Title parts={trainingOptions.heading}/></h2>
     <ul className="posters posters-2">{trainingOptions.options.map((option, index) => <li className={`poster poster-${index === 0 ? 1 : 3}`} key={option.slug}>
       <h3 className="poster-title">{option.title}</h3><p>{option.text}</p><p className="coach-note">{option.note}</p>
-      <p><BookButton slug={option.slug} label={option.label} className="btn btn-yellow"/></p>
+      <>{option.slug === 'private-one-on-one' ? <BenBookingOptions/> : <p><BookButton slug={option.slug} label={option.label} className="btn btn-yellow"/></p>}</>
     </li>)}</ul>
   </div></section>;
 }
@@ -606,9 +634,9 @@ export function SpaceHire({ compact = false, first = false }) {
 const FAQs = [
   ['Do I need boxing experience?', 'No. Our open-level group classes welcome beginners, returning boxers and experienced participants. Tell Bernie or Ben it’s your first session.'],
   ['When are the group classes and how much are they?', 'Tuesdays at 6pm and Thursdays at 7pm. Group classes are £10 each. Check the booking calendar for current availability and any changes.'],
-  ['Do I have to book?', 'You can book online or simply turn up for a group class and pay at the gym. Book one-to-one coaching with Ben through the calendar.'],
+  ['Do I have to book?', 'You can book online or simply turn up for a group class and pay at the gym. For one-to-one coaching, book online or arrange a session directly with Ben by email or WhatsApp.'],
   ['What should I wear? Can I borrow gloves?', 'Wear comfortable training clothes and training shoes. We have gloves you can borrow if you need them.'],
-  ['Can I train one-to-one?', 'Yes. Private coaching with head trainer Ben Doughty is £40. Choose an available time in the booking calendar.'],
+  ['Can I train one-to-one?', 'Yes. Private coaching with head trainer Ben Doughty is £40. Book through the calendar, or contact Ben directly by email or WhatsApp to arrange a session.'],
   ['How do I pay?', content.paymentPolicy],
   ['Where is the entrance? Is there step-free access?', 'We’re in the basement of Proposition Studios, 279 Cambridge Heath Road, E2 0EL, down the road from York Hall. Watch the directions video on the Visit page. The gym is in the basement and there is no step-free access. Contact us on WhatsApp with any access questions before travelling.'],
   ['What about memberships, trials or cancellations?', 'Group classes are £10 per session. Contact the club on WhatsApp about membership options, trial arrangements or cancellation terms before booking.']
@@ -616,43 +644,64 @@ const FAQs = [
 
 export function Faq() {
   return <section className="section plaster faq-page"><div className="wrap faq-layout">
-    <div><Eyebrow>Before you come down</Eyebrow><h1 className="h2">Good questions.<br/><em>Clear answers.</em></h1><p className="lede">Your first boxing class in Bethnal Green, made a little easier.</p><a className="btn btn-yellow" href="#/visit">Plan your visit <ArrowRight size={18}/></a></div>
-    <div className="faq-list">{FAQs.map(([q,a]) => <details key={q}><summary>{q}</summary><p>{a}{q.includes('pay') || q.includes('entrance') || q.includes('memberships') ? <> <a href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer">WhatsApp the club</a>.</> : null}{q.includes('entrance') ? <> <a href="#/visit">Directions and contact</a>.</> : null}</p></details>)}<p>Something else on your mind? <a href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer">WhatsApp the club</a> or <a href={`mailto:${content.media.email}`}>Email the club</a>.</p></div>
+    <div><Eyebrow>Before you come down</Eyebrow><h1 className="h2">Good questions.<br/><em>Clear answers.</em></h1><p className="lede">Your first boxing class in Bethnal Green, made a little easier.</p><div className="btn-row"><a className="btn btn-yellow" href="#/classes">Find a class <ArrowRight size={18}/></a><a className="text-link" href="#/visit">Plan your visit <ArrowRight size={18}/></a></div></div>
+    <div className="faq-list">{FAQs.map(([q,a]) => <details key={q}><summary>{q}</summary><p>{a}{q === 'Can I train one-to-one?' ? <> <a href="#/classes/private-coaching">Book or contact Ben</a>.</> : null}{q.includes('pay') || q.includes('entrance') || q.includes('memberships') ? <> <a href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer">WhatsApp the club</a>.</> : null}{q.includes('entrance') ? <> <a href="#/visit">Directions and contact</a>.</> : null}</p></details>)}<p>Something else on your mind? <a href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer">WhatsApp the club</a> or <a href={`mailto:${content.media.email}`}>Email the club</a>.</p></div>
   </div></section>;
 }
 
 export function ContactDock() {
-  return <aside className="contact-dock" aria-label="Contact the club"><a className="dock-link dock-whatsapp" href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/><span>WhatsApp the club</span></a><a className="dock-link dock-email" href={`mailto:${content.media.email}`}><Mail size={18} aria-hidden="true"/><span>Email the club</span></a></aside>;
+  const [open, setOpen] = useState(false);
+  const dockRef = useRef(null);
+  const toggleRef = useRef(null);
+  useEffect(() => {
+    const close = () => setOpen(false);
+    window.addEventListener('hashchange', close);
+    return () => window.removeEventListener('hashchange', close);
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = event => { if (event.key === 'Escape') { setOpen(false); toggleRef.current?.focus(); } };
+    const outside = event => { if (!dockRef.current?.contains(event.target)) setOpen(false); };
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', outside);
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', outside); };
+  }, [open]);
+  return <aside ref={dockRef} className={`contact-dock${open ? ' contact-dock-open' : ''}`} aria-label="Contact the club">
+    <div className="dock-options" id="contact-options">
+      <a className="dock-link dock-whatsapp" href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/><span>WhatsApp the club</span></a>
+      <a className="dock-link dock-email" href={`mailto:${content.media.email}`}><Mail size={18} aria-hidden="true"/><span>Email the club</span></a>
+    </div>
+    <button ref={toggleRef} className="dock-toggle dock-link dock-whatsapp" type="button" aria-controls="contact-options" aria-expanded={open} onClick={() => setOpen(value => !value)}>{open ? <X size={18} aria-hidden="true"/> : <MessageCircle size={18} aria-hidden="true"/>}{open ? 'Close contact' : 'Contact'}</button>
+  </aside>;
 }
 
 export function OtherWays() {
   return <section className="section other-ways floor"><div className="wrap"><Eyebrow>Beyond the weekly classes</Eyebrow><div className="other-grid">
-    <div><h2 className="h3">A goal in the ring?</h2><p>Talk to Bernie and Ben about white collar boxing, with medical advice through Dr Alix Daniel.</p><a className="text-link" href="#/doctor">White collar & wellbeing <ArrowRight size={18}/></a></div>
     <div><h2 className="h3">Make use of the space.</h2><p>Ask about hiring the club for your project or session.</p><a className="text-link" href="#/space-hire">Explore space hire <ArrowRight size={18}/></a></div>
 
   </div></div></section>;
 }
 
-function DaughterTribute() {
-  const headings = new Set(['THE STORY OF A CHAMPION', 'THE MAKING OF A CHAMPION', 'THE PUNCHING POSTMAN', 'FROM MAURITIUS TO CHAMPIONSHIP GLORY']);
-  return <article className="daughter-tribute" aria-labelledby="tribute-title"><p className="eyebrow">A daughter’s tribute · In her own words</p><h2 id="tribute-title" className="h2">The Punching Postman.</h2>
+function DaughterTribute({ compact = false }) {
+  const headings = new Set(['THE STORY OF A CHAMPION.', 'THE MAKING OF A CHAMPION', 'THE PUNCHING POSTMAN', 'FROM MAURITIUS TO CHAMPIONSHIP GLORY']);
+  return <article className={compact ? "daughter-tribute tribute-inline" : "daughter-tribute"} aria-label="A daughter’s tribute"><p className="eyebrow">A daughter’s tribute · In her own words</p>{!compact ? <h2 id="tribute-title" className="h2">The Punching Postman.</h2> : null}
     <div className="tribute-text">{tribute.map((text,i) => headings.has(text) ? <h3 className="h3" key={i}>{text}</h3> : <p key={i}>{text}</p>)}</div>
   </article>;
 }
 
-export function HeadTrainer({ full = false }) {
+export function HeadTrainer({ full = false, headingLevel }) {
   const ben = content.coaches.people[1];
-  const H = full ? 'h1' : 'h2';
-  return <section className={`section head-trainer plaster${full ? ' trainer-full' : ''}`}><div className="wrap trainer-grid">
+  const H = headingLevel ?? (full ? 'h1' : 'h2');
+  return <section id="coach-ben" tabIndex={-1} className={`section head-trainer plaster${full ? ' trainer-full' : ''}`}><div className="wrap trainer-grid">
     <Photo name="benCurrent" className="trainer-portrait" sizes="(min-width:960px) 40vw, 90vw"/>
     <div><Eyebrow>Head trainer</Eyebrow><H className="h2">Ben Doughty.<br/><em>In your corner.</em></H>
-      <p className="lede">{full ? ben.bio : 'More than 40 years in boxing. Licensed manager and trainer, journalist and author. Ben brings his experience to every session, from your first class to one-to-one coaching.'}</p>
+      <p className="lede">{ben.bio}</p>
       {full ? <>
         {ben.biography.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        <p><strong>One-to-one coaching · £40</strong></p><BookButton slug={ben.slug} label="Book with Ben"/>
+        <div className="profile-next"><h3 className="h3">Train with Ben.</h3><p>Group classes with JB and private one-to-one coaching. Private sessions are £40.</p><BenBookingOptions/>
         <p className="trainer-podcast"><a href={ben.link.href} target="_blank" rel="noopener noreferrer">{ben.link.label} <ArrowUpRight size={16}/></a></p>
-        <a className="text-link" href="#/">Back to the club <ArrowRight size={18} aria-hidden="true"/></a>
-      </> : <a className="btn btn-yellow" href="#/ben-doughty">Read Ben’s full profile <ArrowRight size={18} aria-hidden="true"/></a>}
+        <a className="text-link" href="#/coaches">Meet both coaches <ArrowRight size={18} aria-hidden="true"/></a></div>
+      </> : <a className="btn btn-yellow" href="#/coaches/coach-ben">Read Ben’s full profile <ArrowRight size={18} aria-hidden="true"/></a>}
     </div>
   </div></section>;
 }

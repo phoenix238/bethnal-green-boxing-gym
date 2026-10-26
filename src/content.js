@@ -1,3 +1,11 @@
+import { benBiography } from './ben-biography.js';
+
+// Owner-authorised public contacts for Ben's private coaching, separate from club enquiries.
+export const benContact = {
+  email: 'bendoughty2000@yahoo.co.uk',
+  phone: '+44 7376 909551',
+  whatsapp: 'https://wa.me/447376909551',
+};
 // Public copy. Sources and launch questions: docs/LAUNCH_REVIEW.md.
 // Confirmed owner details override the older interview notes.
 
@@ -77,14 +85,8 @@ export const coaches = {
       "cardBio": "Ben leads group classes alongside JB and offers private coaching. A licensed manager and trainer, journalist and author, he brings more than 40 years of boxing experience to the gym. From schoolchildren and first-time boxers to experienced amateurs and professionals, he helps people build their skills and confidence.",
       "role": "Head trainer · Group & private coaching",
       "photo": "benCurrent",
-      "bio": "Ben Doughty is a licensed manager and trainer, journalist and author who has been involved in boxing for more than 40 years. He coaches everyone from beginners and schoolchildren to experienced amateurs and professionals, and takes the club’s group classes alongside JB.",
-      "biography": [
-        "Putting on gloves at the age of 10, Ben had 38 amateur bouts between 1981 and 2004, winning two ABA Western Counties titles as a junior. In 2003, he boxed in New York City representing the legendary Gleason’s Gym. During his time in Brooklyn, he also sparred with numerous world-class professionals, including Wayne Braithwaite, Vivian Harris and Paul Malignaggi.",
-        "At the close of his amateur competitive career, Ben went into coaching, initially as head junior trainer at Angel ABC, followed by three and a half years at the world-famous Repton under the late Tony Burns.",
-        "In 2008, he took out a professional trainer’s licence with the British Boxing Board of Control. He has since worked with a number of well-known fighters, including Prizefighter champions Yassine El Maachi and Choi Tseveenpurev. He currently manages top super-flyweight prospect Julia ‘Bee’ Lee.",
-        "Alongside his direct involvement in the sport, Ben is a writer and videographer who has authored five books and had several pieces published in Boxing News. As an interviewer, he has spoken with many legends of the game, including Sugar Ray Leonard, Roberto Duran, Roy Jones Jr, Larry Holmes, Frank Bruno, Nigel Benn and Chris Eubank Sr.",
-        "Throughout his coaching career, Ben has worked with everyone from top amateurs and professionals to schoolchildren, white-collar boxers and recreational enthusiasts. When he is not busy in the gym, he teaches in primary and secondary schools for both WO Sports and the Sweet Science Foundation."
-      ],
+      "bio": benBiography[0],
+      "biography": benBiography.slice(1),
       "note": "Private sessions: £40. Check available times in the booking calendar.",
       "book": "Book a private lesson",
       "slug": "private-one-on-one",
@@ -254,14 +256,12 @@ export const media = {
   "whatsapp": "https://chat.whatsapp.com/G5KmaFQfJpKEKg2zpGwjtI"
 };
 
+// Exact homepage introduction supplied by the owner on 26 October 2026.
 export const meet = {
-  eyebrow: "Owner & founder",
-  heading: ["Bernie Paul.", "The club’s heart."],
-  paragraphs: [
-    "Bernie Paul (JB), known in his boxing days as The Punching Postman, is the owner and founder of Bethnal Green Boxing Club. He started at Finchley Boxing Club and went on to box professionally while working for Royal Mail.",
-    "Today, Bernie’s focus is on giving something back. With donated kit and help from the community, he turned an unused basement into a place to learn, train and belong. Ben Doughty is the club’s head trainer, leading coaching alongside Bernie."
-  ],
-  link: {label: "Meet Bernie · Read his story", href: "#/story"}
+  eyebrow: "Bernie Paul – Founder & Head Coach",
+  heading: ["Bernie Paul.", "The Punching Postman."],
+  paragraphs: ["Former British and Commonwealth boxing champion Bernie Paul, famously known as “The Punching Postman,” built an extraordinary career from his early days at Finchley Boxing Club to competing at the highest levels of professional boxing. Balancing championship success with family life and a full-time career as a Royal Mail postman, Bernie now brings his wealth of experience, passion and champion’s mentality to the club he founded, inspiring and training the next generation of fighters."],
+  link: { label: "Read Bernie’s full story", href: "#/coaches/coach-bernie" }
 };
 
 export const photos = {

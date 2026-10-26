@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Clock3, Users } from 'lucide-react';
+import { ArrowRight, Clock3, Users, Mail, MessageCircle } from 'lucide-react';
 import * as content from '../content.js';
 import { fetchClasses, cachedClasses, formatSlot, upcomingSlots } from '../calclasses.js';
 import { openCal } from '../calembed.js';
 import { Eyebrow, Paragraphs, Title } from './ui.jsx';
 
 // The Cal.com profile that powers the class list and bookings. Not a secret, so it lives in the code and works on any host.
-export const CAL_USER = (import.meta.env.VITE_CAL_LINK ?? '').trim().replace(/^https?:\/\/cal\.com\//, '').replace(/\/.*$/, '') || 'jb-jb-2ejhn3';
+export const CAL_USER = (import.meta.env.VITE_CAL_LINK ?? '').trim().replace(/^https?:\/\/cal\.com\//, '').replace(/\/.*$/, '') || 'bethnalgreenbc';
 export const CAL_PROFILE_URL = `https://cal.com/${CAL_USER}`;
 
 // Loads the live class list from Cal.com. Falls back to the last good copy, then to an empty list with status 'error'.
@@ -27,6 +27,18 @@ export function BookButton({ slug, label = 'Book', title, className = 'btn btn-y
   const calLink = slug ? `${CAL_USER}/${slug}` : CAL_USER;
   return <a className={className} href={`https://cal.com/${calLink}`} target="_blank" rel="noopener" onClick={event => { onOpen?.(); openCal(event, calLink); }}
     aria-label={title ? `Book ${title}` : undefined}>{label}</a>;
+}
+
+export function BenBookingOptions() {
+  const email = `mailto:${content.benContact.email}?subject=${encodeURIComponent('Private boxing session enquiry')}`;
+  return <div className="ben-booking-options">
+    <p>Book online, or contact Ben directly to arrange a private session.</p>
+    <div className="btn-row" role="group" aria-label="Book a private session with Ben">
+      <BookButton slug="private-one-on-one" label="Book online with Cal"/>
+      <a className="btn btn-paper btn-small" href={email}><Mail size={18} aria-hidden="true"/>Email Ben</a>
+      <a className="btn btn-whatsapp btn-small" href={content.benContact.whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/>WhatsApp Ben</a>
+    </div>
+  </div>;
 }
 
 // Next few group-class dates across every class, soonest first: the hero's "next up" line.
@@ -52,7 +64,7 @@ function ClassCard({ c, full }) {
         {c.places ? <span><Users size={15} aria-hidden="true"/>{c.places} places</span> : null}
         {c.price ? <span className="class-card-price">{c.price}</span> : null}
       </p>
-      {description ? <p className={full ? 'class-card-desc' : 'class-card-desc class-card-desc-short'}>{description}</p> : null}
+      {description && !(full && copy) ? <p className={full ? 'class-card-desc' : 'class-card-desc class-card-desc-short'}>{description}</p> : null}
       {next.length ? <p className="class-card-next"><b>Next:</b> {next.map(formatSlot).filter(Boolean).join(' · ')}</p> : null}
     </div>
     <BookButton slug={c.slug} title={title}/>
@@ -107,20 +119,22 @@ export function ClassesPage({ cal }) {
   const priv = classes.filter(c => c.kind === 'private');
   return <section className="section classes-page" aria-labelledby="classes-title">
     <div className="wrap">
-      <Eyebrow>{t.eyebrow}</Eyebrow>
+      <Eyebrow>Boxing classes in Bethnal Green</Eyebrow>
       <h1 id="classes-title" className="h2"><Title parts={t.heading}/></h1>
       <Paragraphs items={t.intro} className="lede"/>
-      <div className="booking-explainer"><p><strong>Tuesdays 6pm · Thursdays 7pm · £10</strong></p>{t.weeklyBreakdown?.map(session => <p key={session.day}><strong>{session.day}</strong><br/>{session.description}</p>)}<p>{content.paymentPolicy}</p><p><a href="#/faq">Booking and first-visit questions</a></p></div>
+      <div className="weekly-sessions" aria-label="Weekly group sessions">{t.weeklyBreakdown?.map(session => <div key={session.day}><h2 className="h3">{session.day}</h2><p>{session.description}</p></div>)}</div>
+      <div className="btn-row class-quick-actions"><BookButton slug="boxingmixedlevels" label="Book a group class · £10"/><BookButton slug="private-one-on-one" label="Book one-to-one · £40" className="btn btn-paper btn-small"/></div>
       <Status status={status} count={classes.length}/>
       {group.length ? <>
         <h2 className="h3 class-group-title">{t.groupHeading ?? 'Group classes'}</h2><Paragraphs items={t.groupIntro}/>
         <ul className="class-list">{group.map(c => <ClassCard key={c.slug} c={c} full/>)}</ul>
       </> : null}
-      {priv.length ? <>
-        <h2 className="h3 class-group-title">{t.privateHeading ?? 'Private sessions'}</h2><Paragraphs items={t.privateIntro}/>
-        <ul className="class-list">{priv.map(c => <ClassCard key={c.slug} c={c} full/>)}</ul>
-      </> : null}
-      <p className="class-foot">{content.sessions?.priceNote}</p>
+      <section id="private-coaching" tabIndex={-1} aria-labelledby="private-coaching-title">
+        <h2 id="private-coaching-title" className="h3 class-group-title">{t.privateHeading ?? 'Private sessions'}</h2><Paragraphs items={t.privateIntro}/><p><a href="#/coaches/coach-ben">Read Ben’s full profile</a></p>
+        <BenBookingOptions/>
+        {priv.length ? <ul className="class-list">{priv.map(c => <ClassCard key={c.slug} c={c} full/>)}</ul> : null}
+      </section>
+      <div className="booking-explainer"><h2 className="h3">Booking & payment</h2><p>{content.paymentPolicy}</p><p><a href="#/faq">Booking and first-visit questions</a> · <a href="#/visit">Directions to the gym</a></p></div>
       <p className="class-foot"><BookButton label="See the full booking calendar" className="text-link"/></p>
     </div>
   </section>;
