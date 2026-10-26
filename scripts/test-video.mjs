@@ -67,6 +67,14 @@ function mount({ sound = true, reduced = false, narrow = false, savedMute, rejec
 }
 
 const cases = [
+  ['music fades before pausing and returns without overriding mute', async () => {
+    const h = mount(); h.show(); await tick(); assert.equal(h.node.volume, 1);
+    h.intersect(.6); await tick(); assert.ok(Math.abs(h.node.volume - .5) < .001); assert.equal(h.node.paused, false);
+    h.intersect(.3); assert.ok(h.node.volume < .02);
+    h.intersect(.24); assert.equal(h.node.volume, 0); assert.equal(h.node.paused, true);
+    h.show(); await tick(); assert.equal(h.node.volume, 1);
+    h.result.toggleSound(); h.intersect(.6); assert.equal(h.node.muted, true);
+  }],
   ['hero requests audible playback when visible', async () => {
     const h = mount(); assert.equal(h.node.attempts.length, 0); h.show(); await tick();
     assert.equal(h.node.attempts[0].muted, false); assert.equal(h.node.paused, false);

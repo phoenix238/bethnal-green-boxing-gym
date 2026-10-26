@@ -997,3 +997,54 @@ main:focus { outline: none; }
 .instagram-player > a { display: flex; align-items: center; gap: 8px; padding: 16px; font-size: 13px; color: white; }
 @media(max-width:600px) { .instagram-gallery-grid { gap: 24px 12px; } .instagram-gallery-post .instagram-play { width: 48px; height: 48px; } .instagram-caption { font-size: 12px; } }
 @media(prefers-reduced-motion:reduce) { .instagram-gallery-post .instagram-preview img { transition: none; } }
+
+/* Layout audit: keep supplied profiles readable and the booking choices distinct. */
+.profile-jumps { margin-top: 28px; }
+.coaches-intro .lede { max-width: 64ch; }
+.founder-profile .trainer-grid { align-items: start; }
+.founder-profile .h2 { font-size: clamp(40px, 5.4vw, 70px); }
+.trainer-full .trainer-grid > div, .founder-profile .trainer-grid > div { min-width: 0; }
+.tribute-inline { margin: 24px 0 0; padding: 0; border: 0; box-shadow: none; background: none; }
+.tribute-inline .tribute-text { margin-top: 24px; }
+.tribute-inline .h3 { font-size: clamp(28px, 3vw, 38px); line-height: 1.15; }
+.profile-next { border-top: 2px solid var(--red); margin-top: 32px; padding-top: 28px; }
+.profile-next .h3 { font-size: 32px; }
+.other-ways .other-grid { grid-template-columns: minmax(0, 1fr); max-width: 70ch; }
+.weekly-sessions { display: grid; gap: 24px; margin: 32px 0 24px; }
+.weekly-sessions > div { border-left: 4px solid var(--red); padding: 4px 0 4px 20px; }
+.weekly-sessions .h3 { font-size: 32px; margin-bottom: 12px; }
+.weekly-sessions p { margin: 0; max-width: 48ch; }
+.class-quick-actions { margin-bottom: 36px; }
+.booking-explainer .h3 { font-size: 30px; }
+.btn { max-width: 100%; }
+.btn svg, .dock-link svg { flex-shrink: 0; }
+html { scroll-padding-bottom: 140px; }
+@media(min-width:760px) { .weekly-sessions { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media(min-width:960px) { .founder-profile .trainer-portrait, .trainer-full .trainer-portrait { position: sticky; top: calc(var(--header-h) + 32px); } }
+@media(max-width:600px) {
+  .dock-link { min-height: 44px; }
+  .profile-jumps .btn { width: 100%; }
+  .space-hire .btn { overflow-wrap: anywhere; }
+}
+
+.dock-options { display: grid; gap: 8px; }
+.dock-toggle { display: none; cursor: pointer; font-family: inherit; }
+@media(max-width:959px) {
+  .contact-dock { width: auto; justify-items: end; }
+  .dock-options { display: none; width: 190px; }
+  .contact-dock-open .dock-options { display: grid; }
+  .dock-toggle { display: flex; min-height: 44px; }
+}
+
+@media(min-width:760px) { .space-hire .posters-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.visit-actions { margin: 28px 0; }
+.visit-actions p { margin: 0; }
+
+/* Ben's private coaching offers online booking and direct contact equally clearly. */
+.ben-booking-options { margin: 20px 0 28px; }
+.ben-booking-options > p { max-width: 56ch; }
+.ben-booking-options .btn-row { flex-wrap: wrap; gap: 12px; }
+.ben-booking-options .btn { min-height: 44px; }
+.ben-booking-options .btn-whatsapp { color: #101310; }
+@media(max-width:600px) { .ben-booking-options .btn { width: 100%; } }

@@ -1,6 +1,6 @@
 // Daughter’s tribute, verbatim from the living source document (third tab).
 export const tribute = [
-  "THE STORY OF A CHAMPION",
+  "THE STORY OF A CHAMPION.",
   "BERNIE PAUL",
   "THE PUNCHING POSTMAN - “By day, he delivered the nation's letters. By night, he delivered knockout punches.”",
   "From the shores of Mauritius to the heights of British and Commonwealth boxing. A champion. A father. A working man. A legacy worth celebrating.",
