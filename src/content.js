@@ -265,7 +265,7 @@ export const meet = {
 };
 
 export const photos = {
-  "bernieArchive": {"src":"photos/bernie-archive-portrait.jpg","width":1800,"height":1342,"alt":"Archive photograph of Bernie Paul wearing boxing gloves, with Bernie on his shorts","caption":"Bernie Paul · From the boxing archive","position":"50% 40%"},
+  "bernieArchive": {"src":"photos/founder-postbox.jpg","width":1093,"height":728,"alt":"Young Bernie Paul in boxing gloves beside a Royal Mail pillar box","caption":"Bernie Paul · The Punching Postman","position":"50% 40%"},
   "ring": {
     "src": "photos/ring.jpg",
     "alt": "The gym ring with white ropes and a Bethnal Green Boxing Club canvas, fight posters on the walls behind",
