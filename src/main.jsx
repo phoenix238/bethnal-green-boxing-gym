@@ -6,8 +6,8 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import BookingDialog from './components/BookingDialog.jsx';
 import OwnerPanel from './components/OwnerPanel.jsx';
-import { Approach, Club, Coaches, Community, Doctor, CtaBand, FirstClass, Hero, Meet, Join, Space, SpaceHire, Story, TrainingGallery, TrainingOptions, Visit } from './components/Sections.jsx';
-import { ClassesPage, ClassesPreview, useClasses } from './components/Classes.jsx';
+import { Approach, Club, Coaches, Community, Doctor, CtaBand, FirstClass, Hero, Meet, Join, Space, SpaceHire, Story, TrainingGallery, TrainingOptions, Visit, Faq, ContactDock, OtherWays, HeadTrainer, CompactVisit, InstagramGallery } from './components/Sections.jsx';
+import { ClassesPage, useClasses } from './components/Classes.jsx';
 import { initCal } from './calembed.js';
 import { DEFAULT_CLASSES, initialTimetable, loadTimetable } from './timetable.js';
 
@@ -33,7 +33,7 @@ const formatTime = value => { const [h, m] = String(value).split(':').map(Number
 const save = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* storage unavailable: demo data just won't persist */ } };
 // With a sheet configured the sheet (or its cached copy) is the timetable; without one, the local demo list is.
 // Pages of the site. Home: hero, meet Bernie, your first class, then the classes.
-const PAGE_TITLES = { home: null, classes: 'Classes', coaches: 'Coaches', doctor: 'White collar boxing', story: 'JB’s story', gym: 'The club', community: 'Community', visit: 'Visit' };
+const PAGE_TITLES = { home: null, classes: 'Classes', coaches: 'Coaches', 'ben-doughty': 'Ben Doughty · Head trainer', doctor: 'White collar boxing', story: 'Bernie’s story', faq: 'Frequently asked questions', 'space-hire': 'Boxing gym hire in Bethnal Green, East London', gym: 'The club', community: 'Community', visit: 'Visit' };
 const routeFor = hash => { if (hash === '' || hash === '#' || hash === '#/') return 'home'; const m = /^#\/([\w-]+)/.exec(hash); return m ? (m[1] in PAGE_TITLES ? m[1] : 'home') : null; };
 const savedClasses = () => TIMETABLE_CSV_URL ? initialTimetable().classes : load(STORAGE, initialTimetable().classes ?? DEFAULT_CLASSES);
 function App() {
@@ -74,7 +74,15 @@ function App() {
     };
     window.addEventListener('hashchange', on); return () => window.removeEventListener('hashchange', on);
   }, []);
-  useEffect(() => { document.title = PAGE_TITLES[route] ? `${PAGE_TITLES[route]} · Bethnal Green Boxing Club` : 'Bethnal Green Boxing Club'; }, [route]);
+  useEffect(() => {
+    document.title = PAGE_TITLES[route] ? `${PAGE_TITLES[route]} · Bethnal Green Boxing Club` : 'Bethnal Green Boxing Club · Boxing classes in East London';
+    const description = route === 'space-hire'
+      ? 'Boxing gym space hire in Bethnal Green, East London, for private coaching, classes, filming and photography. Enquire at 279 Cambridge Heath Road, E2 0EL.'
+      : 'Boxing classes in Bethnal Green, East London. Tuesdays 6pm and Thursdays 7pm, £10. Beginners welcome. Book online or walk in and pay at the gym.';
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+  }, [route]);
   // One Cal.com fetch shared by every page; the booking pop-up script loads once the page is idle.
   const cal = useClasses();
   useEffect(() => { const id = (window.requestIdleCallback ?? (fn => setTimeout(fn, 1500)))(initCal); return () => (window.cancelIdleCallback ?? clearTimeout)(id); }, []);
@@ -106,15 +114,19 @@ function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <Header route={route}/>
     <main id="main" tabIndex={-1}>
-      {route === 'home' ? <><Hero/><TrainingOptions/><TrainingGallery/><ClassesPreview cal={cal}/><Meet/><FirstClass/><SpaceHire compact/><CtaBand/></> : null}
+      {route === 'home' ? <><Hero/><Meet/><TrainingOptions/><HeadTrainer/><FirstClass/><TrainingGallery/><CompactVisit/><OtherWays/></> : null}
+      {route === 'ben-doughty' ? <HeadTrainer full/> : null}
+      {route === 'faq' ? <Faq/> : null}
       {route === 'classes' ? <ClassesPage cal={cal}/> : null}
       {route === 'coaches' ? <><Coaches first/><CtaBand/></> : null}
       {route === 'doctor' ? <><Doctor first/><CtaBand/></> : null}
       {route === 'story' ? <Story first/> : null}
-      {route === 'gym' ? <><Space first/><SpaceHire/><Coaches/><Approach/><Club/><Community/><CtaBand/></> : null}
+      {route === 'gym' ? <><Space first/><Coaches/><Approach/><Club/><InstagramGallery/><Community/><CtaBand/></> : null}
       {route === 'community' ? <><Community first/><Join/></> : null}
+      {route === 'space-hire' ? <><SpaceHire first/><CtaBand/></> : null}
       {route === 'visit' ? <><Visit first/><Join/><CtaBand/></> : null}
     </main>
+    <ContactDock/>
     <Footer onOwnerDemo={SHOW_OWNER_DEMO ? () => setAdmin(true) : undefined} route={route}/>
     <div className="toast-region" role="status" aria-live="polite">{flash && <div className="toast"><Check size={17} aria-hidden="true"/>{flash}</div>}</div>
     {dialog && <BookingDialog session={dialog} onClose={() => setDialog(null)} onSubmit={book}/>}

@@ -5,7 +5,7 @@
 - Use **JB** publicly. Explain once that he was known as **Bernie Paul** during his boxing career.
 - Public copy welcomes beginners, returning amateurs and experienced boxers. The owner removed age-restriction wording on 22 October.
 - Group classes cost **£10**. Private sessions are £40 as previously supplied. The owner removed the tenant discount on 22 October.
-- Address: **279 Cambridge Heath Road, London, E2 0EL**. Basement of the Proposition Studios building, opposite York Hall.
+- Address: **279 Cambridge Heath Road, London, E2 0EL**. Basement of the Proposition Studios building, down the road from York Hall.
 - Keep the established fight-poster visual style. Focus the writing on the club and ways to train.
 
 ## Structure implemented

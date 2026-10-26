@@ -17,6 +17,7 @@ export default function Footer({ onOwnerDemo, route }) {
         <ul>{NAV_LINKS.map(link => <li key={link.href}><a href={link.href} aria-current={route === link.route ? 'page' : undefined}>{link.label}</a></li>)}</ul>
       </nav>
       <div className="footer-social-list">
+        <a className="footer-social footer-whatsapp" href={content.media.whatsappDirect} target="_blank" rel="noopener noreferrer"><MessageCircle size={18} aria-hidden="true"/> WhatsApp the club <ArrowUpRight size={14}/></a>
         <a className="footer-social" href={`mailto:${content.media.email}`}><Mail size={18} aria-hidden="true"/> Email the club <ArrowUpRight size={14} aria-hidden="true"/></a>
         {content.media?.whatsapp ? <a className="footer-social footer-whatsapp" href={content.media.whatsapp} rel="noopener noreferrer" target="_blank"><MessageCircle size={18} aria-hidden="true"/> WhatsApp group <ArrowUpRight size={14} aria-hidden="true"/></a> : null}
         <a className="footer-social" href={footer.podcast.href} rel="noopener noreferrer" target="_blank"><Play size={18} aria-hidden="true"/> {footer.podcast.label} <ArrowUpRight size={14} aria-hidden="true"/><span className="sr-only"> (opens YouTube in a new tab)</span></a>
@@ -25,7 +26,8 @@ export default function Footer({ onOwnerDemo, route }) {
     </div>
     <div className="footer-bottom">
       <span>© {new Date().getFullYear()} {site?.name}</span>
-      <span className="footer-proto">Book online with Cal.com or pay on arrival for group classes</span>
+      <span>Website created by Phoenix Tanner Media</span>
+      <span className="footer-proto">Class bookings are handled by Cal.com</span>
       {onOwnerDemo ? <button type="button" className="footer-owner" onClick={onOwnerDemo}>Owner demo</button> : null}
     </div>
   </footer>;

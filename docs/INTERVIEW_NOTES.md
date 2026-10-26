@@ -1,3 +1,5 @@
+> Current location correction (owner, 23 October 2026): the gym is **down the road from York Hall**. The historical transcript summary below is preserved as source material; its earlier location wording must not be reused as current visitor guidance.
+
 # Interview notes (from the two recordings)
 
 Source: `Jb website 1.m4a` (about 6 minutes) and `Jb website 2.m4a` (about 25 minutes). I transcribed them with an automatic speech-to-text tool. The audio is noisy, so **names, numbers and dates below may be wrong** until the owner or founder confirms them. The raw transcripts are deliberately **not** in this repository: they contain stories about other private people. Keep the recordings and transcripts private.

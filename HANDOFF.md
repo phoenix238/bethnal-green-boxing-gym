@@ -148,3 +148,34 @@ Added the owner-supplied portrait of Dr Alix Daniel to her medical advisor profi
 ## Space hire — 23 October 2026
 
 Added a space hire section to The club page and a shorter homepage introduction. Covers private one-to-one training, classes/groups, filming/photography and other enquiries. The owner confirmed that enquiries should go to the club email: the “Enquire to book” button opens bethnalgreenbc@gmail.com with the subject “Space hire enquiry”. No hire prices, capacity or availability are assumed.
+
+
+## Latest direction — 23 October 2026 layout review
+
+See [redesign review](docs/REDESIGN_REVIEW.md) for source boundaries, media provenance, payment workflow research and launch limits, and [to-do checklist](docs/TO_DO.md) for remaining owner tasks. Current owner decisions supersede older payment/layout guidance above: no Stripe; retain online booking with payment at gym or private transfer instructions requested after booking. No automated transfer email or account payment changes are configured by this work. Bernie is owner/founder; Ben is head trainer. Homepage introduces Bernie before fuller class detail and Ben. Direct WhatsApp is configurable but absent until real number supplied; email is the persistent fallback. User will edit the film in DaVinci; original existing loop remains default. Local preview only, not deployed.
+
+
+### Browser review corrections — 23 October 2026
+
+User supplied direct WhatsApp **+44 7958 675825**, https://wa.me/447958675825 (public club contact), maintained in `media.whatsappDirect` in `src/content.js`. This supersedes missing-number/email fallback notes above. WhatsApp group invite remains distinctly labelled in the footer. Owner confirms there is **no step-free access**. Online bookings **will be sent payment information**; walk-ins ask JB or Ben for payment details or bring cash. This is confirmed service policy; actual email/manual delivery setup remains unverified and must be activated/tested before launch. No account changes made.
+
+Archive located at `/Volumes/Extreme Pro/Boxing Gym Edits/jp photos ` (trailing space). Reviewed all 19 HEICs via local JPEG copies; selected `IMG_6841.HEIC`, a solo historical portrait with Bernie written on the shorts, for homepage and founder coach card. Web derivative crops inside the photographed print, preserving its photographic appearance. Original source files untouched. Obtain a better current Bernie portrait later.
+
+Hero now includes direct one-to-one booking. Homepage has compact location signpost; full Visit details stay on Visit. Dedicated `#/space-hire` route and top navigation replace the club’s embedded hire section. Community text again includes aspirations to explore funding and broader future support, without claiming active programmes or secured funds. White-collar intro is stacked with more spacing. See updated checklist and review document.
+
+### Latest location/contact/space-hire review — 23 October 2026
+
+**Location correction:** the gym is **down the road from York Hall**, at the unchanged 279 Cambridge Heath Road, London, E2 0EL address. This supersedes any earlier location account; public copy and current launch guidance are corrected. Historical interview notes retain source wording with a prominent correction.
+
+Persistent contact now uses green WhatsApp above a paper Email the club button; same bold border/shadow, dark text and visible keyboard focus. Hero private and Visit actions are paper fight-poster buttons. Space hire has a descriptive local heading, Bethnal Green/East London copy, exact location/access information and internal gym/Visit links. Route title/description update in the browser and reset on navigation; hash routes still prevent reliable separate-page search discovery. No routing migration or publishing done.
+
+
+### Latest homepage/payment simplification — 23 October 2026
+
+Removed the extra homepage ClassesPreview timetable at the owner’s request. Home now proceeds from training choices to Ben; hero weekly times/£10 and group/private booking remain. Full Classes page and live timetable/Cal.com behavior retained. Public payment wording now says only online bookings will be sent payment information; walk-ins ask JB/Ben for details or bring cash. The previous payment-confirmation disclaimer is removed from rendered copy. Internal reconciliation and prelaunch email-setup requirements still apply. Dedicated hire-space photography is an unchecked task in docs/TO_DO.md.
+
+## Publication — 26 October 2026
+
+Owner authorised publishing the complete reviewed local website. Includes updated Ben biography and supplied coaching photo, balanced coach cards, dedicated Ben profile, class-specific Tuesday/Thursday descriptions, current location/contact/space-hire wording, Behold Instagram gallery with in-site modal reel playback, and v9 music-only homepage films. Video/edit credit Phoenix Tanner; website credit Phoenix Tanner Media. Earlier homepage film versions remain local and are not added to this release. Current media: v9 landscape/portrait MP4s with v8 posters. Instagram feed returns six posts; free refresh is daily. The account email-verification reminder remains an account-owner task.
+
+Validation before publication: 18 timetable/booking tests, 11 video behavior checks, production build, full v9 decoding and picture-stream identity checks.

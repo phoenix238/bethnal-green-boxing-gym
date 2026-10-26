@@ -33,8 +33,12 @@ export const classesPage = {
   ],
   "intro": "Learn the basics, get back into boxing or keep developing your skills. Join an open-level group class with JB and Ben, or book individual coaching with Ben.",
   "groupHeading": "Group boxing · All levels",
+  "weeklyBreakdown": [
+    {"day": "Tuesday · 6pm", "description": "Shadowboxing warm-up, skipping, pad work and optional sparring, finishing with conditioning."},
+    {"day": "Thursday · 7pm", "description": "Shadowboxing warm-up, pad work and bag work, finishing with conditioning."}
+  ],
   "privateHeading": "One-to-one with Ben",
-  "empty": "No classes are listed right now. Check back soon, or ask in the WhatsApp group.",
+  "empty": "No classes are listed right now. Check back soon, or contact the club on WhatsApp.",
   "error": "We couldn't load the class list just now.",
   "groupIntro": "Shadowboxing, pad work and conditioning in a group. Newcomers and experienced boxers train together. Group classes are £10. Book online or just turn up and pay on arrival.",
   "privateIntro": "Individual coaching focused on your goals: learn the fundamentals, sharpen your technique or work on a specific part of your boxing. Private sessions with Ben are £40."
@@ -58,20 +62,29 @@ export const coaches = {
   "lede": "JB and Ben take the group classes together. Ben also offers private one-to-one coaching.",
   "people": [
     {
-      "name": "JB",
-      "role": "Founder · Group classes",
-      "photo": "jbCurrent",
-      "bio": "Jean Bernard Paul, known here as JB, is the club’s founder and takes the group classes. In his boxing days, he was Bernie Paul, the Punching Postman. He started at Finchley Boxing Club and later balanced professional boxing with his job as a Royal Mail postman. Today, his focus is on giving something back through the club.",
+      "name": "Bernie Paul (JB)",
+      "cardBio": "JB founded the club and leads group classes alongside Ben. Known as Bernie Paul during his boxing career, he trained at Finchley Boxing Club, turned professional and worked as a Royal Mail postman. Today, he puts that experience into helping people learn, train and feel part of the club.",
+      "role": "Owner & founder",
+      "photo": "bernieArchive",
+      "bio": "JB is the club’s founder and takes the group classes. Known as Bernie Paul during his boxing career, he started at Finchley Boxing Club, later turned professional and balanced boxing with his job as a Royal Mail postman. Today, his focus is on giving something back through the club.",
       "link": {
-        "label": "Read JB’s story",
+        "label": "Read Bernie’s story",
         "href": "#/story"
       }
     },
     {
       "name": "Ben Doughty",
-      "role": "Coach · One-to-one coaching · Group classes",
+      "cardBio": "Ben leads group classes alongside JB and offers private coaching. A licensed manager and trainer, journalist and author, he brings more than 40 years of boxing experience to the gym. From schoolchildren and first-time boxers to experienced amateurs and professionals, he helps people build their skills and confidence.",
+      "role": "Head trainer · Group & private coaching",
       "photo": "benCurrent",
-      "bio": "Ben takes the group classes alongside JB and offers one-to-one coaching. Work with him on the fundamentals, return to training after a break or focus on a part of your boxing you want to improve. Away from coaching, Ben also makes boxing podcasts on his YouTube channel.",
+      "bio": "Ben Doughty is a licensed manager and trainer, journalist and author who has been involved in boxing for more than 40 years. He coaches everyone from beginners and schoolchildren to experienced amateurs and professionals, and takes the club’s group classes alongside JB.",
+      "biography": [
+        "Putting on gloves at the age of 10, Ben had 38 amateur bouts between 1981 and 2004, winning two ABA Western Counties titles as a junior. In 2003, he boxed in New York City representing the legendary Gleason’s Gym. During his time in Brooklyn, he also sparred with numerous world-class professionals, including Wayne Braithwaite, Vivian Harris and Paul Malignaggi.",
+        "At the close of his amateur competitive career, Ben went into coaching, initially as head junior trainer at Angel ABC, followed by three and a half years at the world-famous Repton under the late Tony Burns.",
+        "In 2008, he took out a professional trainer’s licence with the British Boxing Board of Control. He has since worked with a number of well-known fighters, including Prizefighter champions Yassine El Maachi and Choi Tseveenpurev. He currently manages top super-flyweight prospect Julia ‘Bee’ Lee.",
+        "Alongside his direct involvement in the sport, Ben is a writer and videographer who has authored five books and had several pieces published in Boxing News. As an interviewer, he has spoken with many legends of the game, including Sugar Ray Leonard, Roberto Duran, Roy Jones Jr, Larry Holmes, Frank Bruno, Nigel Benn and Chris Eubank Sr.",
+        "Throughout his coaching career, Ben has worked with everyone from top amateurs and professionals to schoolchildren, white-collar boxers and recreational enthusiasts. When he is not busy in the gym, he teaches in primary and secondary schools for both WO Sports and the Sweet Science Foundation."
+      ],
       "note": "Private sessions: £40. Check available times in the booking calendar.",
       "book": "Book a private lesson",
       "slug": "private-one-on-one",
@@ -92,7 +105,8 @@ export const community = {
   ],
   "paragraphs": [
     "The club grew out of JB’s wish to bring people together through boxing. His earlier training group showed him what regular training, encouragement and a sense of belonging could mean to people.",
-    "That same spirit is at the heart of Bethnal Green Boxing Club: a place to train, get to know people and encourage each other along the way."
+    "That same spirit is at the heart of Bethnal Green Boxing Club: a place to train, get to know people and encourage each other along the way.",
+    "Looking ahead, Bernie hopes to give back more broadly, explore funding and develop further support for the local community. These are ambitions for the club’s future."
   ]
 };
 
@@ -154,8 +168,8 @@ export const firstClass = {
       "text": "Join an open-level group class or book one-to-one coaching with Ben. You don’t need boxing experience to get started."
     },
     {
-      "title": "Book or drop in",
-      "text": "Group classes are £10. Book online if you like, or just turn up and pay on arrival. No booking needed for group classes."
+      "title": "Book or walk in",
+      "text": "Group classes are £10. Book online, or just turn up and pay at the gym. Tuesdays at 6pm and Thursdays at 7pm."
     },
     {
       "title": "Come down",
@@ -170,7 +184,7 @@ export const firstClass = {
 
 export const footer = {
   "line": "Group boxing classes and one-to-one coaching. 279 Cambridge Heath Road, London, E2 0EL.",
-  "instagram": null,
+  "instagram": "https://www.instagram.com/bethnalgreenbc/",
   "podcast": {"label":"Ben’s boxing podcasts","href":"https://www.youtube.com/@hardestgame007"}
 };
 
@@ -181,40 +195,50 @@ export const gym = {
     "Open to you."
   ],
   "paragraphs": [
-    "What began as an unused basement is now a boxing gym opposite York Hall. Donated kit, fight posters and a ring carrying the club’s name have helped turn the space into a place to train.",
+    "What began as an unused basement is now a boxing gym down the road from York Hall. Donated kit, fight posters and a ring carrying the club’s name have helped turn the space into a place to train.",
     "There’s a training floor, a sofa and a table piled with old Boxing News and The Ring. Come for the boxing, and get to know the people who share the gym."
   ]
 };
 
 export const hero = {
-  "eyebrow": "Boxing in East London",
+  "eyebrow": "Bethnal Green Boxing Club · East London",
   "title": [
     "Bethnal Green",
     "Boxing Club."
   ],
   "lede": [
-    "Your first session. Your return to boxing. Your club.",
-    "Group classes and one-to-one coaching. New to boxing, coming back after a break or already experienced? Come down and train."
+    "Boxing classes in Bethnal Green. Beginners, returning boxers and experienced hands welcome."
   ],
   "photo": "trainingCoaches",
   "primaryCta": "Book a group class",
-  "secondaryCta": "Book a one-to-one"
+  "secondaryCta": "Plan your first visit"
 };
 
 export const join = {
   "eyebrow": "Ask us anything",
   "heading": [
-    "Join the",
-    "WhatsApp group."
+    "Talk to",
+    "the club."
   ],
   "text": "Not sure if it's for you? Ask a question before your first class, hear when classes change, or just say hello.",
-  "button": "Join the WhatsApp group",
-  "note": "Book group classes online or just turn up and pay on arrival. Arrange one-to-one sessions with Ben through the booking calendar. The WhatsApp group is for questions and news."
+  "button": "WhatsApp the club",
+  "note": "Message us directly on +44 7958 675825. You can book through the calendar or walk in for a group class."
 };
 
 export const media = {
   "email": "bethnalgreenbc@gmail.com",
-  "heroVideo": {"src":"video/hero-portrait.mp4","poster":"video/hero-portrait-poster.jpg","alt":"Training at Bethnal Green Boxing Club","note":"A look inside a session with JB, Ben and the club."},
+  "whatsappDirect": "https://wa.me/447958675825",
+  "phone": "+44 7958 675825",
+  "heroVideo": {
+    "src":"video/bgbc-homepage-landscape-v9-music-only.mp4",
+    "mobileSrc":"video/bgbc-homepage-vertical-v9-music-only.mp4",
+    "poster":"video/bgbc-homepage-landscape-v8.jpg",
+    "mobilePoster":"video/bgbc-homepage-vertical-v8.jpg",
+    "alt":"Bernie Paul, The Punching Postman and founder, and Ben Doughty, head coach, lead a session at Bethnal Green Boxing Club.",
+    "caption":"Train with Bernie Paul and Ben Doughty.",
+    "note":"Real people. Proper training. A place to belong.",
+    "musicCredit":{"title":"Griphop","artist":"Kevin MacLeod","source":"https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100413","license":"CC BY 4.0","licenseUrl":"https://creativecommons.org/licenses/by/4.0/"}
+  },
   "logo": {
     "src": "logo.jpg",
     "width": 1063,
@@ -231,22 +255,17 @@ export const media = {
 };
 
 export const meet = {
-  "eyebrow": "The club",
-  "heading": [
-    "A local club.",
-    "A place to train."
+  eyebrow: "Owner & founder",
+  heading: ["Bernie Paul.", "The club’s heart."],
+  paragraphs: [
+    "Bernie Paul (JB), known in his boxing days as The Punching Postman, is the owner and founder of Bethnal Green Boxing Club. He started at Finchley Boxing Club and went on to box professionally while working for Royal Mail.",
+    "Today, Bernie’s focus is on giving something back. With donated kit and help from the community, he turned an unused basement into a place to learn, train and belong. Ben Doughty is the club’s head trainer, leading coaching alongside Bernie."
   ],
-  "paragraphs": [
-    "A basement opposite York Hall, a ring, and people who want to train. Bethnal Green Boxing Club was built with help from the community, with donated kit and a shared belief in giving something back.",
-    "JB and Ben run the group sessions. Bring your experience, or start from the beginning. For individual attention, book a one-to-one with Ben."
-  ],
-  "link": {
-    "label": "Get to know the club",
-    "href": "#/gym"
-  }
+  link: {label: "Meet Bernie · Read his story", href: "#/story"}
 };
 
 export const photos = {
+  "bernieArchive": {"src":"photos/bernie-archive-portrait.jpg","width":1800,"height":1342,"alt":"Archive photograph of Bernie Paul wearing boxing gloves, with Bernie on his shorts","caption":"Bernie Paul · From the boxing archive","position":"50% 40%"},
   "ring": {
     "src": "photos/ring.jpg",
     "alt": "The gym ring with white ropes and a Bethnal Green Boxing Club canvas, fight posters on the walls behind",
@@ -365,8 +384,8 @@ export const photos = {
     "caption": "Find your feet"
   },
   "currentGroup": {"src":"photos/current-group-exposure-corrected.jpg","width":2400,"height":1600,"alt":"The class group standing together in the Bethnal Green boxing ring after training","caption":"In it together"},
-  "jbCurrent": {"src":"photos/jb-portrait.jpg","width":800,"height":1000,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
-  "benCurrent": {"src":"photos/ben-portrait.jpg","width":800,"height":1000,"alt":"Ben demonstrating his boxing guard in the club ring","caption":"Ben in the gym"},
+  "jbCurrent": {"src":"photos/jb-coaching.jpg","width":750,"height":900,"alt":"JB coaching pad work in the club ring","caption":"JB in the gym"},
+  "benCurrent": {"src":"photos/ben-boxing-club-profile.jpg","width":1600,"height":1068,"alt":"Ben Doughty demonstrating a boxing stance in the gym","caption":"Ben Doughty · Head trainer · Photo: Clugstons Photography","position":"50% 50%"},
   "trainingTogether": {"src":"photos/training-together-exposure-corrected.jpg","width":1600,"height":2400,"alt":"Two training partners smiling together in the boxing ring","caption":"Part of the club","position":"50% 35%"},
   "trainingFocusPortrait": {"src":"photos/training-focus.jpg","width":1620,"height":1080,"alt":"A boxer concentrating behind their gloves during pad work","caption":"Find your focus"},
   "trainingWithJb": {"src":"photos/training-with-jb-exposure-corrected.jpg","width":1600,"height":2400,"alt":"Ben holding pads for a boxer during a training session","caption":"In your corner"},
@@ -406,13 +425,13 @@ export const site = {
 };
 
 export const story = {
-  "eyebrow": "JB’s story",
+  "eyebrow": "Bernie’s story",
   "heading": [
     "A life in boxing.",
     "A club to give back."
   ],
   "paragraphs": [
-    "You’ll know him as JB: Jean Bernard Paul. In his boxing days, he was known as Bernie Paul, the Punching Postman, balancing his life in the ring with his job as a Royal Mail postman.",
+    "Bernie Paul is the owner and founder of Bethnal Green Boxing Club. You may also know him as JB, or by his boxing nickname, The Punching Postman.",
     "He started boxing at about 15 at Finchley Boxing Club, training alongside his brothers Steve and John. They later moved to Tottenham New Enterprise Boxing Club, making the journey from Highgate to train.",
     "A shoulder injury interrupted his amateur career, but he kept running and training through the years away from competition. In his mid-twenties, he turned professional while continuing his work as a Royal Mail postman."
   ],
@@ -423,7 +442,7 @@ export const story = {
     ],
     "paragraphs": [
       "Boxing stayed part of JB’s life long after his professional career. Before this club, he brought people together to train in his converted garage. That experience helped shape what he wanted to build next: a place where training, encouragement and belonging go together.",
-      "Through his work at Proposition Studios, JB was offered the chance to turn a basement opposite York Hall into a gym. The space took shape with donated equipment, fight posters and support from people around him.",
+      "Through his work at Proposition Studios, JB was offered the chance to turn a basement down the road from York Hall into a gym. The space took shape with donated equipment, fight posters and support from people around him.",
       "Getting a ring was the missing piece. JB approached his former promoter for help, and a ring was arranged with Bethnal Green Boxing Club printed on the canvas.",
       "Today, JB and Ben run group classes here, with private coaching available through Ben. The club’s next chapter is about the people who come through the door."
     ]
@@ -441,11 +460,11 @@ export const visit = {
   "items": [
     {
       "label": "Find us",
-      "value": "279 Cambridge Heath Road, London, E2 0EL. The gym is in the basement of the Proposition Studios building, opposite York Hall."
+      "value": "279 Cambridge Heath Road, London, E2 0EL. The gym is in the basement of the Proposition Studios building, down the road from York Hall."
     },
     {
       "label": "Group classes",
-      "value": "£10 per class. Tuesdays at 6pm and Thursdays at 7pm. Book online or just turn up and pay on arrival."
+      "value": "Tuesdays 6pm · Thursdays 7pm. £10 per class. Book online or walk in and pay at the gym. Check the calendar for changes."
     },
     {
       "label": "One-to-one coaching",
@@ -454,6 +473,14 @@ export const visit = {
     {
       "label": "Who can train?",
       "value": "Beginners, returning boxers and experienced participants are welcome."
+    },
+    {
+      "label": "Payment",
+      "value": "Online bookings will be sent payment information. If you walk in, ask JB or Ben for payment details or bring cash."
+    },
+    {
+      "label": "Access",
+      "value": "The gym is in the basement. There is no step-free access. Contact us on WhatsApp if you have questions before travelling."
     },
     {
       "label": "Your first visit",
@@ -513,15 +540,22 @@ export const trainingGallery = {
 
 export const spaceHire = {
   eyebrow: 'Space hire',
-  heading: ['Your session.', 'Our space.'],
-  intro: 'Hire the boxing space at Bethnal Green Boxing Club for private one-to-one training, classes, filming or a project of your own.',
+  heading: ['Boxing gym hire.', 'Bethnal Green.'],
+  intro: 'Looking for boxing gym space hire in Bethnal Green, East London? Enquire about using Bethnal Green Boxing Club for private coaching, classes, filming or photography.',
+  location: 'Our basement gym is at 279 Cambridge Heath Road, London, E2 0EL, in the Proposition Studios building, down the road from York Hall. There is no step-free access. Tell us about your training session or shoot so we can discuss whether the space suits your plans.',
   uses: [
     {title: 'One-to-one training', text: 'Looking for a space to train a private client? Get in touch to discuss your session.'},
     {title: 'Classes & groups', text: 'Bring your class or group to the club. Tell us what you have planned and how many people you expect.'},
     {title: 'Filming & photography', text: 'Use the boxing space as a setting for your next shoot. Share your brief and the time you need.'},
     {title: 'Something else?', text: 'Have another idea for the space? Tell us about it and we can talk it through.'},
   ],
-  enquiry: 'Email the club with your preferred date, how long you need the space and what you plan to use it for. We’ll discuss availability and hire costs with you.',
+  enquiry: 'Contact the club on WhatsApp or email with your preferred date, how long you need the space and what you plan to use it for. We’ll discuss availability and hire costs with you.',
   label: 'Enquire to book',
   subject: 'Space hire enquiry',
 };
+
+// Owner-confirmed service policy; Cal.com email delivery still requires prelaunch verification.
+export const paymentPolicy = 'Online bookings will be sent payment information. If you walk in, ask JB or Ben for payment details or bring cash.';
+
+// Public Behold feed URL; account credentials are managed by Behold.
+export const instagramFeedUrl = "https://feeds.behold.so/9bh5zUip8FaswKNUkO68";
