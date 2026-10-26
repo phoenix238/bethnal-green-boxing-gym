@@ -6,7 +6,7 @@ import { useDialog } from './ui.jsx';
 // Preview only: nothing here reserves a place or takes a payment. Submissions are saved in this browser for the owner demo.
 export default function BookingDialog({ session, onClose, onSubmit }) {
   const ref = useRef(null);
-  const whatsapp = content.media?.whatsapp ?? null;
+  const whatsapp = content.media?.whatsappDirect ?? null;
   const price = session.price;
   const submit = event => onSubmit(event, session);
   useDialog(ref, onClose);
@@ -22,7 +22,7 @@ export default function BookingDialog({ session, onClose, onSubmit }) {
       <div className="hazard" id="booking-notice">
         <p><strong>{notice}</strong></p>
         {session.price == null ? <p>The gym is confirming class prices and places.</p> : null}
-        {whatsapp ? <p><a className="inline-link" href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} aria-hidden="true"/> For now, message the WhatsApp group to book</a></p> : null}
+        {whatsapp ? <p><a className="inline-link" href={whatsapp} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} aria-hidden="true"/> Contact the club on WhatsApp</a></p> : null}
       </div>
       <form onSubmit={submit}>
         <div className="price-line" aria-live="polite">

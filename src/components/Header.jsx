@@ -8,6 +8,8 @@ export const NAV_LINKS = [
   { route: 'classes', href: '#/classes', label: 'Classes & coaching' },
   { route: 'gym', href: '#/gym', label: 'The club' },
   { route: 'doctor', href: '#/doctor', label: 'White collar & wellbeing' },
+  { route: 'space-hire', href: '#/space-hire', label: 'Space hire' },
+  { route: 'faq', href: '#/faq', label: 'FAQ' },
   { route: 'visit', href: '#/visit', label: 'Visit' },
 ];
 

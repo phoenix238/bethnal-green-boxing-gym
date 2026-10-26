@@ -792,3 +792,208 @@ main:focus { outline: none; }
 
 .space-hire-enquiry { max-width: 65ch; margin: 28px 0 20px; }
 .space-hire-email { margin: 14px 0 20px; overflow-wrap: anywhere; }
+
+/* October 2026: a club-first fight bill, with the practical details above the fold. */
+.header-inner { gap: 20px; }
+.logo-header { flex: none; }
+.header-home { min-width: 100px; }
+.hero-inner { grid-template-areas: "heading" "copy" "film"; }
+.hero-heading .hero-title { font-size: clamp(48px, 6vw, 78px); }
+.hero-lede { font-size: 18px; line-height: 1.5; max-width: 40em; margin-bottom: 14px; }
+.hero-actions { align-items: center; gap: 20px; }
+.hero-film { width: 100%; align-self: center; }
+.hero-film .club-video video { aspect-ratio: 16 / 9; object-fit: cover; }
+.hero-film .club-video-frame { box-shadow: 8px 8px 0 var(--red); }
+.hero-ticket { margin-top: 22px; }
+.hero-ticket-private { display: none; }
+.hero-ticket .bill-line { font-size: clamp(22px, 2.4vw, 34px); }
+.hero-ticket-note { font-weight: 800; margin-bottom: 0; }
+.meet .meet-training-photo .pin-frame { aspect-ratio: 4/5; max-height: 530px; }
+.meet .meet-training-photo img { width: 100%; height: 100%; object-fit: cover; }
+.meet .h2 { font-size: clamp(40px, 5.4vw, 70px); }
+.section { padding-block: clamp(48px,6vw,88px); }
+.first-question { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.faq-layout { display: grid; gap: 40px; align-items: start; }
+.faq-layout .lede { margin-block: 24px; }
+.faq-list details { border-top: 2px solid var(--ink); }
+.faq-list details:last-of-type { border-bottom: 2px solid var(--ink); margin-bottom: 28px; }
+.faq-list summary { cursor: pointer; padding: 22px 26px 22px 0; font-weight: 800; font-size: 20px; }
+.faq-list details p { max-width: 65ch; padding-bottom: 16px; }
+.contact-dock { position: fixed; z-index: 40; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 9px; padding: 13px 18px; background: var(--yellow); color: var(--ink); border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); text-decoration: none; font-weight: 800; }
+.other-grid { display: grid; gap: 36px; }
+.other-grid > div { border-top: 2px solid var(--yellow); padding-top: 24px; }
+.other-grid h2 { margin-bottom: 16px; }
+.other-grid .text-link { color: var(--yellow); }
+.daughter-tribute { margin-top: 72px; padding: clamp(24px,5vw,64px); background: var(--paper); border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--red); }
+.tribute-text { max-width: 70ch; margin-top: 32px; }
+.tribute-text .h3 { margin: 36px 0 20px; }
+.footer { padding-bottom: 90px; }
+.doctor .posters { display: block; }
+.doctor .poster { display: flow-root; max-width: none; }
+.doctor .coach-photo { float: left; width: min(35%,320px); margin: 0 36px 24px 0; }
+@media(min-width: 960px) {
+ .hero-inner { grid-template-columns: minmax(0,1fr) minmax(0,1fr); grid-template-areas: "heading film" "copy film"; gap: 18px 48px; }
+ .hero-heading { align-self: end; }
+ .hero-copy { align-self: start; }
+ .hero-film { width: 100%; }
+ .faq-layout { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 80px; }
+ .other-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:600px) {
+ .hero-heading .hero-title { font-size: clamp(42px,10vw,60px); }
+ .hero-inner { gap: 20px; }
+ .hero-ticket { margin-top: 18px; }
+ .contact-dock { bottom: 12px; right: 12px; font-size: 14px; padding: 10px 14px; }
+ .doctor .coach-photo { float: none; width: 100%; margin: 0 0 28px; }
+}
+@media(min-width:960px) {
+ .hero-inner { padding-block: 32px; gap: 14px 48px; }
+ .hero-heading .hero-title { font-size: clamp(56px,5.4vw,70px); }
+ .hero-lede { font-size: 16px; margin-bottom: 12px; }
+ .hero-actions { margin-top: 16px; }
+ .hero-ticket { margin-top: 18px; padding: 16px 20px; }
+}
+.booking-explainer { border-left: 6px solid var(--red); padding: 18px 24px; margin: 28px 0; background: var(--paper); max-width: 70ch; }
+.trainer-grid { display: grid; gap: 36px; align-items: center; }
+.trainer-portrait { width: 100%; margin: 0; }
+.trainer-portrait .pin-frame { aspect-ratio: auto; }
+.trainer-portrait img { display: block; height: auto; width: 100%; }
+.head-trainer .h2 { font-size: clamp(40px, 5.4vw, 70px); }
+.trainer-grid .lede { margin-block: 24px; }
+.trainer-full .trainer-grid { align-items: start; }
+.trainer-podcast { margin-top: 24px; }
+@media(min-width:960px) { .trainer-grid { grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap: 56px; } }
+@media(max-width:600px) {
+ .hero-inner { padding-top: 24px; }
+ .hero-heading .hero-title { margin-top: 0; }
+ .hero-copy .hero-lede { font-size: 16px; line-height: 1.45; }
+ .hero-actions { gap: 14px; margin-top: 16px; }
+ .hero-ticket { padding: 14px 18px; margin-top: 22px; }
+ .hero-ticket .bill-line { display: flex; gap: 10px; flex-wrap: wrap; font-size: 23px; }
+ .hero-ticket .bill-star { display:none; }
+ .hero-ticket .bill-slot { white-space: nowrap; }
+ .hero-film-note { display:none; }
+}
+/* Browser review: give each route room to breathe. */
+.hero-actions { flex-wrap: wrap; gap: 16px; }
+.hero-actions > .text-link { flex-basis: 100%; }
+.compact-visit-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:28px; }
+.compact-visit p { margin:18px 0 0; }
+.gallery-instagram { margin: 24px 0 32px; }
+.other-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.doctor > .wrap > .split { display:block; max-width: 900px; }
+.doctor > .wrap > .split > div:first-child { max-width: 760px; }
+.doctor #doctor-title { font-size:clamp(40px,5.2vw,68px); line-height:1.08; margin-bottom:32px; }
+.doctor .split-copy { max-width:68ch; }
+.doctor > .wrap > p { max-width:68ch; margin-top:24px; line-height:1.65; }
+.doctor .lede { line-height:1.6; font-size:clamp(18px,2vw,22px); }
+@media(min-width:960px) {
+ .header-inner { grid-template-columns:130px minmax(0,1fr) auto; gap:12px; }
+ .header-home { min-width:120px; padding-inline:0; }
+ .header .nav ul { gap:clamp(10px,1.2vw,18px); }
+ .header .nav a:not(.btn) { font-size:12px; letter-spacing:.025em; }
+ .header-cta { padding-inline:14px; font-size:12px; }
+}
+@media(max-width:600px) { .other-grid { grid-template-columns:1fr; } .hero-actions .btn { font-size:13px; padding:13px 16px; } }
+.hero-actions > .text-link { flex-basis:auto; }
+.doctor #doctor-title .t-plain, .doctor #doctor-title .t-em { display:block; }
+.visit-contact { margin-top:32px; }
+@media(min-width:760px) and (max-width:1279px) { .space-hire .posters-4 { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+/* Direct contact stack: green WhatsApp, paper email, the club's bold border and shadow. */
+.contact-dock { display:grid; gap:8px; padding:0; border:0; background:none; box-shadow:none; width:190px; }
+.dock-link { display:flex; align-items:center; gap:8px; min-height:44px; padding:10px 12px; border:3px solid var(--ink); box-shadow:4px 4px 0 var(--ink); text-decoration:none; font-size:14px; font-weight:800; color:#101310; }
+.dock-whatsapp { background:#25d366; }
+.dock-email { background:var(--paper); }
+.dock-link:hover { transform:translate(-1px,-1px); box-shadow:5px 5px 0 var(--ink); }
+.dock-link:focus-visible { outline:3px solid #fff; outline-offset:3px; box-shadow:0 0 0 6px #161412; }
+.footer { padding-bottom:144px; }
+.hero-actions { display:flex; flex-wrap:wrap; align-items:stretch; gap:14px; }
+.hero-actions .hero-secondary { font-size:13px; padding:12px 16px; min-height:46px; }
+.hero-actions .btn-yellow { flex-basis:100%; width:fit-content; flex-grow:0; justify-self:start; }
+.hire-location { margin-top:40px; max-width:68ch; }
+.hire-location h2 { margin-bottom:20px; }
+@media(min-width:960px) { .hero-actions .btn-yellow { flex-basis:auto; } .hero-actions .hero-secondary { font-size:12px; padding:10px 12px; } }
+@media(max-width:600px) {
+ .contact-dock { width:168px; bottom:12px; right:12px; gap:7px; }
+ .dock-link { min-height:40px; font-size:12px; padding:8px 10px; }
+ .hero-actions { gap:12px; }
+ .hero-actions .btn-yellow { flex-basis:auto; }
+ .hero-actions .hero-secondary { font-size:12px; padding:10px 12px; }
+}
+@media(max-width:600px) {
+ .hero-actions .btn-yellow { flex-basis:100%; }
+ .hero-actions .hero-secondary { font-size:11px; letter-spacing:.045em; padding:10px 12px; min-height:44px; }
+ .hero-film .video-toggle { left:12px; right:auto; }
+}
+
+/* Keep the magazine cover upright within its scrapbook frame. */
+.scrap img[src="photos/founder-magazine.jpg"] {
+  aspect-ratio: 1;
+  object-fit: contain;
+  transform: rotate(-90deg);
+}
+
+/* Playback controls stay clear of the film's lower-third introductions. */
+.video-controls { position:absolute; top:12px; right:12px; left:12px; display:flex; justify-content:flex-end; flex-wrap:wrap; gap:8px; }
+.club-video .video-controls .video-toggle { position:static; font-size:11px; letter-spacing:.06em; padding:8px 10px; }
+.hero-film .club-video-portrait video { aspect-ratio:9 / 16; object-fit:contain; }
+@media(max-width:600px) {
+  .video-controls { top:10px; right:10px; left:10px; }
+  .club-video .video-controls .video-toggle { padding:7px 9px; }
+}
+
+.film-credits { margin-top:8px; font-size:12px; font-weight:400; letter-spacing:normal; line-height:1.5; }
+.film-credits summary { cursor:pointer; width:fit-content; text-decoration:underline; text-underline-offset:3px; }
+.film-credits p { margin:8px 0 0; }
+.film-credits a { text-underline-offset:3px; }
+
+.instagram-gallery-label { margin: 32px 0 16px; font-weight: 700; }
+.instagram-gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.instagram-gallery-grid .pin { margin: 0; min-width: 0; }
+.instagram-gallery-grid .pin-frame img, .instagram-gallery-post img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.instagram-gallery-post { display: block; color: var(--ink); background: var(--paper); text-decoration: none; }
+.instagram-gallery-post span { display: flex; align-items: center; gap: 8px; padding: 12px; font-weight: 700; }
+.instagram-gallery-post:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+@media(min-width:900px) { .instagram-gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media(max-width:420px) { .instagram-gallery-grid { gap: 12px; } }
+
+.coaches .poster { display: flex; flex-direction: column; }
+.coaches .coach-photo { width: 100%; }
+.coaches .coach-photo .pin-frame { aspect-ratio: 5 / 4; }
+.coaches .coach-photo img { display: block; width: 100%; height: 100%; }
+.coaches .coach-profile-link { margin-top: auto; padding-top: 16px; }
+.coaches .coach-profile-link .btn { width: 100%; }
+
+/* Keep the club introduction together above its photographs. */
+.space .split { align-items: start; gap: 24px 48px; }
+.space .h2 { font-size: clamp(42px, 5.4vw, 68px); line-height: .98; }
+.space .split-copy { font-size: 18px; line-height: 1.55; }
+.space .split-copy p:first-child { margin-top: 0; }
+.space .collage { margin-top: 32px; }
+@media(min-width:960px) {
+ .space .split { grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+ .space .split-copy { padding-top: 30px; }
+}
+
+.instagram-gallery-post video { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; background: #111; }
+.instagram-gallery-post > a { color: inherit; text-decoration: none; }
+
+/* Instagram previews form one calm grid; reels open at their native proportions. */
+.instagram-gallery-grid { gap: 28px 24px; }
+.instagram-gallery-post { min-width: 0; background: transparent; }
+.instagram-preview { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #151515; color: white; cursor: pointer; overflow: hidden; text-decoration: none; }
+.instagram-gallery-post .instagram-preview img { aspect-ratio: 4 / 5; width: 100%; height: auto; object-fit: cover; transition: transform .25s; }
+.instagram-preview:hover img { transform: scale(1.025); }
+.instagram-gallery-post .instagram-format { position: absolute; top: 12px; left: 12px; padding: 6px 10px; background: #111d; color: white; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+.instagram-gallery-post .instagram-play { position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; padding: 0; display: grid; place-items: center; color: #111; background: var(--yellow); border-radius: 50%; box-shadow: 0 2px 18px #0006; }
+.instagram-gallery-post .instagram-watch { position: absolute; bottom: 0; left: 0; right: 0; padding: 36px 16px 16px; color: white; background: linear-gradient(transparent,#000b); font-size: 13px; }
+.instagram-caption { font-size: 14px; line-height: 1.5; margin: 12px 0 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.instagram-preview:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+.instagram-player { padding: 0; border: 1px solid #444; background: #111; color: white; width: min(92vw, 460px); max-height: 94dvh; overflow: auto; box-shadow: 0 20px 80px #0009; }
+.instagram-player::backdrop { background: #000d; }
+.instagram-player-top { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; font-size: 13px; font-weight: 700; }
+.instagram-player-top button { display: grid; place-items: center; width: 44px; height: 44px; background: transparent; color: white; border: 0; cursor: pointer; }
+.instagram-gallery-post .instagram-player video { display: block; width: 100%; height: min(70dvh,740px); aspect-ratio: auto; object-fit: contain; }
+.instagram-player > a { display: flex; align-items: center; gap: 8px; padding: 16px; font-size: 13px; color: white; }
+@media(max-width:600px) { .instagram-gallery-grid { gap: 24px 12px; } .instagram-gallery-post .instagram-play { width: 48px; height: 48px; } .instagram-caption { font-size: 12px; } }
+@media(prefers-reduced-motion:reduce) { .instagram-gallery-post .instagram-preview img { transition: none; } }

@@ -110,6 +110,7 @@ export function ClassesPage({ cal }) {
       <Eyebrow>{t.eyebrow}</Eyebrow>
       <h1 id="classes-title" className="h2"><Title parts={t.heading}/></h1>
       <Paragraphs items={t.intro} className="lede"/>
+      <div className="booking-explainer"><p><strong>Tuesdays 6pm · Thursdays 7pm · £10</strong></p>{t.weeklyBreakdown?.map(session => <p key={session.day}><strong>{session.day}</strong><br/>{session.description}</p>)}<p>{content.paymentPolicy}</p><p><a href="#/faq">Booking and first-visit questions</a></p></div>
       <Status status={status} count={classes.length}/>
       {group.length ? <>
         <h2 className="h3 class-group-title">{t.groupHeading ?? 'Group classes'}</h2><Paragraphs items={t.groupIntro}/>
