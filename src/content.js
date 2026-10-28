@@ -559,3 +559,17 @@ export const paymentPolicy = 'Online bookings will be sent payment information. 
 
 // Public Behold feed URL; account credentials are managed by Behold.
 export const instagramFeedUrl = "https://feeds.behold.so/9bh5zUip8FaswKNUkO68";
+
+// Practice biography and session details: https://craniosacraltherapylondon.com/ (28 October 2026).
+export const phoenixWellness = {
+  name: 'Phoenix Tanner',
+  role: 'Craniosacral therapist · CSTA registered',
+  heading: 'Craniosacral therapy & fascial unwinding',
+  paragraphs: [
+    'Phoenix’s path began in movement. Contemporary dance and contact improvisation tuned him into the body’s strength, sensitivity and stories. Craniosacral therapy came into his life when he needed stillness; his work now explores how movement and stillness can each open the way to the other.',
+    'Trained at London’s College of Cranio-Sacral Therapy and registered with the Craniosacral Therapy Association, Phoenix offers gentle craniosacral therapy and fascial unwinding. Sessions begin with a conversation, followed by light-touch bodywork while you remain fully clothed.',
+    '60-minute sessions are available in Bethnal Green and Waterloo, with a £30–£60 sliding scale at his Bethnal Green community clinic. Visit his website for availability and booking enquiries.'
+  ],
+  href: 'https://craniosacraltherapylondon.com/',
+  label: 'Visit Phoenix’s website',
+};

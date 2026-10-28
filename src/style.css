@@ -1048,3 +1048,14 @@ html { scroll-padding-bottom: 140px; }
 .ben-booking-options .btn { min-height: 44px; }
 .ben-booking-options .btn-whatsapp { color: #101310; }
 @media(max-width:600px) { .ben-booking-options .btn { width: 100%; } }
+
+/* Wellness uses the existing portrait/profile layout. */
+.wellness-intro { max-width: 65ch; margin: 24px 0 40px; }
+.wellness .trainer-grid > div { min-width: 0; }
+.wellness .trainer-grid p { margin-top: 20px; line-height: 1.65; }
+.wellness-practice { margin-bottom: 20px; }
+.wellness .btn { white-space: normal; }
+
+.wellness-phoenix { margin-top: 64px; padding-top: 48px; border-top: 2px solid var(--red); }
+.wellness-service { font-size: 22px; margin-top: 18px; line-height: 1.35; }
+.wellness .trainer-grid { align-items: start; }
