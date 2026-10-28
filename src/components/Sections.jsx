@@ -502,6 +502,42 @@ export function Coaches({ first = false }) {
   </section>;
 }
 
+// Dedicated wellness page; the supplied medical profile remains the source of truth.
+export function Wellness() {
+  const person = content.doctor?.person;
+  if (!person) return null;
+  return <section className="section wellness plaster" aria-labelledby="wellness-title">
+    <div className="wrap">
+      <Eyebrow>Wellness</Eyebrow>
+      <h1 id="wellness-title" className="h2">Looking after your wellbeing.</h1>
+      <p className="lede wellness-intro">Meet Dr Alix Daniel, our associated medical advisor and private GP, and Phoenix Tanner, craniosacral therapist.</p>
+      <div className="trainer-grid">
+        <div>{person.photo ? <Photo name={person.photo} className="trainer-portrait" caption={false} sizes="(min-width: 960px) 40vw, 90vw"/> : null}</div>
+        <div>
+          <Eyebrow>{person.role}</Eyebrow>
+          <h2 className="h3">{person.name}</h2>
+          <p>{person.bio}</p>
+          <Paragraphs items={person.paragraphs}/>
+          <p className="wellness-practice"><a className="btn btn-yellow" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p>
+          <p>For practice information and appointments, visit Dr Alix’s website.</p>
+        </div>
+      </div>
+      <section className="wellness-phoenix" aria-labelledby="phoenix-wellness-title">
+        <div className="trainer-grid">
+          <div><img src="photos/phoenix-craniosacral-therapist.jpeg" alt="Phoenix Tanner, craniosacral therapist" className="trainer-portrait" loading="lazy" decoding="async"/></div>
+          <div>
+            <Eyebrow>{content.phoenixWellness.role}</Eyebrow>
+            <h2 id="phoenix-wellness-title" className="h3">{content.phoenixWellness.name}</h2>
+            <h3 className="wellness-service">{content.phoenixWellness.heading}</h3>
+            <Paragraphs items={content.phoenixWellness.paragraphs}/>
+            <p className="wellness-practice"><a className="btn btn-yellow" href={content.phoenixWellness.href} target="_blank" rel="noopener noreferrer">{content.phoenixWellness.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>;
+}
+
 // Medical advisor introduction and planned club involvement.
 export function Doctor({ first = false }) {
   const { doctor } = content;

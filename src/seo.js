@@ -8,6 +8,7 @@ export const PAGE_META = {
   story: ['Bernie Paul · The Punching Postman', 'Read Bernie Paul’s boxing story and his daughter’s tribute. Discover the founder behind Bethnal Green Boxing Club, down the road from York Hall.'],
   gym: ['Inside our Bethnal Green boxing gym', 'Explore Bethnal Green Boxing Club: the ring, training space and latest club photos and videos. Find us at 279 Cambridge Heath Road, East London.'],
   'space-hire': ['Boxing gym hire in East London', 'Hire a boxing gym in Bethnal Green for private coaching, classes, filming or photography. Contact the club about your session, dates and availability.'],
+  wellness: ['Wellness · Dr Alix Daniel & Phoenix Tanner', 'Meet Dr Alix Daniel, private GP, and Phoenix Tanner, craniosacral therapist. Explore their practices and find appointment information.'],
   faq: ['Boxing class FAQs', 'New to boxing? Find answers about classes, prices, booking, borrowed gloves and access at Bethnal Green Boxing Club. Plan your first session.'],
   visit: ['Visit our Bethnal Green boxing gym', 'Find Bethnal Green Boxing Club at 279 Cambridge Heath Road, London E2 0EL. Get directions, class times and basement access details before your visit.'],
   community: ['Boxing & community', 'Discover how Bethnal Green Boxing Club brings people together through training and encouragement, and read about Bernie’s hopes for the club’s future.'],

@@ -6,9 +6,10 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import BookingDialog from './components/BookingDialog.jsx';
 import OwnerPanel from './components/OwnerPanel.jsx';
-import { Approach, Club, Coaches, Community, Doctor, CtaBand, FirstClass, Hero, Meet, Join, Space, SpaceHire, Story, TrainingGallery, TrainingOptions, Visit, Faq, ContactDock, OtherWays, HeadTrainer, CompactVisit, InstagramGallery } from './components/Sections.jsx';
+import { Approach, Club, Coaches, Community, Doctor, Wellness, CtaBand, FirstClass, Hero, Meet, Join, Space, SpaceHire, Story, TrainingGallery, TrainingOptions, Visit, Faq, ContactDock, OtherWays, HeadTrainer, CompactVisit, InstagramGallery } from './components/Sections.jsx';
 import { ClassesPage, useClasses } from './components/Classes.jsx';
 import { PAGE_META } from './seo.js';
+import { initAnalytics } from './analytics.js';
 import { initCal } from './calembed.js';
 import { DEFAULT_CLASSES, initialTimetable, loadTimetable } from './timetable.js';
 
@@ -89,6 +90,7 @@ function App() {
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
   }, [route]);
+  useEffect(() => { initAnalytics(); }, []);
   // One Cal.com fetch shared by every page; the booking pop-up script loads once the page is idle.
   const cal = useClasses();
   useEffect(() => { const id = (window.requestIdleCallback ?? (fn => setTimeout(fn, 1500)))(initCal); return () => (window.cancelIdleCallback ?? clearTimeout)(id); }, []);
@@ -128,6 +130,7 @@ function App() {
       {route === 'story' ? <Story first/> : null}
       {route === 'gym' ? <><Space first/><Approach/><InstagramGallery/><Community/><CtaBand/></> : null}
       {route === 'community' ? <><Community first/><Join/></> : null}
+      {route === 'wellness' ? <Wellness/> : null}
       {route === 'space-hire' ? <SpaceHire first/> : null}
       {route === 'visit' ? <><Visit first/><CtaBand/></> : null}
     </main>
