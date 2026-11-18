@@ -1049,13 +1049,41 @@ html { scroll-padding-bottom: 140px; }
 .ben-booking-options .btn-whatsapp { color: #101310; }
 @media(max-width:600px) { .ben-booking-options .btn { width: 100%; } }
 
-/* Wellness uses the existing portrait/profile layout. */
-.wellness-intro { max-width: 65ch; margin: 24px 0 40px; }
-.wellness .trainer-grid > div { min-width: 0; }
-.wellness .trainer-grid p { margin-top: 20px; line-height: 1.65; }
-.wellness-practice { margin-bottom: 20px; }
-.wellness .btn { white-space: normal; }
+.wellness.section { padding-block: clamp(32px, 4vw, 64px); }
+.wellness > .wrap { max-width: 960px; }
+.wellness .h2 { font-size: clamp(36px, 4vw, 56px); }
+.wellness-intro { max-width: 62ch; margin: 12px 0 clamp(28px, 4vw, 48px); }
+.wellness-profile {
+  display: grid;
+  grid-template-columns: clamp(88px, 24vw, 116px) minmax(0, 1fr);
+  grid-template-areas: "portrait heading" "bio bio";
+  gap: 20px 16px;
+  align-items: start;
+}
+.wellness-profile + .wellness-profile { margin-top: clamp(38px, 5vw, 64px); }
+.wellness-profile-heading { grid-area: heading; align-self: center; }
+.wellness-profile .h3 { font-size: clamp(24px, 3.3vw, 40px); line-height: 1.08; margin: 0; }
+.wellness-role { margin: 6px 0 0; font-size: 15px; line-height: 1.4; }
+.wellness-portrait { grid-area: portrait; display: block; width: 100%; height: auto; }
+.wellness-portrait.pin::before { content: none; }
+.wellness-portrait .pin-frame { padding: 0; box-shadow: none; }
+.wellness-portrait img { display: block; height: auto; }
+.wellness-bio { grid-area: bio; max-width: 65ch; font-size: 16px; line-height: 1.65; }
+.wellness-bio p { margin: 0 0 14px; }
+.wellness-service { margin: 0 0 10px; font-size: 18px; line-height: 1.35; }
+.wellness .btn { min-height: 44px; max-width: 100%; white-space: normal; }
+.wellness .btn svg { flex-shrink: 0; }
 
-.wellness-phoenix { margin-top: 64px; padding-top: 48px; border-top: 2px solid var(--red); }
-.wellness-service { font-size: 22px; margin-top: 18px; line-height: 1.35; }
-.wellness .trainer-grid { align-items: start; }
+@media (min-width: 680px) {
+  .wellness-profile {
+    grid-template-columns: clamp(156px, 19vw, 224px) minmax(0, 1fr);
+    grid-template-areas: "portrait heading" "portrait bio";
+    grid-template-rows: auto 1fr;
+    gap: 14px clamp(24px, 4vw, 52px);
+  }
+  .wellness-profile-heading { align-self: start; }
+}
+
+@media (min-width: 960px) and (max-width: 1279px) {
+  .wellness > .wrap { padding-inline-end: max(var(--gutter), calc(224px - (100vw - 960px) / 2)); }
+}

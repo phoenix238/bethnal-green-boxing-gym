@@ -143,11 +143,14 @@ export const doctor = {
     "name": "Dr Alix Daniel",
     "photo": "doctorAlix",
     "role": "Medical advisor · Private GP · MD",
-    "bio": "Dr Alix Daniel joins the Bethnal Green Boxing Club community as medical advisor. She obtained her MD in Brittany, France, in 1991 and holds Master’s degrees in tropical medicine, public health and nutrition, with studies at the Faculty of Medicine in Brest and the London School of Hygiene & Tropical Medicine. With more than 35 years of experience as a private GP, her interests include preventive medicine, lifestyle medicine, wellbeing care, second opinions and personalised prescribing.",
     "paragraphs": [
-      "Her private practice is based at 10 Harley Street, London, where she consults in English and French. Her interests beyond medicine include sport, art and ethics.",
-      "Her involvement with the club includes confidential medical advice and examinations for people interested in white collar boxing, with specialist referrals, blood tests or scans arranged through her practice as appropriate. She also plans to visit training sessions to meet members and attend white collar boxing events."
+      "Dr Alix Daniel joins the Bethnal Green Boxing Club community as our medical advisor. She’ll work alongside the coaches and Phoenix to support members with their health and wellbeing. She wants everyone to feel comfortable asking her a question, whether it’s something small they’ve been wondering about or a concern they’d like to talk through privately.",
+      "Dr Alix looks forward to dropping into training sessions to get to know members and coming along to white-collar boxing events. For anyone considering white-collar boxing, she can offer confidential medical advice and examinations. Where appropriate, she can arrange specialist referrals, blood tests or scans through her private practice.",
+      "Dr Alix has more than 35 years of experience as a private GP and consults in English and French at her practice at 10 Harley Street, London. She is best known for her work in preventive and lifestyle medicine and wellbeing care, as well as for diagnosing health conditions, offering second opinions and tailoring prescriptions to each patient.",
+      "She obtained her MD in Brittany, France, in 1991 and holds master’s degrees in tropical medicine, public health and nutrition. She studied at the Faculty of Medicine in Brest and the London School of Hygiene & Tropical Medicine."
     ],
+    "closing": "Outside medicine, Dr Alix’s interests include sport, art and ethics. She is currently translating nineteenth-century poetry between French and English. She founded and leads Cybirdy, which publishes books and poetry. The company revives forgotten classics and champions new voices, inviting readers to imagine our shared future on Earth and beyond, always",
+    "motto": "with the human spirit as free as a bird",
     "link": {
       "label": "Visit Dr Alix Daniel’s practice",
       "href": "https://dralixdanielprivategp.com/"
