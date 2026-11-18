@@ -1052,36 +1052,49 @@ html { scroll-padding-bottom: 140px; }
 .wellness.section { padding-block: clamp(32px, 4vw, 64px); }
 .wellness > .wrap { max-width: 960px; }
 .wellness .h2 { font-size: clamp(36px, 4vw, 56px); }
-.wellness-intro { max-width: 62ch; margin: 12px 0 clamp(28px, 4vw, 48px); }
+.wellness-intro { max-width: 62ch; margin: 12px 0 clamp(32px, 5vw, 56px); }
 .wellness-profile {
   display: grid;
-  grid-template-columns: clamp(88px, 24vw, 116px) minmax(0, 1fr);
-  grid-template-areas: "portrait heading" "bio bio";
-  gap: 20px 16px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "heading" "portrait" "intro" "bio";
+  gap: 18px;
   align-items: start;
 }
-.wellness-profile + .wellness-profile { margin-top: clamp(38px, 5vw, 64px); }
-.wellness-profile-heading { grid-area: heading; align-self: center; }
-.wellness-profile .h3 { font-size: clamp(24px, 3.3vw, 40px); line-height: 1.08; margin: 0; }
-.wellness-role { margin: 6px 0 0; font-size: 15px; line-height: 1.4; }
-.wellness-portrait { grid-area: portrait; display: block; width: 100%; height: auto; }
-.wellness-portrait.pin::before { content: none; }
-.wellness-portrait .pin-frame { padding: 0; box-shadow: none; }
-.wellness-portrait img { display: block; height: auto; }
-.wellness-bio { grid-area: bio; max-width: 65ch; font-size: 16px; line-height: 1.65; }
+.wellness-profile + .wellness-profile { margin-top: clamp(60px, 7vw, 96px); }
+.wellness-profile-heading { grid-area: heading; }
+.wellness-profile .h3 { font-size: clamp(28px, 3.3vw, 40px); line-height: 1.08; margin: 0; }
+.wellness-role { margin: 5px 0 0; font-size: 15px; line-height: 1.4; }
+.wellness-portrait { grid-area: portrait; width: 100%; max-width: 420px; }
+.wellness-portrait .pin-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+.wellness-profile-intro { grid-area: intro; }
+.wellness-profile-intro p { margin: 0; }
+.wellness-bio { grid-area: bio; }
+.wellness-profile-intro,
+.wellness-bio { max-width: 68ch; font-size: 17px; line-height: 1.6; }
 .wellness-bio p { margin: 0 0 14px; }
-.wellness-service { margin: 0 0 10px; font-size: 18px; line-height: 1.35; }
+.wellness-service { margin: 0 0 8px; font-size: 18px; line-height: 1.35; }
 .wellness .btn { min-height: 44px; max-width: 100%; white-space: normal; }
 .wellness .btn svg { flex-shrink: 0; }
 
 @media (min-width: 680px) {
   .wellness-profile {
-    grid-template-columns: clamp(156px, 19vw, 224px) minmax(0, 1fr);
-    grid-template-areas: "portrait heading" "portrait bio";
-    grid-template-rows: auto 1fr;
-    gap: 14px clamp(24px, 4vw, 52px);
+    grid-template-columns: minmax(180px, 34fr) minmax(0, 66fr);
+    grid-template-areas: "portrait heading" "portrait intro" "bio bio";
+    grid-template-rows: auto 1fr auto;
+    gap: 14px clamp(26px, 5vw, 58px);
   }
-  .wellness-profile-heading { align-self: start; }
+  .wellness-profile-reverse {
+    grid-template-columns: minmax(0, 66fr) minmax(180px, 34fr);
+    grid-template-areas: "heading portrait" "intro portrait" "bio bio";
+  }
+  .wellness-portrait .pin-frame img { aspect-ratio: 4 / 5; }
+  .wellness-bio { margin: 10px auto 0; width: 100%; }
 }
 
 @media (min-width: 960px) and (max-width: 1279px) {
