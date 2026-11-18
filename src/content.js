@@ -351,6 +351,13 @@ export const photos = {
     "caption": "Dr Alix Daniel",
     "position": "50% 38%"
   },
+  "phoenixWellness": {
+    "src": "photos/phoenix-craniosacral-therapist.jpeg",
+    "width": 1356,
+    "height": 2048,
+    "alt": "Phoenix Tanner, craniosacral therapist",
+    "position": "50% 55%"
+  },
   "clubGroup2": {
     "src": "photos/club-group-2.jpg",
     "width": 1200,

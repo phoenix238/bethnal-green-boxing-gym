@@ -502,9 +502,9 @@ export function Coaches({ first = false }) {
   </section>;
 }
 
-function DoctorBio({ person }) {
+function DoctorBio({ person, paragraphs = person.paragraphs }) {
   return <>
-    <Paragraphs items={person.paragraphs}/>
+    <Paragraphs items={paragraphs}/>
     <p>{person.closing} <strong>{person.motto}</strong>.</p>
   </>;
 }
@@ -513,6 +513,8 @@ export function Wellness() {
   const person = content.doctor?.person;
   if (!person) return null;
   const phoenix = content.phoenixWellness;
+  const [alixIntro, ...alixBio] = person.paragraphs;
+  const [phoenixIntro, ...phoenixBio] = phoenix.paragraphs;
   return <section className="section wellness plaster" aria-labelledby="wellness-title">
     <div className="wrap">
       <h1 id="wellness-title" className="h2">Wellness</h1>
@@ -523,20 +525,24 @@ export function Wellness() {
           <p className="wellness-role">Medical Advisor</p>
         </header>
         {person.photo && <Photo name={person.photo} className="wellness-portrait" caption={false}/>}
+        <div className="wellness-profile-intro"><p>{alixIntro}</p></div>
         <div className="wellness-bio">
-          <DoctorBio person={person}/>
+          <DoctorBio person={person} paragraphs={alixBio}/>
           <a className="btn btn-yellow" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a>
         </div>
       </section>
-      <section className="wellness-profile" aria-labelledby="phoenix-wellness-title">
+      <section className="wellness-profile wellness-profile-reverse" aria-labelledby="phoenix-wellness-title">
         <header className="wellness-profile-heading">
           <h2 id="phoenix-wellness-title" className="h3">{phoenix.name}</h2>
           <p className="wellness-role">{phoenix.role}</p>
         </header>
-        <img src="photos/phoenix-craniosacral-therapist.jpeg" width="1356" height="2048" alt="Phoenix Tanner, craniosacral therapist" className="wellness-portrait" loading="lazy" decoding="async"/>
-        <div className="wellness-bio">
+        <Photo name="phoenixWellness" className="wellness-portrait" caption={false}/>
+        <div className="wellness-profile-intro">
           <h3 className="wellness-service">{phoenix.heading}</h3>
-          <Paragraphs items={phoenix.paragraphs}/>
+          <p>{phoenixIntro}</p>
+        </div>
+        <div className="wellness-bio">
+          <Paragraphs items={phoenixBio}/>
           <a className="btn btn-yellow" href={phoenix.href} target="_blank" rel="noopener noreferrer">{phoenix.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a>
         </div>
       </section>
