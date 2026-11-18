@@ -502,36 +502,42 @@ export function Coaches({ first = false }) {
   </section>;
 }
 
-// Dedicated wellness page; the supplied medical profile remains the source of truth.
+function DoctorBio({ person }) {
+  return <>
+    <Paragraphs items={person.paragraphs}/>
+    <p>{person.closing} <strong>{person.motto}</strong>.</p>
+  </>;
+}
+
 export function Wellness() {
   const person = content.doctor?.person;
   if (!person) return null;
+  const phoenix = content.phoenixWellness;
   return <section className="section wellness plaster" aria-labelledby="wellness-title">
     <div className="wrap">
-      <Eyebrow>Wellness</Eyebrow>
-      <h1 id="wellness-title" className="h2">Looking after your wellbeing.</h1>
-      <p className="lede wellness-intro">Meet Dr Alix Daniel, our associated medical advisor and private GP, and Phoenix Tanner, craniosacral therapist.</p>
-      <div className="trainer-grid">
-        <div>{person.photo ? <Photo name={person.photo} className="trainer-portrait" caption={false} sizes="(min-width: 960px) 40vw, 90vw"/> : null}</div>
-        <div>
-          <Eyebrow>{person.role}</Eyebrow>
-          <h2 className="h3">{person.name}</h2>
-          <p>{person.bio}</p>
-          <Paragraphs items={person.paragraphs}/>
-          <p className="wellness-practice"><a className="btn btn-yellow" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p>
-          <p>For practice information and appointments, visit Dr Alix’s website.</p>
+      <h1 id="wellness-title" className="h2">Wellness</h1>
+      <p className="wellness-intro">Meet Dr Alix Daniel, our medical advisor and private GP, and Phoenix Tanner, craniosacral therapist.</p>
+      <section className="wellness-profile" aria-labelledby="alix-wellness-title">
+        <header className="wellness-profile-heading">
+          <h2 id="alix-wellness-title" className="h3">{person.name}</h2>
+          <p className="wellness-role">Medical Advisor</p>
+        </header>
+        {person.photo && <Photo name={person.photo} className="wellness-portrait" caption={false}/>}
+        <div className="wellness-bio">
+          <DoctorBio person={person}/>
+          <a className="btn btn-yellow" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a>
         </div>
-      </div>
-      <section className="wellness-phoenix" aria-labelledby="phoenix-wellness-title">
-        <div className="trainer-grid">
-          <div><img src="photos/phoenix-craniosacral-therapist.jpeg" alt="Phoenix Tanner, craniosacral therapist" className="trainer-portrait" loading="lazy" decoding="async"/></div>
-          <div>
-            <Eyebrow>{content.phoenixWellness.role}</Eyebrow>
-            <h2 id="phoenix-wellness-title" className="h3">{content.phoenixWellness.name}</h2>
-            <h3 className="wellness-service">{content.phoenixWellness.heading}</h3>
-            <Paragraphs items={content.phoenixWellness.paragraphs}/>
-            <p className="wellness-practice"><a className="btn btn-yellow" href={content.phoenixWellness.href} target="_blank" rel="noopener noreferrer">{content.phoenixWellness.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p>
-          </div>
+      </section>
+      <section className="wellness-profile" aria-labelledby="phoenix-wellness-title">
+        <header className="wellness-profile-heading">
+          <h2 id="phoenix-wellness-title" className="h3">{phoenix.name}</h2>
+          <p className="wellness-role">{phoenix.role}</p>
+        </header>
+        <img src="photos/phoenix-craniosacral-therapist.jpeg" width="1356" height="2048" alt="Phoenix Tanner, craniosacral therapist" className="wellness-portrait" loading="lazy" decoding="async"/>
+        <div className="wellness-bio">
+          <h3 className="wellness-service">{phoenix.heading}</h3>
+          <Paragraphs items={phoenix.paragraphs}/>
+          <a className="btn btn-yellow" href={phoenix.href} target="_blank" rel="noopener noreferrer">{phoenix.label}<ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a>
         </div>
       </section>
     </div>
@@ -563,8 +569,7 @@ export function Doctor({ first = false }) {
         <span className="poster-no">{person.role}</span>
         {person.photo ? <Photo name={person.photo} className="coach-photo" caption={false}/> : null}
         <h3 className="poster-title">{person.name}</h3>
-        <p>{person.bio}</p>
-        <Paragraphs items={person.paragraphs}/>
+        <DoctorBio person={person}/>
       </li></ul> : null}
       {person?.link ? <p><a className="btn btn-paper" href={person.link.href} target="_blank" rel="noopener noreferrer">{person.link.label} <ArrowUpRight size={18} aria-hidden="true"/><span className="sr-only"> (opens in a new tab)</span></a></p> : null}
       {doctor.note ? <p className="coach-note">{doctor.note} <a href={`mailto:${content.media.email}`}>email the club</a>.</p> : null}
