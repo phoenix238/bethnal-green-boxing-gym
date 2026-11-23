@@ -7,14 +7,17 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node scripts/test-timetable.mjs"
+    "test": "node scripts/test-timetable.mjs",
+    "map": "mapify map"
   },
   "dependencies": {
     "@vitejs/plugin-react": "6.1.2",
-    "vite": "8.3.4",
+    "lucide-react": "1.55.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "lucide-react": "1.55.0"
+    "vite": "8.3.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nicklane/mapify": "https://codeload.github.com/mishanshrestha18/mapify/tar.gz/6428854aa845afead450ac543a2b4f216931a191"
+  }
 }

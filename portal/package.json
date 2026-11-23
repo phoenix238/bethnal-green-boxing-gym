@@ -1,0 +1,20 @@
+{
+  "name": "bgbc-rehearsal",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "node build.mjs",
+    "dev": "node test/preview.mjs"
+  },
+  "type": "module",
+  "devDependencies": {
+    "drizzle-kit": "^0.31.11",
+    "drizzle-orm": "^0.45.4",
+    "esbuild": "^0.28.2"
+  },
+  "private": true,
+  "dependencies": {
+    "qrcode": "1.5.4"
+  }
+}

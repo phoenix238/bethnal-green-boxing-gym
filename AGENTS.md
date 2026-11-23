@@ -1,0 +1,1 @@
+Start with [the code map](docs/context/MAP.md) and [verified project facts](docs/context/FACTS.md). Open the source or handoff section for the feature you are changing. Run `npm run map` after changing entry points or exported functions. Preserve the public site and keep private club records out of Git.

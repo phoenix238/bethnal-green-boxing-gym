@@ -1,0 +1,38 @@
+{
+  "name": "Bethnal Green Boxing Club",
+  "out": "docs/context",
+  "sections": [
+    {
+      "type": "note",
+      "title": "Entry points",
+      "body": "Public pages and hash routes are composed in `src/main.jsx`. Public copy and Ben\u2019s contact links live in `src/content.js`. The optional legacy owner demo is in `src/components/OwnerPanel.jsx`."
+    },
+    {
+      "type": "note",
+      "title": "Class rehearsal",
+      "body": "The private Worker uses portal/server/handler.mjs for HTTP and trusted sign-in, portal/server/service.mjs for role checks and atomic event writes, portal/server/model.mjs for billing and consent, portal/assets/app.js for the screens, and portal/drizzle for database migrations. Run npm ci, npm test and npm run build inside portal/. Class-night operations are in portal/CLASS-NIGHT.md."
+    },
+    {
+      "type": "exports",
+      "dir": "portal/server",
+      "extensions": [
+        ".mjs"
+      ],
+      "title": "Portal modules under portal/server"
+    },
+    {
+      "type": "exports",
+      "dir": "src",
+      "extensions": [
+        ".js",
+        ".jsx"
+      ],
+      "title": "Public site modules under src"
+    },
+    {
+      "type": "scripts",
+      "title": "Commands"
+    }
+  ],
+  "contracts": []
+}
