@@ -1,0 +1,47 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "f76e0581-a1e0-4490-b893-47f71efcdaa6",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "portal_events": {
+      "name": "portal_events",
+      "columns": {
+        "seq": {
+          "name": "seq",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "payload": {
+          "name": "payload",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "valid_event": {
+          "name": "valid_event",
+          "value": "json_valid(\"portal_events\".\"payload\")"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

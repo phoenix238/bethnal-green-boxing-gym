@@ -22,3 +22,9 @@ The owner panel is visible only with `?demo=1`, using **Owner demo** in the foot
 Cal.com handles public reservations. The owner has chosen to avoid Stripe: online bookings will be sent payment information; walk-ins ask JB or Ben for details or bring cash. Payment-information delivery setup remains a prelaunch task. The browser-only owner panel requires a separate authenticated shared backend before use for real records. Class capacity, duration and cancellation details still need to be confirmed. The recordings are summarised in `docs/INTERVIEW_NOTES.md`; anything marked "Check" there stays off the site until the founder confirms it.
 
 Latest review: [layout redesign](docs/REDESIGN_REVIEW.md) and [remaining to-do list](docs/TO_DO.md). Publication authorised on 26 October 2026; see HANDOFF.md for the release contents.
+
+For a short guide to the code, start with [the generated project map](docs/context/MAP.md) and [project facts](docs/context/FACTS.md). Run `npm run map` after entry points change.
+
+## Private club rehearsal
+
+The [club portal](portal/README.md) has its own Worker, database, tests and rehearsal-only bank and mail controls. The [class-night guide](portal/CLASS-NIGHT.md) covers walk-ins, consent, taking payment and outages.

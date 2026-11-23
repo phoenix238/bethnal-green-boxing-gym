@@ -1,6 +1,6 @@
 # Claude project guide
 
-Start with `README.md` and `HANDOFF.md` before editing. Treat this repository as the shared source of truth for the Bethnal Green community boxing gym website. Keep changes in this GitHub repository so the owner can return to Codex or Claude without losing decisions.
+Start with `docs/context/MAP.md` and `docs/context/FACTS.md`. Use the relevant sections of `README.md` and `HANDOFF.md` for further detail. Treat this repository as the shared source of truth for the Bethnal Green community boxing gym website. Keep changes in this GitHub repository so the owner can return to Codex or Claude without losing decisions.
 
 The owner is new to development. Prefer clear, affordable, maintainable steps and explain how to preview changes in plain language. Do not ask for information that is already recorded here. If a real-world decision is missing, use a clearly labelled placeholder and record the open question in `HANDOFF.md`.
 

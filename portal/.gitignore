@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.local/
+.env*
+__pycache__/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+bgbc-rehearsal-backup*.json
